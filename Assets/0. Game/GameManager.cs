@@ -3,8 +3,8 @@
 public class GameManager : Singleton<GameManager>
 {
 
-	
-	private void Start()
+    public bool IsGameStarted { get; set; }
+    private void Start()
     {
 
     }
