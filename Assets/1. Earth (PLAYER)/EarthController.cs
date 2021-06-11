@@ -6,14 +6,49 @@ public class EarthController : Singleton<EarthController>
 {
     [SerializeField] Swipe swipeController;
     [SerializeField] float speed;
+    bool isActive;
+    Vector3 myPosition;
 
-    private void FixedUpdate()
+    private void Awake()
     {
-        if (swipeController.SwipeLeft)
+        GameStateManager.Instance.OnStateHaveBennChanged += OnStateChanged;
+    }
+
+    private void Start()
+    {
+        isActive = false;
+        myPosition = gameObject.transform.position;
+    }
+
+    public void OnStateChanged()
+    {
+        if(GameStateManager.Instance.GetState() == GameStateManager.GameState.Play || GameStateManager.Instance.GetState() == GameStateManager.GameState.Boot || GameStateManager.Instance.GetState() == GameStateManager.GameState.Pause)
         {
-            this.transform.position += Vector3.left * speed * Time.fixedDeltaTime;
+            isActive = true;
         }
-        else if (swipeController.SwipeRight)
+        else
+        {
+            isActive = false;
+        }
+        gameObject.SetActive(isActive);
+
+        if(GameStateManager.Instance.GetState() == GameStateManager.GameState.Boot)
+        ResetEarth();
+    }
+
+    public void ResetEarth()
+    {
+        gameObject.transform.SetPositionAndRotation(myPosition, Quaternion.identity);
+    }
+
+
+    private void Update()
+    {
+        if (swipeController.SwipeLeft && this.transform.position.x > -2.7f && isActive)
+        {
+            this.transform.position += Vector3.left * Mathf.Clamp(speed , 0,10) * Time.fixedDeltaTime; 
+        }
+        else if (swipeController.SwipeRight && this.transform.position.x < 2.7f && isActive)
         {
             this.transform.position += Vector3.right * speed * Time.fixedDeltaTime;
         }
@@ -42,4 +77,11 @@ public class EarthController : Singleton<EarthController>
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Projectile")
+        {
+            GameStateManager.Instance.ChangeState(GameStateManager.GameState.Gameover);
+        }
+    }
 }

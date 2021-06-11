@@ -7,6 +7,8 @@ TagManager:
   - Deadzone
   - Moon
   - Asteroid
+  - Earth
+  - Projectile
   layers:
   - Default
   - TransparentFX

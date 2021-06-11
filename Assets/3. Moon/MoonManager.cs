@@ -13,69 +13,48 @@ public class MoonManager : Singleton<MoonManager>
 
     public float initialBallSpeed = 250;
 
-    public List<Moon> Balls { get; set; }
-
-    private void Start()
+    private void Awake()
     {
-        InitBall();
+        GameStateManager.Instance.OnStateHaveBennChanged += OnStateChanged;
     }
 
     private void Update()
     {
-        if (!GameManager.Instance.IsGameStarted)
+        if (GameStateManager.Instance.myState == GameStateManager.GameState.Boot)
         {
             // Align ball position to the paddle position
             Vector3 paddlePosition = EarthController.Instance.gameObject.transform.position;
-            Vector3 ballPosition = new Vector3(paddlePosition.x, paddlePosition.y + .27f, 0);
+            Vector3 ballPosition = new Vector3(paddlePosition.x, paddlePosition.y + .5f, 0);
             initialBall.transform.position = ballPosition;
 
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0) || Input.touches.Length > 0)
             {
-                initialBallRb.isKinematic = false;
                 initialBallRb.AddForce(new Vector2(0, initialBallSpeed));
-                GameManager.Instance.IsGameStarted = true;
+                GameStateManager.Instance.ChangeState(GameStateManager.GameState.Play);
             }
         }
     }
 
-    public void SpawnBalls(Vector3 position, int count, bool isLightningBall)
-    {
-        for (int i = 0; i < count; i++)
-        {
-            Moon spawnedBall = Instantiate(ballPrefab, position, Quaternion.identity) as Moon;
-            if (isLightningBall)
-            {
-                spawnedBall.StartLightningBall();
-            }
 
-            Rigidbody2D spawnedBallRb = spawnedBall.GetComponent<Rigidbody2D>();
-            spawnedBallRb.isKinematic = false;
-            spawnedBallRb.AddForce(new Vector2(0, initialBallSpeed));
-            this.Balls.Add(spawnedBall);
+    public void OnStateChanged()
+    {
+        if (GameStateManager.Instance.GetState() == GameStateManager.GameState.Boot)
+        {
+            InitBall();
+        }
+        else if (GameStateManager.Instance.GetState() == GameStateManager.GameState.Gameover || GameStateManager.Instance.GetState() == GameStateManager.GameState.Win)
+        {
+            Destroy(initialBall.gameObject);
         }
     }
 
-    public void ResetBalls()
-    {
-        foreach (var ball in Balls)
-        {
-            Destroy(ball.gameObject);
-        }
 
-        InitBall();
-    }
-
-    private void InitBall()
+    public void InitBall()
     {
         Vector3 paddlePosition = EarthController.Instance.gameObject.transform.position;
-        Vector3 startingPosition = new Vector3(paddlePosition.x, paddlePosition.y + .27f, 0);
+        Vector3 startingPosition = new Vector3(paddlePosition.x, paddlePosition.y + .5f, 0);
         initialBall = Instantiate(ballPrefab, startingPosition, Quaternion.identity);
         initialBallRb = initialBall.GetComponent<Rigidbody2D>();
-
-        this.Balls = new List<Moon>
-        {
-            initialBall
-        };
     }
 
 }
