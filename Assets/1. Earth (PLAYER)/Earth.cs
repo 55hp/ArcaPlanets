@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static GameManager;
 
 public class Earth : Singleton<Earth>
 {
@@ -12,19 +13,13 @@ public class Earth : Singleton<Earth>
     bool alive;
     Vector3 mySize;
 
-
-    public void OnDisable()
+    public void OnStateChanged(GameState newState)
     {
-        GameManager.Instance.OnStateHaveBeenChanged -= OnStateChanged;
-    }
-
-    public void OnStateChanged()
-    {
-        if (GameManager.Instance.GetState() == GameManager.GameState.Play)
+        if (newState == GameManager.GameState.Play)
         {
             gameObject.GetComponent<EarthController>().GoPlay(true);
         }
-        else if (GameManager.Instance.GetState() == GameManager.GameState.Boot)
+        else if (newState == GameManager.GameState.Boot)
         {
             gameObject.GetComponent<EarthController>().ResetEarthPosition();
         }
@@ -72,7 +67,6 @@ public class Earth : Singleton<Earth>
     public void TakeDamage(int dmg)
     {
         hp -= dmg;
-        UIManager.Instance.DecreaseLives();
         if(hp <= 0)
         {
             alive = false;

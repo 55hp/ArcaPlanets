@@ -10,7 +10,7 @@ public abstract class Singleton<T> : MonoBehaviour where T : Component
     /// <summary>
     /// The instance.
     /// </summary>
-    private static T instance;
+    //private static T instance;
 
     #endregion
 
@@ -20,8 +20,8 @@ public abstract class Singleton<T> : MonoBehaviour where T : Component
     /// Gets the instance.
     /// </summary>
     /// <value>The instance.</value>
-    public static T Instance
-    {
+    /*public static T Instance
+    { 
         get
         {
             if (instance == null)
@@ -37,29 +37,25 @@ public abstract class Singleton<T> : MonoBehaviour where T : Component
             return instance;
         }
     }
-
+    */
+    public static T Instance { get; private set; }
     #endregion
 
     #region Methods
-
     /// <summary>
     /// Use this for initialization.
     /// </summary>
     protected virtual void Awake()
     {
-        if (instance == null)
+        if (Instance == null)
         {
-            instance = this as T;
+            Instance = this as T;
             DontDestroyOnLoad(gameObject);
         }
         else
         {
-
-            Debug.Log("Distruggo: " + gameObject.ToString() + " Poichè esiste già un'istanza collegata al gameobject: " + instance.ToString());
             Destroy(gameObject);
         }
     }
-
     #endregion
-
 }

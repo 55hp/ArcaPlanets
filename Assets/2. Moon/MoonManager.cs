@@ -11,25 +11,20 @@ public class MoonManager : Singleton<MoonManager>
     private Rigidbody2D activeMoonRb;
 
     public float initialMoonSpeed = 250;
-
     bool moonIsGoing;
-
-
-    public void OnDisable()
-    {
-        GameManager.Instance.OnStateHaveBeenChanged -= OnStateChanged;
-    }
+    bool gameReady;
 
     private void Start()
     {
         GameManager.Instance.OnStateHaveBeenChanged += OnStateChanged;
         moonIsGoing = false;
+        gameReady = false;
     }
 
 
     private void Update()
     {
-        if (!moonIsGoing)
+        if (!moonIsGoing && gameReady)
         {
             // Align ball position to the Earth position
             Vector3 paddlePosition = Earth.Instance.transform.position;
@@ -50,6 +45,7 @@ public class MoonManager : Singleton<MoonManager>
     {
         if (GameManager.Instance.GetState() == GameManager.GameState.Boot)
         {
+            gameReady = true;
             InitBall();
             moonIsGoing = false;
         }

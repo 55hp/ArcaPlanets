@@ -12,13 +12,6 @@ public class Planet : MonoBehaviour
     float dmg;
     Vector3 myPosition;
 
-
-
-    private void OnDisable()
-    {
-        GameManager.Instance.OnStateHaveBeenChanged -= OnStateChanged;
-    }
-
     private void Start()
     {
         GameManager.Instance.OnStateHaveBeenChanged += OnStateChanged;

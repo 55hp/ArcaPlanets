@@ -15,11 +15,6 @@ public class AsteroidGenerator : Singleton<AsteroidGenerator>
         GameManager.Instance.OnStateHaveBeenChanged += OnStateChanged;
     }
 
-    public void OnDisable()
-    {
-        GameManager.Instance.OnStateHaveBeenChanged -= OnStateChanged;
-    }
-
 
     public void OnStateChanged()
     {

@@ -9,11 +9,6 @@ public class PowerUpManager : Singleton<PowerUpManager>
     IEnumerator activeMoonEffect;
 
 
-    public void OnDisable()
-    {
-        GameManager.Instance.OnStateHaveBeenChanged -= OnStateChanged;
-    }
-
     public void OnStateChanged()
     {
         if (GameManager.Instance.GetState() == GameManager.GameState.Gameover)

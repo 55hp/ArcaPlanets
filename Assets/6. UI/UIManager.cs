@@ -14,44 +14,21 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] GameObject bootScreen;
     [SerializeField] GameObject pauseScreen;
 
-    [SerializeField] GameObject earthIconPrefab;
-    [SerializeField] GameObject earthIconPanel;
+    [SerializeField] Text HP;
 
-
-    private void Start()
+    private void OnEnable()
     {
         GameManager.Instance.OnStateHaveBeenChanged += OnStateChanged;
     }
 
-    public void OnDisable()
+    private void OnDisable()
     {
         GameManager.Instance.OnStateHaveBeenChanged -= OnStateChanged;
     }
 
-    List<GameObject> lives = new List<GameObject>();
-    int counter;
-    public void InitLives()
+    public void UpdateHp()
     {
-        lives.Clear();
-        GameObject newLife;
-        for(int i = 0; i < Earth.Instance.GetHP(); i++)
-        {
-            newLife = Instantiate(earthIconPrefab, earthIconPanel.transform);
-            lives.Add(newLife);
-            counter++;
-        }
-    }
-
-
-    public void DecreaseLives()
-    {
-        if(counter >= 0)
-        {
-            lives[counter].SetActive(false);
-            Destroy(lives[counter]);
-            lives.RemoveAt(counter);
-            counter--;
-        }
+        HP.text ="HP: " + Earth.Instance.GetHP();
     }
 
     public void OnStateChanged()
@@ -70,10 +47,8 @@ public class UIManager : Singleton<UIManager>
         }
         else if (GameManager.Instance.GetState() == GameManager.GameState.Boot)
         {
-            bootScreen.SetActive(true);
             ResetSlider();
-            counter = 0;
-            InitLives();
+            UpdateHp();
         }
     }
 

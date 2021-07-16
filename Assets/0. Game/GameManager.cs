@@ -4,17 +4,16 @@ using UnityEngine;
 public class GameManager : Singleton<GameManager>
 {
     /// <summary>
-    /// Game Manager:
-    /// Init the game using the Game State Manager class changing for the first time the State from null to Boot
+    /// Game Manager Class:
+    /// This class defines the Game States and the behavior related. There are the basis for the observer pattern.
     /// </summary>
     private void Start()
     {
         activeState = GameState.Boot;
-        ChangeState(GameState.Boot);
     }
 
 
-    public delegate void OnStateChange();
+    public delegate void OnStateChange(GameState newState);
     public event OnStateChange OnStateHaveBeenChanged;
     public GameState activeState;
 
@@ -38,7 +37,7 @@ public class GameManager : Singleton<GameManager>
 
         if (OnStateHaveBeenChanged != null)
         {
-            OnStateHaveBeenChanged();
+            OnStateHaveBeenChanged(newState);
         }
 
         if (newState == GameState.Play)
