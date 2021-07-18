@@ -11,20 +11,22 @@ public class MoonManager : Singleton<MoonManager>
     private Rigidbody2D activeMoonRb;
 
     public float initialMoonSpeed = 250;
-    bool moonIsGoing;
-    bool gameReady;
+    bool playing;
 
-    private void Start()
+
+    private void OnEnable()
     {
-        GameManager.Instance.OnStateHaveBeenChanged += OnStateChanged;
-        moonIsGoing = false;
-        gameReady = false;
+        EventManager.OnStateHaveBeenChanged += OnStateChanged;
     }
 
+    private void OnDisable()
+    {
+        EventManager.OnStateHaveBeenChanged -= OnStateChanged;
+    }
 
     private void Update()
     {
-        if (!moonIsGoing && gameReady)
+        if (!playing)
         {
             // Align ball position to the Earth position
             Vector3 paddlePosition = Earth.Instance.transform.position;
@@ -34,24 +36,29 @@ public class MoonManager : Singleton<MoonManager>
             if (Input.GetMouseButtonDown(0) || Input.touches.Length > 0 )
             {
                 activeMoonRb.AddForce(new Vector2(0, initialMoonSpeed));
-                GameManager.Instance.ChangeState(GameManager.GameState.Play);
-                moonIsGoing = true;
+                EventManager.ChangeGameState(GameManager.GameState.Play);
             }
         }
     }
 
 
-    public void OnStateChanged()
+    public void OnStateChanged(GameManager.GameState newState)
     {
-        if (GameManager.Instance.GetState() == GameManager.GameState.Boot)
+        switch (newState)
         {
-            gameReady = true;
-            InitBall();
-            moonIsGoing = false;
-        }
-        else if (GameManager.Instance.GetState() == GameManager.GameState.Gameover || GameManager.Instance.GetState() == GameManager.GameState.Win)
-        {
-            Destroy(activeMoon.gameObject); 
+            case GameManager.GameState.Boot:
+                playing = false;
+                InitBall();
+                break;
+            case GameManager.GameState.Play:
+                playing = true;
+                break;
+            case GameManager.GameState.Pause:
+                break;
+            case GameManager.GameState.Gameover:
+                break;
+            case GameManager.GameState.Win:
+                break;
         }
     }
 
@@ -63,8 +70,6 @@ public class MoonManager : Singleton<MoonManager>
         activeMoon = Instantiate(moonPrefab, startingPosition, Quaternion.identity);
         activeMoonRb = activeMoon.GetComponent<Rigidbody2D>();
     }
-
-
 
     #region POWER UP EFFECTS METHODS
 
@@ -93,8 +98,5 @@ public class MoonManager : Singleton<MoonManager>
 
 
     #endregion
-
-
-
 
 }

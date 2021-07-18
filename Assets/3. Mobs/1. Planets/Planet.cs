@@ -12,30 +12,42 @@ public class Planet : MonoBehaviour
     float dmg;
     Vector3 myPosition;
 
+    private void OnEnable()
+    {
+        EventManager.OnStateHaveBeenChanged += OnStateChanged;
+    }
+
+    private void OnDisable()
+    {
+        EventManager.OnStateHaveBeenChanged -= OnStateChanged;
+    }
+
     private void Start()
     {
-        GameManager.Instance.OnStateHaveBeenChanged += OnStateChanged;
         myPosition = gameObject.transform.position;
-
         if (life == 0)
         {
             actualLife = 1f;
         }
-
         dmg = 0.1f / actualLife;
-
-
     }
-
-    public void OnStateChanged()
+    public void OnStateChanged(GameManager.GameState newState)
     {
-        if (GameManager.Instance.GetState() == GameManager.GameState.Boot)
+        switch (newState)
         {
-            ResetPlanet();
-        }
-        else if(GameManager.Instance.GetState() == GameManager.GameState.Win)
-        {
-            gameObject.GetComponent<Animator>().SetTrigger("die");
+            case GameManager.GameState.Boot:
+                //TODO Change the method above into a GenerateNewPlanet [different hp, assets, ext ]
+                ResetPlanet();
+                break;
+            case GameManager.GameState.Play:
+                break;
+            case GameManager.GameState.Pause:
+                break;
+            case GameManager.GameState.Gameover:
+                break;
+            case GameManager.GameState.Win:
+                gameObject.GetComponent<Animator>().SetTrigger("die");
+                break;
         }
     }
 
@@ -66,8 +78,7 @@ public class Planet : MonoBehaviour
         if (actualLife <= 0)
         {
             UIManager.Instance.SetSliderValue(0);
-            GameManager.Instance.ChangeState(GameManager.GameState.Win);
+            EventManager.ChangeGameState(GameManager.GameState.Win);
         }
     }
-
 }

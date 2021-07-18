@@ -3,79 +3,39 @@ using UnityEngine;
 
 public class GameManager : Singleton<GameManager>
 {
-    /// <summary>
-    /// Game Manager Class:
-    /// This class defines the Game States and the behavior related. There are the basis for the observer pattern.
-    /// </summary>
-    private void Start()
-    {
-        activeState = GameState.Boot;
-    }
-
-
-    public delegate void OnStateChange(GameState newState);
-    public event OnStateChange OnStateHaveBeenChanged;
-    public GameState activeState;
-
     public enum GameState
     {
-        Boot,
-        Play,
-        Pause,
-        Gameover,
-        Win
+        Boot = 0,
+        Play = 1,
+        Pause = 2,
+        Gameover = 3,
+        Win = 4
     }
 
     /// <summary>
-    /// This is the main method that gives to all other classes the possibility to change the actual state.
-    /// Then it triggers the event.
-    /// </summary>
-    /// <param name="newState"></param>
-    public void ChangeState(GameState newState)
-    {
-        activeState = newState;
-
-        if (OnStateHaveBeenChanged != null)
-        {
-            OnStateHaveBeenChanged(newState);
-        }
-
-        if (newState == GameState.Play)
-        {
-            Time.timeScale = 1;
-        }
-        else
-        {
-            Time.timeScale = 0;
-        }
-    }
-
-    public GameState GetState()
-    {
-        return activeState;
-    }
-
-
-    /// <summary>
-    /// The next methods gives the possibility to change the Game State from the editor ( Buttons ).
+    /// The next methods calls the ChangeGameState event to run in another Game State.
     /// </summary>
     public void RestartGame()
     {
-        ChangeState(GameState.Boot);
+        EventManager.ChangeGameState(GameState.Boot);
     }
 
     public void PlayGame()
     {
-        ChangeState(GameState.Play);
+        EventManager.ChangeGameState(GameState.Play);
     }
 
     public void PauseGame()
     {
-        ChangeState(GameState.Pause);
+        EventManager.ChangeGameState(GameState.Pause);
     }
 
-    public void ResumeGame()
+    public void EndGame(bool haveYouWon)
     {
-        ChangeState(GameState.Play);
+        if(haveYouWon)
+        EventManager.ChangeGameState(GameState.Win);
+        else
+        EventManager.ChangeGameState(GameState.Gameover);
     }
+
 }

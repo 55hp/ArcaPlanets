@@ -13,27 +13,21 @@ public class Earth : Singleton<Earth>
     bool alive;
     Vector3 mySize;
 
-    public void OnStateChanged(GameState newState)
-    {
-        if (newState == GameManager.GameState.Play)
-        {
-            gameObject.GetComponent<EarthController>().GoPlay(true);
-        }
-        else if (newState == GameManager.GameState.Boot)
-        {
-            gameObject.GetComponent<EarthController>().ResetEarthPosition();
-        }
-        else
-        {
-            gameObject.GetComponent<EarthController>().GoPlay(false);
-        }
 
+    private void OnEnable()
+    {
+        EventManager.OnStateHaveBeenChanged += OnStateChanged;
+        EventManager.OnDamageIsTaken += TakeDamage;
     }
 
-    
+    private void OnDisable()
+    {
+        EventManager.OnStateHaveBeenChanged -= OnStateChanged;
+        EventManager.OnDamageIsTaken -= TakeDamage;
+    }
+
     private void Start()
     {
-        GameManager.Instance.OnStateHaveBeenChanged += OnStateChanged;
         mySize = transform.localScale;
 
         if (hp == 0)
@@ -43,6 +37,41 @@ public class Earth : Singleton<Earth>
         }
 
         lowerShield.SetActive(false);
+    }
+
+    public void OnStateChanged(GameManager.GameState newState)
+    {
+        switch (newState)
+        {
+            case GameManager.GameState.Boot:
+                gameObject.GetComponent<EarthController>().ResetEarthPosition();
+                break;
+            case GameManager.GameState.Play:
+                gameObject.GetComponent<EarthController>().GoPlay(true);
+                break;
+            case GameManager.GameState.Pause:
+                break;
+            case GameManager.GameState.Gameover:
+                gameObject.GetComponent<EarthController>().GoPlay(false);
+                break;
+            case GameManager.GameState.Win:
+                gameObject.GetComponent<EarthController>().GoPlay(false);
+                break;
+        }
+    }
+
+    /// <summary>
+    /// This method will be called every time something occurs that deals dmg to our EarthShip by the event it is registered to.
+    /// </summary>
+    /// <param name="dmg"></param>
+    public void TakeDamage(int dmg)
+    {
+        hp -= dmg;
+        if (hp <= 0)
+        {
+            alive = false;
+            EventManager.ChangeGameState(GameState.Gameover);
+        }
     }
 
     public bool IsAlive()
@@ -60,19 +89,7 @@ public class Earth : Singleton<Earth>
         hp = amount;
     }
 
-    /// <summary>
-    /// This method will be called every time something occurs that deals dmg to our EarthShip.
-    /// </summary>
-    /// <param name="dmg"></param>
-    public void TakeDamage(int dmg)
-    {
-        hp -= dmg;
-        if(hp <= 0)
-        {
-            alive = false;
-            GameManager.Instance.ChangeState(GameManager.GameState.Gameover);
-        }
-    }
+    
 
     /// <summary>
     ///  When the Earth collides with the moon it will be applied a force on the Moon based on the point of collision.
