@@ -61,23 +61,20 @@ public class Planet : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-
         if (collision.gameObject.tag == "Moon")
         {
-            DecreaseLife(collision.gameObject);
+            DecreaseLife(collision.gameObject.GetComponent<Moon>().GetDmg());
         }
     }
 
-    public void DecreaseLife(GameObject moon)
+    public void DecreaseLife(float damage)
     {
-        actualLife -= 0.1f;
-
-        UIManager.Instance.SetSliderValue(dmg);
-
+        actualLife -= damage;
+        EventManager.DealDamageToThePlanet(damage/life);
         gameObject.GetComponent<Animator>().SetTrigger("take_dmg");
+
         if (actualLife <= 0)
         {
-            UIManager.Instance.SetSliderValue(0);
             EventManager.ChangeGameState(GameManager.GameState.Win);
         }
     }

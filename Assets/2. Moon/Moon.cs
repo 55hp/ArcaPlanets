@@ -26,6 +26,10 @@ public class Moon : MonoBehaviour
     {
         dmg = amount;
     }
+    public int GetDmg()
+    {
+        return dmg;
+    }
 
     private void LateUpdate()
     {
@@ -39,7 +43,4 @@ public class Moon : MonoBehaviour
             EventManager.LoseLife();
         }
     }
-
-    
-
 }

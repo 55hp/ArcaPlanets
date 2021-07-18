@@ -21,7 +21,13 @@ public static class EventManager
         EventManager.OnLifeLost?.Invoke();
     }
 
+    public delegate void OnPlanetDamageTakenHandler(float amount);
+    public static event OnPlanetDamageTakenHandler OnPlanetTookDamage;
 
+    public static void DealDamageToThePlanet(float amount)
+    {
+        EventManager.OnPlanetTookDamage?.Invoke(amount);
+    }
 
 
     /* Default methods to implement in observers for the OnStateHaveBeenChanged event

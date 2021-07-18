@@ -7,7 +7,6 @@ public class UIManager : Singleton<UIManager>
 {
 
     [SerializeField] Slider lifeSlider;
-    [SerializeField] GameObject lifeSliderPicker;
 
     [SerializeField] GameObject gameOverScreen;
     [SerializeField] GameObject congratScreen;
@@ -19,13 +18,15 @@ public class UIManager : Singleton<UIManager>
     private void OnEnable()
     {
         EventManager.OnStateHaveBeenChanged += OnStateChanged;
-        EventManager.OnLifeLost += UpdateHP;
+        EventManager.OnPlanetTookDamage += OnPlanetTookDamage;
+        EventManager.OnLifeLost += EarthLostOneLife;
     }
 
     private void OnDisable()
     {
         EventManager.OnStateHaveBeenChanged -= OnStateChanged;
-        EventManager.OnLifeLost -= UpdateHP;
+        EventManager.OnPlanetTookDamage -= OnPlanetTookDamage;
+        EventManager.OnLifeLost -= EarthLostOneLife;
     }
 
 
@@ -35,7 +36,7 @@ public class UIManager : Singleton<UIManager>
         {
             case GameManager.GameState.Boot:
                 ResetSlider();
-                UpdateHP();
+                EarthLostOneLife();
                 break;
             case GameManager.GameState.Play:
                 pauseScreen.SetActive(false);
@@ -52,25 +53,19 @@ public class UIManager : Singleton<UIManager>
         }
     }
 
-
-    public void UpdateHP()
+    public void OnPlanetTookDamage(float amountOfDamage)
     {
-        HP.text = "HP: " + Earth.Instance.GetHP();
+        lifeSlider.value -= amountOfDamage;
     }
 
-    public void SetSliderValue(float amount)
+    public void EarthLostOneLife()
     {
-        lifeSlider.value -= amount;
-        if ( amount <= 0)
-        {
-            lifeSliderPicker.GetComponent<Image>().color = Color.black;
-        }
+        HP.text = "HP: " + Earth.Instance.GetHP();
     }
 
     public void ResetSlider()
     {
         lifeSlider.value = 1;
-        lifeSliderPicker.GetComponent<Image>().color = Color.red;
     }
 
     IEnumerator ActivateWinScreen()
