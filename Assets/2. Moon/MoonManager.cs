@@ -26,7 +26,7 @@ public class MoonManager : Singleton<MoonManager>
 
     private void Update()
     {
-        if (!playing)
+        if (!playing && activeMoon != null)
         {
             // Align ball position to the Earth position
             Vector3 paddlePosition = Earth.Instance.transform.position;
@@ -47,8 +47,8 @@ public class MoonManager : Singleton<MoonManager>
         switch (newState)
         {
             case GameManager.GameState.Boot:
-                playing = false;
                 InitBall();
+                playing = false;
                 break;
             case GameManager.GameState.Play:
                 playing = true;

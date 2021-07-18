@@ -17,13 +17,13 @@ public class Earth : Singleton<Earth>
     private void OnEnable()
     {
         EventManager.OnStateHaveBeenChanged += OnStateChanged;
-        EventManager.OnDamageIsTaken += TakeDamage;
+        EventManager.OnLifeLost += LoseLife;
     }
 
     private void OnDisable()
     {
         EventManager.OnStateHaveBeenChanged -= OnStateChanged;
-        EventManager.OnDamageIsTaken -= TakeDamage;
+        EventManager.OnLifeLost -= LoseLife;
     }
 
     private void Start()
@@ -64,15 +64,16 @@ public class Earth : Singleton<Earth>
     /// This method will be called every time something occurs that deals dmg to our EarthShip by the event it is registered to.
     /// </summary>
     /// <param name="dmg"></param>
-    public void TakeDamage(int dmg)
+    public void LoseLife()
     {
-        hp -= dmg;
+        hp--;
         if (hp <= 0)
         {
             alive = false;
             EventManager.ChangeGameState(GameState.Gameover);
         }
     }
+
 
     public bool IsAlive()
     {
@@ -127,7 +128,7 @@ public class Earth : Singleton<Earth>
     {
         if (collision.gameObject.tag == "Projectile")
         {
-            TakeDamage(collision.gameObject.GetComponent<Projectile>().GetDamage());
+            EventManager.LoseLife();
         }
     }
 

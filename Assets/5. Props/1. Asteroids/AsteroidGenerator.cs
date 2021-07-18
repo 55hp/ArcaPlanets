@@ -10,32 +10,56 @@ public class AsteroidGenerator : Singleton<AsteroidGenerator>
 
     List<GameObject> asteroids = new List<GameObject>();
 
-    private void Start()
+    private void OnEnable()
     {
-        GameManager.Instance.OnStateHaveBeenChanged += OnStateChanged;
+        EventManager.OnStateHaveBeenChanged += OnStateChanged;
+    }
+
+    private void OnDisable()
+    {
+        EventManager.OnStateHaveBeenChanged -= OnStateChanged;
+    }
+
+    public void OnStateChanged(GameManager.GameState newState)
+    {
+        switch (newState)
+        {
+            case GameManager.GameState.Boot:
+                CleanAsteroids();
+                StartCoroutine(GenAsteroids(3f));
+                break;
+            case GameManager.GameState.Play:
+                break;
+            case GameManager.GameState.Pause:
+                break;
+            case GameManager.GameState.Gameover:
+                CleanAsteroids();
+                break;
+            case GameManager.GameState.Win:
+                CleanAsteroids();
+                break;
+        }
     }
 
 
-    public void OnStateChanged()
+    public void CleanAsteroids()
     {
-        if (GameManager.Instance.GetState() == GameManager.GameState.Play)
+        StopAllCoroutines();
+        foreach (GameObject ast in asteroids)
         {
-            InvokeRepeating("GenAst", 3f, _timeSpawner);
+            if (ast != null) Destroy(ast);
         }
-        else if (GameManager.Instance.GetState() == GameManager.GameState.Gameover || GameManager.Instance.GetState() == GameManager.GameState.Win)
-        {
-            foreach(GameObject ast in asteroids)
-            {
-                if(ast != null) Destroy(ast);
-            }
-            asteroids.Clear();
-            CancelInvoke("GenAst");
-        }
+        asteroids.Clear();
+        CancelInvoke("GenAst");
     }
 
-    public void GenAst()
+    public IEnumerator GenAsteroids(float rate)
     {
-        asteroids.Add(Instantiate(asteroidPrefab, new Vector3(-5,Random.Range(-1,2),0) , Quaternion.identity));
+        while (true)
+        {
+            yield return new WaitForSeconds(rate);
+            asteroids.Add(Instantiate(asteroidPrefab, new Vector3(-5, Random.Range(-1, 2), 0), Quaternion.identity));
+        }
     }
 
 }

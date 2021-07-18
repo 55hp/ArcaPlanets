@@ -36,7 +36,7 @@ public class Moon : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Deadzone"))
         {
-            Earth.Instance.TakeDamage(1);
+            EventManager.LoseLife();
         }
     }
 

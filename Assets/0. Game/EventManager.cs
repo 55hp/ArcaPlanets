@@ -13,12 +13,12 @@ public static class EventManager
         EventManager.OnStateHaveBeenChanged?.Invoke(newState);
     }
 
-    public delegate void OnDamageTakenHandler(int amountOfDamage);
-    public static event OnDamageTakenHandler OnDamageIsTaken;
+    public delegate void OnShipDamageTakenHandler();
+    public static event OnShipDamageTakenHandler OnLifeLost;
 
-    public static void TakeDamage(int howMuchDamage)
+    public static void LoseLife()
     {
-        EventManager.OnDamageIsTaken?.Invoke(howMuchDamage);
+        EventManager.OnLifeLost?.Invoke();
     }
 
 

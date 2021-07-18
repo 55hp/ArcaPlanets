@@ -9,10 +9,18 @@ public class Satellite : MonoBehaviour
     float actualLife;
     Color startingColor;
 
+    private void OnEnable()
+    {
+        EventManager.OnStateHaveBeenChanged += OnStateChanged;
+    }
+
+    private void OnDisable()
+    {
+        EventManager.OnStateHaveBeenChanged -= OnStateChanged;
+    }
 
     private void Start()
     {
-        GameManager.Instance.OnStateHaveBeenChanged += OnStateChanged;
         startingColor = gameObject.GetComponent<SpriteRenderer>().color;
 
         if (life == 0)
@@ -25,18 +33,27 @@ public class Satellite : MonoBehaviour
         }
     }
 
-    public void OnStateChanged()
+    public void OnStateChanged(GameManager.GameState newState)
     {
-        if (GameManager.Instance.GetState() == GameManager.GameState.Play)
+        switch (newState)
         {
-            ResetSatellite();
+            case GameManager.GameState.Boot:
+                ResetSatellite();
+                break;
+            case GameManager.GameState.Play:
+                break;
+            case GameManager.GameState.Pause:
+                break;
+            case GameManager.GameState.Gameover:
+                break;
+            case GameManager.GameState.Win:
+                break;
         }
     }
 
     public void TakeDamage()
     {
         actualLife -= 0.1f;
-        
         if (actualLife <= 0)
         {
             this.gameObject.SetActive(false);
@@ -71,7 +88,6 @@ public class Satellite : MonoBehaviour
         if (coll.gameObject.tag == "Moon")
         {
             TakeDamage();
-
         }
     }
 }

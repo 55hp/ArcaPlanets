@@ -8,29 +8,38 @@ public class PowerUpManager : Singleton<PowerUpManager>
     IEnumerator activeEarthEffect;
     IEnumerator activeMoonEffect;
 
-
-    public void OnStateChanged()
+    private void OnEnable()
     {
-        if (GameManager.Instance.GetState() == GameManager.GameState.Gameover)
+        EventManager.OnStateHaveBeenChanged += OnStateChanged;
+    }
+
+    private void OnDisable()
+    {
+        EventManager.OnStateHaveBeenChanged -= OnStateChanged;
+    }
+
+    public void OnStateChanged(GameManager.GameState newState)
+    {
+        switch (newState)
         {
-            StopAllCoroutines();
-        }
-        else if (GameManager.Instance.GetState() == GameManager.GameState.Win)
-        {
-            StopAllCoroutines();
-        }
-        else if (GameManager.Instance.GetState() == GameManager.GameState.Pause)
-        {
-            
-        }
-        else if (GameManager.Instance.GetState() == GameManager.GameState.Boot)
-        {
-            CleanActivePowerUps();
-        }
-        else if (GameManager.Instance.GetState() == GameManager.GameState.Play)
-        {
-            isGenerating = true;
-            StartCoroutine(GenRandomPowerUp(10));
+            case GameManager.GameState.Boot:
+                StopAllCoroutines();
+                CleanActivePowerUps();
+                break;
+            case GameManager.GameState.Play:
+                isGenerating = true;
+                StartCoroutine(GenRandomPowerUp(10));
+                break;
+            case GameManager.GameState.Pause:
+                break;
+            case GameManager.GameState.Gameover:
+                StopAllCoroutines();
+                CleanActivePowerUps();
+                break;
+            case GameManager.GameState.Win:
+                StopAllCoroutines();
+                CleanActivePowerUps();
+                break;
         }
     }
 
@@ -43,7 +52,6 @@ public class PowerUpManager : Singleton<PowerUpManager>
 
     public void Start()
     {
-        GameManager.Instance.OnStateHaveBeenChanged += OnStateChanged;
         path = powerUpPathGameObject.GetComponent<PathCreator>();
     }
 

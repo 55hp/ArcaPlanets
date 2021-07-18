@@ -18,38 +18,44 @@ public class UIManager : Singleton<UIManager>
 
     private void OnEnable()
     {
-        GameManager.Instance.OnStateHaveBeenChanged += OnStateChanged;
+        EventManager.OnStateHaveBeenChanged += OnStateChanged;
+        EventManager.OnLifeLost += UpdateHP;
     }
 
     private void OnDisable()
     {
-        GameManager.Instance.OnStateHaveBeenChanged -= OnStateChanged;
+        EventManager.OnStateHaveBeenChanged -= OnStateChanged;
+        EventManager.OnLifeLost -= UpdateHP;
     }
 
-    public void UpdateHp()
+
+    public void OnStateChanged(GameManager.GameState newState)
     {
-        HP.text ="HP: " + Earth.Instance.GetHP();
+        switch (newState)
+        {
+            case GameManager.GameState.Boot:
+                ResetSlider();
+                UpdateHP();
+                break;
+            case GameManager.GameState.Play:
+                pauseScreen.SetActive(false);
+                break;
+            case GameManager.GameState.Pause:
+                pauseScreen.SetActive(true);
+                break;
+            case GameManager.GameState.Gameover:
+                gameOverScreen.SetActive(true);
+                break;
+            case GameManager.GameState.Win:
+                StartCoroutine(ActivateWinScreen());
+                break;
+        }
     }
 
-    public void OnStateChanged()
+
+    public void UpdateHP()
     {
-        if (GameManager.Instance.GetState() == GameManager.GameState.Gameover)
-        {
-            gameOverScreen.SetActive(true);
-        }
-        else if (GameManager.Instance.GetState() == GameManager.GameState.Win)
-        {
-            StartCoroutine(ActivateWinScreen());
-        }
-        else if (GameManager.Instance.GetState() == GameManager.GameState.Pause)
-        {
-            pauseScreen.SetActive(true);
-        }
-        else if (GameManager.Instance.GetState() == GameManager.GameState.Boot)
-        {
-            ResetSlider();
-            UpdateHp();
-        }
+        HP.text = "HP: " + Earth.Instance.GetHP();
     }
 
     public void SetSliderValue(float amount)
