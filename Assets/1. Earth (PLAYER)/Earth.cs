@@ -8,7 +8,7 @@ public class Earth : Singleton<Earth>
     /// <summary>
     /// The Earth Class define charateristics and behaviors of the Player of the game rapresented by a Earth Planet/ship
     /// </summary>
-    [SerializeField] int hp;
+    [SerializeField] int startingHp;
     [SerializeField] GameObject lowerShield;
     bool alive;
     Vector3 mySize;
@@ -25,17 +25,13 @@ public class Earth : Singleton<Earth>
         EventManager.OnStateHaveBeenChanged -= OnStateChanged;
         EventManager.OnLifeLost -= LoseLife;
     }
+    
 
-    private void Start()
+    public void InitEarth()
     {
         mySize = transform.localScale;
-
-        if (hp == 0)
-        {
-            hp = 3;
-            alive = true;
-        }
-
+        startingHp = 3;
+        alive = true;
         lowerShield.SetActive(false);
     }
 
@@ -44,6 +40,7 @@ public class Earth : Singleton<Earth>
         switch (newState)
         {
             case GameManager.GameState.Boot:
+                InitEarth();
                 gameObject.GetComponent<EarthController>().ResetEarthPosition();
                 break;
             case GameManager.GameState.Play:
@@ -66,8 +63,8 @@ public class Earth : Singleton<Earth>
     /// <param name="dmg"></param>
     public void LoseLife()
     {
-        hp--;
-        if (hp <= 0)
+        startingHp--;
+        if (startingHp <= 0)
         {
             alive = false;
             EventManager.ChangeGameState(GameState.Gameover);
@@ -82,12 +79,12 @@ public class Earth : Singleton<Earth>
 
     public int GetHP()
     {
-        return hp;
+        return startingHp;
     }
 
     public void SetHP(int amount)
     {
-        hp = amount;
+        startingHp = amount;
     }
 
     

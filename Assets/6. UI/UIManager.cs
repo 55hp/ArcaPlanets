@@ -19,14 +19,14 @@ public class UIManager : Singleton<UIManager>
     {
         EventManager.OnStateHaveBeenChanged += OnStateChanged;
         EventManager.OnPlanetTookDamage += OnPlanetTookDamage;
-        EventManager.OnLifeLost += EarthLostOneLife;
+        EventManager.OnLifeLost += UpdateHpText;
     }
 
     private void OnDisable()
     {
         EventManager.OnStateHaveBeenChanged -= OnStateChanged;
         EventManager.OnPlanetTookDamage -= OnPlanetTookDamage;
-        EventManager.OnLifeLost -= EarthLostOneLife;
+        EventManager.OnLifeLost -= UpdateHpText;
     }
 
 
@@ -36,7 +36,7 @@ public class UIManager : Singleton<UIManager>
         {
             case GameManager.GameState.Boot:
                 ResetSlider();
-                EarthLostOneLife();
+                UpdateHpText();
                 break;
             case GameManager.GameState.Play:
                 pauseScreen.SetActive(false);
@@ -58,7 +58,7 @@ public class UIManager : Singleton<UIManager>
         lifeSlider.value -= amountOfDamage;
     }
 
-    public void EarthLostOneLife()
+    public void UpdateHpText()
     {
         HP.text = "HP: " + Earth.Instance.GetHP();
     }

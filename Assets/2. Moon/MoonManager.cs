@@ -33,7 +33,7 @@ public class MoonManager : Singleton<MoonManager>
             Vector3 ballPosition = new Vector3(paddlePosition.x, paddlePosition.y + .5f, 0);
             activeMoon.transform.position = ballPosition;
 
-            if (Input.GetMouseButtonDown(0) || Input.touches.Length > 0 )
+            if (Input.GetMouseButtonDown(0) || Input.touches.Length > 0)
             {
                 activeMoonRb.AddForce(new Vector2(0, initialMoonSpeed));
                 EventManager.ChangeGameState(GameManager.GameState.Play);
@@ -56,8 +56,10 @@ public class MoonManager : Singleton<MoonManager>
             case GameManager.GameState.Pause:
                 break;
             case GameManager.GameState.Gameover:
+                activeMoon.gameObject.SetActive(false);
                 break;
             case GameManager.GameState.Win:
+                activeMoon.gameObject.SetActive(false);
                 break;
         }
     }
@@ -65,10 +67,34 @@ public class MoonManager : Singleton<MoonManager>
 
     public void InitBall()
     {
+
         Vector3 paddlePosition = Earth.Instance.gameObject.transform.position;
-        Vector3 startingPosition = new Vector3(paddlePosition.x, paddlePosition.y + .5f, 0);
-        activeMoon = Instantiate(moonPrefab, startingPosition, Quaternion.identity);
+        Vector3 startingPosition = new Vector3(paddlePosition.x, paddlePosition.y + .7f, 0);
+        
+
+        if(activeMoon == null)
+        {
+            activeMoon = Instantiate(moonPrefab, startingPosition, Quaternion.identity);
+        }
+        else
+        {
+            activeMoon.gameObject.SetActive(true);
+            ResetBall();
+        }
+        
+
+
         activeMoonRb = activeMoon.GetComponent<Rigidbody2D>();
+    }
+
+
+    public void ResetBall()
+    {
+        Vector3 paddlePosition = Earth.Instance.gameObject.transform.position;
+        Vector3 startingPosition = new Vector3(paddlePosition.x, paddlePosition.y + .7f, 0);
+
+        activeMoon.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+        activeMoon.transform.position = startingPosition;
     }
 
     #region POWER UP EFFECTS METHODS

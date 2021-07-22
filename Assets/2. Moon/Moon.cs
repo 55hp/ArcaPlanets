@@ -7,7 +7,6 @@ public class Moon : MonoBehaviour
 {
     Rigidbody2D myRb;
     float constantSpeed;
-
     int dmg;
 
 
@@ -35,12 +34,21 @@ public class Moon : MonoBehaviour
     {
         myRb.velocity = constantSpeed * (myRb.velocity.normalized);
     }
+    
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Deadzone"))
         {
             EventManager.LoseLife();
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Deadzone"))
+        {
+            MoonManager.Instance.ResetBall();
         }
     }
 }

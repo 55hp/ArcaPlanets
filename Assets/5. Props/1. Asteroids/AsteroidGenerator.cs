@@ -6,6 +6,7 @@ public class AsteroidGenerator : Singleton<AsteroidGenerator>
 {
 
     [SerializeField] GameObject asteroidPrefab;
+    [SerializeField] Sprite[] androidSprites;
     [SerializeField] [Range(1, 10)] private float _timeSpawner;
 
     List<GameObject> asteroids = new List<GameObject>();
@@ -62,4 +63,10 @@ public class AsteroidGenerator : Singleton<AsteroidGenerator>
         }
     }
 
+    public GameObject GenRandomAsteroid()
+    {
+        Asteroid x = 
+
+        return Asteroid;
+    }
 }
