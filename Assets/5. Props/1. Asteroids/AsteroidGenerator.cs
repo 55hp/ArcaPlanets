@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class AsteroidGenerator : Singleton<AsteroidGenerator>
 {
-
-    [SerializeField] GameObject asteroidPrefab;
-    [SerializeField] Sprite[] androidSprites;
+    [SerializeField] GameObject[] asteroidsPrefab;
     [SerializeField] [Range(1, 10)] private float _timeSpawner;
 
     List<GameObject> asteroids = new List<GameObject>();
@@ -59,14 +57,16 @@ public class AsteroidGenerator : Singleton<AsteroidGenerator>
         while (true)
         {
             yield return new WaitForSeconds(rate);
-            asteroids.Add(Instantiate(asteroidPrefab, new Vector3(-5, Random.Range(-1, 2), 0), Quaternion.identity));
+            asteroids.Add(Instantiate(GenRandomAsteroid(), new Vector3(-5, Random.Range(-1, 2), 0), Quaternion.identity));
         }
     }
 
+
+    private static int[] pseudoRandomicIntArray = { 0,0,0,0,0,1,1,1,1,2,2 };
+
     public GameObject GenRandomAsteroid()
     {
-        Asteroid x = 
-
-        return Asteroid;
+        int x = pseudoRandomicIntArray[Random.Range(0, pseudoRandomicIntArray.Length)];
+        return asteroidsPrefab[x*3 + Random.Range(0, 3)];
     }
 }

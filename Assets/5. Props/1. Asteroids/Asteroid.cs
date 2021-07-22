@@ -3,8 +3,10 @@
 public class Asteroid : MonoBehaviour
 {
     float speed;
-    int hp;
+    bool gotPowerUp;
+    [SerializeField] int hp;
     [SerializeField] GameObject mySpriteObj;
+
 
 
     // Start is called before the first frame update
@@ -12,14 +14,11 @@ public class Asteroid : MonoBehaviour
     {
         speed = Random.Range(1, 3);
     }
-
-
-    public Asteroid(Sprite mySprite , int hp)
+    
+    public void HasPowerUP(bool itHas)
     {
-        this.hp = hp;
-        mySpriteObj.GetComponent<SpriteRenderer>().sprite = mySprite;
+        gotPowerUp = itHas;
     }
-
 
     // Update is called once per frame
     void Update()
@@ -45,6 +44,11 @@ public class Asteroid : MonoBehaviour
 
         if(hp <= 0)
             {
+                if (gotPowerUp)
+                {
+                    //TODO Rilascia il powerUp (genera randomicamente)
+                }
+                //TODO Aspetta prima un paio di frame 
                 Destroy(gameObject);
             }
         }
