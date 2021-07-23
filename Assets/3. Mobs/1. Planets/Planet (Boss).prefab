@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2346616405855571897}
   - component: {fileID: 2346616405855571898}
   - component: {fileID: 2346616405855571896}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Planet (Boss)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

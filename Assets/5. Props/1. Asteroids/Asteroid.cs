@@ -47,10 +47,14 @@ public class Asteroid : MonoBehaviour
 
         if(hp <= 0)
             {
-                if (powerUp != null)
+                /*
+                int probability = Random.Range(0, 8);
+                if (powerUp != null && probability > 5)
                 {
-                    Instantiate(powerUp , gameObject.transform);
+                    Instantiate(powerUp , gameObject.transform.position , Quaternion.identity);
                 }
+                */
+                Instantiate(powerUp, gameObject.transform.position, Quaternion.identity);
                 //TODO Aspetta prima un paio di frame 
                 Destroy(gameObject);
             }

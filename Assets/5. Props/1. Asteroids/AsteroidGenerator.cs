@@ -22,7 +22,7 @@ public class AsteroidGenerator : Singleton<AsteroidGenerator>
     public int powerUpCounter;
     private void Start()
     {
-        powerUpCounter = Random.Range(2, 6);
+        powerUpCounter = 2;
     }
 
     public void OnStateChanged(GameManager.GameState newState)
@@ -62,17 +62,7 @@ public class AsteroidGenerator : Singleton<AsteroidGenerator>
         while (true)
         {
             yield return new WaitForSeconds(rate);
-            powerUpCounter--;
-            if (powerUpCounter == 0)
-            {
-                asteroids.Add(Instantiate(GenRandomAsteroid(true), new Vector3(-5, Random.Range(-1, 2), 0), Quaternion.identity));
-                powerUpCounter = Random.Range(1, 4);
-            }
-            else
-            {
-                asteroids.Add(Instantiate(GenRandomAsteroid(false), new Vector3(-5, Random.Range(-1, 2), 0), Quaternion.identity));
-            }
-            
+            asteroids.Add(Instantiate(GenRandomAsteroid(), new Vector3(-5, Random.Range(-1, 2), 0), Quaternion.identity));
         }
     }
 
@@ -80,14 +70,12 @@ public class AsteroidGenerator : Singleton<AsteroidGenerator>
     private static int[] pseudoRandomicIntArray = { 0,0,0,0,0,1,1,1,1,2,2 };
     [SerializeField] GameObject[] powerUpPrefabs;
 
-    public GameObject GenRandomAsteroid(bool givePowerUp)
+    public GameObject GenRandomAsteroid()
     {
         int x = pseudoRandomicIntArray[Random.Range(0, pseudoRandomicIntArray.Length)];
         GameObject asteroid = asteroidsPrefab[x * 3 + Random.Range(0, 3)];
-        if (givePowerUp)
-        {
-            asteroid.GetComponent<Asteroid>().GivePowerUp(powerUpPrefabs[Random.Range(0, powerUpPrefabs.Length)]);
-        }
+        asteroid.GetComponent<Asteroid>().GivePowerUp(powerUpPrefabs[Random.Range(0, powerUpPrefabs.Length)]);
+        
         return asteroid;
     }
 }

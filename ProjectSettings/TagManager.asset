@@ -76,3 +76,9 @@ TagManager:
   - name: Shields
     uniqueID: 309056317
     locked: 0
+  - name: HUD
+    uniqueID: 732572519
+    locked: 0
+  - name: Interface
+    uniqueID: 1838248093
+    locked: 0

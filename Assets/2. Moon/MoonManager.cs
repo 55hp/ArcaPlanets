@@ -120,8 +120,11 @@ public class MoonManager : Singleton<MoonManager>
     //NEW MOON
     //Dimezza scale
 
+        //TODO completare
+    public void RevertAnyEffect()
+    {
 
-
+    }
 
     #endregion
 

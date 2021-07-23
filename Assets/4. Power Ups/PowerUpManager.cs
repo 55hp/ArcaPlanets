@@ -23,6 +23,8 @@ public class PowerUpManager : Singleton<PowerUpManager>
         switch (newState)
         {
             case GameManager.GameState.Boot:
+                Earth.Instance.RevertAnyEffect();
+                MoonManager.Instance.RevertAnyEffect();
                 StopAllCoroutines();
                 CleanActivePowerUps();
                 break;
@@ -75,9 +77,10 @@ public class PowerUpManager : Singleton<PowerUpManager>
                 activeEarthEffect = Earth.Instance.LowShield(howLong);
                 StartCoroutine(activeEarthEffect);
                 break;
-            case 104:
-                //TODO Double Bullets
-
+            case 151:
+                if (activeEarthEffect != null) { StopCoroutine(activeEarthEffect); }
+                activeEarthEffect = Earth.Instance.DoubleBullets(howLong);
+                StartCoroutine(activeEarthEffect);
                 break;
             case 105:
 

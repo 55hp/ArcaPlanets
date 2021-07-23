@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4815029542820566751}
   - component: {fileID: 4815029542820566738}
   - component: {fileID: 3257689346176145955}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Satellite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: a96c89a7c3bc5e349bf55318bbd93dd2, type: 3}
-  m_Color: {r: 0.7304356, g: 1, b: 0.495283, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

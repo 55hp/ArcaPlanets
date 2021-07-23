@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1023054840604984301}
   - component: {fileID: 1904966594174872580}
   - component: {fileID: 4101465768854406965}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: Asteroid_pref (7)
   m_TagString: Asteroid
   m_Icon: {fileID: 0}
@@ -64,6 +64,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 3
   mySpriteObj: {fileID: 1305467306413056797}
+  powerUp: {fileID: 0}
   asteroidColors:
   - {r: 0.6039216, g: 0.6, b: 0.6, a: 1}
   - {r: 0.227451, g: 0.6, b: 0.50980395, a: 1}
@@ -100,7 +101,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9032322340378554936}
   - component: {fileID: 3342583149152490352}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: MySprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}

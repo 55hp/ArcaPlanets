@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5616801353576443295}
   - component: {fileID: 4624661283710779413}
   - component: {fileID: 334905429432004648}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Power UP - Moon - Red Moon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 179b007c10330ef42a73413edad82832, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 101
+  id: 201
   timerEffect: 10
   speed: 2
 --- !u!61 &334905429432004648

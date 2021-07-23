@@ -6,6 +6,10 @@ public class Projectile : MonoBehaviour
 {
     [SerializeField] int dmg;
     [SerializeField] float speed;
+    [SerializeField] bool up;
+    Vector3 direction;
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -19,6 +23,15 @@ public class Projectile : MonoBehaviour
         {
             speed = 5;
         }
+
+        if (up)
+        {
+            direction = Vector3.up;
+        }
+        else
+        {
+            direction = Vector3.down;
+        }
     }
 
     public int GetDamage()
@@ -29,7 +42,7 @@ public class Projectile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        this.transform.position += Vector3.down * speed * Time.deltaTime;
+        this.transform.position += direction * speed * Time.deltaTime;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

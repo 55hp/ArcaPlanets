@@ -8,8 +8,15 @@ public class Earth : Singleton<Earth>
     /// <summary>
     /// The Earth Class define charateristics and behaviors of the Player of the game rapresented by a Earth Planet/ship
     /// </summary>
-    [SerializeField] int startingHp;
+    int startingHp;
+
+
+    [SerializeField] GameObject cockpit;
+    [SerializeField] GameObject body;
+    [SerializeField] GameObject wings;
+
     [SerializeField] GameObject lowerShield;
+    [SerializeField] GameObject gunModule;
     bool alive;
     Vector3 mySize;
 
@@ -145,6 +152,7 @@ public class Earth : Singleton<Earth>
         yield return new WaitForSeconds(timer);
         gameObject.transform.localScale = mySize;
     }
+
     /// <summary>
     /// The Earth size reduce.
     /// </summary>
@@ -171,6 +179,27 @@ public class Earth : Singleton<Earth>
         yield return new WaitForSeconds(timer);
 
         lowerShield.SetActive(false);
+    }
+
+    public IEnumerator DoubleBullets(float timer)
+    {
+        gunModule.SetActive(true);
+
+        yield return new WaitForSeconds(timer);
+
+        gunModule.SetActive(false);
+    }
+
+    public void RevertAnyEffect()
+    {
+        //Revert for Bigger and Smaller
+        gameObject.transform.localScale = mySize;
+
+        //Revert for lowerShield
+        lowerShield.SetActive(false);
+
+        //Revert for DoubleBullets
+        gunModule.SetActive(false);
     }
 
 

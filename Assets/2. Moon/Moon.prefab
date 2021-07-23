@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 222861020182275618}
   - component: {fileID: 222861020182275619}
   - component: {fileID: 222861020182275805}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Moon
   m_TagString: Moon
   m_Icon: {fileID: 0}

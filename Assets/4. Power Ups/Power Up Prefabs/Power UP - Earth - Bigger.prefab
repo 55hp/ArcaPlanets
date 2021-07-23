@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7039976061570511080}
   - component: {fileID: 7869191644145991141}
   - component: {fileID: 1980105092180826952}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Power UP - Earth - Bigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1791277015727862230}
   - component: {fileID: 1816572919299338270}
   - component: {fileID: 5500524361333594334}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Power UP - Moon -  Moon Scythes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 179b007c10330ef42a73413edad82832, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 101
+  id: 202
   timerEffect: 1000
   speed: 2
 --- !u!61 &5500524361333594334

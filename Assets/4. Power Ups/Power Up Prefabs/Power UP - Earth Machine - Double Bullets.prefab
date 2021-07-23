@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 972739816246714637}
   - component: {fileID: 1499202086555548750}
   - component: {fileID: 3768109340840138550}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Power UP - Earth Machine - Double Bullets
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 179b007c10330ef42a73413edad82832, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 101
+  id: 151
   timerEffect: 10
   speed: 2
 --- !u!61 &3768109340840138550

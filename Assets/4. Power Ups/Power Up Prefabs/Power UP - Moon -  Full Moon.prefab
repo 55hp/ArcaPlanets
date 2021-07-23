@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6271154595297061391}
   - component: {fileID: 6924495154343708156}
   - component: {fileID: 2923233026629899004}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Power UP - Moon -  Full Moon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 179b007c10330ef42a73413edad82832, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 101
+  id: 203
   timerEffect: 10
   speed: 2
 --- !u!61 &2923233026629899004

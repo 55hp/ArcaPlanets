@@ -57,7 +57,6 @@ public class Satellite : MonoBehaviour
         if (actualLife <= 0)
         {
             this.gameObject.SetActive(false);
-            this.gameObject.GetComponent<ShootingModule>().Stop();
         }
         else
         {
@@ -78,9 +77,6 @@ public class Satellite : MonoBehaviour
         {
             actualLife = life;
         }
-
-            this.gameObject.GetComponent<ShootingModule>().StartShooting();
-        
     }
 
     private void OnCollisionEnter2D(Collision2D coll)
