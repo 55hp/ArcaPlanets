@@ -28,7 +28,7 @@ public static class EventManager
     {
         EventManager.OnPlanetTookDamage?.Invoke(amount);
     }
-
+    
 
     /* Default methods to implement in observers for the OnStateHaveBeenChanged event
      * 

@@ -7,27 +7,24 @@ public class PowerUp : MonoBehaviour
 {
     [SerializeField] int id;
     [SerializeField] float timerEffect;
+    [SerializeField] float speed;
 
-    PathCreator pathCreator;
-    public EndOfPathInstruction endOfPathInstruction;
-    public float speed = 5;
-    float distanceTravelled;
-
-
-    void Update()
+    // Start is called before the first frame update
+    void Start()
     {
-        if (pathCreator != null)
+        if (speed == 0)
         {
-            distanceTravelled += speed * Time.deltaTime;
-            transform.position = pathCreator.path.GetPointAtDistance(distanceTravelled, endOfPathInstruction);
+            //Default value 5
+            speed = 5;
         }
     }
 
-    public void SetPathCreator(PathCreator pathCreator)
+    // Update is called once per frame
+    void Update()
     {
-        this.pathCreator = pathCreator;
+        this.transform.position += Vector3.down * speed * Time.deltaTime;
+        transform.Rotate(Vector3.forward * 0.2f, Space.Self);
     }
-
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

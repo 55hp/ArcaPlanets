@@ -64,6 +64,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 3
   mySpriteObj: {fileID: 1261686139340381231}
+  asteroidColors:
+  - {r: 0.6039216, g: 0.6, b: 0.6, a: 1}
+  - {r: 0.227451, g: 0.6, b: 0.50980395, a: 1}
+  - {r: 0.52156866, g: 0.2901961, b: 0.18823531, a: 1}
+  - {r: 0.53333336, g: 0.23137257, b: 0.23137257, a: 1}
 --- !u!50 &4284275783229634567
 Rigidbody2D:
   serializedVersion: 4

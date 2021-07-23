@@ -27,8 +27,7 @@ public class PowerUpManager : Singleton<PowerUpManager>
                 CleanActivePowerUps();
                 break;
             case GameManager.GameState.Play:
-                isGenerating = true;
-                StartCoroutine(GenRandomPowerUp(10));
+
                 break;
             case GameManager.GameState.Pause:
                 break;
@@ -42,31 +41,10 @@ public class PowerUpManager : Singleton<PowerUpManager>
                 break;
         }
     }
-
-    [SerializeField] GameObject[] PowerUpPrefabs;
-    [SerializeField] GameObject powerUpPathGameObject;
-    PathCreator path;
-    GameObject instantiatedPowerUp;
+    
     List<GameObject> powerUpCollection = new List<GameObject>();
-    public bool isGenerating;
-
-    public void Start()
-    {
-        path = powerUpPathGameObject.GetComponent<PathCreator>();
-    }
-
-
-    public IEnumerator GenRandomPowerUp(float rate)
-    {
-        Debug.Log("Gen Random Power Up : ON");
-        while (isGenerating)
-        {
-            yield return new WaitForSeconds(rate);
-            instantiatedPowerUp = Instantiate(PowerUpPrefabs[Random.Range(0, PowerUpPrefabs.Length)]);
-            powerUpCollection.Add(instantiatedPowerUp);
-            instantiatedPowerUp.GetComponent<PowerUp>().SetPathCreator(path);
-        }
-    }
+    
+    
 
     public void CleanActivePowerUps()
     {
@@ -98,7 +76,7 @@ public class PowerUpManager : Singleton<PowerUpManager>
                 StartCoroutine(activeEarthEffect);
                 break;
             case 104:
-
+                //TODO Double Bullets
 
                 break;
             case 105:
@@ -126,8 +104,10 @@ public class PowerUpManager : Singleton<PowerUpManager>
                 StartCoroutine(activeMoonEffect);
                 break;
             case 202:
+                //TODO MOON SCYTHES
                 break;
             case 203:
+                //TODO FULL MOON
                 break;
             case 204:
                 break;
@@ -149,4 +129,6 @@ public class PowerUpManager : Singleton<PowerUpManager>
                 break;
         }
     }
+
+    
 }

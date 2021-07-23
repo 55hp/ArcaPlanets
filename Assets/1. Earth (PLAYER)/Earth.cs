@@ -142,9 +142,7 @@ public class Earth : Singleton<Earth>
     public IEnumerator Bigger(float timer)
     {
         gameObject.transform.localScale = new Vector3(0.5f, 0.5f, 1);
-
         yield return new WaitForSeconds(timer);
-
         gameObject.transform.localScale = mySize;
     }
     /// <summary>

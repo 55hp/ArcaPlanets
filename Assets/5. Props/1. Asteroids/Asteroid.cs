@@ -3,22 +3,25 @@
 public class Asteroid : MonoBehaviour
 {
     float speed;
-    bool gotPowerUp;
+    
     [SerializeField] int hp;
     [SerializeField] GameObject mySpriteObj;
+    public GameObject powerUp;
 
-
+    [SerializeField] Color[] asteroidColors;
 
     // Start is called before the first frame update
     void Start()
     {
         speed = Random.Range(1, 3);
+        mySpriteObj.GetComponent<SpriteRenderer>().color = asteroidColors[Random.Range(0, asteroidColors.Length)];
     }
     
-    public void HasPowerUP(bool itHas)
+    public void GivePowerUp(GameObject randomPowerUp)
     {
-        gotPowerUp = itHas;
+        powerUp = randomPowerUp;
     }
+
 
     // Update is called once per frame
     void Update()
@@ -44,9 +47,9 @@ public class Asteroid : MonoBehaviour
 
         if(hp <= 0)
             {
-                if (gotPowerUp)
+                if (powerUp != null)
                 {
-                    //TODO Rilascia il powerUp (genera randomicamente)
+                    Instantiate(powerUp , gameObject.transform);
                 }
                 //TODO Aspetta prima un paio di frame 
                 Destroy(gameObject);

@@ -46,3 +46,33 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Background
+    uniqueID: 3193552973
+    locked: 0
+  - name: Asteroids
+    uniqueID: 3858425065
+    locked: 0
+  - name: Earth
+    uniqueID: 904118465
+    locked: 0
+  - name: Planets
+    uniqueID: 222585023
+    locked: 0
+  - name: PlanetBullets
+    uniqueID: 4039183547
+    locked: 0
+  - name: Satellite
+    uniqueID: 1081558941
+    locked: 0
+  - name: SatelliteBullets
+    uniqueID: 2626617129
+    locked: 0
+  - name: Moon
+    uniqueID: 180888027
+    locked: 0
+  - name: Power Ups
+    uniqueID: 1897921985
+    locked: 0
+  - name: Shields
+    uniqueID: 309056317
+    locked: 0
