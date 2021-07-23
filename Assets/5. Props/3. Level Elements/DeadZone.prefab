@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 972716114656552855}
   - component: {fileID: 972716114656552854}
-  m_Layer: 0
+  m_Layer: 22
   m_Name: DeadZone
   m_TagString: Deadzone
   m_Icon: {fileID: 0}

@@ -47,9 +47,19 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Deadzone") || collision.gameObject.CompareTag("Moon") || collision.gameObject.CompareTag("Earth"))
+        if (collision.gameObject.CompareTag("Deadzone") || collision.gameObject.CompareTag("Moon") )
         {
             Destroy(gameObject);
         }
+        else if (collision.gameObject.CompareTag("Earth"))
+        {
+            EventManager.LoseLife();
+            Destroy(gameObject);
+        }else if (collision.gameObject.CompareTag("Mob"))
+        {
+            collision.gameObject.GetComponent<Mob>().DecreaseLife(dmg);
+            Destroy(gameObject);
+        }
+
     }
 }

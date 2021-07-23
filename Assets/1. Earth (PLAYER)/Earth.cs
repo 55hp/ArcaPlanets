@@ -32,11 +32,14 @@ public class Earth : Singleton<Earth>
         EventManager.OnStateHaveBeenChanged -= OnStateChanged;
         EventManager.OnLifeLost -= LoseLife;
     }
-    
+
+    private void Start()
+    {
+        mySize = transform.localScale;
+    }
 
     public void InitEarth()
     {
-        mySize = transform.localScale;
         startingHp = 3;
         alive = true;
         lowerShield.SetActive(false);

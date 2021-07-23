@@ -9,6 +9,8 @@ TagManager:
   - Asteroid
   - Earth
   - Projectile
+  - EarthProjectile
+  - Mob
   layers:
   - Default
   - TransparentFX
@@ -18,21 +20,21 @@ TagManager:
   - UI
   - 
   - 
+  - Earth
+  - EarthBullets
+  - EarthShields
   - 
+  - Moon
   - 
+  - Mob
+  - MobBullets
+  - MobShields
   - 
+  - PowerUps
   - 
+  - Asteroids
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Deadzone
   - 
   - 
   - 
