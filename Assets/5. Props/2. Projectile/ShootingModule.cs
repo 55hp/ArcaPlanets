@@ -3,38 +3,38 @@ using UnityEngine;
 
 public class ShootingModule : MonoBehaviour
 {
-    [SerializeField] float rateOfFire;
-    [SerializeField] float startingTime;
-    [SerializeField] GameObject projectilePref;
+    float rateOfFire;
+    float startingTime;
+    GameObject projectileType;
+
+    public void SetShootingModule(float time , float rate , GameObject projectile)
+    {
+        startingTime = time;
+        rateOfFire = rate;
+        projectileType = projectile;
+    }
 
     bool active;
-
-    private void OnEnable()
+    
+    public void TurnOn()
     {
-        StopAllCoroutines();
-        active = false;
+        active = true;
         StartCoroutine(Shoot(rateOfFire, startingTime));
     }
 
-    private void OnDisable()
+    public void TurnOff()
     {
-        StopAllCoroutines();
         active = false;
-    }
-
-    public void TurnOn(bool active)
-    {
-        this.active = active;
+        StopAllCoroutines();
     }
     
-    IEnumerator Shoot(float fireRate, float startingTime)
+    IEnumerator Shoot(float startingTime , float fireRate)
     {
         yield return new WaitForSeconds(startingTime);
-
         while (active)
         {
             yield return new WaitForSeconds(fireRate);
-            Instantiate(projectilePref, this.transform.position, Quaternion.identity);
+            Instantiate(projectileType, this.transform.position, Quaternion.identity);
         }
     }
 }
