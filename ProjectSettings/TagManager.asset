@@ -57,17 +57,11 @@ TagManager:
   - name: Earth
     uniqueID: 904118465
     locked: 0
-  - name: Planets
+  - name: Mobs
     uniqueID: 222585023
     locked: 0
-  - name: PlanetBullets
+  - name: MobsBullets
     uniqueID: 4039183547
-    locked: 0
-  - name: Satellite
-    uniqueID: 1081558941
-    locked: 0
-  - name: SatelliteBullets
-    uniqueID: 2626617129
     locked: 0
   - name: Moon
     uniqueID: 180888027

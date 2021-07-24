@@ -4,77 +4,76 @@ using UnityEngine;
 
 public class Mob : MonoBehaviour
 {
-    [SerializeField] protected float life;
-    float actualLife;
-    float dmg;
-    Vector3 myPosition;
+    //This is my life...
+    float startingHp;
+    float actualHp;
 
-    private void OnEnable()
-    {
-        EventManager.OnStateHaveBeenChanged += OnStateChanged;
-    }
+    //This means it's a Planet!
+    bool imTheBoss;
 
-    private void OnDisable()
-    {
-        EventManager.OnStateHaveBeenChanged -= OnStateChanged;
-    }
+    //My London look!
+    Sprite myBody;
+    Sprite myPrettyFace;
+    Color mySkin;
 
     private void Start()
     {
-        myPosition = gameObject.transform.position;
-        if (life == 0)
-        {
-            actualLife = 1f;
-        }
-        dmg = 0.1f / actualLife;
+        myBody = gameObject.GetComponent<SpriteRenderer>().sprite;
+        myPrettyFace = gameObject.GetComponentInChildren<SpriteRenderer>().sprite;
+        mySkin = gameObject.GetComponents<SpriteRenderer>()[0].color;
     }
 
-
-    public void OnStateChanged(GameManager.GameState newState)
+    public void MakeMeTheEvilestPlanetOfTheStage(int Hp, Sprite body , Sprite face, Color color)
     {
-        switch (newState)
-        {
-            case GameManager.GameState.Boot:
-                //TODO Change the method above into a GenerateNewPlanet [different hp, assets, ext ]
-                ResetPlanet();
-                break;
-            case GameManager.GameState.Play:
-                break;
-            case GameManager.GameState.Pause:
-                break;
-            case GameManager.GameState.Gameover:
-                break;
-            case GameManager.GameState.Win:
-                gameObject.GetComponent<Animator>().SetTrigger("die");
-                break;
-        }
+        startingHp = Hp;
+        imTheBoss = true;
+
+        myBody = body;
+        myPrettyFace = face;
+        mySkin = color;
     }
 
-    public void ResetPlanet()
+    public void MakeMeAnAttractiveSatellite(int Hp, Sprite body, Sprite face, Color color)
     {
-        actualLife = life;
-        gameObject.GetComponent<Animator>().Play("Idle");
-        gameObject.transform.SetPositionAndRotation(myPosition, Quaternion.identity);
-    }
+        startingHp = Hp;
+        imTheBoss = false;
 
+        myBody = body;
+        myPrettyFace = face;
+        mySkin = color;
+    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Moon")
         {
             DecreaseLife(collision.gameObject.GetComponent<Moon>().GetDmg());
+        }else if (collision.gameObject.tag == "Projectile")
+        {
+            DecreaseLife(collision.gameObject.GetComponent<Projectile>().GetDmg());
         }
     }
 
     public void DecreaseLife(float damage)
     {
-        actualLife -= damage;
-        EventManager.DealDamageToThePlanet(damage / life);
-        gameObject.GetComponent<Animator>().SetTrigger("take_dmg");
+        actualHp -= damage;
 
-        if (actualLife <= 0)
+        if(imTheBoss)
+        EventManager.DealDamageToThePlanet(damage / startingHp);
+        
+        //Am I DEAD?!
+        if (actualHp <= 0)
         {
-            EventManager.ChangeGameState(GameManager.GameState.Win);
+            if (imTheBoss) //I'm The only Planet of this Stage
+            {
+                EventManager.ChangeGameState(GameManager.GameState.Win);
+            }
+            else //I'm just a Satellite
+            {
+                gameObject.SetActive(false);
+            }
         }
     }
+
+    
 }

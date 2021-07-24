@@ -34,7 +34,7 @@ public class Projectile : MonoBehaviour
         }
     }
 
-    public int GetDamage()
+    public int GetDmg()
     {
         return dmg;
     }
