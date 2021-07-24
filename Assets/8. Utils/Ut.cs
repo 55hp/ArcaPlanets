@@ -10,5 +10,19 @@ public static class Ut
         return array[Random.Range(0, array.Length)];
     }
 
+    public static bool TossCoin()
+    {
+        bool coin;
+        int x = Random.Range(0, 2);
+        if(x == 0)
+        {
+            coin = true;
+        }
+        else
+        {
+            coin = false;
+        }
 
+        return coin;
+    }
 }

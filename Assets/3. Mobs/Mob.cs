@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class Mob : MonoBehaviour
 {
+    [SerializeField] GameObject myFace;
+    [SerializeField] GameObject myShootingModule;
+
+
     //This is my life...
     float startingHp;
     float actualHp;
@@ -11,36 +15,30 @@ public class Mob : MonoBehaviour
     //This means it's a Planet!
     bool imTheBoss;
 
-    //My London look!
-    Sprite myBody;
-    Sprite myPrettyFace;
-    Color mySkin;
-
-    private void Start()
-    {
-        myBody = gameObject.GetComponent<SpriteRenderer>().sprite;
-        myPrettyFace = gameObject.GetComponentInChildren<SpriteRenderer>().sprite;
-        mySkin = gameObject.GetComponents<SpriteRenderer>()[0].color;
-    }
-
-    public void MakeMeTheEvilestPlanetOfTheStage(int Hp, Sprite body , Sprite face, Color color)
+    public void MakeMeTheEvilestPlanetOfTheStage(int Hp, Sprite body , Sprite face, Color color , bool shooter)
     {
         startingHp = Hp;
+        actualHp = startingHp;
         imTheBoss = true;
 
-        myBody = body;
-        myPrettyFace = face;
-        mySkin = color;
+        gameObject.GetComponent<SpriteRenderer>().sprite = body;
+        myFace.GetComponent<SpriteRenderer>().sprite = face;
+        gameObject.GetComponent<SpriteRenderer>().color = color;
+
+        myShootingModule.GetComponent<ShootingModule>().TurnOn(shooter);
     }
 
-    public void MakeMeAnAttractiveSatellite(int Hp, Sprite body, Sprite face, Color color)
+    public void MakeMeAnAttractiveSatellite(int Hp, Sprite body, Sprite face, Color color, bool shooter)
     {
         startingHp = Hp;
+        actualHp = startingHp;
         imTheBoss = false;
 
-        myBody = body;
-        myPrettyFace = face;
-        mySkin = color;
+        gameObject.GetComponent<SpriteRenderer>().sprite = body;
+        myFace.GetComponent<SpriteRenderer>().sprite = face;
+        gameObject.GetComponent<SpriteRenderer>().color = color;
+
+        myShootingModule.GetComponent<ShootingModule>().TurnOn(shooter);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

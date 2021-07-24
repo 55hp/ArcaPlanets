@@ -6,7 +6,7 @@ public class Projectile : MonoBehaviour
 {
     [SerializeField] int dmg;
     [SerializeField] float speed;
-    [SerializeField] bool up;
+    [SerializeField] bool alien;
     Vector3 direction;
 
 
@@ -24,7 +24,7 @@ public class Projectile : MonoBehaviour
             speed = 5;
         }
 
-        if (up)
+        if (!alien)
         {
             direction = Vector3.up;
         }
@@ -47,7 +47,7 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Deadzone") || collision.gameObject.CompareTag("Moon") )
+        if (collision.gameObject.CompareTag("Deadzone") || collision.gameObject.CompareTag("Moon"))
         {
             Destroy(gameObject);
         }
@@ -55,7 +55,8 @@ public class Projectile : MonoBehaviour
         {
             EventManager.LoseLife();
             Destroy(gameObject);
-        }else if (collision.gameObject.CompareTag("Mob"))
+        }
+        else if (collision.gameObject.CompareTag("Mob"))
         {
             collision.gameObject.GetComponent<Mob>().DecreaseLife(dmg);
             Destroy(gameObject);

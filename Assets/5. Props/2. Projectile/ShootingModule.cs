@@ -1,49 +1,40 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ShootingModule : MonoBehaviour
 {
-
-    [SerializeField] float startingTime;
     [SerializeField] float rateOfFire;
+    [SerializeField] float startingTime;
     [SerializeField] GameObject projectilePref;
 
+    bool active;
 
     private void OnEnable()
     {
-        EventManager.OnStateHaveBeenChanged += OnStateChanged;
-        CancelInvoke();
-        InvokeRepeating("Shoot", startingTime, rateOfFire);
+        StopAllCoroutines();
+        active = false;
+        StartCoroutine(Shoot(rateOfFire, startingTime));
     }
 
     private void OnDisable()
     {
-        EventManager.OnStateHaveBeenChanged -= OnStateChanged;
+        StopAllCoroutines();
+        active = false;
     }
 
-    public void OnStateChanged(GameManager.GameState newState)
+    public void TurnOn(bool active)
     {
-        switch (newState)
+        this.active = active;
+    }
+    
+    IEnumerator Shoot(float fireRate, float startingTime)
+    {
+        yield return new WaitForSeconds(startingTime);
+
+        while (active)
         {
-            case GameManager.GameState.Boot:
-                break;
-            case GameManager.GameState.Play:
-                break;
-            case GameManager.GameState.Pause:
-                break;
-            case GameManager.GameState.Gameover:
-                CancelInvoke();
-                break;
-            case GameManager.GameState.Win:
-                CancelInvoke();
-                break;
+            yield return new WaitForSeconds(fireRate);
+            Instantiate(projectilePref, this.transform.position, Quaternion.identity);
         }
     }
-    
-    public void Shoot()
-    {
-        Instantiate(projectilePref , this.transform.position , Quaternion.identity);
-    }
-    
 }

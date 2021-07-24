@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
+    [SerializeField] MobManager mobManager;
+
     private void OnEnable()
     {
         EventManager.OnStateHaveBeenChanged += OnStateChanged;
@@ -20,14 +22,18 @@ public class LevelManager : MonoBehaviour
         switch (newState)
         {
             case GameManager.GameState.Boot:
+                mobManager.SetNumberOfMobsForThisStage(3);
+                mobManager.InitMobs();
                 break;
             case GameManager.GameState.Play:
                 break;
             case GameManager.GameState.Pause:
                 break;
             case GameManager.GameState.Gameover:
+                mobManager.ClearMobsFromStage();
                 break;
             case GameManager.GameState.Win:
+                mobManager.ClearMobsFromStage();
                 break;
         }
     }
