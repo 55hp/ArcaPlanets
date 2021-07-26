@@ -3,23 +3,23 @@ using UnityEngine;
 
 public class ShootingModule : MonoBehaviour
 {
-    float rateOfFire;
-    float startingTime;
-    GameObject projectileType;
-
-    public void SetShootingModule(float time , float rate , GameObject projectile)
+    public float rateOfFire;
+    public float startingTime;
+    public GameObject projectileType;
+    
+    public bool active;
+    
+    public void InitGun( GameObject projectileType, float startingTime, float rateOfFire)
     {
-        startingTime = time;
-        rateOfFire = rate;
-        projectileType = projectile;
+        this.rateOfFire = rateOfFire;
+        this.startingTime = startingTime;
+        this.projectileType = projectileType;
     }
 
-    bool active;
-    
     public void TurnOn()
     {
         active = true;
-        StartCoroutine(Shoot(rateOfFire, startingTime));
+        StartCoroutine(Shoot());
     }
 
     public void TurnOff()
@@ -28,12 +28,12 @@ public class ShootingModule : MonoBehaviour
         StopAllCoroutines();
     }
     
-    IEnumerator Shoot(float startingTime , float fireRate)
+    IEnumerator Shoot()
     {
         yield return new WaitForSeconds(startingTime);
         while (active)
         {
-            yield return new WaitForSeconds(fireRate);
+            yield return new WaitForSeconds(rateOfFire);
             Instantiate(projectileType, this.transform.position, Quaternion.identity);
         }
     }

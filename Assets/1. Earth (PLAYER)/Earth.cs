@@ -16,7 +16,7 @@ public class Earth : Singleton<Earth>
     [SerializeField] GameObject wings;
 
     [SerializeField] GameObject lowerShield;
-    [SerializeField] GameObject gunModule;
+    [SerializeField] GameObject myWeapon;
     bool alive;
     Vector3 mySize;
 
@@ -186,11 +186,11 @@ public class Earth : Singleton<Earth>
 
     public IEnumerator DoubleBullets(float timer)
     {
-        gunModule.SetActive(true);
+        myWeapon.SetActive(true);
 
         yield return new WaitForSeconds(timer);
 
-        gunModule.SetActive(false);
+        myWeapon.SetActive(false);
     }
 
     public void RevertAnyEffect()
@@ -202,7 +202,7 @@ public class Earth : Singleton<Earth>
         lowerShield.SetActive(false);
 
         //Revert for DoubleBullets
-        gunModule.SetActive(false);
+        myWeapon.SetActive(false);
     }
 
 

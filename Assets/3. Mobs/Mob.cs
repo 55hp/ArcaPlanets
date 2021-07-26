@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class Mob : MonoBehaviour
 {
+    //Well, this is my face... it's separated from my body.
     [SerializeField] GameObject myFace;
-    [SerializeField] GameObject myShootingModule;
 
+    //I have a gun, but sometimes it doesn't works
+    ShootingModule myBeautifulGun;
 
     //This is my life...
     float startingHp;
@@ -15,7 +17,7 @@ public class Mob : MonoBehaviour
     //This means it's a Planet!
     bool imTheBoss;
 
-    public void MakeMeTheEvilestPlanetOfTheStage(int Hp, Sprite body , Sprite face, Color color , bool shooter)
+    public void MakeMeTheEvilestPlanetOfTheStage(int Hp, Sprite body , Sprite face, Color color)
     {
         startingHp = Hp;
         actualHp = startingHp;
@@ -24,11 +26,9 @@ public class Mob : MonoBehaviour
         gameObject.GetComponent<SpriteRenderer>().sprite = body;
         myFace.GetComponent<SpriteRenderer>().sprite = face;
         gameObject.GetComponent<SpriteRenderer>().color = color;
-
-        myShootingModule.GetComponent<ShootingModule>().TurnOn(shooter);
     }
 
-    public void MakeMeAnAttractiveSatellite(int Hp, Sprite body, Sprite face, Color color, bool shooter)
+    public void MakeMeAnAttractiveSatellite(int Hp, Sprite body, Sprite face, Color color)
     {
         startingHp = Hp;
         actualHp = startingHp;
@@ -37,8 +37,19 @@ public class Mob : MonoBehaviour
         gameObject.GetComponent<SpriteRenderer>().sprite = body;
         myFace.GetComponent<SpriteRenderer>().sprite = face;
         gameObject.GetComponent<SpriteRenderer>().color = color;
+    }
 
-        myShootingModule.GetComponent<ShootingModule>().TurnOn(shooter);
+    public void GiveMeAGun(GameObject bullet , float startingFire , float fireRate)
+    {
+        myBeautifulGun = GetComponent<ShootingModule>();
+        myBeautifulGun.InitGun(bullet, startingFire, fireRate);
+        myBeautifulGun.TurnOn();
+    }
+
+    private void OnDisable()
+    {
+        if(myBeautifulGun != null)
+        myBeautifulGun.TurnOff();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

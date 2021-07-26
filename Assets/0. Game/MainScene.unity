@@ -708,6 +708,7 @@ GameObject:
   - component: {fileID: 468308824}
   - component: {fileID: 468308823}
   - component: {fileID: 468308822}
+  - component: {fileID: 468308826}
   m_Layer: 14
   m_Name: Satellite Bot Left
   m_TagString: Mob
@@ -831,6 +832,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &468308826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 468308820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d449a5157fb66d4ea4c09e10b033c40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rateOfFire: 0
+  startingTime: 0
+  projectileType: {fileID: 0}
+  active: 0
 --- !u!1 &506192668
 GameObject:
   m_ObjectHideFlags: 0
@@ -1070,6 +1087,10 @@ MonoBehaviour:
   - {r: 0.23921569, g: 0.7647059, b: 0.3764706, a: 1}
   - {r: 0.41960788, g: 0.2509804, b: 0.9686275, a: 1}
   - {r: 0.75294125, g: 0.15686275, b: 0.27058825, a: 1}
+  enemyBullets:
+  - {fileID: 3246662169968701974, guid: b31a037311962b5428492a164abcda57, type: 3}
+  - {fileID: 4883759050254856589, guid: 249221f83a4b74e4ab34c32938144486, type: 3}
+  - {fileID: 4277247500659302408, guid: 16adebff6ef716a4e8f03e3a52377d88, type: 3}
 --- !u!1 &551446090
 GameObject:
   m_ObjectHideFlags: 0
@@ -1287,6 +1308,7 @@ GameObject:
   - component: {fileID: 670402320}
   - component: {fileID: 670402319}
   - component: {fileID: 670402318}
+  - component: {fileID: 670402322}
   m_Layer: 14
   m_Name: Satellite Bot Right
   m_TagString: Mob
@@ -1410,6 +1432,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &670402322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 670402316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d449a5157fb66d4ea4c09e10b033c40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rateOfFire: 0
+  startingTime: 0
+  projectileType: {fileID: 0}
+  active: 0
 --- !u!1 &684130935
 GameObject:
   m_ObjectHideFlags: 0
@@ -1423,6 +1461,7 @@ GameObject:
   - component: {fileID: 684130939}
   - component: {fileID: 684130938}
   - component: {fileID: 684130937}
+  - component: {fileID: 684130941}
   m_Layer: 14
   m_Name: Satellite Top Right
   m_TagString: Mob
@@ -1546,6 +1585,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &684130941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 684130935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d449a5157fb66d4ea4c09e10b033c40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rateOfFire: 0
+  startingTime: 0
+  projectileType: {fileID: 0}
+  active: 0
 --- !u!1 &705780025
 GameObject:
   m_ObjectHideFlags: 0
@@ -2223,6 +2278,7 @@ GameObject:
   - component: {fileID: 1138512294}
   - component: {fileID: 1138512298}
   - component: {fileID: 1138512297}
+  - component: {fileID: 1138512299}
   m_Layer: 14
   m_Name: Planet (Boss)
   m_TagString: Mob
@@ -2346,6 +2402,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1138512299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1138512293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d449a5157fb66d4ea4c09e10b033c40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rateOfFire: 0
+  startingTime: 0
+  projectileType: {fileID: 0}
+  active: 0
 --- !u!1 &1233416194
 GameObject:
   m_ObjectHideFlags: 0
@@ -3390,6 +3462,7 @@ GameObject:
   - component: {fileID: 1872423479}
   - component: {fileID: 1872423478}
   - component: {fileID: 1872423477}
+  - component: {fileID: 1872423481}
   m_Layer: 14
   m_Name: Satellite Top Left
   m_TagString: Mob
@@ -3513,6 +3586,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1872423481
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1872423475}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d449a5157fb66d4ea4c09e10b033c40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rateOfFire: 0
+  startingTime: 0
+  projectileType: {fileID: 0}
+  active: 0
 --- !u!1 &1883431416
 GameObject:
   m_ObjectHideFlags: 0
