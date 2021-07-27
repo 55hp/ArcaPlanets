@@ -130,6 +130,12 @@ public class PowerUpManager : Singleton<PowerUpManager>
                 break;
             case 212:
                 break;
+
+                //+1hp green power up
+            case 301:
+                Earth.Instance.AddHp();
+                UIManager.Instance.UpdateHpText();
+                break;
         }
     }
 
