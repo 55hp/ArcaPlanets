@@ -105,7 +105,7 @@ public class MoonManager : Singleton<MoonManager>
     //Cambio sprite e aumenta il danno
     public IEnumerator RedMoon(float time)
     {
-
+        //TODO Change Sprite
         activeMoon.SetDmg(2);
         activeMoon.GetComponent<SpriteRenderer>().color = Color.red;
         yield return new WaitForSeconds(time);
@@ -120,6 +120,7 @@ public class MoonManager : Singleton<MoonManager>
     //Raddoppio scale
     public IEnumerator FullMoon(float time)
     {
+        //TODO Change Sprite
         StopAnyEffect();
         gameObject.transform.localScale = mySize*1.2f;
         yield return new WaitForSeconds(time);
@@ -132,6 +133,7 @@ public class MoonManager : Singleton<MoonManager>
     //Dimezza scale
     public IEnumerator NewMoon(float time)
     {
+        //TODO Change Sprite
         StopAnyEffect();
         gameObject.transform.localScale = mySize / 1.2f;
         yield return new WaitForSeconds(time);

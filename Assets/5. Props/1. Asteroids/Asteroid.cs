@@ -36,6 +36,22 @@ public class Asteroid : MonoBehaviour
         if (collision.gameObject.CompareTag("Deadzone"))
         {
             Destroy(gameObject);
+        } else if (collision.gameObject.CompareTag("EarthProjectile")){
+            hp--;
+
+            if (hp <= 0)
+            {
+                /*
+                int probability = Random.Range(0, 8);
+                if (powerUp != null && probability > 5)
+                {
+                    Instantiate(powerUp , gameObject.transform.position , Quaternion.identity);
+                }
+                */
+                Instantiate(powerUp, gameObject.transform.position, Quaternion.identity);
+                //TODO Aspetta prima un paio di frame 
+                Destroy(gameObject);
+            }
         }
     }
 

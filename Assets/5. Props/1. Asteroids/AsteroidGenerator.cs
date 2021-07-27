@@ -62,7 +62,7 @@ public class AsteroidGenerator : Singleton<AsteroidGenerator>
         while (true)
         {
             yield return new WaitForSeconds(rate);
-            asteroids.Add(Instantiate(GenRandomAsteroid(), new Vector3(-5, Random.Range(-1, 2), 0), Quaternion.identity));
+            asteroids.Add(Instantiate(GenRandomAsteroid(), new Vector3(-5, Random.Range(-0.5f, 1.5f), 0), Quaternion.identity));
         }
     }
 

@@ -47,7 +47,7 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Moon"))
+        if (collision.gameObject.CompareTag("Moon") || collision.gameObject.CompareTag("EarthProjectile"))
         {
             Destroy(gameObject);
         }
@@ -63,5 +63,13 @@ public class Projectile : MonoBehaviour
         }
 
     }
-    
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("EarthProjectile"))
+        {
+            Destroy(gameObject);
+        }
+    }
+
 }

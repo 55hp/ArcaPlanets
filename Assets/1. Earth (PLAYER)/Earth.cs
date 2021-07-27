@@ -145,17 +145,6 @@ public class Earth : Singleton<Earth>
         }
     }
 
-    /// <summary>
-    /// When a projectile collides with the Earth, a decrease life will occurs. 
-    /// </summary>
-    /// <param name="collision"></param>
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Projectile")
-        {
-            EventManager.LoseLife();
-        }
-    }
 
     /// <summary>
     /// Power ups are coroutines that occurs for a determinated amount of time and applies different effects
