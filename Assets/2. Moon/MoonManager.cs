@@ -9,6 +9,7 @@ public class MoonManager : Singleton<MoonManager>
     private Moon activeMoon;
 
     private Rigidbody2D activeMoonRb;
+    Vector3 mySize;
 
     public float initialMoonSpeed = 250;
     bool playing;
@@ -75,6 +76,7 @@ public class MoonManager : Singleton<MoonManager>
         if(activeMoon == null)
         {
             activeMoon = Instantiate(moonPrefab, startingPosition, Quaternion.identity);
+            mySize = activeMoon.transform.localScale;
         }
         else
         {
@@ -116,14 +118,37 @@ public class MoonManager : Singleton<MoonManager>
 
     //FULL MOON
     //Raddoppio scale
+    public IEnumerator FullMoon(float time)
+    {
+        StopAnyEffect();
+        gameObject.transform.localScale = mySize*1.2f;
+        yield return new WaitForSeconds(time);
+        gameObject.transform.localScale = mySize;
+    }
+    
+
 
     //NEW MOON
     //Dimezza scale
+    public IEnumerator NewMoon(float time)
+    {
+        StopAnyEffect();
+        gameObject.transform.localScale = mySize / 1.2f;
+        yield return new WaitForSeconds(time);
+        gameObject.transform.localScale = mySize;
+    }
 
         //TODO completare
-    public void RevertAnyEffect()
+    public void StopAnyEffect()
     {
 
+        //Red moon reset
+        activeMoon.SetDmg(1);
+        activeMoon.GetComponent<SpriteRenderer>().color = Color.white;
+
+
+        //New moon and full moon reset
+        gameObject.transform.localScale = mySize;
     }
 
     #endregion

@@ -6,13 +6,13 @@ using UnityEngine;
 public class Moon : MonoBehaviour
 {
     Rigidbody2D myRb;
-    float constantSpeed;
+    public float constantSpeed;
     int dmg;
 
 
     private void Start()
     {
-        constantSpeed = 6.2f;
+        constantSpeed = 3.5f;
         myRb = gameObject.GetComponent<Rigidbody2D>();
 
         if(dmg == 0)

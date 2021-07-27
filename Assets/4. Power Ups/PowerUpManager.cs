@@ -24,7 +24,7 @@ public class PowerUpManager : Singleton<PowerUpManager>
         {
             case GameManager.GameState.Boot:
                 Earth.Instance.StopAnyEffect();
-                MoonManager.Instance.RevertAnyEffect();
+                MoonManager.Instance.StopAnyEffect();
                 StopAllCoroutines();
                 CleanPUfromStage();
                 break;
@@ -110,9 +110,14 @@ public class PowerUpManager : Singleton<PowerUpManager>
                 //TODO MOON SCYTHES
                 break;
             case 203:
-                //TODO FULL MOON
+                if (activeMoonEffect != null) { StopCoroutine(activeMoonEffect); }
+                activeMoonEffect = MoonManager.Instance.FullMoon(howLong);
+                StartCoroutine(activeMoonEffect);
                 break;
             case 204:
+                if (activeMoonEffect != null) { StopCoroutine(activeMoonEffect); }
+                activeMoonEffect = MoonManager.Instance.NewMoon(howLong);
+                StartCoroutine(activeMoonEffect);
                 break;
             case 205:
                 break;

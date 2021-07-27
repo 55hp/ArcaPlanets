@@ -4386,11 +4386,14 @@ MonoBehaviour:
   _timeSpawner: 6
   powerUpCounter: 0
   powerUpPrefabs:
+  - {fileID: 6956947048301319610, guid: 31cc5e59b85b3264982e4af92539209c, type: 3}
   - {fileID: 7363945279159056443, guid: 11fc4a18e5616384298b3d596751339d, type: 3}
+  - {fileID: 5845698004876961167, guid: 108c22b2c138e2247a13f1ea57e4e090, type: 3}
   - {fileID: 2319067933536504513, guid: ebf8368cdf23ea2449abb7f4cd8c4c97, type: 3}
   - {fileID: 8136164116573532749, guid: 258c2f8c48a2c254ab2dbc53a915326b, type: 3}
   - {fileID: 1025950131138762991, guid: d36e699cf08515145a37ef7e3a987c98, type: 3}
   - {fileID: 5664654607588623011, guid: 8c3e8e4b6e4f563479fe24da22d2fdcd, type: 3}
+  - {fileID: 2665902253850304365, guid: 88306f06e99c04844b7c14c535f44927, type: 3}
   - {fileID: 7758063767039538733, guid: 78ee16015644d8c4f916931685999348, type: 3}
 --- !u!1 &4233493739437068370
 GameObject:
@@ -4476,6 +4479,10 @@ PrefabInstance:
     - target: {fileID: 5560077523226014938, guid: 26b621f4f5d902940b326eb542d48fe0, type: 3}
       propertyPath: m_Name
       value: LowerShield
+      objectReference: {fileID: 0}
+    - target: {fileID: 5560077523226014938, guid: 26b621f4f5d902940b326eb542d48fe0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 26b621f4f5d902940b326eb542d48fe0, type: 3}
