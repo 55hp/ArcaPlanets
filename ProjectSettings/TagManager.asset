@@ -11,6 +11,8 @@ TagManager:
   - Projectile
   - EarthProjectile
   - Mob
+  - MobProjectile
+  - PowerUp
   layers:
   - Default
   - TransparentFX
@@ -54,6 +56,9 @@ TagManager:
   - name: Asteroids
     uniqueID: 3858425065
     locked: 0
+  - name: Moon
+    uniqueID: 180888027
+    locked: 0
   - name: Earth
     uniqueID: 904118465
     locked: 0
@@ -62,9 +67,6 @@ TagManager:
     locked: 0
   - name: MobsBullets
     uniqueID: 4039183547
-    locked: 0
-  - name: Moon
-    uniqueID: 180888027
     locked: 0
   - name: Power Ups
     uniqueID: 1897921985

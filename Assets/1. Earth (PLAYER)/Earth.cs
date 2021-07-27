@@ -16,7 +16,15 @@ public class Earth : Singleton<Earth>
     [SerializeField] GameObject wings;
 
     [SerializeField] GameObject lowerShield;
+
+    [SerializeField] GameObject[] projectiles;
+    [SerializeField] ShootingModule leftCannon;
+    [SerializeField] ShootingModule rightCannon;
+
+
     [SerializeField] GameObject myWeapon;
+
+
     bool alive;
     Vector3 mySize;
 
@@ -43,6 +51,9 @@ public class Earth : Singleton<Earth>
         startingHp = 3;
         alive = true;
         lowerShield.SetActive(false);
+
+        leftCannon.InitGun(projectiles[0], 0.4f, 1f);
+        rightCannon.InitGun(projectiles[0], 0, 1f);
     }
 
     public void OnStateChanged(GameManager.GameState newState)
@@ -60,9 +71,11 @@ public class Earth : Singleton<Earth>
                 break;
             case GameManager.GameState.Gameover:
                 gameObject.GetComponent<EarthController>().GoPlay(false);
+                StopAnyEffect();
                 break;
             case GameManager.GameState.Win:
                 gameObject.GetComponent<EarthController>().GoPlay(false);
+                StopAnyEffect();
                 break;
         }
     }
@@ -151,6 +164,7 @@ public class Earth : Singleton<Earth>
     /// <returns></returns>
     public IEnumerator Bigger(float timer)
     {
+        StopAnyEffect();
         gameObject.transform.localScale = new Vector3(0.5f, 0.5f, 1);
         yield return new WaitForSeconds(timer);
         gameObject.transform.localScale = mySize;
@@ -163,6 +177,7 @@ public class Earth : Singleton<Earth>
     /// <returns></returns>
     public IEnumerator Smaller(float timer)
     {
+        StopAnyEffect();
         gameObject.transform.localScale = new Vector3(0.3f, 0.3f, 1);
 
         yield return new WaitForSeconds(timer);
@@ -177,6 +192,7 @@ public class Earth : Singleton<Earth>
     /// <returns></returns>
     public IEnumerator LowShield(float timer)
     {
+        StopAnyEffect();
         lowerShield.SetActive(true);
 
         yield return new WaitForSeconds(timer);
@@ -186,14 +202,19 @@ public class Earth : Singleton<Earth>
 
     public IEnumerator DoubleBullets(float timer)
     {
-        myWeapon.SetActive(true);
+        StopAnyEffect();
+        myWeapon.GetComponent<SpriteRenderer>().enabled = true;
+
+        leftCannon.TurnOn();
+        rightCannon.TurnOn();
 
         yield return new WaitForSeconds(timer);
-
-        myWeapon.SetActive(false);
+        myWeapon.GetComponent<SpriteRenderer>().enabled = false;
+        leftCannon.TurnOff();
+        rightCannon.TurnOff();
     }
 
-    public void RevertAnyEffect()
+    public void StopAnyEffect()
     {
         //Revert for Bigger and Smaller
         gameObject.transform.localScale = mySize;
@@ -201,8 +222,10 @@ public class Earth : Singleton<Earth>
         //Revert for lowerShield
         lowerShield.SetActive(false);
 
-        //Revert for DoubleBullets
-        myWeapon.SetActive(false);
+        //Revert double bullets
+        myWeapon.GetComponent<SpriteRenderer>().enabled = false;
+        leftCannon.TurnOff();
+        rightCannon.TurnOff();
     }
 
 

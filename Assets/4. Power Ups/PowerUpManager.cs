@@ -23,10 +23,10 @@ public class PowerUpManager : Singleton<PowerUpManager>
         switch (newState)
         {
             case GameManager.GameState.Boot:
-                Earth.Instance.RevertAnyEffect();
+                Earth.Instance.StopAnyEffect();
                 MoonManager.Instance.RevertAnyEffect();
                 StopAllCoroutines();
-                CleanActivePowerUps();
+                CleanPUfromStage();
                 break;
             case GameManager.GameState.Play:
 
@@ -35,11 +35,11 @@ public class PowerUpManager : Singleton<PowerUpManager>
                 break;
             case GameManager.GameState.Gameover:
                 StopAllCoroutines();
-                CleanActivePowerUps();
+                CleanPUfromStage();
                 break;
             case GameManager.GameState.Win:
                 StopAllCoroutines();
-                CleanActivePowerUps();
+                CleanPUfromStage();
                 break;
         }
     }
@@ -48,7 +48,7 @@ public class PowerUpManager : Singleton<PowerUpManager>
     
     
 
-    public void CleanActivePowerUps()
+    public void CleanPUfromStage()
     {
         foreach(GameObject x in powerUpCollection)
         {

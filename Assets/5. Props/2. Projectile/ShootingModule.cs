@@ -3,9 +3,9 @@ using UnityEngine;
 
 public class ShootingModule : MonoBehaviour
 {
-    public float rateOfFire;
-    public float startingTime;
-    public GameObject projectileType;
+    float rateOfFire;
+    float startingTime;
+    GameObject projectileType;
     
     public bool active;
     
