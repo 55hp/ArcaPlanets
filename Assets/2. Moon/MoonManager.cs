@@ -69,8 +69,8 @@ public class MoonManager : Singleton<MoonManager>
     public void InitBall()
     {
 
-        Vector3 paddlePosition = Earth.Instance.gameObject.transform.position;
-        Vector3 startingPosition = new Vector3(paddlePosition.x, paddlePosition.y + .7f, 0);
+        Vector3 earthPosition = Earth.Instance.gameObject.transform.position;
+        Vector3 startingPosition = new Vector3(earthPosition.x, earthPosition.y + 2f, 0);
         
 
         if(activeMoon == null)
@@ -83,9 +83,6 @@ public class MoonManager : Singleton<MoonManager>
             activeMoon.gameObject.SetActive(true);
             ResetBall();
         }
-        
-
-
         activeMoonRb = activeMoon.GetComponent<Rigidbody2D>();
     }
 

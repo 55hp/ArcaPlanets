@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4438060107976335349}
   - component: {fileID: 7373358135395920650}
   - component: {fileID: 779260162131633957}
-  - component: {fileID: 7072666600639726969}
+  - component: {fileID: 4721830272622039505}
   m_Layer: 15
   m_Name: EnemyHalfMoonBullet
   m_TagString: MobProjectile
@@ -71,7 +71,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -255783749
-  m_SortingLayer: 5
+  m_SortingLayer: 6
   m_SortingOrder: 4
   m_Sprite: {fileID: 21300000, guid: 5a0c1d2163deb54488ea57c65b27656f, type: 3}
   m_Color: {r: 0.8588236, g: 0.27450982, b: 1, a: 1}
@@ -99,8 +99,8 @@ MonoBehaviour:
   dmg: 1
   speed: 0.3
   alien: 1
---- !u!70 &7072666600639726969
-CapsuleCollider2D:
+--- !u!68 &4721830272622039505
+EdgeCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -113,5 +113,18 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1.8, y: 1.8}
-  m_Direction: 0
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: 0.9735891, y: 0.21787086}
+  - {x: -0.010813668, y: -0.49622253}
+  - {x: -0.9610498, y: 0.23604673}
+  - {x: -0.77298826, y: -0.47746456}
+  - {x: -0.50752944, y: -0.7710532}
+  - {x: -0.006808618, y: -0.932755}
+  - {x: 0.5180645, y: -0.79793566}
+  - {x: 0.8180721, y: -0.41958848}
+  - {x: 0.96000385, y: 0.2042532}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0

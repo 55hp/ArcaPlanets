@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 770603933705230467}
   - component: {fileID: 8550128689205822529}
-  - component: {fileID: 487478322356890700}
   - component: {fileID: 6849235044477338221}
+  - component: {fileID: 1193510193561345578}
   m_Layer: 15
   m_Name: EnemyCannonBullet
   m_TagString: MobProjectile
@@ -84,32 +84,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &487478322356890700
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4883759050254856589}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.000000029802322, y: -0.3764025}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.56, y: 2.56}
-    newSize: {x: 0.28, y: 0.3}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.8020567, y: 0.7298095}
-  m_EdgeRadius: 0
 --- !u!114 &6849235044477338221
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -125,3 +99,36 @@ MonoBehaviour:
   dmg: 1
   speed: 1
   alien: 1
+--- !u!68 &1193510193561345578
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4883759050254856589}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -0.55196536, y: -0.035227776}
+  - {x: -0.5434625, y: -0.069021225}
+  - {x: -0.47466838, y: -0.34243393}
+  - {x: -0.29669464, y: -0.6075611}
+  - {x: -0.18178928, y: -0.67729855}
+  - {x: -0.025662065, y: -0.7261734}
+  - {x: 0.18713212, y: -0.69888496}
+  - {x: 0.3325925, y: -0.60786533}
+  - {x: 0.49637544, y: -0.3993044}
+  - {x: 0.5540036, y: -0.11889458}
+  - {x: 0.0012555122, y: -0.24876213}
+  - {x: -0.5358634, y: -0.031198502}
+  - {x: -0.5518286, y: -0.035227776}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0

@@ -1,32 +1,33 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class Asteroid : MonoBehaviour
 {
-    float speed;
-    
+    float asteroidSpeed;
     [SerializeField] int hp;
     [SerializeField] GameObject mySpriteObj;
     public GameObject powerUp;
 
-    [SerializeField] Color[] asteroidColors;
-
-    // Start is called before the first frame update
-    void Start()
+    public void SetAsteroid(Sprite mySkin , GameObject randomPowerUp , float speedAmount , Color color)
     {
-        speed = Random.Range(1, 3);
-        mySpriteObj.GetComponent<SpriteRenderer>().color = asteroidColors[Random.Range(0, asteroidColors.Length)];
-    }
-    
-    public void GivePowerUp(GameObject randomPowerUp)
-    {
+        mySpriteObj.GetComponent<SpriteRenderer>().sprite = mySkin;
         powerUp = randomPowerUp;
+        asteroidSpeed = speedAmount;
+        mySpriteObj.GetComponent<SpriteRenderer>().color = color;
     }
 
+    public void SetAsteroid(Sprite mySkin, float speedAmount, Color color)
+    {
+        mySpriteObj.GetComponent<SpriteRenderer>().sprite = mySkin;
+        powerUp = null;
+        asteroidSpeed = speedAmount;
+        mySpriteObj.GetComponent<SpriteRenderer>().color = color;
+    }
 
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector3.right * (speed/2) * Time.deltaTime);
+        this.transform.Translate(Vector3.right * asteroidSpeed * Time.deltaTime);
         mySpriteObj.transform.Rotate(Vector3.forward * 0.2f,Space.Self);
     }
 
@@ -36,22 +37,11 @@ public class Asteroid : MonoBehaviour
         if (collision.gameObject.CompareTag("Deadzone"))
         {
             Destroy(gameObject);
-        } else if (collision.gameObject.CompareTag("EarthProjectile")){
-            hp--;
-
-            if (hp <= 0)
-            {
-                /*
-                int probability = Random.Range(0, 8);
-                if (powerUp != null && probability > 5)
-                {
-                    Instantiate(powerUp , gameObject.transform.position , Quaternion.identity);
-                }
-                */
-                Instantiate(powerUp, gameObject.transform.position, Quaternion.identity);
-                //TODO Aspetta prima un paio di frame 
-                Destroy(gameObject);
-            }
+        }
+        else if (collision.gameObject.CompareTag("EarthProjectile"))
+        {
+            TakeDamage(collision.gameObject.GetComponent<Projectile>().GetDmg());
+            Destroy(collision.gameObject);
         }
     }
 
@@ -59,21 +49,20 @@ public class Asteroid : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Moon"))
         {
-            hp--;
-
-        if(hp <= 0)
-            {
-                /*
-                int probability = Random.Range(0, 8);
-                if (powerUp != null && probability > 5)
-                {
-                    Instantiate(powerUp , gameObject.transform.position , Quaternion.identity);
-                }
-                */
-                Instantiate(powerUp, gameObject.transform.position, Quaternion.identity);
-                //TODO Aspetta prima un paio di frame 
-                Destroy(gameObject);
-            }
+            TakeDamage(collision.gameObject.GetComponent<Moon>().GetDmg());
         }
     }
+
+
+    public void TakeDamage(int amount)
+    {
+        hp -= amount;
+        if (hp <= 0)
+        {
+            Instantiate(powerUp, gameObject.transform.position, Quaternion.identity);
+            //TODO Aspetta prima un paio di frame 
+            Destroy(gameObject);
+        }
+    }
+    
 }

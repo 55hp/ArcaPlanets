@@ -4,7 +4,16 @@ using UnityEngine;
 
 public class AsteroidGenerator : Singleton<AsteroidGenerator>
 {
-    [SerializeField] GameObject[] asteroidsPrefab;
+
+    [SerializeField] GameObject asteroidPrefab;
+
+    [SerializeField] Sprite[] smallAstSprites;
+    [SerializeField] Sprite[] midAstSprites;
+    [SerializeField] Sprite[] bigAstSprites;
+    [SerializeField] Color[] asteroidColors;
+
+    [SerializeField] GameObject[] powerUpPrefabs;
+
     [SerializeField] [Range(1, 10)] private float _timeSpawner;
 
     List<GameObject> asteroids = new List<GameObject>();
@@ -18,12 +27,7 @@ public class AsteroidGenerator : Singleton<AsteroidGenerator>
     {
         EventManager.OnStateHaveBeenChanged -= OnStateChanged;
     }
-
-    public int powerUpCounter;
-    private void Start()
-    {
-        powerUpCounter = 2;
-    }
+    
 
     public void OnStateChanged(GameManager.GameState newState)
     {
@@ -31,7 +35,7 @@ public class AsteroidGenerator : Singleton<AsteroidGenerator>
         {
             case GameManager.GameState.Boot:
                 CleanAsteroids();
-                StartCoroutine(GenAsteroids(2f));
+                StartCoroutine(GenAsteroids(_timeSpawner));
                 break;
             case GameManager.GameState.Play:
                 break;
@@ -45,7 +49,6 @@ public class AsteroidGenerator : Singleton<AsteroidGenerator>
                 break;
         }
     }
-
 
     public void CleanAsteroids()
     {
@@ -62,20 +65,33 @@ public class AsteroidGenerator : Singleton<AsteroidGenerator>
         while (true)
         {
             yield return new WaitForSeconds(rate);
-            asteroids.Add(Instantiate(GenRandomAsteroid(), new Vector3(-5, Random.Range(-0.5f, 1.5f), 0), Quaternion.identity));
+
+            RandomizeAsteroid();
+            asteroids.Add(Instantiate(asteroidPrefab, new Vector3(-5, Random.Range(-0.5f, 1.5f), 0), Quaternion.identity));
         }
     }
 
+    public static int[] pseudoRandomicArray = { 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 2, 2 };
 
-    private static int[] pseudoRandomicIntArray = { 0,0,0,0,0,1,1,1,1,2,2 };
-    [SerializeField] GameObject[] powerUpPrefabs;
-
-    public GameObject GenRandomAsteroid()
+    public void RandomizeAsteroid()
     {
-        int x = pseudoRandomicIntArray[Random.Range(0, pseudoRandomicIntArray.Length)];
-        GameObject asteroid = asteroidsPrefab[x * 3 + Random.Range(0, 3)];
-        asteroid.GetComponent<Asteroid>().GivePowerUp(powerUpPrefabs[Random.Range(0, powerUpPrefabs.Length)]);
-        
-        return asteroid;
+        int x = Ut.ROA(pseudoRandomicArray);
+        switch (x)
+        {
+            //Small Asteroid
+            case 0:
+                asteroidPrefab.GetComponent<Asteroid>().SetAsteroid(Ut.ROA(smallAstSprites),3, Ut.ROA(asteroidColors));
+                break;
+
+            //Medium Asteroid
+            case 1:
+                asteroidPrefab.GetComponent<Asteroid>().SetAsteroid(Ut.ROA(midAstSprites), Ut.ROA(powerUpPrefabs), 1, Ut.ROA(asteroidColors));
+                break;
+
+            //Big Asteroid
+            case 2:
+                asteroidPrefab.GetComponent<Asteroid>().SetAsteroid(Ut.ROA(bigAstSprites), Ut.ROA(powerUpPrefabs), 0.5f, Ut.ROA(asteroidColors));
+                break;
+        }
     }
 }
