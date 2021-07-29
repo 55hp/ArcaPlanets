@@ -66,31 +66,32 @@ public class AsteroidGenerator : Singleton<AsteroidGenerator>
         {
             yield return new WaitForSeconds(rate);
 
-            RandomizeAsteroid();
-            asteroids.Add(Instantiate(asteroidPrefab, new Vector3(-5, Random.Range(-0.5f, 1.5f), 0), Quaternion.identity));
+            var newAstorid = Instantiate(asteroidPrefab, new Vector3(-5, Random.Range(-0.5f, 1.5f), 0), Quaternion.identity);
+            RandomizeAsteroid(newAstorid.GetComponent<Asteroid>());
+            asteroids.Add(newAstorid);
         }
     }
 
     public static int[] pseudoRandomicArray = { 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 2, 2 };
 
-    public void RandomizeAsteroid()
+    public void RandomizeAsteroid(Asteroid Asteroid)
     {
         int x = Ut.ROA(pseudoRandomicArray);
         switch (x)
         {
             //Small Asteroid
             case 0:
-                asteroidPrefab.GetComponent<Asteroid>().SetAsteroid(Ut.ROA(smallAstSprites),3, Ut.ROA(asteroidColors));
+                Asteroid.SetAsteroid(Ut.ROA(smallAstSprites),3, Ut.ROA(asteroidColors));
                 break;
 
             //Medium Asteroid
             case 1:
-                asteroidPrefab.GetComponent<Asteroid>().SetAsteroid(Ut.ROA(midAstSprites), Ut.ROA(powerUpPrefabs), 1, Ut.ROA(asteroidColors));
+                Asteroid.SetAsteroid(Ut.ROA(midAstSprites), Ut.ROA(powerUpPrefabs), 1, Ut.ROA(asteroidColors));
                 break;
 
             //Big Asteroid
             case 2:
-                asteroidPrefab.GetComponent<Asteroid>().SetAsteroid(Ut.ROA(bigAstSprites), Ut.ROA(powerUpPrefabs), 0.5f, Ut.ROA(asteroidColors));
+                Asteroid.SetAsteroid(Ut.ROA(bigAstSprites), Ut.ROA(powerUpPrefabs), 0.5f, Ut.ROA(asteroidColors));
                 break;
         }
     }
