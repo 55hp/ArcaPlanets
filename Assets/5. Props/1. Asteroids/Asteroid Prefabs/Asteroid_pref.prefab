@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3521871751225646732}
   - component: {fileID: 1325373126308214205}
   m_Layer: 20
-  m_Name: Asteroid_pref (0)
+  m_Name: Asteroid_pref
   m_TagString: Asteroid
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -64,12 +64,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 1
   mySpriteObj: {fileID: 4076335103107404181}
-  powerUp: {fileID: 0}
-  asteroidColors:
-  - {r: 0.6039216, g: 0.6, b: 0.6, a: 1}
-  - {r: 0.227451, g: 0.6, b: 0.50980395, a: 1}
-  - {r: 0.52156866, g: 0.2901961, b: 0.18823531, a: 1}
-  - {r: 0.53333336, g: 0.23137257, b: 0.23137257, a: 1}
+  powerUp: {fileID: 7758063767039538733, guid: 78ee16015644d8c4f916931685999348, type: 3}
 --- !u!50 &1325373126308214205
 Rigidbody2D:
   serializedVersion: 4
@@ -162,8 +157,8 @@ SpriteRenderer:
   m_SortingLayerID: -436542231
   m_SortingLayer: 2
   m_SortingOrder: 3
-  m_Sprite: {fileID: 21300000, guid: baf8f0c594483544bb7a3f2fb64c5e74, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 30f896c3882e12548a1f274d93ae7f02, type: 3}
+  m_Color: {r: 0.53333336, g: 0.23137257, b: 0.23137257, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

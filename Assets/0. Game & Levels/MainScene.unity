@@ -4323,7 +4323,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4233493738471702067}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.69, y: -0.84, z: 0}
+  m_LocalPosition: {x: 9.45, y: -0.84, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4233493739437068368}
@@ -4354,7 +4354,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4233493739437068370}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.38, y: 1, z: -1.9885335}
+  m_LocalPosition: {x: -4.87, y: 0.79, z: -1.9885335}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4233493738471702066}
@@ -4373,10 +4373,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 211e1402786469f4d9def75c88628fd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  smallAstSprites: []
-  midAstSprites: []
-  bigAstSprites: []
-  asteroidColors: []
+  asteroidPrefab: {fileID: 2647377992523706650, guid: 5327f7e855749c9438aff2cf6dd08538, type: 3}
+  smallAstSprites:
+  - {fileID: 21300000, guid: baf8f0c594483544bb7a3f2fb64c5e74, type: 3}
+  - {fileID: 21300000, guid: a05c964cacd590f4e92f96fe05257a39, type: 3}
+  - {fileID: 21300000, guid: 184396dd838b19c4fac082bfe9aac4d5, type: 3}
+  midAstSprites:
+  - {fileID: 21300000, guid: 30f896c3882e12548a1f274d93ae7f02, type: 3}
+  - {fileID: 21300000, guid: e98ffc8ce42404d489424bf988b7770d, type: 3}
+  - {fileID: 21300000, guid: 6e9745e3e4330ae43901a16e9ac7b2a5, type: 3}
+  bigAstSprites:
+  - {fileID: 21300000, guid: 45e34ff6d44157540872f0325ca88d62, type: 3}
+  - {fileID: 21300000, guid: 0e4da0e427d44c2458fac00cb36156a7, type: 3}
+  - {fileID: 21300000, guid: cd2312874e4280b4bbd1b32bd8b03d4c, type: 3}
+  asteroidColors:
+  - {r: 0.6039216, g: 0.6, b: 0.6, a: 1}
+  - {r: 0.227451, g: 0.6, b: 0.50980395, a: 1}
+  - {r: 0.52156866, g: 0.2901961, b: 0.18823531, a: 1}
+  - {r: 0.53333336, g: 0.23137257, b: 0.23137257, a: 1}
   powerUpPrefabs:
   - {fileID: 6956947048301319610, guid: 31cc5e59b85b3264982e4af92539209c, type: 3}
   - {fileID: 7363945279159056443, guid: 11fc4a18e5616384298b3d596751339d, type: 3}
@@ -4387,8 +4401,7 @@ MonoBehaviour:
   - {fileID: 5664654607588623011, guid: 8c3e8e4b6e4f563479fe24da22d2fdcd, type: 3}
   - {fileID: 2665902253850304365, guid: 88306f06e99c04844b7c14c535f44927, type: 3}
   - {fileID: 7758063767039538733, guid: 78ee16015644d8c4f916931685999348, type: 3}
-  _timeSpawner: 1
-  powerUpCounter: 0
+  _timeSpawner: 2
 --- !u!1 &4233493739437068370
 GameObject:
   m_ObjectHideFlags: 0
