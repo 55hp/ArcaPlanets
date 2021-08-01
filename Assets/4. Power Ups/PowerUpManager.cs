@@ -79,7 +79,7 @@ public class PowerUpManager : Singleton<PowerUpManager>
                 StartCoroutine(activeEarthEffect); Debug.Log("SMALLER ATTIVO");
                 break;
             case 103:
-                earth.EffectsReset();
+                //earth.EffectsReset();
                 activeEarthEffect = earth.LowShield(howLong);
                 StartCoroutine(activeEarthEffect); Debug.Log("LOWER SHIELD ATTIVO");
                 break;

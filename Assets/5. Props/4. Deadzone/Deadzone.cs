@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class Deadzone : MonoBehaviour
 {
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.CompareTag("MobProjectile") || collision.gameObject.CompareTag("EarthProjectile") || collision.gameObject.CompareTag("PowerUp"))
+        if (collision.gameObject.CompareTag("Moon"))
+        {
+            EventManager.LoseLife();
+        }
+        else
         {
             Destroy(collision.gameObject);
         }

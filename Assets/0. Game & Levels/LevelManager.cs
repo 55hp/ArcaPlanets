@@ -9,14 +9,13 @@ public class LevelManager : MonoBehaviour
     [SerializeField] GameObject rightWall;
     [SerializeField] GameObject leftWall;
     [SerializeField] GameObject topWall;
-
-
+    
 
     public void SetWalls()
     {
-
         Debug.Log("" + Camera.main.orthographicSize);
         Debug.Log("" + Camera.main.aspect);
+
 
         topWall.transform.position = new Vector3(0 ,Camera.main.orthographicSize + 0.5f, 0);
 
@@ -24,11 +23,14 @@ public class LevelManager : MonoBehaviour
         leftWall.transform.position = new Vector3(-Camera.main.orthographicSize * Camera.main.aspect - 0.5f , 0 , 0);
     }
 
+    private void Awake()
+    {
+        SetWalls();
+    }
 
     private void OnEnable()
     {
         EventManager.OnStateHaveBeenChanged += OnStateChanged;
-        SetWalls();
     }
 
     private void OnDisable()

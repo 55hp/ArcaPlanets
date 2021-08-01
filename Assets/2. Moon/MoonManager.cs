@@ -5,14 +5,17 @@ using UnityEngine;
 public class MoonManager : Singleton<MoonManager>
 {
     [SerializeField] private Moon moonPrefab;
+
+
     //[0] - normal || [1] - red  || [2] - half moon || [3] - full 
     [SerializeField] Sprite[] moonSprites;
 
 
     private Moon activeMoon;
+    int moonsInStage;
 
     private Rigidbody2D activeMoonRb;
-    Vector3 mySize;
+    Vector3 normalSize;
 
     public float initialMoonSpeed = 250;
     bool playing;
@@ -27,17 +30,17 @@ public class MoonManager : Singleton<MoonManager>
     {
         EventManager.OnStateHaveBeenChanged -= OnStateChanged;
     }
-
+    
     private void Update()
     {
         if (!playing && activeMoon != null)
         {
             // Align ball position to the Earth position
             Vector3 paddlePosition = Earth.Instance.transform.position;
-            Vector3 ballPosition = new Vector3(paddlePosition.x, paddlePosition.y + .5f, 0);
-            activeMoon.transform.position = ballPosition;
+            Vector3 moonPos = new Vector3(paddlePosition.x, paddlePosition.y + .5f, 0);
+            activeMoon.transform.position = moonPos;
 
-            if (Input.GetMouseButtonDown(0) || Input.touches.Length > 0)
+            if (Input.GetMouseButtonUp(0) || Input.touches.Length > 0)
             {
                 activeMoonRb.AddForce(new Vector2(0, initialMoonSpeed));
                 EventManager.ChangeGameState(GameManager.GameState.Play);
@@ -79,23 +82,26 @@ public class MoonManager : Singleton<MoonManager>
         if(activeMoon == null)
         {
             activeMoon = Instantiate(moonPrefab, startingPosition, Quaternion.identity);
-            mySize = activeMoon.transform.localScale;
+            normalSize = activeMoon.transform.localScale;
         }
         else
         {
             activeMoon.gameObject.SetActive(true);
             ResetBall();
         }
+
+        moonsInStage = 1;
         activeMoonRb = activeMoon.GetComponent<Rigidbody2D>();
         
     }
 
-    int activeMoons;
-    public void LoseMoon()
+    public void MoonOutOfScreen()
     {
-        activeMoons--;
-        if (activeMoons == 1)
+        moonsInStage--;
+        Debug.Log("La luna è uscita dallo schermo" );
+        if (moonsInStage == 0)
         {
+            Debug.Log("Le lune attive sono:" + moonsInStage);
             ResetBall();
         }
     }
@@ -131,9 +137,10 @@ public class MoonManager : Singleton<MoonManager>
     {
         activeMoon.GetComponent<SpriteRenderer>().sprite = moonSprites[1];
         //Crea 2 surrogati
-        activeMoons += howManyShythes;
+        moonsInStage += howManyShythes;
         for(int i = 0; i < howManyShythes; i++)
         {
+            Moon newMoon = new Moon();
             //Instantiate();
             activeMoonRb.AddForce(new Vector2(0, initialMoonSpeed));
         }
@@ -141,15 +148,16 @@ public class MoonManager : Singleton<MoonManager>
     }
 
 
-    //FULL MOON
-    //Raddoppio scale
+    //FULL MOON aumenta di dimensione
     public IEnumerator FullMoon(float time)
     {
-        gameObject.transform.localScale = mySize*1.5f;
+        gameObject.transform.localScale = normalSize*1.5f;
         activeMoon.GetComponent<SpriteRenderer>().sprite = moonSprites[3];
+        activeMoon.GetComponent<CircleCollider2D>().radius = 0.82f;
         yield return new WaitForSeconds(time);
-        gameObject.transform.localScale = mySize;
+        gameObject.transform.localScale = normalSize;
         activeMoon.GetComponent<SpriteRenderer>().sprite = moonSprites[0];
+        activeMoon.GetComponent<CircleCollider2D>().radius = 0.52f;
     }
 
 
@@ -159,12 +167,14 @@ public class MoonManager : Singleton<MoonManager>
         //Red moon reset
         activeMoon.SetDmg(1);
 
-        //New moon and full moon reset
-        gameObject.transform.localScale = mySize;
+        //Size reset
+        gameObject.transform.localScale = normalSize;
 
-        //Sprite
+        //Sprite reset
         activeMoon.GetComponent<SpriteRenderer>().sprite = moonSprites[0];
 
+        //Collider reset
+        activeMoon.GetComponent<CircleCollider2D>().radius = 0.52f;
     }
     
 

@@ -21,6 +21,8 @@ public class Moon : MonoBehaviour
         }
     }
 
+
+
     public void SetDmg(int amount)
     {
         dmg = amount;
@@ -34,21 +36,12 @@ public class Moon : MonoBehaviour
     {
         myRb.velocity = constantSpeed * (myRb.velocity.normalized);
     }
-    
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Deadzone"))
-        {
-            EventManager.LoseLife();
-        }
-    }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Deadzone"))
         {
-            MoonManager.Instance.LoseMoon();
+            MoonManager.Instance.MoonOutOfScreen();
         }
     }
 }

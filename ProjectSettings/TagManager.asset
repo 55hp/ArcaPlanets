@@ -14,6 +14,7 @@ TagManager:
   - MobProjectile
   - PowerUp
   - EarthShields
+  - Wall
   layers:
   - Default
   - TransparentFX
@@ -39,7 +40,7 @@ TagManager:
   - 
   - Deadzone
   - 
-  - 
+  - Wall
   - 
   - 
   - 
