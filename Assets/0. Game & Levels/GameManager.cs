@@ -31,9 +31,9 @@ public class GameManager : Singleton<GameManager>
         EventManager.ChangeGameState(GameState.Pause);
     }
 
-    public void EndGame(bool haveYouWon)
+    public void EndGame(bool ImTheWinner)
     {
-        if(haveYouWon)
+        if(ImTheWinner)
         EventManager.ChangeGameState(GameState.Win);
         else
         EventManager.ChangeGameState(GameState.Gameover);

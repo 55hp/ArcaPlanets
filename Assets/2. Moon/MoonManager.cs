@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class MoonManager : Singleton<MoonManager>
 {
-    [SerializeField]
-    private Moon moonPrefab;
+    [SerializeField] private Moon moonPrefab;
+    //[0] - normal || [1] - red  || [2] - half moon || [3] - full 
+    [SerializeField] Sprite[] moonSprites;
+
+
     private Moon activeMoon;
 
     private Rigidbody2D activeMoonRb;
@@ -84,16 +87,28 @@ public class MoonManager : Singleton<MoonManager>
             ResetBall();
         }
         activeMoonRb = activeMoon.GetComponent<Rigidbody2D>();
+        
     }
 
-
+    int activeMoons;
+    public void LoseMoon()
+    {
+        activeMoons--;
+        if (activeMoons == 1)
+        {
+            ResetBall();
+        }
+    }
+    
     public void ResetBall()
     {
-        Vector3 paddlePosition = Earth.Instance.gameObject.transform.position;
-        Vector3 startingPosition = new Vector3(paddlePosition.x, paddlePosition.y + .7f, 0);
+        
+            Vector3 paddlePosition = Earth.Instance.gameObject.transform.position;
+            Vector3 startingPosition = new Vector3(paddlePosition.x, paddlePosition.y + .7f, 0);
 
-        activeMoon.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
-        activeMoon.transform.position = startingPosition;
+            activeMoon.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+            activeMoon.transform.position = startingPosition;
+        
     }
 
     #region POWER UP EFFECTS METHODS
@@ -104,51 +119,55 @@ public class MoonManager : Singleton<MoonManager>
     {
         //TODO Change Sprite
         activeMoon.SetDmg(2);
-        activeMoon.GetComponent<SpriteRenderer>().color = Color.red;
+        activeMoon.GetComponent<SpriteRenderer>().sprite = moonSprites[1];
         yield return new WaitForSeconds(time);
         activeMoon.SetDmg(1);
-        activeMoon.GetComponent<SpriteRenderer>().color = Color.white;
+        activeMoon.GetComponent<SpriteRenderer>().sprite = moonSprites[0];
     }
 
     //MOON Scythes
     //Cambio sprite + Creazione di altre 2 lune con sprite specifici.
+    public void MoonScythes(int howManyShythes)
+    {
+        activeMoon.GetComponent<SpriteRenderer>().sprite = moonSprites[1];
+        //Crea 2 surrogati
+        activeMoons += howManyShythes;
+        for(int i = 0; i < howManyShythes; i++)
+        {
+            //Instantiate();
+            activeMoonRb.AddForce(new Vector2(0, initialMoonSpeed));
+        }
+
+    }
+
 
     //FULL MOON
     //Raddoppio scale
     public IEnumerator FullMoon(float time)
     {
-        //TODO Change Sprite
-        StopAnyEffect();
-        gameObject.transform.localScale = mySize*1.2f;
+        gameObject.transform.localScale = mySize*1.5f;
+        activeMoon.GetComponent<SpriteRenderer>().sprite = moonSprites[3];
         yield return new WaitForSeconds(time);
         gameObject.transform.localScale = mySize;
-    }
-    
-
-
-    //NEW MOON
-    //Dimezza scale
-    public IEnumerator NewMoon(float time)
-    {
-        //TODO Change Sprite
-        StopAnyEffect();
-        gameObject.transform.localScale = mySize / 1.2f;
-        yield return new WaitForSeconds(time);
-        gameObject.transform.localScale = mySize;
+        activeMoon.GetComponent<SpriteRenderer>().sprite = moonSprites[0];
     }
 
-        //TODO completare
-    public void StopAnyEffect()
-    {
 
+
+    public void EffectsReset()
+    {
         //Red moon reset
         activeMoon.SetDmg(1);
-        activeMoon.GetComponent<SpriteRenderer>().color = Color.white;
-
 
         //New moon and full moon reset
         gameObject.transform.localScale = mySize;
+
+        //Sprite
+        activeMoon.GetComponent<SpriteRenderer>().sprite = moonSprites[0];
+
     }
+    
+
 
     #endregion
 

@@ -3,37 +3,33 @@ using UnityEngine;
 
 public class ShootingModule : MonoBehaviour
 {
-    float rateOfFire;
-    float startingTime;
     GameObject projectileType;
-    
-    public bool active;
+    IEnumerator myShootingStyle;
     
     public void InitGun( GameObject projectileType, float startingTime, float rateOfFire)
     {
-        this.rateOfFire = rateOfFire;
-        this.startingTime = startingTime;
         this.projectileType = projectileType;
+        myShootingStyle = Shoot(startingTime, rateOfFire);
     }
+
 
     public void TurnOn()
     {
-        active = true;
-        StartCoroutine(Shoot());
+        StartCoroutine(myShootingStyle);
     }
 
     public void TurnOff()
     {
-        active = false;
-        StopAllCoroutines();
+        StopCoroutine(myShootingStyle);
     }
     
-    IEnumerator Shoot()
+    
+    IEnumerator Shoot(float startingTime , float fireRate)
     {
         yield return new WaitForSeconds(startingTime);
-        while (active)
+        while (true)
         {
-            yield return new WaitForSeconds(rateOfFire);
+            yield return new WaitForSeconds(fireRate);
             Instantiate(projectileType, this.transform.position, Quaternion.identity);
         }
     }

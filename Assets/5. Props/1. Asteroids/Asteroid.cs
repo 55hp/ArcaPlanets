@@ -4,25 +4,21 @@ using UnityEngine;
 public class Asteroid : MonoBehaviour
 {
     float asteroidSpeed;
-    [SerializeField] int hp;
+    int myLife;
     [SerializeField] GameObject mySpriteObj;
-    public GameObject powerUp;
+    GameObject powerUp;
 
-    public void SetAsteroid(Sprite mySkin , GameObject randomPowerUp , float speedAmount , Color color)
+    public void SetAsteroid(Sprite mySkin , GameObject randomPowerUp , float speedAmount , Color color , int hp)
     {
         mySpriteObj.GetComponent<SpriteRenderer>().sprite = mySkin;
         powerUp = randomPowerUp;
         asteroidSpeed = speedAmount;
         mySpriteObj.GetComponent<SpriteRenderer>().color = color;
+        myLife = hp;
+        gameObject.GetComponent<CircleCollider2D>().radius = myLife * 0.22f;
     }
 
-    public void SetAsteroid(Sprite mySkin, float speedAmount, Color color)
-    {
-        mySpriteObj.GetComponent<SpriteRenderer>().sprite = mySkin;
-        powerUp = null;
-        asteroidSpeed = speedAmount;
-        mySpriteObj.GetComponent<SpriteRenderer>().color = color;
-    }
+    
 
     // Update is called once per frame
     void Update()
@@ -56,9 +52,10 @@ public class Asteroid : MonoBehaviour
 
     public void TakeDamage(int amount)
     {
-        hp -= amount;
-        if (hp <= 0)
+        myLife -= amount;
+        if (myLife <= 0)
         {
+            if(powerUp != null)
             Instantiate(powerUp, gameObject.transform.position, Quaternion.identity);
             //TODO Aspetta prima un paio di frame 
             Destroy(gameObject);

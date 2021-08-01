@@ -48,7 +48,7 @@ public class Moon : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Deadzone"))
         {
-            MoonManager.Instance.ResetBall();
+            MoonManager.Instance.LoseMoon();
         }
     }
 }

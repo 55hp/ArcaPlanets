@@ -14,7 +14,7 @@ public class AsteroidGenerator : Singleton<AsteroidGenerator>
 
     [SerializeField] GameObject[] powerUpPrefabs;
 
-    [SerializeField] [Range(1, 10)] private float _timeSpawner;
+    [SerializeField] [Range(0.1f, 4)] private float _timeSpawner;
 
     List<GameObject> asteroids = new List<GameObject>();
 
@@ -66,32 +66,32 @@ public class AsteroidGenerator : Singleton<AsteroidGenerator>
         {
             yield return new WaitForSeconds(rate);
 
-            var newAstorid = Instantiate(asteroidPrefab, new Vector3(-5, Random.Range(-0.5f, 1.5f), 0), Quaternion.identity);
-            RandomizeAsteroid(newAstorid.GetComponent<Asteroid>());
-            asteroids.Add(newAstorid);
+            var newAsteroid = Instantiate(asteroidPrefab, new Vector3(-5, Random.Range(-0.5f, 1.5f), 0), Quaternion.identity);
+            RandomizeAsteroid(newAsteroid.GetComponent<Asteroid>());
+            asteroids.Add(newAsteroid);
         }
     }
 
-    public static int[] pseudoRandomicArray = { 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 2, 2 };
+    public static int[] pseudoRandomicArray = {  0, 0, 0, 0, 0, 1, 1, 1, 2, 2 };
 
     public void RandomizeAsteroid(Asteroid Asteroid)
     {
         int x = Ut.ROA(pseudoRandomicArray);
         switch (x)
         {
-            //Small Asteroid
+            //Small Asteroid - Speed : 1 --> 3
             case 0:
-                Asteroid.SetAsteroid(Ut.ROA(smallAstSprites),3, Ut.ROA(asteroidColors));
+                Asteroid.SetAsteroid(Ut.ROA(smallAstSprites), Ut.ROA(powerUpPrefabs), Random.Range(0.5f,2.8f) , Ut.ROA(asteroidColors) , 1);
                 break;
 
             //Medium Asteroid
             case 1:
-                Asteroid.SetAsteroid(Ut.ROA(midAstSprites), Ut.ROA(powerUpPrefabs), 1, Ut.ROA(asteroidColors));
+                Asteroid.SetAsteroid(Ut.ROA(midAstSprites), Ut.ROA(powerUpPrefabs), Random.Range(0.5f, 1.5f), Ut.ROA(asteroidColors) , 2);
                 break;
 
             //Big Asteroid
             case 2:
-                Asteroid.SetAsteroid(Ut.ROA(bigAstSprites), Ut.ROA(powerUpPrefabs), 0.5f, Ut.ROA(asteroidColors));
+                Asteroid.SetAsteroid(Ut.ROA(bigAstSprites), Ut.ROA(powerUpPrefabs), Random.Range(0.4f, 1f), Ut.ROA(asteroidColors) , 3 );
                 break;
         }
     }

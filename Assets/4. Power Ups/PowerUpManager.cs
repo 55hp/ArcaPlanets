@@ -7,6 +7,15 @@ public class PowerUpManager : Singleton<PowerUpManager>
     IEnumerator activeEarthEffect;
     IEnumerator activeMoonEffect;
 
+    Earth earth;
+    MoonManager moon;
+
+    private void Start()
+    {
+        earth = Earth.Instance;
+        moon = MoonManager.Instance;
+    }
+
     private void OnEnable()
     {
         EventManager.OnStateHaveBeenChanged += OnStateChanged;
@@ -22,8 +31,7 @@ public class PowerUpManager : Singleton<PowerUpManager>
         switch (newState)
         {
             case GameManager.GameState.Boot:
-                Earth.Instance.StopAnyEffect();
-                MoonManager.Instance.StopAnyEffect();
+                
                 StopAllCoroutines();
                 CleanPUfromStage();
                 break;
@@ -44,8 +52,6 @@ public class PowerUpManager : Singleton<PowerUpManager>
     }
     
     List<GameObject> powerUpCollection = new List<GameObject>();
-    
-    
 
     public void CleanPUfromStage()
     {
@@ -58,86 +64,57 @@ public class PowerUpManager : Singleton<PowerUpManager>
 
     public void TriggerPowerUpEffect(int id , float howLong)
     {
+
         switch (id)
         {
             //EARTH Power Ups starting from 100
             case 101:
-                if (activeEarthEffect != null) { StopCoroutine(activeEarthEffect); }
-                activeEarthEffect = Earth.Instance.Bigger(howLong);
-                StartCoroutine(activeEarthEffect);
+                earth.EffectsReset();
+                activeEarthEffect = earth.Bigger(howLong);
+                StartCoroutine(activeEarthEffect); Debug.Log("BIGGER ATTIVO");
                 break;
             case 102:
-                if (activeEarthEffect != null) { StopCoroutine(activeEarthEffect); }
-                activeEarthEffect = Earth.Instance.Smaller(howLong);
-                StartCoroutine(activeEarthEffect);
+                earth.EffectsReset();
+                activeEarthEffect = earth.Smaller(howLong);
+                StartCoroutine(activeEarthEffect); Debug.Log("SMALLER ATTIVO");
                 break;
             case 103:
-                if (activeEarthEffect != null) { StopCoroutine(activeEarthEffect); }
-                activeEarthEffect = Earth.Instance.LowShield(howLong);
-                StartCoroutine(activeEarthEffect);
+                earth.EffectsReset();
+                activeEarthEffect = earth.LowShield(howLong);
+                StartCoroutine(activeEarthEffect); Debug.Log("LOWER SHIELD ATTIVO");
                 break;
             case 151:
-                if (activeEarthEffect != null) { StopCoroutine(activeEarthEffect); }
-                activeEarthEffect = Earth.Instance.DoubleBullets(howLong);
-                StartCoroutine(activeEarthEffect);
+                earth.EffectsReset();
+                activeEarthEffect = earth.DoubleBullets(howLong);
+                StartCoroutine(activeEarthEffect); Debug.Log("DOUBLE BULLETS ATTIVO");
                 break;
-            case 105:
+            case 152:
 
+                break;
+            case 153:
 
                 break;
-            case 106:
-                break;
-            case 107:
-                break;
-            case 108:
-                break;
-            case 109:
-                break;
-            case 110:
-                break;
-            case 111:
-                break;
-            case 112:
-                break;
-                //MOON Power Ups starting from 200
+
+            //MOON Power Ups starting from 200
             case 201:
-                if (activeMoonEffect != null) { StopCoroutine(activeMoonEffect); }
-                activeMoonEffect = MoonManager.Instance.RedMoon(howLong);
-                StartCoroutine(activeMoonEffect);
+                moon.EffectsReset();
+                activeMoonEffect = moon.RedMoon(howLong);
+                StartCoroutine(activeMoonEffect); Debug.Log("RED MOON ATTIVO");
                 break;
             case 202:
                 //TODO MOON SCYTHES
+                moon.EffectsReset();
+
                 break;
             case 203:
-                if (activeMoonEffect != null) { StopCoroutine(activeMoonEffect); }
-                activeMoonEffect = MoonManager.Instance.FullMoon(howLong);
-                StartCoroutine(activeMoonEffect);
-                break;
-            case 204:
-                if (activeMoonEffect != null) { StopCoroutine(activeMoonEffect); }
-                activeMoonEffect = MoonManager.Instance.NewMoon(howLong);
-                StartCoroutine(activeMoonEffect);
-                break;
-            case 205:
-                break;
-            case 206:
-                break;
-            case 207:
-                break;
-            case 208:
-                break;
-            case 209:
-                break;
-            case 210:
-                break;
-            case 211:
-                break;
-            case 212:
+                moon.EffectsReset();
+                activeMoonEffect = moon.FullMoon(howLong);
+                StartCoroutine(activeMoonEffect); Debug.Log("FULL MOON ATTIVO");
                 break;
 
                 //+1hp green power up
             case 301:
-                Earth.Instance.AddHp();
+                Earth.Instance.AddHp(); Debug.Log("+1 HP ! ");
                 UIManager.Instance.UpdateHpText();
                 break;
         }

@@ -11,7 +11,7 @@ public class PowerUp : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (speed == 0)
+        if (speed <= 0)
         {
             //Default value 5
             speed = 5;
@@ -21,7 +21,7 @@ public class PowerUp : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        this.transform.position += Vector3.down * speed * Time.deltaTime;
+        transform.position += Vector3.down * speed * Time.deltaTime;
         transform.Rotate(Vector3.forward * 0.2f, Space.Self);
     }
 

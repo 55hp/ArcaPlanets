@@ -9,11 +9,12 @@ public class Earth : Singleton<Earth>
     /// The Earth Class define charateristics and behaviors of the Player of the game rapresented by a Earth Planet/ship
     /// </summary>
     int myHp;
-
+    public bool testCondition = true;
 
     [SerializeField] GameObject cockpit;
     [SerializeField] GameObject body;
-    [SerializeField] GameObject wings;
+    [SerializeField] GameObject myWing;
+    [SerializeField] GameObject propulsor;
 
     [SerializeField] GameObject lowerShield;
 
@@ -22,10 +23,15 @@ public class Earth : Singleton<Earth>
     [SerializeField] ShootingModule rightCannon;
 
 
+
     [SerializeField] GameObject myWeapon;
 
 
+    [SerializeField] Sprite[] earthSprites;
+
+
     bool alive;
+    public bool stopPowerUp;
     Vector3 mySize;
 
 
@@ -52,8 +58,8 @@ public class Earth : Singleton<Earth>
         alive = true;
         lowerShield.SetActive(false);
 
-        leftCannon.InitGun(projectiles[0], 0.4f, 1f);
-        rightCannon.InitGun(projectiles[0], 0, 1f);
+        leftCannon.InitGun(projectiles[0], 0.4f, 0.8f);
+        rightCannon.InitGun(projectiles[0], 0, 0.8f);
     }
 
     public void OnStateChanged(GameManager.GameState newState)
@@ -70,12 +76,12 @@ public class Earth : Singleton<Earth>
             case GameManager.GameState.Pause:
                 break;
             case GameManager.GameState.Gameover:
+                stopPowerUp = true;
                 gameObject.GetComponent<EarthController>().GoPlay(false);
-                StopAnyEffect();
                 break;
             case GameManager.GameState.Win:
+                stopPowerUp = true;
                 gameObject.GetComponent<EarthController>().GoPlay(false);
-                StopAnyEffect();
                 break;
         }
     }
@@ -115,7 +121,10 @@ public class Earth : Singleton<Earth>
         myHp++;
     }
 
-    
+    public void StopEffects()
+    {
+        stopPowerUp = true;
+    }
 
     /// <summary>
     ///  When the Earth collides with the moon it will be applied a force on the Moon based on the point of collision.
@@ -146,59 +155,73 @@ public class Earth : Singleton<Earth>
     }
 
 
+
     /// <summary>
     /// Power ups are coroutines that occurs for a determinated amount of time and applies different effects
     /// </summary>
     #region POWER UP EFFECTS REGION
+        
+    public void EffectsReset()
+    {
+        //Bigger effects reset
+        this.GetComponent<PolygonCollider2D>().enabled = false;
+        myWing.GetComponent<SpriteRenderer>().sprite = earthSprites[3];
 
-    /// <summary>
-    /// The Earth size increase.
-    /// </summary>
-    /// <param name="timer"></param>
-    /// <returns></returns>
+        //Smaller effects reset
+        myWing.GetComponent<SpriteRenderer>().sprite = earthSprites[3];
+        propulsor.GetComponent<SpriteRenderer>().sprite = earthSprites[7];
+        this.GetComponent<CapsuleCollider2D>().enabled = false;
+        this.GetComponent<CircleCollider2D>().enabled = true;
+
+        //Lower Shield effect reset
+        lowerShield.SetActive(false);
+
+        //Double bullets effect reset
+        myWeapon.GetComponent<SpriteRenderer>().enabled = false;
+        leftCannon.TurnOff();
+        rightCannon.TurnOff();
+
+    }
+
     public IEnumerator Bigger(float timer)
     {
-        StopAnyEffect();
-        gameObject.transform.localScale = new Vector3(0.5f, 0.5f, 1);
-        yield return new WaitForSeconds(timer);
-        gameObject.transform.localScale = mySize;
-    }
+        myWing.GetComponent<SpriteRenderer>().sprite = earthSprites[4];
+        this.GetComponent<PolygonCollider2D>().enabled = true;
 
-    /// <summary>
-    /// The Earth size reduce.
-    /// </summary>
-    /// <param name="timer"></param>
-    /// <returns></returns>
+        yield return new WaitForSeconds(timer);
+
+        this.GetComponent<PolygonCollider2D>().enabled = false;
+        myWing.GetComponent<SpriteRenderer>().sprite = earthSprites[3];
+    }
+    
     public IEnumerator Smaller(float timer)
     {
-        StopAnyEffect();
-        gameObject.transform.localScale = new Vector3(0.3f, 0.3f, 1);
+
+        myWing.GetComponent<SpriteRenderer>().sprite = null;
+        propulsor.GetComponent<SpriteRenderer>().sprite = null;
+        this.GetComponent<CapsuleCollider2D>().enabled = true;
+        this.GetComponent<CircleCollider2D>().enabled = false;
 
         yield return new WaitForSeconds(timer);
 
-        gameObject.transform.localScale = mySize;
+        myWing.GetComponent<SpriteRenderer>().sprite = earthSprites[3];
+        propulsor.GetComponent<SpriteRenderer>().sprite = earthSprites[7];
+        this.GetComponent<CapsuleCollider2D>().enabled = false;
+        this.GetComponent<CircleCollider2D>().enabled = true;
     }
 
-    /// <summary>
-    /// The lower shield ( a collider that covers the bottom of the screen) appears and then when the coroutine ends it disappear.
-    /// </summary>
-    /// <param name="timer"></param>
-    /// <returns></returns>
     public IEnumerator LowShield(float timer)
     {
-        StopAnyEffect();
         lowerShield.SetActive(true);
-
         yield return new WaitForSeconds(timer);
-
         lowerShield.SetActive(false);
+             
     }
 
     public IEnumerator DoubleBullets(float timer)
     {
-        StopAnyEffect();
-        myWeapon.GetComponent<SpriteRenderer>().enabled = true;
 
+        myWeapon.GetComponent<SpriteRenderer>().enabled = true;
         leftCannon.TurnOn();
         rightCannon.TurnOn();
 
@@ -207,21 +230,8 @@ public class Earth : Singleton<Earth>
         leftCannon.TurnOff();
         rightCannon.TurnOff();
     }
-
-    public void StopAnyEffect()
-    {
-        //Revert for Bigger and Smaller
-        gameObject.transform.localScale = mySize;
-
-        //Revert for lowerShield
-        lowerShield.SetActive(false);
-
-        //Revert double bullets
-        myWeapon.GetComponent<SpriteRenderer>().enabled = false;
-        leftCannon.TurnOff();
-        rightCannon.TurnOff();
-    }
-
-
     #endregion
+
+
+
 }
