@@ -11,7 +11,6 @@ public class GameManager : Singleton<GameManager>
         Gameover = 3,
         Win = 4
     }
-    
 
     /// <summary>
     /// The next methods calls the ChangeGameState event to run in another Game State.

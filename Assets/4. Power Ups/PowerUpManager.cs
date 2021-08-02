@@ -8,12 +8,12 @@ public class PowerUpManager : Singleton<PowerUpManager>
     IEnumerator activeMoonEffect;
 
     Earth earth;
-    MoonManager moon;
+    MoonManager moonManager;
 
     private void Start()
     {
         earth = Earth.Instance;
-        moon = MoonManager.Instance;
+        moonManager = MoonManager.Instance;
     }
 
     private void OnEnable()
@@ -31,7 +31,6 @@ public class PowerUpManager : Singleton<PowerUpManager>
         switch (newState)
         {
             case GameManager.GameState.Boot:
-                
                 StopAllCoroutines();
                 CleanPUfromStage();
                 break;
@@ -97,19 +96,16 @@ public class PowerUpManager : Singleton<PowerUpManager>
 
             //MOON Power Ups starting from 200
             case 201:
-                moon.EffectsReset();
-                activeMoonEffect = moon.RedMoon(howLong);
+                moonManager.EffectsReset();
+                activeMoonEffect = moonManager.RedMoon(howLong);
                 StartCoroutine(activeMoonEffect); Debug.Log("RED MOON ATTIVO");
                 break;
             case 202:
-                //TODO MOON SCYTHES
-                moon.EffectsReset();
-                activeMoonEffect = moon.MoonScythes(2);
-                StartCoroutine(activeMoonEffect); Debug.Log("RED MOON ATTIVO");
+                moonManager.MoonScythes(2); Debug.Log("RED MOON ATTIVO");
                 break;
             case 203:
-                moon.EffectsReset();
-                activeMoonEffect = moon.FullMoon(howLong);
+                moonManager.EffectsReset();
+                activeMoonEffect = moonManager.FullMoon(howLong);
                 StartCoroutine(activeMoonEffect); Debug.Log("FULL MOON ATTIVO");
                 break;
 

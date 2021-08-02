@@ -134,14 +134,14 @@ public class Earth : Singleton<Earth>
             ballRb.velocity = Vector2.zero;
 
             float difference = paddleCenter.x - hitPoint.x;
-
+            
             if (hitPoint.x < paddleCenter.x)
             {
-                ballRb.AddForce(new Vector2(-(Mathf.Abs(difference * 200)), MoonManager.Instance.initialMoonSpeed));
+                ballRb.AddForce(new Vector2(-(Mathf.Abs(difference * 200)), 50));
             }
             else
             {
-                ballRb.AddForce(new Vector2((Mathf.Abs(difference * 200)), MoonManager.Instance.initialMoonSpeed));
+                ballRb.AddForce(new Vector2((Mathf.Abs(difference * 200)), 50));
             }
         }
     }

@@ -1493,13 +1493,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 594c3ac3c0f1e4c48b7da3002e280cb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moonPrefab: {fileID: 222861020182275805, guid: 0790f7783e89da34f930d60e63b34fed, type: 3}
-  moonSprites:
-  - {fileID: 21300000, guid: 92203f27bb6f6ee44895e333475d82b5, type: 3}
-  - {fileID: 21300000, guid: bb34516900feb72409afe05e84129c36, type: 3}
-  - {fileID: 21300000, guid: bce857d4776692442b76593ad77735a7, type: 3}
-  - {fileID: 21300000, guid: 23ad186ec92cc7f4da3e93b3b1dbcfa2, type: 3}
   initialMoonSpeed: 250
+  moonPref: {fileID: 222861020182275805, guid: 0790f7783e89da34f930d60e63b34fed, type: 3}
+  standardMoonSkin: {fileID: 21300000, guid: 92203f27bb6f6ee44895e333475d82b5, type: 3}
+  redMoonSkin: {fileID: 21300000, guid: bb34516900feb72409afe05e84129c36, type: 3}
+  fullMoonSkin: {fileID: 21300000, guid: 23ad186ec92cc7f4da3e93b3b1dbcfa2, type: 3}
+  halfMoonSkin: {fileID: 21300000, guid: bce857d4776692442b76593ad77735a7, type: 3}
 --- !u!4 &651990161
 Transform:
   m_ObjectHideFlags: 0
@@ -2265,7 +2264,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 697ca00b047a06d48ab2b4113a3d8364, type: 3}
   - {fileID: 21300000, guid: c504bf61cc6368848806277c219c2335, type: 3}
   - {fileID: 21300000, guid: d0512a36318fecc498a05de2cbfe1891, type: 3}
-  stopPowerUp: 0
 --- !u!114 &945330308
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5074,7 +5072,6 @@ MonoBehaviour:
   - {fileID: 8136164116573532749, guid: 258c2f8c48a2c254ab2dbc53a915326b, type: 3}
   - {fileID: 1025950131138762991, guid: d36e699cf08515145a37ef7e3a987c98, type: 3}
   - {fileID: 5664654607588623011, guid: 8c3e8e4b6e4f563479fe24da22d2fdcd, type: 3}
-  - {fileID: 2665902253850304365, guid: 88306f06e99c04844b7c14c535f44927, type: 3}
   - {fileID: 7758063767039538733, guid: 78ee16015644d8c4f916931685999348, type: 3}
   _timeSpawner: 1
 --- !u!1 &4233493739437068370
