@@ -41,7 +41,7 @@ public class Moon : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Deadzone"))
         {
-            MoonManager.Instance.MoonOutOfScreen();
+            MoonManager.Instance.MoonOutOfScreen(this);
         }
     }
 }

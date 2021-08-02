@@ -31,7 +31,6 @@ public class Earth : Singleton<Earth>
 
 
     bool alive;
-    public bool stopPowerUp;
     Vector3 mySize;
 
 
@@ -76,11 +75,9 @@ public class Earth : Singleton<Earth>
             case GameManager.GameState.Pause:
                 break;
             case GameManager.GameState.Gameover:
-                stopPowerUp = true;
                 gameObject.GetComponent<EarthController>().GoPlay(false);
                 break;
             case GameManager.GameState.Win:
-                stopPowerUp = true;
                 gameObject.GetComponent<EarthController>().GoPlay(false);
                 break;
         }
@@ -119,11 +116,6 @@ public class Earth : Singleton<Earth>
     public void AddHp()
     {
         myHp++;
-    }
-
-    public void StopEffects()
-    {
-        stopPowerUp = true;
     }
 
     /// <summary>

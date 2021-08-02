@@ -11,7 +11,8 @@ public class MoonManager : Singleton<MoonManager>
     [SerializeField] Sprite[] moonSprites;
 
 
-    private Moon activeMoon;
+    private List<Moon> activeMoons = new List<Moon>();
+
     int moonsInStage;
 
     private Rigidbody2D activeMoonRb;
@@ -33,12 +34,12 @@ public class MoonManager : Singleton<MoonManager>
     
     private void Update()
     {
-        if (!playing && activeMoon != null)
+        if (!playing && (activeMoons.Count != 0))
         {
             // Align ball position to the Earth position
             Vector3 paddlePosition = Earth.Instance.transform.position;
             Vector3 moonPos = new Vector3(paddlePosition.x, paddlePosition.y + .5f, 0);
-            activeMoon.transform.position = moonPos;
+            activeMoons[0].transform.position = moonPos;
 
             if (Input.GetMouseButtonUp(0) || Input.touches.Length > 0)
             {
@@ -63,10 +64,16 @@ public class MoonManager : Singleton<MoonManager>
             case GameManager.GameState.Pause:
                 break;
             case GameManager.GameState.Gameover:
-                activeMoon.gameObject.SetActive(false);
+                foreach(Moon m in activeMoons)
+                m.gameObject.SetActive(false);
+
+                //EffectsReset();
                 break;
             case GameManager.GameState.Win:
-                activeMoon.gameObject.SetActive(false);
+                foreach (Moon m in activeMoons)
+                m.gameObject.SetActive(false);
+
+                //EffectsReset();
                 break;
         }
     }
@@ -79,42 +86,50 @@ public class MoonManager : Singleton<MoonManager>
         Vector3 startingPosition = new Vector3(earthPosition.x, earthPosition.y + 2f, 0);
         
 
-        if(activeMoon == null)
+        if(activeMoons.Count == 0)
         {
-            activeMoon = Instantiate(moonPrefab, startingPosition, Quaternion.identity);
-            normalSize = activeMoon.transform.localScale;
+            var moon = Instantiate(moonPrefab, startingPosition, Quaternion.identity);
+            activeMoons.Add(moon);
+            normalSize = activeMoons[0].transform.localScale;
         }
         else
         {
-            activeMoon.gameObject.SetActive(true);
+            activeMoons[0].gameObject.SetActive(true);
             ResetBall();
         }
 
-        moonsInStage = 1;
-        activeMoonRb = activeMoon.GetComponent<Rigidbody2D>();
+        moonsInStage = activeMoons.Count;
+        activeMoonRb = activeMoons[0].GetComponent<Rigidbody2D>();
         
     }
 
-    public void MoonOutOfScreen()
+    public void MoonOutOfScreen(Moon me)
     {
-        moonsInStage--;
-        Debug.Log("La luna è uscita dallo schermo" );
-        if (moonsInStage == 0)
+        if (activeMoons.Count == 1)
         {
-            Debug.Log("Le lune attive sono:" + moonsInStage);
             ResetBall();
+        }
+        else
+        {
+            activeMoons.Remove(me);
         }
     }
     
     public void ResetBall()
     {
-        
-            Vector3 paddlePosition = Earth.Instance.gameObject.transform.position;
-            Vector3 startingPosition = new Vector3(paddlePosition.x, paddlePosition.y + .7f, 0);
+        foreach (Moon m in activeMoons)
+        {
+            if(m != null)
+            {
+                var lastMoon = m;
+                Vector3 paddlePosition = Earth.Instance.gameObject.transform.position;
+                Vector3 startingPosition = new Vector3(paddlePosition.x, paddlePosition.y + .7f, 0);
 
-            activeMoon.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
-            activeMoon.transform.position = startingPosition;
-        
+                lastMoon.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+                lastMoon.transform.position = startingPosition;
+                break;
+            }
+        }
     }
 
     #region POWER UP EFFECTS METHODS
@@ -124,57 +139,82 @@ public class MoonManager : Singleton<MoonManager>
     public IEnumerator RedMoon(float time)
     {
         //TODO Change Sprite
-        activeMoon.SetDmg(2);
-        activeMoon.GetComponent<SpriteRenderer>().sprite = moonSprites[1];
+        foreach (Moon m in activeMoons)
+        {
+            m.SetDmg(2);
+            m.GetComponent<SpriteRenderer>().sprite = moonSprites[1];
+        }
+            
         yield return new WaitForSeconds(time);
-        activeMoon.SetDmg(1);
-        activeMoon.GetComponent<SpriteRenderer>().sprite = moonSprites[0];
+        foreach (Moon m in activeMoons)
+        {
+            m.SetDmg(1);
+            m.GetComponent<SpriteRenderer>().sprite = moonSprites[0];
+        }
+
     }
 
     //MOON Scythes
     //Cambio sprite + Creazione di altre 2 lune con sprite specifici.
-    public void MoonScythes(int howManyShythes)
+    public IEnumerator MoonScythes(int howManyShythes)
     {
-        activeMoon.GetComponent<SpriteRenderer>().sprite = moonSprites[1];
+        foreach(Moon m in activeMoons)
+        m.GetComponent<SpriteRenderer>().sprite = moonSprites[2];
+
+
         //Crea 2 surrogati
         moonsInStage += howManyShythes;
         for(int i = 0; i < howManyShythes; i++)
         {
-            Moon newMoon = new Moon();
-            //Instantiate();
-            activeMoonRb.AddForce(new Vector2(0, initialMoonSpeed));
+            Moon newMoon = moonPrefab;
+            Instantiate(newMoon);
+            activeMoons.Add(newMoon);
+            newMoon.GetComponent<SpriteRenderer>().sprite = moonSprites[2];
+            newMoon.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, initialMoonSpeed));
         }
-
+        yield return null;
     }
 
 
     //FULL MOON aumenta di dimensione
     public IEnumerator FullMoon(float time)
     {
-        gameObject.transform.localScale = normalSize*1.5f;
-        activeMoon.GetComponent<SpriteRenderer>().sprite = moonSprites[3];
-        activeMoon.GetComponent<CircleCollider2D>().radius = 0.82f;
+        foreach (Moon m in activeMoons)
+        {
+            m.transform.localScale = normalSize * 1.5f;
+            m.GetComponent<SpriteRenderer>().sprite = moonSprites[3];
+            //m.GetComponent<CircleCollider2D>().radius = 0.82f;
+        }
+
         yield return new WaitForSeconds(time);
-        gameObject.transform.localScale = normalSize;
-        activeMoon.GetComponent<SpriteRenderer>().sprite = moonSprites[0];
-        activeMoon.GetComponent<CircleCollider2D>().radius = 0.52f;
+
+        foreach (Moon m in activeMoons)
+        {
+            m.transform.localScale = normalSize;
+            m.GetComponent<SpriteRenderer>().sprite = moonSprites[0];
+            //m.GetComponent<CircleCollider2D>().radius = 0.52f;
+        }
     }
 
 
 
     public void EffectsReset()
     {
-        //Red moon reset
-        activeMoon.SetDmg(1);
+        foreach (Moon m in activeMoons)
+        {
 
-        //Size reset
-        gameObject.transform.localScale = normalSize;
+            //Red moon reset
+            m.SetDmg(1);
 
-        //Sprite reset
-        activeMoon.GetComponent<SpriteRenderer>().sprite = moonSprites[0];
+            //Size reset
+            m.transform.localScale = normalSize;
+
+            //Sprite reset
+            m.GetComponent<SpriteRenderer>().sprite = moonSprites[0];
+        }
 
         //Collider reset
-        activeMoon.GetComponent<CircleCollider2D>().radius = 0.52f;
+        //activeMoon.GetComponent<CircleCollider2D>().radius = 0.52f;
     }
     
 
