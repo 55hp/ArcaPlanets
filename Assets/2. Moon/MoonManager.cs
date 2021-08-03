@@ -44,10 +44,12 @@ public class MoonManager : Singleton<MoonManager>
                 break;
             case GameManager.GameState.Gameover:
                 EffectsReset();
+                CleanScreenFromMoons();
                 playing = false;
                 break;
             case GameManager.GameState.Win:
                 EffectsReset();
+                CleanScreenFromMoons();
                 playing = false;
                 break;
         }
@@ -113,6 +115,7 @@ public class MoonManager : Singleton<MoonManager>
     
     public void RestartMainMoon()
     {
+        
         Vector3 earthPosition = Earth.Instance.gameObject.transform.position;
         Vector3 startingPosition = new Vector3(earthPosition.x, earthPosition.y + .7f, 0);
         mainMoon.gameObject.SetActive(true);
@@ -120,6 +123,7 @@ public class MoonManager : Singleton<MoonManager>
         mainMoon.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
         mainMoon.transform.position = startingPosition;
         mainMoon.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, initialMoonSpeed));
+        EffectsReset();
     }
 
     #region POWER UP EFFECTS METHODS
@@ -128,6 +132,8 @@ public class MoonManager : Singleton<MoonManager>
     //Cambio sprite e aumenta il danno
     public IEnumerator RedMoon(float time)
     {
+        mainMoon.SetDmg(2);
+        mainMoon.ChangeMoonSprite(redMoonSkin);
         foreach (Moon m in otherMoons)
         {
             if (m.gameObject.activeSelf)
@@ -138,6 +144,8 @@ public class MoonManager : Singleton<MoonManager>
         }
             
         yield return new WaitForSeconds(time);
+        mainMoon.SetDmg(1);
+        mainMoon.ChangeMoonSprite(standardMoonSkin);
         foreach (Moon m in otherMoons)
         {
             if (m.gameObject.activeSelf)
@@ -155,6 +163,7 @@ public class MoonManager : Singleton<MoonManager>
     {
         if (moonsInGame == 1)
         {
+            mainMoon.ChangeMoonSprite(halfMoonSkin);
             for (int i = 0; i < howManyShythes; i++)
             {
                 Moon scythe = Instantiate(moonPref, mainMoon.transform.position, Quaternion.identity);
@@ -188,10 +197,24 @@ public class MoonManager : Singleton<MoonManager>
         
     }
 
-
+    public void CleanScreenFromMoons()
+    {
+        mainMoon.gameObject.SetActive(false);
+        foreach (Moon m in otherMoons)
+        {
+            Destroy(m);
+        }
+        otherMoons.Clear();
+        moonsInGame = 0;
+    }
 
     public void EffectsReset()
     {
+
+        mainMoon?.SetDmg(1);
+        mainMoon?.ChangeMoonSprite(standardMoonSkin);
+        mainMoon?.Spin(false);
+
         foreach (Moon m in otherMoons)
         {
 

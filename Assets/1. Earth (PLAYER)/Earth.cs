@@ -78,10 +78,12 @@ public class Earth : Singleton<Earth>
             case GameManager.GameState.Gameover:
                 gameObject.GetComponent<EarthController>().GoPlay(false);
                 Invulnerability(true);
+                EffectsReset();
                 break;
             case GameManager.GameState.Win:
                 gameObject.GetComponent<EarthController>().GoPlay(false);
                 Invulnerability(true);
+                EffectsReset();
                 break;
         }
     }
