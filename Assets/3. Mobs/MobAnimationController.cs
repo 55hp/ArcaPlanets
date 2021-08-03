@@ -6,7 +6,7 @@ public class MobAnimationController : MonoBehaviour
 {
 
     bool alive;
-    static Vector3 startingPosition;
+    Vector3 startingPosition;
     Color startingColor;
 
     float movementSpeed;
@@ -21,22 +21,18 @@ public class MobAnimationController : MonoBehaviour
         Fast =3
     }
 
-    private void Start()
+    public void SetMovement(bool upDown , float maxDistance , MovSpeed speed)
     {
         startingColor = gameObject.GetComponent<SpriteRenderer>().color;
         startingPosition = this.gameObject.transform.position;
-    }
-
-    public void SetMovement(bool upDown , float maxDistance , MovSpeed speed)
-    {
         StopAllCoroutines();
         alive = this.GetComponent<Mob>().ImAlive();
 
-        if (!upDown && maxDistance > 0)
+        if (!upDown && maxDistance > 0 && alive)
         {
             StartCoroutine(IdleLeftRight());
         }
-        else if (upDown && maxDistance > 0)
+        else if (upDown && maxDistance > 0 && alive)
         {
             StartCoroutine(IdleUpDown());
         }

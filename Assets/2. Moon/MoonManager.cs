@@ -75,7 +75,14 @@ public class MoonManager : Singleton<MoonManager>
     {
         Vector3 earthPosition = Earth.Instance.gameObject.transform.position;
         Vector3 startingPosition = new Vector3(earthPosition.x, earthPosition.y + 2f, 0);
-        mainMoon = Instantiate(moonPref, startingPosition, Quaternion.identity);
+        if(mainMoon == null)
+        {
+            mainMoon = Instantiate(moonPref, startingPosition, Quaternion.identity);
+        }
+        else
+        {
+            mainMoon.gameObject.SetActive(true);
+        }
         moonsInGame = 1;
     }
 
@@ -93,13 +100,12 @@ public class MoonManager : Singleton<MoonManager>
         {
             me.gameObject.SetActive(false);
         }
-
-
+        
         moonsInGame--;
+
         if(moonsInGame == 0)
         {
             EventManager.LoseLife();
-
             if(playing)
             RestartMainMoon();
         }
@@ -147,7 +153,7 @@ public class MoonManager : Singleton<MoonManager>
     //Cambio sprite + Creazione di altre n lune con sprite specifici.
     public void MoonScythes(int howManyShythes)
     {
-        if (moonsInGame < 3)
+        if (moonsInGame == 1)
         {
             for (int i = 0; i < howManyShythes; i++)
             {

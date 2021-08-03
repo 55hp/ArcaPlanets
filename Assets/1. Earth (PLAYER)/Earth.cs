@@ -57,8 +57,8 @@ public class Earth : Singleton<Earth>
         alive = true;
         lowerShield.SetActive(false);
 
-        leftCannon.InitGun(projectiles[0], 0.4f, 0.8f);
-        rightCannon.InitGun(projectiles[0], 0, 0.8f);
+        leftCannon.InitGun(projectiles[0], 0.6f, 1.2f);
+        rightCannon.InitGun(projectiles[0], 0, 1.2f);
     }
 
     public void OnStateChanged(GameManager.GameState newState)
