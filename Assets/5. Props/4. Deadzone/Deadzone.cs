@@ -6,11 +6,7 @@ public class Deadzone : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Moon"))
-        {
-            EventManager.LoseLife();
-        }
-        else
+        if (!collision.gameObject.CompareTag("Moon"))
         {
             Destroy(collision.gameObject);
         }

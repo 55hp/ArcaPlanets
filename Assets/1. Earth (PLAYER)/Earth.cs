@@ -71,14 +71,17 @@ public class Earth : Singleton<Earth>
                 break;
             case GameManager.GameState.Play:
                 gameObject.GetComponent<EarthController>().GoPlay(true);
+                Invulnerability(false);
                 break;
             case GameManager.GameState.Pause:
                 break;
             case GameManager.GameState.Gameover:
                 gameObject.GetComponent<EarthController>().GoPlay(false);
+                Invulnerability(true);
                 break;
             case GameManager.GameState.Win:
                 gameObject.GetComponent<EarthController>().GoPlay(false);
+                Invulnerability(true);
                 break;
         }
     }
@@ -89,11 +92,14 @@ public class Earth : Singleton<Earth>
     /// <param name="dmg"></param>
     public void LoseLife()
     {
-        myHp--;
-        if (myHp <= 0)
+        if (gameObject.layer == 8)
         {
-            alive = false;
-            EventManager.ChangeGameState(GameState.Gameover);
+            myHp--;
+            if (myHp <= 0)
+            {
+                alive = false;
+                EventManager.ChangeGameState(GameState.Gameover);
+            }
         }
     }
 
@@ -110,6 +116,7 @@ public class Earth : Singleton<Earth>
 
     public void SetHP(int amount)
     {
+        if(gameObject.layer == 8)
         myHp = amount;
     }
 
@@ -144,6 +151,17 @@ public class Earth : Singleton<Earth>
                 ballRb.AddForce(new Vector2((Mathf.Abs(difference * 200)), 50));
             }
         }
+    }
+
+
+    public void Invulnerability(bool on)
+    {
+        if(on)
+            gameObject.layer = 26;
+        else
+            gameObject.layer = 8;
+
+
     }
 
 

@@ -36,7 +36,6 @@ public class MoonManager : Singleton<MoonManager>
         switch (newState)
         {
             case GameManager.GameState.Boot:
-                playing = false;
                 InitGame();
                 break;
             case GameManager.GameState.Play:
@@ -45,9 +44,11 @@ public class MoonManager : Singleton<MoonManager>
                 break;
             case GameManager.GameState.Gameover:
                 EffectsReset();
+                playing = false;
                 break;
             case GameManager.GameState.Win:
                 EffectsReset();
+                playing = false;
                 break;
         }
     }
@@ -97,6 +98,9 @@ public class MoonManager : Singleton<MoonManager>
         moonsInGame--;
         if(moonsInGame == 0)
         {
+            EventManager.LoseLife();
+
+            if(playing)
             RestartMainMoon();
         }
     }
@@ -106,7 +110,7 @@ public class MoonManager : Singleton<MoonManager>
         Vector3 earthPosition = Earth.Instance.gameObject.transform.position;
         Vector3 startingPosition = new Vector3(earthPosition.x, earthPosition.y + .7f, 0);
         mainMoon.gameObject.SetActive(true);
-        moonsInGame = 1;
+        moonsInGame++;
         mainMoon.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
         mainMoon.transform.position = startingPosition;
         mainMoon.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, initialMoonSpeed));
@@ -143,12 +147,16 @@ public class MoonManager : Singleton<MoonManager>
     //Cambio sprite + Creazione di altre n lune con sprite specifici.
     public void MoonScythes(int howManyShythes)
     {
-        for(int i = 0; i<howManyShythes; i++)
+        if (moonsInGame < 3)
         {
-            var scythe = Instantiate(moonPref, mainMoon.transform.position, Quaternion.identity);
-            scythe.ChangeMoonSprite(halfMoonSkin);
-            otherMoons.Add(scythe);
-            scythe.Spin(true);
+            for (int i = 0; i < howManyShythes; i++)
+            {
+                Moon scythe = Instantiate(moonPref, mainMoon.transform.position, Quaternion.identity);
+                scythe.ChangeMoonSprite(halfMoonSkin);
+                scythe.Spin(true);
+                otherMoons.Add(scythe);
+                moonsInGame++;
+            }
         }
     }
 

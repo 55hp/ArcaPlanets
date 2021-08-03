@@ -46,7 +46,11 @@ public class Moon : MonoBehaviour
     {
         myRb.velocity = constantSpeed * (myRb.velocity.normalized);
 
-        if(spinning) transform.Rotate(Vector3.forward * 3f, Space.Self);
+        if (spinning)
+        {
+            transform.Rotate(Vector3.forward * 3f, Space.Self);
+            Debug.Log("spinno!!!");
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)

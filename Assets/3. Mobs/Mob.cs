@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Mob : MonoBehaviour
 {
+    
+
     //Well, this is my face... it's separated from my body.
     [SerializeField] GameObject myFace;
 
@@ -65,6 +67,7 @@ public class Mob : MonoBehaviour
 
     public void DecreaseLife(float damage)
     {
+        gameObject.GetComponent<MobAnimationController>().TakeDamageAnimation();
         actualHp -= damage;
 
         if(imTheBoss)
@@ -84,5 +87,21 @@ public class Mob : MonoBehaviour
         }
     }
 
+    public bool ImAlive()
+    {
+        if(actualHp > 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public bool ImThePlanet()
+    {
+        return imTheBoss;
+    }
     
 }

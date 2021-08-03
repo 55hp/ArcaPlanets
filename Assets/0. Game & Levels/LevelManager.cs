@@ -9,7 +9,10 @@ public class LevelManager : MonoBehaviour
     [SerializeField] GameObject rightWall;
     [SerializeField] GameObject leftWall;
     [SerializeField] GameObject topWall;
+
+    [SerializeField] GameObject topDeadzone;
     
+
 
     public void SetWalls()
     {
@@ -18,7 +21,6 @@ public class LevelManager : MonoBehaviour
 
 
         topWall.transform.position = new Vector3(0 ,Camera.main.orthographicSize + 0.5f, 0);
-
         rightWall.transform.position = new Vector3(Camera.main.orthographicSize * Camera.main.aspect + 0.5f , 0 , 0);
         leftWall.transform.position = new Vector3(-Camera.main.orthographicSize * Camera.main.aspect - 0.5f , 0 , 0);
     }
@@ -44,7 +46,7 @@ public class LevelManager : MonoBehaviour
         switch (newState)
         {
             case GameManager.GameState.Boot:
-                mobManager.SetNumberOfMobsForThisStage(3);
+                mobManager.SetNumberOfMobsForThisStage(4);
                 mobManager.InitMobs();
                 break;
             case GameManager.GameState.Play:
@@ -59,7 +61,5 @@ public class LevelManager : MonoBehaviour
                 break;
         }
     }
-
-
 
 }

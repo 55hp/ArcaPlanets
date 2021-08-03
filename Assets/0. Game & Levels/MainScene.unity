@@ -193,7 +193,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 222585023
   m_SortingLayer: 4
-  m_SortingOrder: 1
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: c4b073ea2dfd09d48880bc2b774f8ad5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -835,6 +835,7 @@ GameObject:
   - component: {fileID: 468308823}
   - component: {fileID: 468308822}
   - component: {fileID: 468308826}
+  - component: {fileID: 468308827}
   m_Layer: 14
   m_Name: Satellite Bot Left
   m_TagString: Mob
@@ -946,7 +947,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 222585023
   m_SortingLayer: 4
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: f81bbfa182bd20a48ad7915947a4b3d7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -968,6 +969,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1d449a5157fb66d4ea4c09e10b033c40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &468308827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 468308820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03c0e76973c617a429fc09c8b0bd80ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &506192668
@@ -1142,7 +1155,7 @@ GameObject:
   m_Component:
   - component: {fileID: 522608176}
   - component: {fileID: 522608177}
-  m_Layer: 0
+  m_Layer: 26
   m_Name: Mobs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1527,6 +1540,7 @@ GameObject:
   - component: {fileID: 670402319}
   - component: {fileID: 670402318}
   - component: {fileID: 670402322}
+  - component: {fileID: 670402323}
   m_Layer: 14
   m_Name: Satellite Bot Right
   m_TagString: Mob
@@ -1638,7 +1652,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 222585023
   m_SortingLayer: 4
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: f81bbfa182bd20a48ad7915947a4b3d7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1662,6 +1676,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d449a5157fb66d4ea4c09e10b033c40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &670402323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 670402316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03c0e76973c617a429fc09c8b0bd80ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &684130935
 GameObject:
   m_ObjectHideFlags: 0
@@ -1676,6 +1702,7 @@ GameObject:
   - component: {fileID: 684130938}
   - component: {fileID: 684130937}
   - component: {fileID: 684130941}
+  - component: {fileID: 684130942}
   m_Layer: 14
   m_Name: Satellite Top Right
   m_TagString: Mob
@@ -1787,7 +1814,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 222585023
   m_SortingLayer: 4
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: f81bbfa182bd20a48ad7915947a4b3d7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1809,6 +1836,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1d449a5157fb66d4ea4c09e10b033c40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &684130942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 684130935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03c0e76973c617a429fc09c8b0bd80ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &705780025
@@ -2516,7 +2555,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 222585023
   m_SortingLayer: 4
-  m_SortingOrder: 1
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: c4b073ea2dfd09d48880bc2b774f8ad5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -2641,7 +2680,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 222585023
   m_SortingLayer: 4
-  m_SortingOrder: 1
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: c4b073ea2dfd09d48880bc2b774f8ad5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -2667,6 +2706,7 @@ GameObject:
   - component: {fileID: 1138512298}
   - component: {fileID: 1138512297}
   - component: {fileID: 1138512299}
+  - component: {fileID: 1138512300}
   m_Layer: 14
   m_Name: Planet (Boss)
   m_TagString: Mob
@@ -2802,6 +2842,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d449a5157fb66d4ea4c09e10b033c40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1138512300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1138512293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03c0e76973c617a429fc09c8b0bd80ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1233416194
 GameObject:
   m_ObjectHideFlags: 0
@@ -2907,6 +2959,7 @@ MonoBehaviour:
   rightWall: {fileID: 343015707}
   leftWall: {fileID: 1889447198}
   topWall: {fileID: 1064879539}
+  topDeadzone: {fileID: 972716115911327458}
 --- !u!1 &1329367717
 GameObject:
   m_ObjectHideFlags: 0
@@ -3208,7 +3261,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 222585023
   m_SortingLayer: 4
-  m_SortingOrder: 1
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: c4b073ea2dfd09d48880bc2b774f8ad5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -3907,6 +3960,7 @@ GameObject:
   - component: {fileID: 1872423478}
   - component: {fileID: 1872423477}
   - component: {fileID: 1872423481}
+  - component: {fileID: 1872423482}
   m_Layer: 14
   m_Name: Satellite Top Left
   m_TagString: Mob
@@ -4018,7 +4072,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 222585023
   m_SortingLayer: 4
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: f81bbfa182bd20a48ad7915947a4b3d7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -4040,6 +4094,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1d449a5157fb66d4ea4c09e10b033c40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1872423482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1872423475}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03c0e76973c617a429fc09c8b0bd80ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1883431416
@@ -5086,7 +5152,7 @@ GameObject:
   - component: {fileID: 4233493739437068369}
   - component: {fileID: 4233493739437068371}
   - component: {fileID: 4233493739437068372}
-  m_Layer: 0
+  m_Layer: 26
   m_Name: Asteroid & Power up Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}

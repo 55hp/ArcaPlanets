@@ -40,7 +40,8 @@ public class MobManager : MonoBehaviour
         //Planet generation
         mobsGameobjects[0].gameObject.SetActive(true);
         mobsGameobjects[0].MakeMeTheEvilestPlanetOfTheStage(30, Ut.ROA(planetBodies), Ut.ROA(planetFaces), Ut.ROA(planetColors));
-        
+        mobsGameobjects[0].GetComponent<MobAnimationController>().SetMovement(Ut.TossCoin(), 0.8f, MobAnimationController.MovSpeed.Slow);
+
 
         //Satellite generation
         for (int i = 1; i <= thisStageMobs; i++)
@@ -48,6 +49,7 @@ public class MobManager : MonoBehaviour
             mobsGameobjects[i].gameObject.SetActive(true);
             mobsGameobjects[i].MakeMeAnAttractiveSatellite(10, Ut.ROA(satBodies), Ut.ROA(satFaces), Ut.ROA(satColors));
             mobsGameobjects[i].GiveMeAGun(enemyBullets[0], 1, 5);
+            mobsGameobjects[i].GetComponent<MobAnimationController>().SetMovement(Ut.TossCoin(), 0.7f, MobAnimationController.MovSpeed.Slow);
         }
     }
 
