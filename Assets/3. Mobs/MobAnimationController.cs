@@ -21,13 +21,23 @@ public class MobAnimationController : MonoBehaviour
         Fast =3
     }
 
-    public void SetMovement(bool upDown , float maxDistance , MovSpeed speed)
+    private void OnEnable()
     {
         startingColor = gameObject.GetComponent<SpriteRenderer>().color;
         startingPosition = this.gameObject.transform.position;
-        StopAllCoroutines();
         alive = this.GetComponent<Mob>().ImAlive();
+    }
 
+    private void OnDisable()
+    {
+        gameObject.GetComponent<SpriteRenderer>().color = startingColor;
+        gameObject.transform.position = startingPosition;
+        StopAllCoroutines();
+        alive = false;
+    }
+
+    public void MakeMeMoving(bool upDown , float maxDistance , MovSpeed speed)
+    {
         if (!upDown && maxDistance > 0 && alive)
         {
             StartCoroutine(IdleLeftRight());
@@ -115,7 +125,7 @@ public class MobAnimationController : MonoBehaviour
         }
     }
 
-    public void TakeDamageAnimation()
+    public void HitAnimation()
     {
         StartCoroutine(Ouch());
     }

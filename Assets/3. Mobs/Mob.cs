@@ -67,7 +67,7 @@ public class Mob : MonoBehaviour
 
     public void DecreaseLife(float damage)
     {
-        gameObject.GetComponent<MobAnimationController>().TakeDamageAnimation();
+        gameObject.GetComponent<MobAnimationController>().HitAnimation();
         actualHp -= damage;
 
         if(imTheBoss)
