@@ -40,18 +40,11 @@ public class Mob : MonoBehaviour
         myFace.GetComponent<SpriteRenderer>().sprite = face;
         gameObject.GetComponent<SpriteRenderer>().color = color;
     }
-
-    public void GiveMeAGun(GameObject bullet , float startingFire , float fireRate)
+    
+    public void Live()
     {
-        myBeautifulGun = GetComponent<ShootingModule>();
-        myBeautifulGun.InitGun(bullet, startingFire, fireRate);
-        myBeautifulGun.TurnOn();
-    }
-
-    private void OnDisable()
-    {
-        if(myBeautifulGun != null)
-        myBeautifulGun.TurnOff();
+        gameObject.SetActive(true);
+        myFace.SetActive(true);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

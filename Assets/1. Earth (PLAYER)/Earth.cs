@@ -18,12 +18,6 @@ public class Earth : Singleton<Earth>
 
     [SerializeField] GameObject lowerShield;
 
-    [SerializeField] GameObject[] projectiles;
-    [SerializeField] ShootingModule leftCannon;
-    [SerializeField] ShootingModule rightCannon;
-
-
-
     [SerializeField] GameObject myWeapon;
 
 
@@ -56,9 +50,6 @@ public class Earth : Singleton<Earth>
         myHp = 3;
         alive = true;
         lowerShield.SetActive(false);
-
-        leftCannon.InitGun(projectiles[0], 0.6f, 1.2f);
-        rightCannon.InitGun(projectiles[0], 0, 1.2f);
     }
 
     public void OnStateChanged(GameManager.GameState newState)
@@ -189,9 +180,7 @@ public class Earth : Singleton<Earth>
         lowerShield.SetActive(false);
 
         //Double bullets effect reset
-        myWeapon.GetComponent<SpriteRenderer>().enabled = false;
-        leftCannon.TurnOff();
-        rightCannon.TurnOff();
+        myWeapon.SetActive(false);
 
     }
 
@@ -232,15 +221,9 @@ public class Earth : Singleton<Earth>
 
     public IEnumerator DoubleBullets(float timer)
     {
-
-        myWeapon.GetComponent<SpriteRenderer>().enabled = true;
-        leftCannon.TurnOn();
-        rightCannon.TurnOn();
-
+        myWeapon.SetActive(true);
         yield return new WaitForSeconds(timer);
-        myWeapon.GetComponent<SpriteRenderer>().enabled = false;
-        leftCannon.TurnOff();
-        rightCannon.TurnOff();
+        myWeapon.SetActive(false);
     }
     #endregion
 

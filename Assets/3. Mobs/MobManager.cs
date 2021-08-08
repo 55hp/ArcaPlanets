@@ -39,16 +39,15 @@ public class MobManager : MonoBehaviour
     {
         //Planet generation
         mobsGameobjects[0].MakeMeTheEvilestPlanetOfTheStage(30, Ut.ROA(planetBodies), Ut.ROA(planetFaces), Ut.ROA(planetColors));
-        mobsGameobjects[0].gameObject.SetActive(true);
+        mobsGameobjects[0].Live();
         mobsGameobjects[0].GetComponent<MobAnimationController>().MakeMeMoving(Ut.TossCoin(), 0.5f, MobAnimationController.MovSpeed.Slow);
 
         //Satellite generation
         for (int i = 1; i <= thisStageMobs; i++)
         {
             mobsGameobjects[i].MakeMeAnAttractiveSatellite(10, Ut.ROA(satBodies), Ut.ROA(satFaces), Ut.ROA(satColors));
-            
-            mobsGameobjects[i].gameObject.SetActive(true);
-            mobsGameobjects[i].GiveMeAGun(enemyBullets[0], 1, 5);
+
+            mobsGameobjects[i].Live();
             mobsGameobjects[i].GetComponent<MobAnimationController>().MakeMeMoving(Ut.TossCoin(), 0.3f, MobAnimationController.MovSpeed.Slow);
         }
     }

@@ -1,30 +1,26 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class ShootingModule : MonoBehaviour
 {
-    GameObject projectileType;
-    IEnumerator myShootingStyle;
-    
-    public void InitGun( GameObject projectileType, float startingTime, float rateOfFire)
+    [SerializeField] GameObject projectileType;
+    [SerializeField] float startingTime;
+    [SerializeField] float fireRate;
+
+
+    private void OnEnable()
     {
-        this.projectileType = projectileType;
-        myShootingStyle = Shoot(startingTime, rateOfFire);
+        StartCoroutine(Shoot());
+    }
+
+    private void OnDisable()
+    {
+        StopCoroutine(Shoot());
     }
 
 
-    public void TurnOn()
-    {
-        StartCoroutine(myShootingStyle);
-    }
-
-    public void TurnOff()
-    {
-        StopCoroutine(myShootingStyle);
-    }
-    
-    
-    IEnumerator Shoot(float startingTime , float fireRate)
+    IEnumerator Shoot()
     {
         yield return new WaitForSeconds(startingTime);
         while (true)
