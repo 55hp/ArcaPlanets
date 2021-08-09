@@ -15,6 +15,7 @@ TagManager:
   - PowerUp
   - EarthShields
   - Wall
+  - MobShield
   layers:
   - Default
   - TransparentFX

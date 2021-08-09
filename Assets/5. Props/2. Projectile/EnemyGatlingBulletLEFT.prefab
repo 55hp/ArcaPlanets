@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &576211358216060772
+--- !u!1 &3246662169968701974
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,38 +8,38 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6476629955515524237}
-  - component: {fileID: 4594040853127298835}
-  - component: {fileID: 1988751479775966557}
-  - component: {fileID: 3431257001284830359}
-  m_Layer: 9
-  m_Name: EarthDoubleBullet
-  m_TagString: EarthProjectile
+  - component: {fileID: 1779354535998285689}
+  - component: {fileID: 4127799335033473245}
+  - component: {fileID: 1777467616556612258}
+  - component: {fileID: 4771083811777918601}
+  m_Layer: 15
+  m_Name: EnemyGatlingBulletLEFT
+  m_TagString: MobProjectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6476629955515524237
+--- !u!4 &1779354535998285689
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 576211358216060772}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.8101271, y: -6.22, z: -2.3475966}
-  m_LocalScale: {x: 0.4, y: 0.4, z: 1}
+  m_GameObject: {fileID: 3246662169968701974}
+  m_LocalRotation: {x: 0, y: 0, z: -0.38268343, w: 0.92387956}
+  m_LocalPosition: {x: -0.058, y: -6.37, z: -2.3475966}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &4594040853127298835
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -45}
+--- !u!212 &4127799335033473245
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 576211358216060772}
+  m_GameObject: {fileID: 3246662169968701974}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -70,11 +70,11 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 904118465
-  m_SortingLayer: 3
+  m_SortingLayerID: -255783749
+  m_SortingLayer: 6
   m_SortingOrder: 4
-  m_Sprite: {fileID: 21300000, guid: 7af83946bfc0e494c9209ce2ed62d03c, type: 3}
-  m_Color: {r: 0.03529412, g: 0.96470594, b: 0.27450982, a: 1}
+  m_Sprite: {fileID: 21300000, guid: eeb079356a9b7e84daafe21ed61156f9, type: 3}
+  m_Color: {r: 0.8588236, g: 0.27450982, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -84,39 +84,29 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &1988751479775966557
-BoxCollider2D:
+--- !u!58 &1777467616556612258
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 576211358216060772}
+  m_GameObject: {fileID: 3246662169968701974}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.5}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.56, y: 2.56}
-    newSize: {x: 0.28, y: 0.3}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
+  m_Offset: {x: 0, y: -0.56}
   serializedVersion: 2
-  m_Size: {x: 0.4, y: 0.48}
-  m_EdgeRadius: 0
---- !u!114 &3431257001284830359
+  m_Radius: 0.2
+--- !u!114 &4771083811777918601
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 576211358216060772}
+  m_GameObject: {fileID: 3246662169968701974}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 24679bd91cb8e224c9fbede65d076539, type: 3}
@@ -124,4 +114,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dmg: 1
   speed: 3
-  direction: 0
+  direction: 2

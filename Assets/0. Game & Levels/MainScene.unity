@@ -295,13 +295,14 @@ GameObject:
   - component: {fileID: 44623692}
   - component: {fileID: 44623694}
   - component: {fileID: 44623693}
-  m_Layer: 0
+  - component: {fileID: 44623695}
+  m_Layer: 16
   m_Name: PlanetShield
-  m_TagString: EarthShields
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &44623692
 Transform:
   m_ObjectHideFlags: 0
@@ -372,7 +373,7 @@ SpriteRenderer:
   m_SortingLayerID: 309056317
   m_SortingLayer: 8
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 27bcff87dd8b255498e7f9c0bcb61ced, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 0.6745283, g: 1, b: 0.8703267, a: 0.48235294}
   m_FlipX: 0
   m_FlipY: 0
@@ -380,9 +381,30 @@ SpriteRenderer:
   m_Size: {x: 10.24, y: 10.24}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!50 &44623695
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 44623691}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 6200000, guid: e065846e3c0f97646b73a12f11ab758c, type: 2}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &76161770
 GameObject:
   m_ObjectHideFlags: 0
@@ -734,9 +756,10 @@ GameObject:
   - component: {fileID: 188530716}
   - component: {fileID: 188530718}
   - component: {fileID: 188530717}
-  m_Layer: 0
+  - component: {fileID: 188530719}
+  m_Layer: 16
   m_Name: MobShield
-  m_TagString: EarthShields
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -811,7 +834,7 @@ SpriteRenderer:
   m_SortingLayerID: 309056317
   m_SortingLayer: 8
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 27bcff87dd8b255498e7f9c0bcb61ced, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 0.6745283, g: 1, b: 0.8703267, a: 0.48235294}
   m_FlipX: 0
   m_FlipY: 0
@@ -819,9 +842,30 @@ SpriteRenderer:
   m_Size: {x: 10.24, y: 10.24}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!50 &188530719
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 188530715}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 6200000, guid: e065846e3c0f97646b73a12f11ab758c, type: 2}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &191762824
 GameObject:
   m_ObjectHideFlags: 0
@@ -1030,9 +1074,10 @@ GameObject:
   - component: {fileID: 347414552}
   - component: {fileID: 347414554}
   - component: {fileID: 347414553}
-  m_Layer: 0
+  - component: {fileID: 347414555}
+  m_Layer: 16
   m_Name: MobShield
-  m_TagString: EarthShields
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1107,7 +1152,7 @@ SpriteRenderer:
   m_SortingLayerID: 309056317
   m_SortingLayer: 8
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 27bcff87dd8b255498e7f9c0bcb61ced, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 0.6745283, g: 1, b: 0.8703267, a: 0.48235294}
   m_FlipX: 0
   m_FlipY: 0
@@ -1115,9 +1160,30 @@ SpriteRenderer:
   m_Size: {x: 10.24, y: 10.24}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!50 &347414555
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 347414551}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 6200000, guid: e065846e3c0f97646b73a12f11ab758c, type: 2}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &468308820
 GameObject:
   m_ObjectHideFlags: 0
@@ -1133,6 +1199,7 @@ GameObject:
   - component: {fileID: 468308822}
   - component: {fileID: 468308826}
   - component: {fileID: 468308827}
+  - component: {fileID: 468308828}
   m_Layer: 14
   m_Name: Satellite Bot Left
   m_TagString: Mob
@@ -1264,14 +1331,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 468308820}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1d449a5157fb66d4ea4c09e10b033c40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileType: {fileID: 4883759050254856589, guid: 249221f83a4b74e4ab34c32938144486, type: 3}
-  startingTime: 0
-  fireRate: 4
+  bullet: {fileID: 3246662169968701974, guid: b31a037311962b5428492a164abcda57, type: 3}
 --- !u!114 &468308827
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1284,6 +1349,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03c0e76973c617a429fc09c8b0bd80ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &468308828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 468308820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1222acbc1205c2a468fda450203b1201, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shieldSprites:
+  - {fileID: 21300000, guid: 27bcff87dd8b255498e7f9c0bcb61ced, type: 3}
+  - {fileID: 21300000, guid: 257ebd5f734788e448d4161c92d14ca6, type: 3}
+  shield: {fileID: 347414551}
 --- !u!1 &506192668
 GameObject:
   m_ObjectHideFlags: 0
@@ -1525,8 +1606,10 @@ MonoBehaviour:
   - {r: 0.75294125, g: 0.15686275, b: 0.27058825, a: 1}
   enemyBullets:
   - {fileID: 4883759050254856589, guid: 249221f83a4b74e4ab34c32938144486, type: 3}
-  - {fileID: 4883759050254856589, guid: 249221f83a4b74e4ab34c32938144486, type: 3}
   - {fileID: 3246662169968701974, guid: b31a037311962b5428492a164abcda57, type: 3}
+  - {fileID: 4277247500659302408, guid: 16adebff6ef716a4e8f03e3a52377d88, type: 3}
+  - {fileID: 3246662169968701974, guid: 7e9b9e79b172a5c418ae8cf20eca21b3, type: 3}
+  - {fileID: 3246662169968701974, guid: 33d2812fd6d89b347bfb54fa9a7197bd, type: 3}
 --- !u!1 &551446090
 GameObject:
   m_ObjectHideFlags: 0
@@ -1842,6 +1925,7 @@ GameObject:
   - component: {fileID: 670402318}
   - component: {fileID: 670402322}
   - component: {fileID: 670402323}
+  - component: {fileID: 670402324}
   m_Layer: 14
   m_Name: Satellite Bot Right
   m_TagString: Mob
@@ -1973,14 +2057,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 670402316}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1d449a5157fb66d4ea4c09e10b033c40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileType: {fileID: 3246662169968701974, guid: b31a037311962b5428492a164abcda57, type: 3}
-  startingTime: 0
-  fireRate: 3
+  bullet: {fileID: 3246662169968701974, guid: b31a037311962b5428492a164abcda57, type: 3}
 --- !u!114 &670402323
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1993,6 +2075,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03c0e76973c617a429fc09c8b0bd80ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &670402324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 670402316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1222acbc1205c2a468fda450203b1201, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shieldSprites:
+  - {fileID: 21300000, guid: 27bcff87dd8b255498e7f9c0bcb61ced, type: 3}
+  - {fileID: 21300000, guid: 257ebd5f734788e448d4161c92d14ca6, type: 3}
+  shield: {fileID: 807438740}
 --- !u!1 &684130935
 GameObject:
   m_ObjectHideFlags: 0
@@ -2008,6 +2106,7 @@ GameObject:
   - component: {fileID: 684130937}
   - component: {fileID: 684130941}
   - component: {fileID: 684130942}
+  - component: {fileID: 684130943}
   m_Layer: 14
   m_Name: Satellite Top Right
   m_TagString: Mob
@@ -2139,14 +2238,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 684130935}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1d449a5157fb66d4ea4c09e10b033c40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileType: {fileID: 4883759050254856589, guid: 249221f83a4b74e4ab34c32938144486, type: 3}
-  startingTime: 0
-  fireRate: 4
+  bullet: {fileID: 3246662169968701974, guid: b31a037311962b5428492a164abcda57, type: 3}
 --- !u!114 &684130942
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2159,6 +2256,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03c0e76973c617a429fc09c8b0bd80ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &684130943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 684130935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1222acbc1205c2a468fda450203b1201, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shieldSprites:
+  - {fileID: 21300000, guid: 27bcff87dd8b255498e7f9c0bcb61ced, type: 3}
+  - {fileID: 21300000, guid: 257ebd5f734788e448d4161c92d14ca6, type: 3}
+  shield: {fileID: 1644881270}
 --- !u!1 &705780025
 GameObject:
   m_ObjectHideFlags: 0
@@ -2314,9 +2427,10 @@ GameObject:
   - component: {fileID: 807438741}
   - component: {fileID: 807438743}
   - component: {fileID: 807438742}
-  m_Layer: 0
+  - component: {fileID: 807438744}
+  m_Layer: 16
   m_Name: MobShield
-  m_TagString: EarthShields
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2391,7 +2505,7 @@ SpriteRenderer:
   m_SortingLayerID: 309056317
   m_SortingLayer: 8
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 27bcff87dd8b255498e7f9c0bcb61ced, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 0.6745283, g: 1, b: 0.8703267, a: 0.48235294}
   m_FlipX: 0
   m_FlipY: 0
@@ -2399,9 +2513,30 @@ SpriteRenderer:
   m_Size: {x: 10.24, y: 10.24}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!50 &807438744
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 807438740}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 6200000, guid: e065846e3c0f97646b73a12f11ab758c, type: 2}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &814977568
 GameObject:
   m_ObjectHideFlags: 0
@@ -2697,6 +2832,9 @@ MonoBehaviour:
   propulsor: {fileID: 2624492326627342266}
   lowerShield: {fileID: 126206982}
   myWeapon: {fileID: 6202535544554089279}
+  leftCannon: {fileID: 301971980099642187}
+  rightCannon: {fileID: 7925415663576742346}
+  earthBullet: {fileID: 576211358216060772, guid: ad9c320fcb3863946a4cd1d755dd0052, type: 3}
   earthSprites:
   - {fileID: 21300000, guid: bf5d42d1a6a6ed348800091876f65928, type: 3}
   - {fileID: 21300000, guid: 71b3a0566a10a4b4099e8075a1c6cb88, type: 3}
@@ -3111,6 +3249,7 @@ GameObject:
   - component: {fileID: 1138512297}
   - component: {fileID: 1138512299}
   - component: {fileID: 1138512300}
+  - component: {fileID: 1138512301}
   m_Layer: 14
   m_Name: Planet (Boss)
   m_TagString: Mob
@@ -3242,14 +3381,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1138512293}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1d449a5157fb66d4ea4c09e10b033c40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileType: {fileID: 4277247500659302408, guid: 16adebff6ef716a4e8f03e3a52377d88, type: 3}
-  startingTime: 0
-  fireRate: 2
+  bullet: {fileID: 3246662169968701974, guid: b31a037311962b5428492a164abcda57, type: 3}
 --- !u!114 &1138512300
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3262,6 +3399,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03c0e76973c617a429fc09c8b0bd80ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1138512301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1138512293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1222acbc1205c2a468fda450203b1201, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shieldSprites:
+  - {fileID: 21300000, guid: 27bcff87dd8b255498e7f9c0bcb61ced, type: 3}
+  - {fileID: 21300000, guid: 257ebd5f734788e448d4161c92d14ca6, type: 3}
+  shield: {fileID: 44623691}
 --- !u!1 &1233416194
 GameObject:
   m_ObjectHideFlags: 0
@@ -3863,9 +4016,10 @@ GameObject:
   - component: {fileID: 1644881271}
   - component: {fileID: 1644881273}
   - component: {fileID: 1644881272}
-  m_Layer: 0
+  - component: {fileID: 1644881274}
+  m_Layer: 16
   m_Name: MobShield
-  m_TagString: EarthShields
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3940,7 +4094,7 @@ SpriteRenderer:
   m_SortingLayerID: 309056317
   m_SortingLayer: 8
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 27bcff87dd8b255498e7f9c0bcb61ced, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 0.6745283, g: 1, b: 0.8703267, a: 0.48235294}
   m_FlipX: 0
   m_FlipY: 0
@@ -3948,9 +4102,30 @@ SpriteRenderer:
   m_Size: {x: 10.24, y: 10.24}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!50 &1644881274
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1644881270}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 6200000, guid: e065846e3c0f97646b73a12f11ab758c, type: 2}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &1664119000
 GameObject:
   m_ObjectHideFlags: 0
@@ -4468,6 +4643,7 @@ GameObject:
   - component: {fileID: 1872423477}
   - component: {fileID: 1872423481}
   - component: {fileID: 1872423482}
+  - component: {fileID: 1872423483}
   m_Layer: 14
   m_Name: Satellite Top Left
   m_TagString: Mob
@@ -4599,14 +4775,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1872423475}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1d449a5157fb66d4ea4c09e10b033c40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileType: {fileID: 3246662169968701974, guid: b31a037311962b5428492a164abcda57, type: 3}
-  startingTime: 0
-  fireRate: 3
+  bullet: {fileID: 3246662169968701974, guid: b31a037311962b5428492a164abcda57, type: 3}
 --- !u!114 &1872423482
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4619,6 +4793,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03c0e76973c617a429fc09c8b0bd80ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1872423483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1872423475}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1222acbc1205c2a468fda450203b1201, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shieldSprites:
+  - {fileID: 21300000, guid: 27bcff87dd8b255498e7f9c0bcb61ced, type: 3}
+  - {fileID: 21300000, guid: 257ebd5f734788e448d4161c92d14ca6, type: 3}
+  shield: {fileID: 188530715}
 --- !u!1 &1883431416
 GameObject:
   m_ObjectHideFlags: 0
@@ -5362,9 +5552,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d449a5157fb66d4ea4c09e10b033c40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileType: {fileID: 576211358216060772, guid: ad9c320fcb3863946a4cd1d755dd0052, type: 3}
-  startingTime: 0
-  fireRate: 1
+  bullet: {fileID: 576211358216060772, guid: ad9c320fcb3863946a4cd1d755dd0052, type: 3}
 --- !u!4 &1573066096824376427
 Transform:
   m_ObjectHideFlags: 0
@@ -5779,9 +5967,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d449a5157fb66d4ea4c09e10b033c40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileType: {fileID: 576211358216060772, guid: ad9c320fcb3863946a4cd1d755dd0052, type: 3}
-  startingTime: 0.5
-  fireRate: 1
+  bullet: {fileID: 576211358216060772, guid: ad9c320fcb3863946a4cd1d755dd0052, type: 3}
 --- !u!212 &5109540537358046303
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Mob : MonoBehaviour
 {
-    
 
     //Well, this is my face... it's separated from my body.
     [SerializeField] GameObject myFace;

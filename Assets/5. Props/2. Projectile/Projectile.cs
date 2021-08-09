@@ -4,45 +4,66 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
+
     [SerializeField] int dmg;
     [SerializeField] float speed;
-    [SerializeField] bool alien;
-    Vector3 direction;
+    [SerializeField] DIRECTION direction;
+    Vector3 dir;
 
-
-
-    // Start is called before the first frame update
-    void Start()
+    public enum DIRECTION
     {
-        if (dmg == 0)
-        {
-            dmg = 1;
-        }
+        UP,
+        DOWN,
+        LEFT_DOWN,
+        RIGHT_DOWN
+    }
 
-        if (speed == 0)
+    private void Start()
+    {
+        switch (direction)
         {
-            speed = 5;
-        }
-
-        if (!alien)
-        {
-            direction = Vector3.up;
-        }
-        else
-        {
-            direction = Vector3.down;
+            case DIRECTION.UP:
+                dir = Vector3.up;
+                break;
+            case DIRECTION.DOWN:
+                dir = Vector3.down;
+                break;
+            case DIRECTION.LEFT_DOWN:
+                dir = new Vector3(-1, -1, 0);
+                break;
+            case DIRECTION.RIGHT_DOWN:
+                dir = new Vector3(1, -1, 0);
+                break;
         }
     }
 
-    public int GetDmg()
+    public void SetProjectile(DIRECTION direction , int damage , float speed , Sprite bulletSprite)
     {
-        return dmg;
+        gameObject.GetComponent<SpriteRenderer>().sprite = bulletSprite;
+        switch (direction)
+        {
+            case DIRECTION.UP:
+                dir = Vector3.up;
+                break;
+            case DIRECTION.DOWN:
+                dir = Vector3.down;
+                break;
+            case DIRECTION.LEFT_DOWN:
+                dir = new Vector3(-1, -1, 0);
+                break;
+            case DIRECTION.RIGHT_DOWN:
+                dir = new Vector3(1, -1, 0);
+                break;
+        }
+        this.dmg = damage;
+        this.speed = speed;
     }
+
 
     // Update is called once per frame
     void Update()
     {
-        this.transform.position += direction * speed * Time.deltaTime;
+        this.transform.position += dir * speed * Time.deltaTime;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -72,4 +93,8 @@ public class Projectile : MonoBehaviour
         }
     }
 
+    public int GetDmg()
+    {
+        return dmg;
+    }
 }

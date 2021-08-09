@@ -97,8 +97,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dmg: 1
-  speed: 0.3
-  alien: 1
+  speed: 0.7
+  direction: 1
 --- !u!68 &4721830272622039505
 EdgeCollider2D:
   m_ObjectHideFlags: 0

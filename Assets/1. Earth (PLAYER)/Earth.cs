@@ -19,6 +19,9 @@ public class Earth : Singleton<Earth>
     [SerializeField] GameObject lowerShield;
 
     [SerializeField] GameObject myWeapon;
+    [SerializeField] GameObject leftCannon;
+    [SerializeField] GameObject rightCannon;
+    [SerializeField] GameObject earthBullet;
 
 
     [SerializeField] Sprite[] earthSprites;
@@ -50,6 +53,9 @@ public class Earth : Singleton<Earth>
         myHp = 3;
         alive = true;
         lowerShield.SetActive(false);
+
+        leftCannon.GetComponent<ShootingModule>().SetShootingModule(ShootingModule.ShootingType.FIXED_RATE_ONE, earthBullet, 0, 0.8f);
+        rightCannon.GetComponent<ShootingModule>().SetShootingModule(ShootingModule.ShootingType.FIXED_RATE_ONE, earthBullet, 0.4f, 0.8f);
     }
 
     public void OnStateChanged(GameManager.GameState newState)
@@ -222,7 +228,11 @@ public class Earth : Singleton<Earth>
     public IEnumerator DoubleBullets(float timer)
     {
         myWeapon.SetActive(true);
+        leftCannon.GetComponent<ShootingModule>().TurnOn();
+        rightCannon.GetComponent<ShootingModule>().TurnOn();
         yield return new WaitForSeconds(timer);
+        leftCannon.GetComponent<ShootingModule>().TurnOff();
+        rightCannon.GetComponent<ShootingModule>().TurnOff();
         myWeapon.SetActive(false);
     }
     #endregion
