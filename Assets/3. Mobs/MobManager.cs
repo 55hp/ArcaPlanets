@@ -99,7 +99,7 @@ public class MobManager : MonoBehaviour
 
     public void GiveRandomPowerToThePlanet(Mob planet)
     {
-        int x = Random.Range(0, 3);
+        int x = Random.Range(0, 2);
 
         switch (x)
         {
@@ -126,6 +126,7 @@ public class MobManager : MonoBehaviour
     public void GiveDoublePlanetShoot(Mob planet)
     {
         planet.GetComponent<ShootingModule>().SetShootingModule(ShootingModule.ShootingType.FIXED_RATE_DOUBLE, enemyBullets[2], 0, 7);
+        planet.GetComponent<ShootingModule>().TurnOn();
     }
 
 

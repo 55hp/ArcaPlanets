@@ -35,6 +35,7 @@ public class ShieldModule : MonoBehaviour
 
     public void TurnOn()
     {
+        shield.SetActive(true);
         if (myPower != null) StartCoroutine(myPower);
     }
 
@@ -64,8 +65,9 @@ public class ShieldModule : MonoBehaviour
 
     IEnumerator Blink()
     {
-        yield return new WaitForSeconds(startingTime);
         shield.SetActive(false);
+        yield return new WaitForSeconds(startingTime);
+        shield.SetActive(true);
         while (true)
         {
             yield return new WaitForSeconds(timeRate);
