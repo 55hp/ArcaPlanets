@@ -48,7 +48,7 @@ public class Moon : MonoBehaviour
 
         if (spinning)
         {
-            transform.Rotate(Vector3.forward * 3f, Space.Self);
+            transform.Rotate(Vector3.forward * 3f, Space.World);
             Debug.Log("spinno!!!");
         }
     }

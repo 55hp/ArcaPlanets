@@ -95,4 +95,7 @@ public class AsteroidGenerator : Singleton<AsteroidGenerator>
                 break;
         }
     }
+
+
+
 }

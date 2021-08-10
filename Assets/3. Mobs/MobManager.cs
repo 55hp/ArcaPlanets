@@ -63,8 +63,10 @@ public class MobManager : MonoBehaviour
 
     public void GiveRandomWeapon(Mob satellite)
     {
-        int x = Random.Range(0, 4);
 
+        //int x = Random.Range(0, 4);
+
+        int x = 1;
         switch (x)
         {
             case 1:
@@ -83,17 +85,17 @@ public class MobManager : MonoBehaviour
 
     public void GiveCannonWeapon(Mob mob)
     {
-        mob.GetComponent<ShootingModule>().SetShootingModule(ShootingModule.ShootingType.FIXED_RATE_ONE, enemyBullets[0], 0, 4);
+        mob.GetComponent<ShootingModule>().SetShootingModule(ShootingModule.ShootingType.FIXED_RATE_ONE, enemyBullets[0], 0, 8);
     }
 
     public void GiveGatlingWeapon(Mob mob)
     {
-        mob.GetComponent<ShootingModule>().SetShootingModule(ShootingModule.ShootingType.FIXED_RATE_TRIPLE, enemyBullets[1], 0, 5);
+        mob.GetComponent<ShootingModule>().SetShootingModule(ShootingModule.ShootingType.FIXED_RATE_TRIPLE, enemyBullets[1], 0, 8);
     }
 
     public void GiveHalfMoonWeapon(Mob mob)
     {
-        mob.GetComponent<ShootingModule>().SetShootingModule(ShootingModule.ShootingType.FIXED_RATE_ONE, enemyBullets[2], 0, 8);
+        mob.GetComponent<ShootingModule>().SetShootingModule(ShootingModule.ShootingType.FIXED_RATE_ONE, enemyBullets[2], 0, 10);
     }
 
 
@@ -119,13 +121,13 @@ public class MobManager : MonoBehaviour
 
     public void GiveFullShield(Mob planet)
     {
-        planet.GetComponent<ShieldModule>().SetShieldPower(ShieldModule.ShieldType.BLINK, 5, 5);
+        planet.GetComponent<ShieldModule>().SetShieldPower(ShieldModule.ShieldType.BLINK,5,5);
         planet.GetComponent<ShieldModule>().TurnOn();
     }
 
     public void GiveDoublePlanetShoot(Mob planet)
     {
-        planet.GetComponent<ShootingModule>().SetShootingModule(ShootingModule.ShootingType.FIXED_RATE_DOUBLE, enemyBullets[2], 0, 7);
+        planet.GetComponent<ShootingModule>().SetShootingModule(ShootingModule.ShootingType.FIXED_RATE_DIVERGENT, enemyBullets[3], enemyBullets[4], 0, 10);
         planet.GetComponent<ShootingModule>().TurnOn();
     }
 

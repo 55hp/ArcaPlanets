@@ -25,7 +25,7 @@ public class ShieldModule : MonoBehaviour
         if(type == ShieldType.BLINK)
         {
             shield.GetComponent<SpriteRenderer>().sprite = shieldSprites[0];
-            myPower = Blink();
+            myPower = BlinkShield();
         }else if(type == ShieldType.ROTATE90)
         {
             shield.GetComponent<SpriteRenderer>().sprite = shieldSprites[1];
@@ -63,11 +63,10 @@ public class ShieldModule : MonoBehaviour
     }
 
 
-    IEnumerator Blink()
+    IEnumerator BlinkShield()
     {
         shield.SetActive(false);
         yield return new WaitForSeconds(startingTime);
-        shield.SetActive(true);
         while (true)
         {
             yield return new WaitForSeconds(timeRate);
@@ -85,11 +84,13 @@ public class ShieldModule : MonoBehaviour
     {
         if (shield.activeSelf)
         {
+            shield.GetComponent<SpriteRenderer>().sprite = null;
             shield.SetActive(false);
         }
         else
         {
             shield.SetActive(true);
+            StartCoroutine(AnimationController.FixedCicle(shield, shieldSprites, 0.1f));
         }
     }
 

@@ -1215,7 +1215,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 468308820}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.7, y: 1.5, z: 2.6413624}
+  m_LocalPosition: {x: -1.7, y: 2, z: 2.6413624}
   m_LocalScale: {x: 0.4, y: 0.4, z: 1}
   m_Children:
   - {fileID: 12114279}
@@ -1337,6 +1337,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 3246662169968701974, guid: b31a037311962b5428492a164abcda57, type: 3}
+  bullet1: {fileID: 0}
+  bullet2: {fileID: 0}
 --- !u!114 &468308827
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1362,8 +1364,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shieldSprites:
-  - {fileID: 21300000, guid: 27bcff87dd8b255498e7f9c0bcb61ced, type: 3}
-  - {fileID: 21300000, guid: 257ebd5f734788e448d4161c92d14ca6, type: 3}
+  - {fileID: 21300000, guid: 351ae642f5b8bf041843b6041e446989, type: 3}
+  - {fileID: 21300000, guid: 428f9274943e3b04d8a0a53744703764, type: 3}
+  - {fileID: 21300000, guid: b2d39ebc8a0a46e43ad042eaebe0c63f, type: 3}
+  - {fileID: 21300000, guid: a1160cf04cde8ed409ea0b4f5d7e3a1e, type: 3}
+  - {fileID: 21300000, guid: 0adb4fceae976e24f8e03b834dd06c17, type: 3}
+  - {fileID: 21300000, guid: c921777cfa7d4374aaa85881ced13704, type: 3}
+  - {fileID: 21300000, guid: 6aa298728ca7315459bd78adb3bdc4e0, type: 3}
+  - {fileID: 21300000, guid: 7466d3ce6f069594b8a258c194c96fcc, type: 3}
+  - {fileID: 21300000, guid: e0461e5ff44830c4d979a8a3053508b2, type: 3}
+  - {fileID: 21300000, guid: cc4340caacebf2d4498d1c15216f4d30, type: 3}
   shield: {fileID: 347414551}
 --- !u!1 &506192668
 GameObject:
@@ -1941,7 +1951,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 670402316}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.7, y: 1.5, z: 2.6413624}
+  m_LocalPosition: {x: 1.7, y: 2, z: 2.6413624}
   m_LocalScale: {x: 0.4, y: 0.4, z: 1}
   m_Children:
   - {fileID: 1112179952}
@@ -2063,6 +2073,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 3246662169968701974, guid: b31a037311962b5428492a164abcda57, type: 3}
+  bullet1: {fileID: 0}
+  bullet2: {fileID: 0}
 --- !u!114 &670402323
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2088,8 +2100,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shieldSprites:
-  - {fileID: 21300000, guid: 27bcff87dd8b255498e7f9c0bcb61ced, type: 3}
-  - {fileID: 21300000, guid: 257ebd5f734788e448d4161c92d14ca6, type: 3}
+  - {fileID: 21300000, guid: 351ae642f5b8bf041843b6041e446989, type: 3}
+  - {fileID: 21300000, guid: 428f9274943e3b04d8a0a53744703764, type: 3}
+  - {fileID: 21300000, guid: b2d39ebc8a0a46e43ad042eaebe0c63f, type: 3}
+  - {fileID: 21300000, guid: a1160cf04cde8ed409ea0b4f5d7e3a1e, type: 3}
+  - {fileID: 21300000, guid: 0adb4fceae976e24f8e03b834dd06c17, type: 3}
+  - {fileID: 21300000, guid: c921777cfa7d4374aaa85881ced13704, type: 3}
+  - {fileID: 21300000, guid: 6aa298728ca7315459bd78adb3bdc4e0, type: 3}
+  - {fileID: 21300000, guid: 7466d3ce6f069594b8a258c194c96fcc, type: 3}
+  - {fileID: 21300000, guid: e0461e5ff44830c4d979a8a3053508b2, type: 3}
+  - {fileID: 21300000, guid: cc4340caacebf2d4498d1c15216f4d30, type: 3}
   shield: {fileID: 807438740}
 --- !u!1 &684130935
 GameObject:
@@ -2122,7 +2142,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 684130935}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.7, y: 3, z: 2.6413624}
+  m_LocalPosition: {x: 1.7, y: 3.5, z: 2.6413624}
   m_LocalScale: {x: 0.4, y: 0.4, z: 1}
   m_Children:
   - {fileID: 1077312664}
@@ -2244,6 +2264,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 3246662169968701974, guid: b31a037311962b5428492a164abcda57, type: 3}
+  bullet1: {fileID: 0}
+  bullet2: {fileID: 0}
 --- !u!114 &684130942
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2269,8 +2291,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shieldSprites:
-  - {fileID: 21300000, guid: 27bcff87dd8b255498e7f9c0bcb61ced, type: 3}
-  - {fileID: 21300000, guid: 257ebd5f734788e448d4161c92d14ca6, type: 3}
+  - {fileID: 21300000, guid: 351ae642f5b8bf041843b6041e446989, type: 3}
+  - {fileID: 21300000, guid: 428f9274943e3b04d8a0a53744703764, type: 3}
+  - {fileID: 21300000, guid: b2d39ebc8a0a46e43ad042eaebe0c63f, type: 3}
+  - {fileID: 21300000, guid: a1160cf04cde8ed409ea0b4f5d7e3a1e, type: 3}
+  - {fileID: 21300000, guid: 0adb4fceae976e24f8e03b834dd06c17, type: 3}
+  - {fileID: 21300000, guid: c921777cfa7d4374aaa85881ced13704, type: 3}
+  - {fileID: 21300000, guid: 6aa298728ca7315459bd78adb3bdc4e0, type: 3}
+  - {fileID: 21300000, guid: 7466d3ce6f069594b8a258c194c96fcc, type: 3}
+  - {fileID: 21300000, guid: e0461e5ff44830c4d979a8a3053508b2, type: 3}
+  - {fileID: 21300000, guid: cc4340caacebf2d4498d1c15216f4d30, type: 3}
   shield: {fileID: 1644881270}
 --- !u!1 &705780025
 GameObject:
@@ -2827,6 +2857,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   testCondition: 1
   cockpit: {fileID: 5922571928653777252}
+  cockpitSprites:
+  - {fileID: 21300000, guid: bf5d42d1a6a6ed348800091876f65928, type: 3}
+  - {fileID: 21300000, guid: 71b3a0566a10a4b4099e8075a1c6cb88, type: 3}
+  - {fileID: 21300000, guid: cf3f6c8a6e61f7b499653933ea9d0b86, type: 3}
   body: {fileID: 4468828349612418942}
   myWing: {fileID: 3772306172257746146}
   propulsor: {fileID: 2624492326627342266}
@@ -3387,6 +3421,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 3246662169968701974, guid: b31a037311962b5428492a164abcda57, type: 3}
+  bullet1: {fileID: 0}
+  bullet2: {fileID: 0}
 --- !u!114 &1138512300
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3412,8 +3448,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shieldSprites:
-  - {fileID: 21300000, guid: 27bcff87dd8b255498e7f9c0bcb61ced, type: 3}
-  - {fileID: 21300000, guid: 257ebd5f734788e448d4161c92d14ca6, type: 3}
+  - {fileID: 21300000, guid: 351ae642f5b8bf041843b6041e446989, type: 3}
+  - {fileID: 21300000, guid: 428f9274943e3b04d8a0a53744703764, type: 3}
+  - {fileID: 21300000, guid: b2d39ebc8a0a46e43ad042eaebe0c63f, type: 3}
+  - {fileID: 21300000, guid: a1160cf04cde8ed409ea0b4f5d7e3a1e, type: 3}
+  - {fileID: 21300000, guid: 0adb4fceae976e24f8e03b834dd06c17, type: 3}
+  - {fileID: 21300000, guid: c921777cfa7d4374aaa85881ced13704, type: 3}
+  - {fileID: 21300000, guid: 6aa298728ca7315459bd78adb3bdc4e0, type: 3}
+  - {fileID: 21300000, guid: 7466d3ce6f069594b8a258c194c96fcc, type: 3}
+  - {fileID: 21300000, guid: e0461e5ff44830c4d979a8a3053508b2, type: 3}
+  - {fileID: 21300000, guid: cc4340caacebf2d4498d1c15216f4d30, type: 3}
   shield: {fileID: 44623691}
 --- !u!1 &1233416194
 GameObject:
@@ -4659,7 +4703,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1872423475}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.7, y: 3, z: 2.6413624}
+  m_LocalPosition: {x: -1.7, y: 3.5, z: 2.6413624}
   m_LocalScale: {x: 0.4, y: 0.4, z: 1}
   m_Children:
   - {fileID: 1554827431}
@@ -4781,6 +4825,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 3246662169968701974, guid: b31a037311962b5428492a164abcda57, type: 3}
+  bullet1: {fileID: 0}
+  bullet2: {fileID: 0}
 --- !u!114 &1872423482
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4806,8 +4852,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shieldSprites:
-  - {fileID: 21300000, guid: 27bcff87dd8b255498e7f9c0bcb61ced, type: 3}
-  - {fileID: 21300000, guid: 257ebd5f734788e448d4161c92d14ca6, type: 3}
+  - {fileID: 21300000, guid: 351ae642f5b8bf041843b6041e446989, type: 3}
+  - {fileID: 21300000, guid: 428f9274943e3b04d8a0a53744703764, type: 3}
+  - {fileID: 21300000, guid: b2d39ebc8a0a46e43ad042eaebe0c63f, type: 3}
+  - {fileID: 21300000, guid: a1160cf04cde8ed409ea0b4f5d7e3a1e, type: 3}
+  - {fileID: 21300000, guid: 0adb4fceae976e24f8e03b834dd06c17, type: 3}
+  - {fileID: 21300000, guid: c921777cfa7d4374aaa85881ced13704, type: 3}
+  - {fileID: 21300000, guid: 6aa298728ca7315459bd78adb3bdc4e0, type: 3}
+  - {fileID: 21300000, guid: 7466d3ce6f069594b8a258c194c96fcc, type: 3}
+  - {fileID: 21300000, guid: e0461e5ff44830c4d979a8a3053508b2, type: 3}
+  - {fileID: 21300000, guid: cc4340caacebf2d4498d1c15216f4d30, type: 3}
   shield: {fileID: 188530715}
 --- !u!1 &1883431416
 GameObject:
@@ -5553,6 +5607,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 576211358216060772, guid: ad9c320fcb3863946a4cd1d755dd0052, type: 3}
+  bullet1: {fileID: 0}
+  bullet2: {fileID: 0}
 --- !u!4 &1573066096824376427
 Transform:
   m_ObjectHideFlags: 0
@@ -5796,7 +5852,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4233493739437068370}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.98, y: 0.79, z: -1.9885335}
+  m_LocalPosition: {x: -6.98, y: 0.3, z: -1.9885335}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1254597981}
@@ -5841,7 +5897,23 @@ MonoBehaviour:
   - {fileID: 1025950131138762991, guid: d36e699cf08515145a37ef7e3a987c98, type: 3}
   - {fileID: 5664654607588623011, guid: 8c3e8e4b6e4f563479fe24da22d2fdcd, type: 3}
   - {fileID: 7758063767039538733, guid: 78ee16015644d8c4f916931685999348, type: 3}
-  _timeSpawner: 1
+  - {fileID: 7363945279159056443, guid: 11fc4a18e5616384298b3d596751339d, type: 3}
+  - {fileID: 2319067933536504513, guid: ebf8368cdf23ea2449abb7f4cd8c4c97, type: 3}
+  - {fileID: 7758063767039538733, guid: 78ee16015644d8c4f916931685999348, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  _timeSpawner: 1.1
 --- !u!1 &4233493739437068370
 GameObject:
   m_ObjectHideFlags: 0
@@ -5968,6 +6040,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 576211358216060772, guid: ad9c320fcb3863946a4cd1d755dd0052, type: 3}
+  bullet1: {fileID: 0}
+  bullet2: {fileID: 0}
 --- !u!212 &5109540537358046303
 SpriteRenderer:
   m_ObjectHideFlags: 0

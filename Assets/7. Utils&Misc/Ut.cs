@@ -9,6 +9,8 @@ public static class Ut
     {
         return array[Random.Range(0, array.Length)];
     }
+    
+
 
     public static bool TossCoin()
     {

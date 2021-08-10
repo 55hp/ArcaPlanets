@@ -29,10 +29,10 @@ public class Projectile : MonoBehaviour
                 dir = Vector3.down;
                 break;
             case DIRECTION.LEFT_DOWN:
-                dir = new Vector3(-1, -1, 0);
+                dir = new Vector3(-0.3f, -1, 0);
                 break;
             case DIRECTION.RIGHT_DOWN:
-                dir = new Vector3(1, -1, 0);
+                dir = new Vector3(0.3f, -1, 0);
                 break;
         }
     }
@@ -49,10 +49,10 @@ public class Projectile : MonoBehaviour
                 dir = Vector3.down;
                 break;
             case DIRECTION.LEFT_DOWN:
-                dir = new Vector3(-1, -1, 0);
+                dir = new Vector3(-0.3f, -1, 0);
                 break;
             case DIRECTION.RIGHT_DOWN:
-                dir = new Vector3(1, -1, 0);
+                dir = new Vector3(0.3f, -1, 0);
                 break;
         }
         this.dmg = damage;
@@ -68,7 +68,7 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Moon") || collision.gameObject.CompareTag("EarthProjectile"))
+        if (collision.gameObject.CompareTag("Moon") || collision.gameObject.CompareTag("EarthProjectile") || collision.gameObject.CompareTag("MobShield"))
         {
             Destroy(gameObject);
         }

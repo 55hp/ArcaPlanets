@@ -12,6 +12,9 @@ public class Earth : Singleton<Earth>
     public bool testCondition = true;
 
     [SerializeField] GameObject cockpit;
+    [SerializeField] Sprite[] cockpitSprites;
+
+
     [SerializeField] GameObject body;
     [SerializeField] GameObject myWing;
     [SerializeField] GameObject propulsor;
@@ -50,6 +53,8 @@ public class Earth : Singleton<Earth>
 
     public void InitEarth()
     {
+        cockpit.GetComponent<SpriteRenderer>().sprite = cockpitSprites[0];
+
         myHp = 3;
         alive = true;
         lowerShield.SetActive(false);
@@ -149,9 +154,15 @@ public class Earth : Singleton<Earth>
             {
                 ballRb.AddForce(new Vector2((Mathf.Abs(difference * 200)), 50));
             }
+            StartCoroutine(AnimationController.BlinkAnimation(cockpit, cockpitSprites[0], cockpitSprites[1], 0.1f));
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "MobProjectile")
+            StartCoroutine(AnimationController.BlinkAnimation(cockpit, cockpitSprites[0], cockpitSprites[2], 0.1f));
+    }
 
     public void Invulnerability(bool on)
     {
@@ -159,8 +170,6 @@ public class Earth : Singleton<Earth>
             gameObject.layer = 26;
         else
             gameObject.layer = 8;
-
-
     }
 
 
@@ -238,5 +247,7 @@ public class Earth : Singleton<Earth>
     #endregion
 
 
+
+    
 
 }
