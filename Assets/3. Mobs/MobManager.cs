@@ -21,7 +21,7 @@ public class MobManager : MonoBehaviour
     public void SetNumberOfMobsForThisStage(int mobsNumber)
     {
         //mobsNumber must be between 1 - 4
-        if (mobsNumber > 4 || mobsNumber < 1)
+        if (mobsNumber > 4 || mobsNumber < 0)
         {
             //Default value = 2.
             thisStageMobs = 2;
@@ -101,7 +101,8 @@ public class MobManager : MonoBehaviour
 
     public void GiveRandomPowerToThePlanet(Mob planet)
     {
-        int x = Random.Range(0, 2);
+        //int x = Random.Range(0, 2);
+        int x = 0;
 
         switch (x)
         {
@@ -121,7 +122,7 @@ public class MobManager : MonoBehaviour
 
     public void GiveFullShield(Mob planet)
     {
-        planet.GetComponent<ShieldModule>().SetShieldPower(ShieldModule.ShieldType.BLINK,5,5);
+        planet.GetComponent<ShieldModule>().SetBlinkShieldPower(4, 5, 8);
         planet.GetComponent<ShieldModule>().TurnOn();
     }
 
@@ -134,7 +135,7 @@ public class MobManager : MonoBehaviour
 
     public void GiveDirectionalShield(Mob planet)
     {
-        planet.GetComponent<ShieldModule>().SetShieldPower(ShieldModule.ShieldType.ROTATE90, 5, 5);
+        planet.GetComponent<ShieldModule>().SetBlinkShieldPower(4, 5, 8);
         planet.GetComponent<ShieldModule>().TurnOn();
     }
 

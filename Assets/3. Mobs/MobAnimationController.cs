@@ -26,6 +26,7 @@ public class MobAnimationController : MonoBehaviour
         startingColor = gameObject.GetComponent<SpriteRenderer>().color;
         startingPosition = this.gameObject.transform.position;
         alive = this.GetComponent<Mob>().ImAlive();
+
     }
 
     private void OnDisable()
@@ -125,16 +126,37 @@ public class MobAnimationController : MonoBehaviour
         }
     }
 
-    public void HitAnimation()
+    private void Start()
     {
-        StartCoroutine(Ouch());
+        startingFace = myFace.GetComponent<SpriteRenderer>().sprite;
+        StartIdle();
     }
 
-    IEnumerator Ouch()
+    public void StartIdle()
     {
-        gameObject.GetComponent<SpriteRenderer>().color = Color.black;
-        yield return new WaitForSeconds(0.1f);
-        gameObject.GetComponent<SpriteRenderer>().color = startingColor;
+        idleAnim = StartCoroutine(AnimationController.LoopingCicle(myFace, idleSprites, 0.25f));
     }
+
+    public void StopIdle()
+    {
+        StopCoroutine(idleAnim);
+    }
+
+    public Coroutine idleAnim;
+
+    [SerializeField] Sprite ouchFace;
+    Sprite startingFace;
+    [SerializeField] GameObject myFace;
+
+    [SerializeField] Sprite[] idleSprites;
+
+    public void HitAnimation()
+    {
+        StartCoroutine(AnimationController.BlinkAnimation(myFace, startingFace , ouchFace, 0.2f));
+    }
+
+    
+
+    
 
 }

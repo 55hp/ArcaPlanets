@@ -374,7 +374,7 @@ SpriteRenderer:
   m_SortingLayer: 8
   m_SortingOrder: 0
   m_Sprite: {fileID: 0}
-  m_Color: {r: 0.6745283, g: 1, b: 0.8703267, a: 0.48235294}
+  m_Color: {r: 0.85882354, g: 0.27450982, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -835,7 +835,7 @@ SpriteRenderer:
   m_SortingLayer: 8
   m_SortingOrder: 0
   m_Sprite: {fileID: 0}
-  m_Color: {r: 0.6745283, g: 1, b: 0.8703267, a: 0.48235294}
+  m_Color: {r: 0.85882354, g: 0.27450982, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1153,7 +1153,7 @@ SpriteRenderer:
   m_SortingLayer: 8
   m_SortingOrder: 0
   m_Sprite: {fileID: 0}
-  m_Color: {r: 0.6745283, g: 1, b: 0.8703267, a: 0.48235294}
+  m_Color: {r: 0.85882354, g: 0.27450982, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1351,6 +1351,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03c0e76973c617a429fc09c8b0bd80ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ouchFace: {fileID: 21300000, guid: 64a71132e25966a4baede2d79cb80515, type: 3}
+  myFace: {fileID: 12114278}
+  idleSprites: []
 --- !u!114 &468308828
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1363,18 +1366,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1222acbc1205c2a468fda450203b1201, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shieldSprites:
-  - {fileID: 21300000, guid: 351ae642f5b8bf041843b6041e446989, type: 3}
-  - {fileID: 21300000, guid: 428f9274943e3b04d8a0a53744703764, type: 3}
-  - {fileID: 21300000, guid: b2d39ebc8a0a46e43ad042eaebe0c63f, type: 3}
-  - {fileID: 21300000, guid: a1160cf04cde8ed409ea0b4f5d7e3a1e, type: 3}
-  - {fileID: 21300000, guid: 0adb4fceae976e24f8e03b834dd06c17, type: 3}
-  - {fileID: 21300000, guid: c921777cfa7d4374aaa85881ced13704, type: 3}
-  - {fileID: 21300000, guid: 6aa298728ca7315459bd78adb3bdc4e0, type: 3}
-  - {fileID: 21300000, guid: 7466d3ce6f069594b8a258c194c96fcc, type: 3}
-  - {fileID: 21300000, guid: e0461e5ff44830c4d979a8a3053508b2, type: 3}
-  - {fileID: 21300000, guid: cc4340caacebf2d4498d1c15216f4d30, type: 3}
+  blinkShieldIntro: []
+  blinkShieldLoop: []
+  blinkShieldEnd: []
   shield: {fileID: 347414551}
+  myFace: {fileID: 0}
+  shieldCreationFacesAnimation: []
 --- !u!1 &506192668
 GameObject:
   m_ObjectHideFlags: 0
@@ -1597,8 +1594,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 0a8813cef7ef3ee47b8f371e3b18a3a9, type: 3}
   planetFaces:
   - {fileID: 21300000, guid: a0aeb38ba106cbe4d91ce31c53761de4, type: 3}
-  - {fileID: 21300000, guid: d73f090803fd64e43bac11bfac6b87ac, type: 3}
-  - {fileID: 21300000, guid: 73c3e3e37d838894daac8a96b205ac75, type: 3}
   satBodies:
   - {fileID: 21300000, guid: f81bbfa182bd20a48ad7915947a4b3d7, type: 3}
   - {fileID: 21300000, guid: 00ce1480cc51fce4aa95169f50f25426, type: 3}
@@ -2087,6 +2082,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03c0e76973c617a429fc09c8b0bd80ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ouchFace: {fileID: 21300000, guid: 64a71132e25966a4baede2d79cb80515, type: 3}
+  myFace: {fileID: 1112179951}
+  idleSprites: []
 --- !u!114 &670402324
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2099,18 +2097,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1222acbc1205c2a468fda450203b1201, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shieldSprites:
-  - {fileID: 21300000, guid: 351ae642f5b8bf041843b6041e446989, type: 3}
-  - {fileID: 21300000, guid: 428f9274943e3b04d8a0a53744703764, type: 3}
-  - {fileID: 21300000, guid: b2d39ebc8a0a46e43ad042eaebe0c63f, type: 3}
-  - {fileID: 21300000, guid: a1160cf04cde8ed409ea0b4f5d7e3a1e, type: 3}
-  - {fileID: 21300000, guid: 0adb4fceae976e24f8e03b834dd06c17, type: 3}
-  - {fileID: 21300000, guid: c921777cfa7d4374aaa85881ced13704, type: 3}
-  - {fileID: 21300000, guid: 6aa298728ca7315459bd78adb3bdc4e0, type: 3}
-  - {fileID: 21300000, guid: 7466d3ce6f069594b8a258c194c96fcc, type: 3}
-  - {fileID: 21300000, guid: e0461e5ff44830c4d979a8a3053508b2, type: 3}
-  - {fileID: 21300000, guid: cc4340caacebf2d4498d1c15216f4d30, type: 3}
+  blinkShieldIntro: []
+  blinkShieldLoop: []
+  blinkShieldEnd: []
   shield: {fileID: 807438740}
+  myFace: {fileID: 0}
+  shieldCreationFacesAnimation: []
 --- !u!1 &684130935
 GameObject:
   m_ObjectHideFlags: 0
@@ -2278,6 +2270,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03c0e76973c617a429fc09c8b0bd80ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ouchFace: {fileID: 21300000, guid: 64a71132e25966a4baede2d79cb80515, type: 3}
+  myFace: {fileID: 1077312663}
+  idleSprites: []
 --- !u!114 &684130943
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2290,18 +2285,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1222acbc1205c2a468fda450203b1201, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shieldSprites:
-  - {fileID: 21300000, guid: 351ae642f5b8bf041843b6041e446989, type: 3}
-  - {fileID: 21300000, guid: 428f9274943e3b04d8a0a53744703764, type: 3}
-  - {fileID: 21300000, guid: b2d39ebc8a0a46e43ad042eaebe0c63f, type: 3}
-  - {fileID: 21300000, guid: a1160cf04cde8ed409ea0b4f5d7e3a1e, type: 3}
-  - {fileID: 21300000, guid: 0adb4fceae976e24f8e03b834dd06c17, type: 3}
-  - {fileID: 21300000, guid: c921777cfa7d4374aaa85881ced13704, type: 3}
-  - {fileID: 21300000, guid: 6aa298728ca7315459bd78adb3bdc4e0, type: 3}
-  - {fileID: 21300000, guid: 7466d3ce6f069594b8a258c194c96fcc, type: 3}
-  - {fileID: 21300000, guid: e0461e5ff44830c4d979a8a3053508b2, type: 3}
-  - {fileID: 21300000, guid: cc4340caacebf2d4498d1c15216f4d30, type: 3}
+  blinkShieldIntro: []
+  blinkShieldLoop: []
+  blinkShieldEnd: []
   shield: {fileID: 1644881270}
+  myFace: {fileID: 0}
+  shieldCreationFacesAnimation: []
 --- !u!1 &705780025
 GameObject:
   m_ObjectHideFlags: 0
@@ -2536,7 +2525,7 @@ SpriteRenderer:
   m_SortingLayer: 8
   m_SortingOrder: 0
   m_Sprite: {fileID: 0}
-  m_Color: {r: 0.6745283, g: 1, b: 0.8703267, a: 0.48235294}
+  m_Color: {r: 0.85882354, g: 0.27450982, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -3435,6 +3424,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03c0e76973c617a429fc09c8b0bd80ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ouchFace: {fileID: 21300000, guid: 64a71132e25966a4baede2d79cb80515, type: 3}
+  myFace: {fileID: 636067262}
+  idleSprites:
+  - {fileID: 21300000, guid: 60a909e21fc65c344a755fd3bfc355a6, type: 3}
+  - {fileID: 21300000, guid: 072c1497c9a8f6f4e85db7780797632a, type: 3}
 --- !u!114 &1138512301
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3447,7 +3441,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1222acbc1205c2a468fda450203b1201, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shieldSprites:
+  blinkShieldIntro:
   - {fileID: 21300000, guid: 351ae642f5b8bf041843b6041e446989, type: 3}
   - {fileID: 21300000, guid: 428f9274943e3b04d8a0a53744703764, type: 3}
   - {fileID: 21300000, guid: b2d39ebc8a0a46e43ad042eaebe0c63f, type: 3}
@@ -3458,7 +3452,27 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 7466d3ce6f069594b8a258c194c96fcc, type: 3}
   - {fileID: 21300000, guid: e0461e5ff44830c4d979a8a3053508b2, type: 3}
   - {fileID: 21300000, guid: cc4340caacebf2d4498d1c15216f4d30, type: 3}
+  blinkShieldLoop:
+  - {fileID: 21300000, guid: 29b4eb6cb3af25845a38088851d728cc, type: 3}
+  - {fileID: 21300000, guid: 9afcac8241ed5724586f179d57904ef8, type: 3}
+  - {fileID: 21300000, guid: 7e03ddb9c628d264b8866335f900d9af, type: 3}
+  blinkShieldEnd:
+  - {fileID: 21300000, guid: 9af4df9fe88fd8043b71bd1b85e57ae7, type: 3}
+  - {fileID: 21300000, guid: 6521e60c721a6584bbc624bccc6e7310, type: 3}
+  - {fileID: 21300000, guid: 6df3c95669f839b4999029060e27133b, type: 3}
+  - {fileID: 21300000, guid: 9800764db047efe468e829380cfa97a4, type: 3}
   shield: {fileID: 44623691}
+  myFace: {fileID: 636067262}
+  shieldCreationFacesAnimation:
+  - {fileID: 21300000, guid: 46b36a4d13904e9449c78da68802936b, type: 3}
+  - {fileID: 21300000, guid: 2b246e4793d1c294b90e1608d771f89f, type: 3}
+  - {fileID: 21300000, guid: 46b36a4d13904e9449c78da68802936b, type: 3}
+  - {fileID: 21300000, guid: 2b246e4793d1c294b90e1608d771f89f, type: 3}
+  - {fileID: 21300000, guid: 46b36a4d13904e9449c78da68802936b, type: 3}
+  - {fileID: 21300000, guid: 2b246e4793d1c294b90e1608d771f89f, type: 3}
+  - {fileID: 21300000, guid: 2b246e4793d1c294b90e1608d771f89f, type: 3}
+  - {fileID: 21300000, guid: 488d5dae35539ec4e9ef57e9ed46c224, type: 3}
+  - {fileID: 21300000, guid: 488d5dae35539ec4e9ef57e9ed46c224, type: 3}
 --- !u!1 &1233416194
 GameObject:
   m_ObjectHideFlags: 0
@@ -4139,7 +4153,7 @@ SpriteRenderer:
   m_SortingLayer: 8
   m_SortingOrder: 0
   m_Sprite: {fileID: 0}
-  m_Color: {r: 0.6745283, g: 1, b: 0.8703267, a: 0.48235294}
+  m_Color: {r: 0.85882354, g: 0.27450982, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -4839,6 +4853,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03c0e76973c617a429fc09c8b0bd80ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ouchFace: {fileID: 21300000, guid: 64a71132e25966a4baede2d79cb80515, type: 3}
+  myFace: {fileID: 1554827430}
+  idleSprites: []
 --- !u!114 &1872423483
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4851,18 +4868,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1222acbc1205c2a468fda450203b1201, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shieldSprites:
-  - {fileID: 21300000, guid: 351ae642f5b8bf041843b6041e446989, type: 3}
-  - {fileID: 21300000, guid: 428f9274943e3b04d8a0a53744703764, type: 3}
-  - {fileID: 21300000, guid: b2d39ebc8a0a46e43ad042eaebe0c63f, type: 3}
-  - {fileID: 21300000, guid: a1160cf04cde8ed409ea0b4f5d7e3a1e, type: 3}
-  - {fileID: 21300000, guid: 0adb4fceae976e24f8e03b834dd06c17, type: 3}
-  - {fileID: 21300000, guid: c921777cfa7d4374aaa85881ced13704, type: 3}
-  - {fileID: 21300000, guid: 6aa298728ca7315459bd78adb3bdc4e0, type: 3}
-  - {fileID: 21300000, guid: 7466d3ce6f069594b8a258c194c96fcc, type: 3}
-  - {fileID: 21300000, guid: e0461e5ff44830c4d979a8a3053508b2, type: 3}
-  - {fileID: 21300000, guid: cc4340caacebf2d4498d1c15216f4d30, type: 3}
+  blinkShieldIntro: []
+  blinkShieldLoop: []
+  blinkShieldEnd: []
   shield: {fileID: 188530715}
+  myFace: {fileID: 0}
+  shieldCreationFacesAnimation: []
 --- !u!1 &1883431416
 GameObject:
   m_ObjectHideFlags: 0

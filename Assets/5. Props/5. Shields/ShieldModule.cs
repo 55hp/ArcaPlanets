@@ -4,64 +4,47 @@ using UnityEngine;
 
 public class ShieldModule : MonoBehaviour
 {
-    [SerializeField] Sprite[] shieldSprites;
+    [SerializeField] Sprite[] blinkShieldIntro;
+    [SerializeField] Sprite[] blinkShieldLoop;
+    [SerializeField] Sprite[] blinkShieldEnd;
 
     [SerializeField] GameObject shield;
+
     float startingTime;
-    float timeRate;
-    IEnumerator myPower;
+    float activeTime;
+    float inactiveTime;
 
-    public enum ShieldType
-    {
-        BLINK,
-        ROTATE90
-    }
+    IEnumerator activeShieldPowerType;
+    
+    [SerializeField] GameObject myFace;
+    [SerializeField] Sprite[] shieldCreationFacesAnimation;
 
-    public void SetShieldPower(ShieldType type , float startingTime , float fireRate)
+    public void SetBlinkShieldPower(float startingTime , float activeTime , float inactiveTime)
     {
         this.startingTime = startingTime;
-        this.timeRate = fireRate;
-
-        if(type == ShieldType.BLINK)
-        {
-            shield.GetComponent<SpriteRenderer>().sprite = shieldSprites[0];
-            myPower = BlinkShield();
-        }else if(type == ShieldType.ROTATE90)
-        {
-            shield.GetComponent<SpriteRenderer>().sprite = shieldSprites[1];
-            myPower = Rotate90();
-        }
+        this.activeTime = activeTime;
+        this.inactiveTime = inactiveTime;
+        activeShieldPowerType = BlinkShield();
     }
 
     public void TurnOn()
     {
         shield.SetActive(true);
-        if (myPower != null) StartCoroutine(myPower);
+        if (activeShieldPowerType != null) StartCoroutine(activeShieldPowerType);
     }
 
     public void TurnOff()
     {
-        if (myPower != null) StopCoroutine(myPower);
+        if (activeShieldPowerType != null) StopCoroutine(activeShieldPowerType);
         shield.SetActive(false);
     }
 
     private void OnDisable()
     {
-        if (myPower != null) StopCoroutine(myPower);
+        if (activeShieldPowerType != null) StopCoroutine(activeShieldPowerType);
         shield.SetActive(false);
     }
-
-    IEnumerator Rotate90()
-    {
-        yield return new WaitForSeconds(startingTime);
-        shield.SetActive(false);
-        while (true)
-        {
-            yield return new WaitForSeconds(timeRate);
-            ShieldRotation();
-        }
-    }
-
+    
 
     IEnumerator BlinkShield()
     {
@@ -69,31 +52,31 @@ public class ShieldModule : MonoBehaviour
         yield return new WaitForSeconds(startingTime);
         while (true)
         {
-            yield return new WaitForSeconds(timeRate);
-            ShieldActivationSwitch();
-        }
-    }
+            gameObject.GetComponent<MobAnimationController>().StopIdle();
+            Coroutine faceFirst = StartCoroutine(AnimationController.FixedCicle(myFace, shieldCreationFacesAnimation, 0.12f));
 
-    private void ShieldRotation()
-    {
-        shield.transform.Rotate(0, 90, 0);
-    }
+            yield return faceFirst;
 
-
-    private void ShieldActivationSwitch()
-    {
-        if (shield.activeSelf)
-        {
-            shield.GetComponent<SpriteRenderer>().sprite = null;
-            shield.SetActive(false);
-        }
-        else
-        {
+            Coroutine a = StartCoroutine(AnimationController.FixedCicle(shield, blinkShieldIntro, 0.08f));
             shield.SetActive(true);
-            StartCoroutine(AnimationController.FixedCicle(shield, shieldSprites, 0.1f));
+
+            yield return a;
+
+            gameObject.GetComponent<MobAnimationController>().StartIdle();
+            Coroutine b = StartCoroutine(AnimationController.LoopingCicle(shield, blinkShieldLoop, 0.12f));
+
+            yield return new WaitForSeconds(activeTime);
+
+            StopCoroutine(b);
+
+            Coroutine c = StartCoroutine(AnimationController.FixedCicle(shield, blinkShieldEnd, 0.1f));
+
+            yield return c;
+            shield.SetActive(false);
+            yield return new WaitForSeconds(inactiveTime);
         }
     }
 
-
+    
 
 }

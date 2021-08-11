@@ -28,8 +28,12 @@ public static class AnimationController
         int counter = 0;
         while (true)
         {
-            subject.GetComponent<SpriteRenderer>().sprite = spriteSheets[counter];
             counter++;
+            if (counter == spriteSheets.Length)
+            {
+                counter = 0;
+            }
+            subject.GetComponent<SpriteRenderer>().sprite = spriteSheets[counter];
             yield return new WaitForSeconds(frequency);
         }
     }
@@ -42,10 +46,14 @@ public static class AnimationController
         {
             subject.GetComponent<SpriteRenderer>().sprite = spriteSheets[counter];
             counter++;
+            if(counter == spriteSheets.Length)
+            {
+                counter = 0;
+            }
             yield return new WaitForSeconds(frequency);
         }
     }
-    
+
     public static IEnumerator BlinkAnimation(GameObject subject, Sprite first, Sprite second, float frequency)
     {
         subject.GetComponent<SpriteRenderer>().sprite = second;
