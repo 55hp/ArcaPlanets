@@ -166,8 +166,9 @@ public class MoonManager : Singleton<MoonManager>
             mainMoon.ChangeMoonSprite(halfMoonSkin);
             for (int i = 0; i < howManyShythes; i++)
             {
-                Moon scythe = Instantiate(moonPref, mainMoon.transform.position * 1.2f, Quaternion.identity);
+                Moon scythe = Instantiate(moonPref, mainMoon.transform.position, Quaternion.identity);
                 scythe.ChangeMoonSprite(halfMoonSkin);
+                scythe.MoonSpinning(true);
                 otherMoons.Add(scythe);
                 moonsInGame++;
             }
@@ -212,7 +213,7 @@ public class MoonManager : Singleton<MoonManager>
 
         mainMoon?.SetDmg(1);
         mainMoon?.ChangeMoonSprite(standardMoonSkin);
-        mainMoon?.Spin(false);
+        mainMoon?.MoonSpinning(false);
 
         foreach (Moon m in otherMoons)
         {
@@ -224,7 +225,7 @@ public class MoonManager : Singleton<MoonManager>
         m?.ChangeMoonSprite(standardMoonSkin);
 
         //Stop spinning
-        m?.Spin(false);
+        m?.MoonSpinning(false);
             
         }
     }

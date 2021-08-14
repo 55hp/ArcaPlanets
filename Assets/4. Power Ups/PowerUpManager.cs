@@ -101,7 +101,7 @@ public class PowerUpManager : Singleton<PowerUpManager>
                 StartCoroutine(activeMoonEffect); Debug.Log("RED MOON ATTIVO");
                 break;
             case 202:
-                moonManager.MoonScythes(2); Debug.Log("RED MOON ATTIVO");
+                moonManager.MoonScythes(2); Debug.Log("MOON SCYTHES ATTIVO");
                 break;
             case 203:
                 moonManager.EffectsReset();

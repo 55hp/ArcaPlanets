@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MobManager : MonoBehaviour
 {
+    [SerializeField] Planet planet;
     [SerializeField] Mob[] mobsGameobjects;
     
     [SerializeField] Sprite[] planetBodies;
@@ -36,28 +37,33 @@ public class MobManager : MonoBehaviour
     public void InitMobs()
     {
         //Planet generation
-        mobsGameobjects[0].MakeMeTheEvilestPlanetOfTheStage(30, Ut.ROA(planetBodies), Ut.ROA(planetFaces), Ut.ROA(planetColors));
-        mobsGameobjects[0].Live();
-        mobsGameobjects[0].GetComponent<MobAnimationController>().MakeMeMoving(Ut.TossCoin(), 0.5f, MobAnimationController.MovSpeed.Slow);
-        GiveRandomPowerToThePlanet(mobsGameobjects[0]);
-
+        planet.RandomizePlanet(5, Ut.ROA(planetBodies), Ut.ROA(planetFaces), Ut.ROA(planetColors),Planet.POWER.BLINK_SHIELD, 10, 8 , 10);
+        planet.ActivatePlanet();
+        //mobsGameobjects[0].GetComponent<MobAnimationController>().MakeMeMoving(Ut.TossCoin(), 0.5f, MobAnimationController.MovSpeed.Slow);
+        //GiveRandomPowerToThePlanet(mobsGameobjects[0]);
+        /*
         //Satellite generation
         for (int i = 1; i <= thisStageMobs; i++)
         {
             mobsGameobjects[i].MakeMeAnAttractiveSatellite(10, Ut.ROA(satBodies), Ut.ROA(satFaces), Ut.ROA(satColors));
             mobsGameobjects[i].Live();
-            mobsGameobjects[i].GetComponent<MobAnimationController>().MakeMeMoving(Ut.TossCoin(), 0.3f, MobAnimationController.MovSpeed.Slow);
+            //[i].GetComponent<MobAnimationController>().MakeMeMoving(Ut.TossCoin(), 0.3f, MobAnimationController.MovSpeed.Slow);
             GiveRandomWeapon(mobsGameobjects[i]);
             mobsGameobjects[i].GetComponent<ShootingModule>().TurnOn();
         }
+        */
     }
 
     public void ClearMobsFromStage()
     {
-        foreach(Mob x in mobsGameobjects)
-        {
+        planet.gameObject.SetActive(false);
+
+        
+            foreach (Mob x in mobsGameobjects)
+            {
+            if(x != null)
             x.gameObject.SetActive(false);
-        }
+            }
     }
 
 
@@ -98,7 +104,7 @@ public class MobManager : MonoBehaviour
         mob.GetComponent<ShootingModule>().SetShootingModule(ShootingModule.ShootingType.FIXED_RATE_ONE, enemyBullets[2], 0, 10);
     }
 
-
+    /*
     public void GiveRandomPowerToThePlanet(Mob planet)
     {
         //int x = Random.Range(0, 2);
@@ -119,7 +125,7 @@ public class MobManager : MonoBehaviour
                 break;
         }
     }
-
+    
     public void GiveFullShield(Mob planet)
     {
         planet.GetComponent<ShieldModule>().SetBlinkShieldPower(4, 5, 8);
@@ -139,5 +145,5 @@ public class MobManager : MonoBehaviour
         planet.GetComponent<ShieldModule>().TurnOn();
     }
 
-
+    */
 }

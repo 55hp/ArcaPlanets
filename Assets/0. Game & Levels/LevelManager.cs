@@ -46,7 +46,7 @@ public class LevelManager : MonoBehaviour
         switch (newState)
         {
             case GameManager.GameState.Boot:
-                mobManager.SetNumberOfMobsForThisStage(Random.Range(0,6));
+                mobManager.SetNumberOfMobsForThisStage(Random.Range(0,0));
                 mobManager.InitMobs();
                 break;
             case GameManager.GameState.Play:

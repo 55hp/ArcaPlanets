@@ -2,49 +2,48 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShieldModule : MonoBehaviour
+public class ShieldModule : MonoBehaviour 
 {
-    [SerializeField] Sprite[] blinkShieldIntro;
-    [SerializeField] Sprite[] blinkShieldLoop;
-    [SerializeField] Sprite[] blinkShieldEnd;
-
+    /*
     [SerializeField] GameObject shield;
+    [SerializeField] GameObject myFace;
+
+    IEnumerator activeShieldPowerType;
 
     float startingTime;
     float activeTime;
     float inactiveTime;
 
-    IEnumerator activeShieldPowerType;
-    
-    [SerializeField] GameObject myFace;
-    [SerializeField] Sprite[] shieldCreationFacesAnimation;
+    Sprite[] blinkShieldIntro;
+    Sprite[] blinkShieldLoop;
+    Sprite[] blinkShieldEnd;
 
-    public void SetBlinkShieldPower(float startingTime , float activeTime , float inactiveTime)
-    {
-        this.startingTime = startingTime;
-        this.activeTime = activeTime;
-        this.inactiveTime = inactiveTime;
-        activeShieldPowerType = BlinkShield();
-    }
+    Sprite[] shieldCreationFacesAnimation;
 
-    public void TurnOn()
+    public void OnEnable()
     {
         shield.SetActive(true);
         if (activeShieldPowerType != null) StartCoroutine(activeShieldPowerType);
     }
 
-    public void TurnOff()
-    {
-        if (activeShieldPowerType != null) StopCoroutine(activeShieldPowerType);
-        shield.SetActive(false);
-    }
-
-    private void OnDisable()
+    public void OnDisable()
     {
         if (activeShieldPowerType != null) StopCoroutine(activeShieldPowerType);
         shield.SetActive(false);
     }
     
+    public void SetBlinkingShield(float startingTime , float activeTime , float inactiveTime, Sprite[] blinkShieldIntro , Sprite[] blinkShieldLoop , Sprite[] blinkShieldEnd , Sprite[] shieldCreationFacesAnimation)
+    {
+        this.startingTime = startingTime;
+        this. activeTime = activeTime;
+        this. inactiveTime = inactiveTime;
+        this.blinkShieldIntro = blinkShieldIntro;
+        this.blinkShieldLoop = blinkShieldLoop;
+        this.blinkShieldEnd = blinkShieldEnd;
+        this.shieldCreationFacesAnimation = shieldCreationFacesAnimation;
+
+        activeShieldPowerType = BlinkShield();
+    }
 
     IEnumerator BlinkShield()
     {
@@ -76,7 +75,5 @@ public class ShieldModule : MonoBehaviour
             yield return new WaitForSeconds(inactiveTime);
         }
     }
-
-    
-
+    */
 }

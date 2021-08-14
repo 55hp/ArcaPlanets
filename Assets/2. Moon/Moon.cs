@@ -35,9 +35,17 @@ public class Moon : MonoBehaviour
         return dmg;
     }
 
-    public void Spin(bool spin)
+    public void MoonSpinning(bool spin)
     {
         spinning = spin;
+        if (spinning)
+        {
+            StartCoroutine(Spin());
+        }
+        else
+        {
+            StopCoroutine(Spin());
+        }
     }
 
 
@@ -45,12 +53,16 @@ public class Moon : MonoBehaviour
     private void LateUpdate()
     {
         myRb.velocity = constantSpeed * (myRb.velocity.normalized);
+    }
 
-        if (spinning)
+    IEnumerator Spin()
+    {
+        while (spinning)
         {
-            transform.Rotate(Vector3.forward * 3f, Space.World);
-            Debug.Log("spinno!!!");
+            yield return new WaitForSeconds(0.1f);
+            transform.Rotate(0f, 0f, 10f, Space.Self);
         }
+
     }
 
     private void OnTriggerExit2D(Collider2D collision)

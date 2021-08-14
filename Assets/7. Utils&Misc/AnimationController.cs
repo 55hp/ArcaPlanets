@@ -54,11 +54,12 @@ public static class AnimationController
         }
     }
 
-    public static IEnumerator BlinkAnimation(GameObject subject, Sprite first, Sprite second, float frequency)
+
+    public static IEnumerator BlinkAnimation(GameObject subject, Sprite firstSprite, Sprite secondSprite, float duration)
     {
-        subject.GetComponent<SpriteRenderer>().sprite = second;
-        yield return new WaitForSeconds(frequency);
-        subject.GetComponent<SpriteRenderer>().sprite = first;
+        subject.GetComponent<SpriteRenderer>().sprite = secondSprite;
+        yield return new WaitForSeconds(duration);
+        subject.GetComponent<SpriteRenderer>().sprite = firstSprite;
     }
 
 

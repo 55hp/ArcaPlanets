@@ -68,7 +68,7 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Moon") || collision.gameObject.CompareTag("EarthProjectile") || collision.gameObject.CompareTag("MobShield"))
+        if (collision.gameObject.CompareTag("Moon") || collision.gameObject.CompareTag("EarthProjectile") )
         {
             Destroy(gameObject);
         }
@@ -79,7 +79,7 @@ public class Projectile : MonoBehaviour
         }
         else if (collision.gameObject.CompareTag("Mob"))
         {
-            collision.gameObject.GetComponent<Mob>().DecreaseLife(dmg);
+            collision.gameObject.GetComponent<Planet>().DecreaseLife(dmg);
             Destroy(gameObject);
         }
 
@@ -87,7 +87,7 @@ public class Projectile : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("EarthProjectile"))
+        if (collision.gameObject.CompareTag("EarthProjectile") || collision.gameObject.CompareTag("MobShield"))
         {
             Destroy(gameObject);
         }

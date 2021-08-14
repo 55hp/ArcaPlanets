@@ -298,11 +298,11 @@ GameObject:
   - component: {fileID: 44623695}
   m_Layer: 16
   m_Name: PlanetShield
-  m_TagString: Wall
+  m_TagString: MobShield
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &44623692
 Transform:
   m_ObjectHideFlags: 0
@@ -324,7 +324,7 @@ CircleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 44623691}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -374,7 +374,7 @@ SpriteRenderer:
   m_SortingLayer: 8
   m_SortingOrder: 0
   m_Sprite: {fileID: 0}
-  m_Color: {r: 0.85882354, g: 0.27450982, b: 1, a: 1}
+  m_Color: {r: 0.85882354, g: 0.27450982, b: 1, a: 0.4627451}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -594,7 +594,7 @@ Transform:
   m_LocalScale: {x: 6, y: 0.5769737, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &126206985
 SpriteRenderer:
@@ -930,7 +930,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &343015707
 GameObject:
@@ -1196,10 +1196,6 @@ GameObject:
   - component: {fileID: 468308825}
   - component: {fileID: 468308824}
   - component: {fileID: 468308823}
-  - component: {fileID: 468308822}
-  - component: {fileID: 468308826}
-  - component: {fileID: 468308827}
-  - component: {fileID: 468308828}
   m_Layer: 14
   m_Name: Satellite Bot Left
   m_TagString: Mob
@@ -1223,19 +1219,6 @@ Transform:
   m_Father: {fileID: 522608176}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &468308822
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 468308820}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa2aa99f91af48b40b4befa79685f014, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  myFace: {fileID: 12114278}
 --- !u!50 &468308823
 Rigidbody2D:
   serializedVersion: 4
@@ -1324,54 +1307,36 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &468308826
-MonoBehaviour:
+--- !u!1 &480728256
+GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 468308820}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d449a5157fb66d4ea4c09e10b033c40, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bullet: {fileID: 3246662169968701974, guid: b31a037311962b5428492a164abcda57, type: 3}
-  bullet1: {fileID: 0}
-  bullet2: {fileID: 0}
---- !u!114 &468308827
-MonoBehaviour:
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 480728257}
+  m_Layer: 14
+  m_Name: PlanetWeapon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &480728257
+Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 468308820}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03c0e76973c617a429fc09c8b0bd80ac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ouchFace: {fileID: 21300000, guid: 64a71132e25966a4baede2d79cb80515, type: 3}
-  myFace: {fileID: 12114278}
-  idleSprites: []
---- !u!114 &468308828
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 468308820}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1222acbc1205c2a468fda450203b1201, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  blinkShieldIntro: []
-  blinkShieldLoop: []
-  blinkShieldEnd: []
-  shield: {fileID: 347414551}
-  myFace: {fileID: 0}
-  shieldCreationFacesAnimation: []
+  m_GameObject: {fileID: 480728256}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1138512296}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &506192668
 GameObject:
   m_ObjectHideFlags: 0
@@ -1532,7 +1497,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &522608175
 GameObject:
@@ -1582,12 +1547,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c981be19379d98c4288c2f53a62b89ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  planet: {fileID: 1138512297}
   mobsGameobjects:
-  - {fileID: 1138512297}
-  - {fileID: 1872423477}
-  - {fileID: 670402318}
-  - {fileID: 684130937}
-  - {fileID: 468308822}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   planetBodies:
   - {fileID: 21300000, guid: 4b10a397209ee52469dd2a117ad1c8d0, type: 3}
   - {fileID: 21300000, guid: 01429641572f7e748a08bebd60475acb, type: 3}
@@ -1913,7 +1879,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &670402316
 GameObject:
@@ -1927,10 +1893,6 @@ GameObject:
   - component: {fileID: 670402321}
   - component: {fileID: 670402320}
   - component: {fileID: 670402319}
-  - component: {fileID: 670402318}
-  - component: {fileID: 670402322}
-  - component: {fileID: 670402323}
-  - component: {fileID: 670402324}
   m_Layer: 14
   m_Name: Satellite Bot Right
   m_TagString: Mob
@@ -1954,19 +1916,6 @@ Transform:
   m_Father: {fileID: 522608176}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &670402318
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 670402316}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa2aa99f91af48b40b4befa79685f014, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  myFace: {fileID: 1112179951}
 --- !u!50 &670402319
 Rigidbody2D:
   serializedVersion: 4
@@ -2055,54 +2004,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &670402322
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 670402316}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d449a5157fb66d4ea4c09e10b033c40, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bullet: {fileID: 3246662169968701974, guid: b31a037311962b5428492a164abcda57, type: 3}
-  bullet1: {fileID: 0}
-  bullet2: {fileID: 0}
---- !u!114 &670402323
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 670402316}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03c0e76973c617a429fc09c8b0bd80ac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ouchFace: {fileID: 21300000, guid: 64a71132e25966a4baede2d79cb80515, type: 3}
-  myFace: {fileID: 1112179951}
-  idleSprites: []
---- !u!114 &670402324
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 670402316}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1222acbc1205c2a468fda450203b1201, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  blinkShieldIntro: []
-  blinkShieldLoop: []
-  blinkShieldEnd: []
-  shield: {fileID: 807438740}
-  myFace: {fileID: 0}
-  shieldCreationFacesAnimation: []
 --- !u!1 &684130935
 GameObject:
   m_ObjectHideFlags: 0
@@ -2115,10 +2016,6 @@ GameObject:
   - component: {fileID: 684130940}
   - component: {fileID: 684130939}
   - component: {fileID: 684130938}
-  - component: {fileID: 684130937}
-  - component: {fileID: 684130941}
-  - component: {fileID: 684130942}
-  - component: {fileID: 684130943}
   m_Layer: 14
   m_Name: Satellite Top Right
   m_TagString: Mob
@@ -2142,19 +2039,6 @@ Transform:
   m_Father: {fileID: 522608176}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &684130937
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 684130935}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa2aa99f91af48b40b4befa79685f014, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  myFace: {fileID: 1077312663}
 --- !u!50 &684130938
 Rigidbody2D:
   serializedVersion: 4
@@ -2243,54 +2127,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &684130941
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 684130935}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d449a5157fb66d4ea4c09e10b033c40, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bullet: {fileID: 3246662169968701974, guid: b31a037311962b5428492a164abcda57, type: 3}
-  bullet1: {fileID: 0}
-  bullet2: {fileID: 0}
---- !u!114 &684130942
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 684130935}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03c0e76973c617a429fc09c8b0bd80ac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ouchFace: {fileID: 21300000, guid: 64a71132e25966a4baede2d79cb80515, type: 3}
-  myFace: {fileID: 1077312663}
-  idleSprites: []
---- !u!114 &684130943
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 684130935}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1222acbc1205c2a468fda450203b1201, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  blinkShieldIntro: []
-  blinkShieldLoop: []
-  blinkShieldEnd: []
-  shield: {fileID: 1644881270}
-  myFace: {fileID: 0}
-  shieldCreationFacesAnimation: []
 --- !u!1 &705780025
 GameObject:
   m_ObjectHideFlags: 0
@@ -2652,7 +2488,7 @@ RectTransform:
   - {fileID: 145074654}
   - {fileID: 1905721604}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2830,7 +2666,7 @@ Transform:
   - {fileID: 6176048900997682945}
   - {fileID: 3967093152586393629}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &945330307
 MonoBehaviour:
@@ -3161,7 +2997,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1095929807
 MonoBehaviour:
@@ -3271,8 +3107,6 @@ GameObject:
   - component: {fileID: 1138512298}
   - component: {fileID: 1138512297}
   - component: {fileID: 1138512299}
-  - component: {fileID: 1138512300}
-  - component: {fileID: 1138512301}
   m_Layer: 14
   m_Name: Planet (Boss)
   m_TagString: Mob
@@ -3355,11 +3189,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1138512293}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.5, z: 2.6413624}
+  m_LocalPosition: {x: 0, y: 1.8, z: 2.641362}
   m_LocalScale: {x: 0.4, y: 0.4, z: 1}
   m_Children:
   - {fileID: 636067263}
   - {fileID: 44623692}
+  - {fileID: 480728257}
   m_Father: {fileID: 522608176}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3372,10 +3207,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1138512293}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa2aa99f91af48b40b4befa79685f014, type: 3}
+  m_Script: {fileID: 11500000, guid: a2b808474a723fa428d3c27f9cb48453, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myFace: {fileID: 636067262}
+  myBeautifulFace: {fileID: 636067262}
+  myShield: {fileID: 44623691}
+  myWeapon: {fileID: 480728256}
 --- !u!50 &1138512298
 Rigidbody2D:
   serializedVersion: 4
@@ -3397,82 +3234,25 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &1138512299
-MonoBehaviour:
+--- !u!95 &1138512299
+Animator:
+  serializedVersion: 3
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1138512293}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d449a5157fb66d4ea4c09e10b033c40, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bullet: {fileID: 3246662169968701974, guid: b31a037311962b5428492a164abcda57, type: 3}
-  bullet1: {fileID: 0}
-  bullet2: {fileID: 0}
---- !u!114 &1138512300
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1138512293}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03c0e76973c617a429fc09c8b0bd80ac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ouchFace: {fileID: 21300000, guid: 64a71132e25966a4baede2d79cb80515, type: 3}
-  myFace: {fileID: 636067262}
-  idleSprites:
-  - {fileID: 21300000, guid: 60a909e21fc65c344a755fd3bfc355a6, type: 3}
-  - {fileID: 21300000, guid: 072c1497c9a8f6f4e85db7780797632a, type: 3}
---- !u!114 &1138512301
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1138512293}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1222acbc1205c2a468fda450203b1201, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  blinkShieldIntro:
-  - {fileID: 21300000, guid: 351ae642f5b8bf041843b6041e446989, type: 3}
-  - {fileID: 21300000, guid: 428f9274943e3b04d8a0a53744703764, type: 3}
-  - {fileID: 21300000, guid: b2d39ebc8a0a46e43ad042eaebe0c63f, type: 3}
-  - {fileID: 21300000, guid: a1160cf04cde8ed409ea0b4f5d7e3a1e, type: 3}
-  - {fileID: 21300000, guid: 0adb4fceae976e24f8e03b834dd06c17, type: 3}
-  - {fileID: 21300000, guid: c921777cfa7d4374aaa85881ced13704, type: 3}
-  - {fileID: 21300000, guid: 6aa298728ca7315459bd78adb3bdc4e0, type: 3}
-  - {fileID: 21300000, guid: 7466d3ce6f069594b8a258c194c96fcc, type: 3}
-  - {fileID: 21300000, guid: e0461e5ff44830c4d979a8a3053508b2, type: 3}
-  - {fileID: 21300000, guid: cc4340caacebf2d4498d1c15216f4d30, type: 3}
-  blinkShieldLoop:
-  - {fileID: 21300000, guid: 29b4eb6cb3af25845a38088851d728cc, type: 3}
-  - {fileID: 21300000, guid: 9afcac8241ed5724586f179d57904ef8, type: 3}
-  - {fileID: 21300000, guid: 7e03ddb9c628d264b8866335f900d9af, type: 3}
-  blinkShieldEnd:
-  - {fileID: 21300000, guid: 9af4df9fe88fd8043b71bd1b85e57ae7, type: 3}
-  - {fileID: 21300000, guid: 6521e60c721a6584bbc624bccc6e7310, type: 3}
-  - {fileID: 21300000, guid: 6df3c95669f839b4999029060e27133b, type: 3}
-  - {fileID: 21300000, guid: 9800764db047efe468e829380cfa97a4, type: 3}
-  shield: {fileID: 44623691}
-  myFace: {fileID: 636067262}
-  shieldCreationFacesAnimation:
-  - {fileID: 21300000, guid: 46b36a4d13904e9449c78da68802936b, type: 3}
-  - {fileID: 21300000, guid: 2b246e4793d1c294b90e1608d771f89f, type: 3}
-  - {fileID: 21300000, guid: 46b36a4d13904e9449c78da68802936b, type: 3}
-  - {fileID: 21300000, guid: 2b246e4793d1c294b90e1608d771f89f, type: 3}
-  - {fileID: 21300000, guid: 46b36a4d13904e9449c78da68802936b, type: 3}
-  - {fileID: 21300000, guid: 2b246e4793d1c294b90e1608d771f89f, type: 3}
-  - {fileID: 21300000, guid: 2b246e4793d1c294b90e1608d771f89f, type: 3}
-  - {fileID: 21300000, guid: 488d5dae35539ec4e9ef57e9ed46c224, type: 3}
-  - {fileID: 21300000, guid: 488d5dae35539ec4e9ef57e9ed46c224, type: 3}
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2a3cfdf64271745408b60fb957b70a92, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1233416194
 GameObject:
   m_ObjectHideFlags: 0
@@ -3520,7 +3300,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1254597980
 GameObject:
@@ -3560,7 +3340,7 @@ Transform:
   - {fileID: 522608176}
   - {fileID: 4233493739437068368}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1254597982
 MonoBehaviour:
@@ -4686,6 +4466,63 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1001 &1829914245
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3775319392662086067, guid: 8c3e8e4b6e4f563479fe24da22d2fdcd, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.0068154
+      objectReference: {fileID: 0}
+    - target: {fileID: 3775319392662086067, guid: 8c3e8e4b6e4f563479fe24da22d2fdcd, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 6.330584
+      objectReference: {fileID: 0}
+    - target: {fileID: 3775319392662086067, guid: 8c3e8e4b6e4f563479fe24da22d2fdcd, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2.857642
+      objectReference: {fileID: 0}
+    - target: {fileID: 3775319392662086067, guid: 8c3e8e4b6e4f563479fe24da22d2fdcd, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3775319392662086067, guid: 8c3e8e4b6e4f563479fe24da22d2fdcd, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3775319392662086067, guid: 8c3e8e4b6e4f563479fe24da22d2fdcd, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3775319392662086067, guid: 8c3e8e4b6e4f563479fe24da22d2fdcd, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3775319392662086067, guid: 8c3e8e4b6e4f563479fe24da22d2fdcd, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3775319392662086067, guid: 8c3e8e4b6e4f563479fe24da22d2fdcd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3775319392662086067, guid: 8c3e8e4b6e4f563479fe24da22d2fdcd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3775319392662086067, guid: 8c3e8e4b6e4f563479fe24da22d2fdcd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5664654607588623011, guid: 8c3e8e4b6e4f563479fe24da22d2fdcd, type: 3}
+      propertyPath: m_Name
+      value: Power UP - Moon -  Moon Scythes
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8c3e8e4b6e4f563479fe24da22d2fdcd, type: 3}
 --- !u!1 &1872423475
 GameObject:
   m_ObjectHideFlags: 0
@@ -4698,10 +4535,6 @@ GameObject:
   - component: {fileID: 1872423480}
   - component: {fileID: 1872423479}
   - component: {fileID: 1872423478}
-  - component: {fileID: 1872423477}
-  - component: {fileID: 1872423481}
-  - component: {fileID: 1872423482}
-  - component: {fileID: 1872423483}
   m_Layer: 14
   m_Name: Satellite Top Left
   m_TagString: Mob
@@ -4725,19 +4558,6 @@ Transform:
   m_Father: {fileID: 522608176}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1872423477
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1872423475}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa2aa99f91af48b40b4befa79685f014, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  myFace: {fileID: 1554827430}
 --- !u!50 &1872423478
 Rigidbody2D:
   serializedVersion: 4
@@ -4826,54 +4646,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1872423481
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1872423475}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d449a5157fb66d4ea4c09e10b033c40, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bullet: {fileID: 3246662169968701974, guid: b31a037311962b5428492a164abcda57, type: 3}
-  bullet1: {fileID: 0}
-  bullet2: {fileID: 0}
---- !u!114 &1872423482
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1872423475}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03c0e76973c617a429fc09c8b0bd80ac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ouchFace: {fileID: 21300000, guid: 64a71132e25966a4baede2d79cb80515, type: 3}
-  myFace: {fileID: 1554827430}
-  idleSprites: []
---- !u!114 &1872423483
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1872423475}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1222acbc1205c2a468fda450203b1201, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  blinkShieldIntro: []
-  blinkShieldLoop: []
-  blinkShieldEnd: []
-  shield: {fileID: 188530715}
-  myFace: {fileID: 0}
-  shieldCreationFacesAnimation: []
 --- !u!1 &1883431416
 GameObject:
   m_ObjectHideFlags: 0
