@@ -10,6 +10,18 @@ public class Moon : MonoBehaviour
     int dmg;
     bool spinning;
 
+    string name;
+
+    public void SetName(String name)
+    {
+        this.name = name;
+    }
+
+    public string GetName()
+    {
+        return name;
+    }
+
     private void Start()
     {
         spinning = false;
@@ -47,9 +59,7 @@ public class Moon : MonoBehaviour
             StopCoroutine(Spin());
         }
     }
-
-
-
+    
     private void LateUpdate()
     {
         myRb.velocity = constantSpeed * (myRb.velocity.normalized);
@@ -69,7 +79,8 @@ public class Moon : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Deadzone"))
         {
-            MoonManager.Instance.MoonOutOfScreen(this);
+            MoonManager.Instance.MoonOutOfScreen();
+            Destroy(this);
         }
     }
 }

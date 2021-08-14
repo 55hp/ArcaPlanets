@@ -594,7 +594,7 @@ Transform:
   m_LocalScale: {x: 6, y: 0.5769737, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &126206985
 SpriteRenderer:
@@ -930,7 +930,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &343015707
 GameObject:
@@ -1497,7 +1497,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &522608175
 GameObject:
@@ -1861,12 +1861,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 594c3ac3c0f1e4c48b7da3002e280cb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialMoonSpeed: 250
-  moonPref: {fileID: 222861020182275805, guid: 0790f7783e89da34f930d60e63b34fed, type: 3}
-  standardMoonSkin: {fileID: 21300000, guid: 92203f27bb6f6ee44895e333475d82b5, type: 3}
-  redMoonSkin: {fileID: 21300000, guid: bb34516900feb72409afe05e84129c36, type: 3}
-  fullMoonSkin: {fileID: 21300000, guid: 23ad186ec92cc7f4da3e93b3b1dbcfa2, type: 3}
-  halfMoonSkin: {fileID: 21300000, guid: bce857d4776692442b76593ad77735a7, type: 3}
+  moonPrefab: {fileID: 222861020182275805, guid: 0790f7783e89da34f930d60e63b34fed, type: 3}
+  moonSprites:
+  - {fileID: 21300000, guid: 92203f27bb6f6ee44895e333475d82b5, type: 3}
+  - {fileID: 21300000, guid: bb34516900feb72409afe05e84129c36, type: 3}
+  - {fileID: 21300000, guid: 23ad186ec92cc7f4da3e93b3b1dbcfa2, type: 3}
+  - {fileID: 21300000, guid: bce857d4776692442b76593ad77735a7, type: 3}
+  - {fileID: 21300000, guid: 31fe13d82d2ae824fa53e54e85a5836e, type: 3}
+  - {fileID: 21300000, guid: e504d801da63b5240a3d40adfa24641d, type: 3}
+  - {fileID: 21300000, guid: 58b674fc1088e724695964cba359791d, type: 3}
 --- !u!4 &651990161
 Transform:
   m_ObjectHideFlags: 0
@@ -1879,7 +1882,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &670402316
 GameObject:
@@ -2488,7 +2491,7 @@ RectTransform:
   - {fileID: 145074654}
   - {fileID: 1905721604}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2666,7 +2669,7 @@ Transform:
   - {fileID: 6176048900997682945}
   - {fileID: 3967093152586393629}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &945330307
 MonoBehaviour:
@@ -2997,7 +3000,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1095929807
 MonoBehaviour:
@@ -3011,6 +3014,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f2ce20602e4c4f41bfb4c982e6ff73b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activeState: 0
 --- !u!1 &1112179951
 GameObject:
   m_ObjectHideFlags: 0
@@ -3300,7 +3304,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1254597980
 GameObject:
@@ -3340,7 +3344,7 @@ Transform:
   - {fileID: 522608176}
   - {fileID: 4233493739437068368}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1254597982
 MonoBehaviour:
@@ -4466,63 +4470,6 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!1001 &1829914245
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 3775319392662086067, guid: 8c3e8e4b6e4f563479fe24da22d2fdcd, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 2.0068154
-      objectReference: {fileID: 0}
-    - target: {fileID: 3775319392662086067, guid: 8c3e8e4b6e4f563479fe24da22d2fdcd, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 6.330584
-      objectReference: {fileID: 0}
-    - target: {fileID: 3775319392662086067, guid: 8c3e8e4b6e4f563479fe24da22d2fdcd, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -2.857642
-      objectReference: {fileID: 0}
-    - target: {fileID: 3775319392662086067, guid: 8c3e8e4b6e4f563479fe24da22d2fdcd, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3775319392662086067, guid: 8c3e8e4b6e4f563479fe24da22d2fdcd, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3775319392662086067, guid: 8c3e8e4b6e4f563479fe24da22d2fdcd, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3775319392662086067, guid: 8c3e8e4b6e4f563479fe24da22d2fdcd, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3775319392662086067, guid: 8c3e8e4b6e4f563479fe24da22d2fdcd, type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3775319392662086067, guid: 8c3e8e4b6e4f563479fe24da22d2fdcd, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3775319392662086067, guid: 8c3e8e4b6e4f563479fe24da22d2fdcd, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3775319392662086067, guid: 8c3e8e4b6e4f563479fe24da22d2fdcd, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5664654607588623011, guid: 8c3e8e4b6e4f563479fe24da22d2fdcd, type: 3}
-      propertyPath: m_Name
-      value: Power UP - Moon -  Moon Scythes
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 8c3e8e4b6e4f563479fe24da22d2fdcd, type: 3}
 --- !u!1 &1872423475
 GameObject:
   m_ObjectHideFlags: 0

@@ -5,6 +5,154 @@ using UnityEngine;
 public class MoonManager : Singleton<MoonManager>
 {
 
+    [SerializeField] Moon moonPrefab;
+
+    [SerializeField] Sprite[] moonSprites;
+    
+    Moon moon;
+
+    bool playing;
+
+
+    private void OnEnable()
+    {
+        EventManager.OnStateHaveBeenChanged += OnStateChanged;
+    }
+
+    private void OnDisable()
+    {
+        EventManager.OnStateHaveBeenChanged -= OnStateChanged;
+    }
+
+    public void OnStateChanged(GameManager.GameState newState)
+    {
+        switch (newState)
+        {
+            case GameManager.GameState.Boot:
+                InitMoon();
+                break;
+            case GameManager.GameState.Ready:
+
+                break;
+            case GameManager.GameState.Play:
+                playing = true;
+                break;
+            case GameManager.GameState.Pause:
+
+                break;
+            case GameManager.GameState.Gameover:
+                CleanScreenFromMoons();
+                playing = false;
+                break;
+            case GameManager.GameState.Win:
+                CleanScreenFromMoons();
+                playing = false;
+                break;
+        }
+    }
+    
+
+    private void Update()
+    {
+        if (!playing && moon != null)
+        {
+            Vector3 earthPosition = Earth.Instance.gameObject.transform.position;
+            Vector3 startingPosition = new Vector3(earthPosition.x, earthPosition.y + 0.5f, 0);
+            moon.transform.position = startingPosition;
+
+            if ((Input.GetMouseButtonUp(0) || Input.touches.Length > 0) && GameManager.Instance.GetState() == GameManager.GameState.Ready)
+            {
+                HitMoon();
+                GameManager.Instance.PlayGame();
+            }
+        }
+    }
+
+    public void HitMoon()
+    {
+        moon.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, 250));
+        GameManager.Instance.SetState(GameManager.GameState.Play);
+    }
+
+    public void InitMoon()
+    {
+        Vector3 earthPosition = Earth.Instance.gameObject.transform.position;
+        Vector3 startingPosition = new Vector3(earthPosition.x, earthPosition.y + 0.5f, 0);
+        moon = Instantiate(moonPrefab, startingPosition, Quaternion.identity);
+    }
+
+    
+    public void MoonOutOfScreen()
+    {
+
+        EventManager.LoseLife();
+        if (playing)
+            RestartMainMoon();
+    }
+
+    public void RestartMainMoon()
+    {
+
+        Vector3 earthPosition = Earth.Instance.gameObject.transform.position;
+        Vector3 startingPosition = new Vector3(earthPosition.x, earthPosition.y + 0.5f, 0);
+        moon = Instantiate(moonPrefab, startingPosition, Quaternion.identity);
+        GameManager.Instance.GameReady();
+        EffectsReset();
+    }
+
+
+    #region POWER UP EFFECTS METHODS
+
+    //[201] RED MOON
+    //Cambio sprite e aumenta il danno
+    public IEnumerator RedMoon(float time)
+    {
+        moon.SetDmg(2);
+        moon.ChangeMoonSprite(moonSprites[1]);
+
+        yield return new WaitForSeconds(time);
+        moon.SetDmg(1);
+        moon.ChangeMoonSprite(moonSprites[0]);
+
+    }
+
+    //[202] MOON Scythes
+    //Cambio sprite + Creazione di altre n lune con sprite specifici.
+    public void MoonScythes(int howManyShythes)
+    {
+        moon.MoonSpinning(true);
+    }
+
+
+    //[203] FULL MOON aumenta di dimensione
+    public IEnumerator FullMoon(float time)
+    {
+        moon?.ChangeMoonSprite(moonSprites[2]);
+        moon.GetComponent<CircleCollider2D>().radius = 0.82f;
+
+        yield return new WaitForSeconds(time);
+
+        moon?.ChangeMoonSprite(moonSprites[0]);
+        moon.GetComponent<CircleCollider2D>().radius = 0.52f;
+
+    }
+
+    public void CleanScreenFromMoons()
+    {
+        moon.gameObject.SetActive(false);
+    }
+
+    public void EffectsReset()
+    {
+        moon?.SetDmg(1);
+        moon?.ChangeMoonSprite(moonSprites[0]);
+        moon?.MoonSpinning(false);
+        moon.GetComponent<CircleCollider2D>().radius = 0.52f;
+    }
+    #endregion
+
+
+    /*
     public float initialMoonSpeed = 250;
     [SerializeField] Moon moonPref;
 
@@ -230,5 +378,5 @@ public class MoonManager : Singleton<MoonManager>
         }
     }
     #endregion
-
+    */
 }

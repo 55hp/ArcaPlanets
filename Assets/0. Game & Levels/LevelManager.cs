@@ -48,6 +48,7 @@ public class LevelManager : MonoBehaviour
             case GameManager.GameState.Boot:
                 mobManager.SetNumberOfMobsForThisStage(Random.Range(0,0));
                 mobManager.InitMobs();
+                StartCoroutine(GetLevelReady());
                 break;
             case GameManager.GameState.Play:
                 break;
@@ -62,4 +63,9 @@ public class LevelManager : MonoBehaviour
         }
     }
 
+    IEnumerator GetLevelReady()
+    {
+        yield return new WaitForSeconds(2f);
+        GameManager.Instance.GameReady();
+    }
 }

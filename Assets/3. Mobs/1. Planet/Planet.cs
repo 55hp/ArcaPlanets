@@ -60,9 +60,13 @@ public class Planet : MonoBehaviour
         StartCoroutine(power);
     }
 
-    public void KillPlanet()
+    IEnumerator KillPlanet()
     {
-
+        myAnimator.SetTrigger("Die");
+        alive = false;
+        myAnimator.SetBool("Alive", false);
+        yield return new WaitForSeconds(3);
+        EventManager.ChangeGameState(GameManager.GameState.Win);
     }
 
     
@@ -98,14 +102,13 @@ public class Planet : MonoBehaviour
 
     public void DecreaseLife(float damage)
     {
-        myAnimator.SetTrigger("Damage");
         actualHp -= damage;
         EventManager.DealDamageToThePlanet(damage / healthPoints);
         if (actualHp <= 0)
         {
-            myAnimator.SetTrigger("Die");
-            alive = false;
-            EventManager.ChangeGameState(GameManager.GameState.Win);
+            StartCoroutine(KillPlanet());
+            return;
         }
+        myAnimator.SetTrigger("Damage");
     }
 }

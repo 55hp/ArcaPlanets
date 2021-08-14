@@ -71,8 +71,10 @@ public class Earth : Singleton<Earth>
                 InitEarth();
                 gameObject.GetComponent<EarthController>().ResetEarthPosition();
                 break;
-            case GameManager.GameState.Play:
+            case GameManager.GameState.Ready:
                 gameObject.GetComponent<EarthController>().GoPlay(true);
+                break;
+            case GameManager.GameState.Play:
                 Invulnerability(false);
                 break;
             case GameManager.GameState.Pause:
