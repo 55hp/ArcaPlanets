@@ -2,13 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MobAnimationController : MonoBehaviour
+public class Satellite : Planet
 {
-
     
 
-    
 
-    
 
 }

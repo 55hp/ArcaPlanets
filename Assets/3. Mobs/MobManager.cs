@@ -5,7 +5,7 @@ using UnityEngine;
 public class MobManager : MonoBehaviour
 {
     [SerializeField] Planet planet;
-    [SerializeField] Mob[] mobsGameobjects;
+    [SerializeField] Satellite[] mobsGameobjects;
     
     [SerializeField] Sprite[] planetBodies;
     [SerializeField] Sprite[] planetFaces;

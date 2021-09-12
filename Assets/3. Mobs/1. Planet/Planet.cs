@@ -39,7 +39,51 @@ public class Planet : MonoBehaviour
         }
     }
 
-    IEnumerator BlinkShield(float startingTime , float activeTime , float inactiveTime)
+    public void ActivatePlanet()
+    {
+        alive = true;
+        gameObject.SetActive(true);
+        myAnimator = gameObject.GetComponent<Animator>();
+        StartCoroutine(power);
+    }
+
+
+    IEnumerator KillPlanet()
+    {
+        myAnimator.SetTrigger("Die");
+        alive = false;
+        myAnimator.SetBool("Alive", false);
+        yield return new WaitForSeconds(3);
+        EventManager.ChangeGameState(GameManager.GameState.Win);
+    }
+
+    public void DecreaseLife(float damage)
+    {
+        actualHp -= damage;
+        EventManager.DealDamageToThePlanet(damage / healthPoints);
+        if (actualHp <= 0)
+        {
+            StartCoroutine(KillPlanet());
+            return;
+        }
+        myAnimator.SetTrigger("Damage");
+    }
+
+
+    #region SHIELD
+
+    public void ShieldActive()
+    {
+        myShield.GetComponent<CircleCollider2D>().enabled = true;
+    }
+
+    public void ShieldInactive()
+    {
+        myShield.GetComponent<CircleCollider2D>().enabled = false;
+    }
+
+
+    IEnumerator BlinkShield(float startingTime, float activeTime, float inactiveTime)
     {
         yield return new WaitForSeconds(startingTime);
         while (alive)
@@ -51,39 +95,18 @@ public class Planet : MonoBehaviour
         }
     }
 
-    
-    public void ActivatePlanet()
-    {
-        alive = true;
-        gameObject.SetActive(true);
-        myAnimator = gameObject.GetComponent<Animator>();
-        StartCoroutine(power);
-    }
+    #endregion
 
-    IEnumerator KillPlanet()
-    {
-        myAnimator.SetTrigger("Die");
-        alive = false;
-        myAnimator.SetBool("Alive", false);
-        yield return new WaitForSeconds(3);
-        EventManager.ChangeGameState(GameManager.GameState.Win);
-    }
-
-    
-    public void ShieldActive()
-    {
-        myShield.GetComponent<CircleCollider2D>().enabled = true;
-    }
-
-    public void ShieldInactive()
-    {
-        myShield.GetComponent<CircleCollider2D>().enabled = false;
-    }
+    #region WEAPON
 
     public void Shoot()
     {
         myAnimator.SetTrigger("Shoot");
     }
+    
+    #endregion
+
+    
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -100,15 +123,5 @@ public class Planet : MonoBehaviour
         }
     }
 
-    public void DecreaseLife(float damage)
-    {
-        actualHp -= damage;
-        EventManager.DealDamageToThePlanet(damage / healthPoints);
-        if (actualHp <= 0)
-        {
-            StartCoroutine(KillPlanet());
-            return;
-        }
-        myAnimator.SetTrigger("Damage");
-    }
+    
 }
