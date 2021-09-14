@@ -1366,8 +1366,7 @@ MonoBehaviour:
   myBeautifulFace: {fileID: 12114278}
   myShield: {fileID: 347414551}
   myWeapon: {fileID: 949900731}
-  distance: 0.5
-  speed: 0
+  distance: 0.2
 --- !u!50 &468308823
 Rigidbody2D:
   serializedVersion: 4
@@ -2194,8 +2193,7 @@ MonoBehaviour:
   myBeautifulFace: {fileID: 1112179951}
   myShield: {fileID: 188530715}
   myWeapon: {fileID: 652335236}
-  distance: 0.5
-  speed: 0
+  distance: 0.2
 --- !u!50 &670402319
 Rigidbody2D:
   serializedVersion: 4
@@ -2356,8 +2354,7 @@ MonoBehaviour:
   myBeautifulFace: {fileID: 1077312663}
   myShield: {fileID: 1644881270}
   myWeapon: {fileID: 328278043}
-  distance: 0.5
-  speed: 0
+  distance: 0.2
 --- !u!50 &684130938
 Rigidbody2D:
   serializedVersion: 4
@@ -4882,8 +4879,7 @@ MonoBehaviour:
   myBeautifulFace: {fileID: 1554827430}
   myShield: {fileID: 188530715}
   myWeapon: {fileID: 178746949}
-  distance: 0.5
-  speed: 0
+  distance: 0.2
 --- !u!50 &1872423478
 Rigidbody2D:
   serializedVersion: 4
