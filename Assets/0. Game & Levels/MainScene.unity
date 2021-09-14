@@ -594,7 +594,7 @@ Transform:
   m_LocalScale: {x: 6, y: 0.5769737, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &126206985
 SpriteRenderer:
@@ -745,6 +745,49 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &178746947
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 178746948}
+  - component: {fileID: 178746949}
+  m_Layer: 14
+  m_Name: SatelliteWeapon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &178746948
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 178746947}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1872423476}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &178746949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 178746947}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d449a5157fb66d4ea4c09e10b033c40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &188530715
 GameObject:
   m_ObjectHideFlags: 0
@@ -930,8 +973,94 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &230988802
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 230988804}
+  - component: {fileID: 230988803}
+  m_Layer: 26
+  m_Name: PowerUp Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &230988803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 230988802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0772fdb61ff10e5488f9de049b5421ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &230988804
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 230988802}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -6.98, y: 0.3, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &328278041
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 328278042}
+  - component: {fileID: 328278043}
+  m_Layer: 14
+  m_Name: SatelliteWeapon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &328278042
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 328278041}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 684130936}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &328278043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 328278041}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d449a5157fb66d4ea4c09e10b033c40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &343015707
 GameObject:
   m_ObjectHideFlags: 0
@@ -1057,7 +1186,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 343015707}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -5, z: 1}
+  m_LocalPosition: {x: -5, y: -5, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1254597981}
@@ -1196,6 +1325,8 @@ GameObject:
   - component: {fileID: 468308825}
   - component: {fileID: 468308824}
   - component: {fileID: 468308823}
+  - component: {fileID: 468308822}
+  - component: {fileID: 468308826}
   m_Layer: 14
   m_Name: Satellite Bot Left
   m_TagString: Mob
@@ -1216,9 +1347,25 @@ Transform:
   m_Children:
   - {fileID: 12114279}
   - {fileID: 347414552}
+  - {fileID: 949900730}
   m_Father: {fileID: 522608176}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &468308822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 468308820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c27f66acb8477d439fa3fbcb9ced5a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myBeautifulFace: {fileID: 12114278}
+  myShield: {fileID: 347414551}
+  myWeapon: {fileID: 949900731}
 --- !u!50 &468308823
 Rigidbody2D:
   serializedVersion: 4
@@ -1307,6 +1454,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &468308826
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 468308820}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 77f123bdd6f85094b901c35150522630, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &480728256
 GameObject:
   m_ObjectHideFlags: 0
@@ -1316,6 +1482,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 480728257}
+  - component: {fileID: 480728258}
   m_Layer: 14
   m_Name: PlanetWeapon
   m_TagString: Untagged
@@ -1331,12 +1498,24 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 480728256}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -1.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1138512296}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &480728258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 480728256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d449a5157fb66d4ea4c09e10b033c40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &506192668
 GameObject:
   m_ObjectHideFlags: 0
@@ -1508,7 +1687,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 522608176}
-  - component: {fileID: 522608177}
   m_Layer: 26
   m_Name: Mobs
   m_TagString: Untagged
@@ -1529,58 +1707,12 @@ Transform:
   m_Children:
   - {fileID: 1138512296}
   - {fileID: 1872423476}
-  - {fileID: 670402317}
   - {fileID: 684130936}
   - {fileID: 468308821}
+  - {fileID: 670402317}
   m_Father: {fileID: 1254597981}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &522608177
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 522608175}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c981be19379d98c4288c2f53a62b89ef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  planet: {fileID: 1138512297}
-  mobsGameobjects:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  planetBodies:
-  - {fileID: 21300000, guid: 4b10a397209ee52469dd2a117ad1c8d0, type: 3}
-  - {fileID: 21300000, guid: 01429641572f7e748a08bebd60475acb, type: 3}
-  - {fileID: 21300000, guid: 0a8813cef7ef3ee47b8f371e3b18a3a9, type: 3}
-  planetFaces:
-  - {fileID: 21300000, guid: a0aeb38ba106cbe4d91ce31c53761de4, type: 3}
-  satBodies:
-  - {fileID: 21300000, guid: f81bbfa182bd20a48ad7915947a4b3d7, type: 3}
-  - {fileID: 21300000, guid: 00ce1480cc51fce4aa95169f50f25426, type: 3}
-  satFaces:
-  - {fileID: 21300000, guid: c4b073ea2dfd09d48880bc2b774f8ad5, type: 3}
-  planetColors:
-  - {r: 0.8705883, g: 0.6039216, b: 0.18823531, a: 1}
-  - {r: 0.2392157, g: 0.76470596, b: 0.37647063, a: 1}
-  - {r: 0.41960788, g: 0.2509804, b: 0.9686275, a: 1}
-  - {r: 0.75294125, g: 0.15686275, b: 0.27058825, a: 1}
-  satColors:
-  - {r: 0.87058824, g: 0.6039216, b: 0.1882353, a: 1}
-  - {r: 0.23921569, g: 0.7647059, b: 0.3764706, a: 1}
-  - {r: 0.41960788, g: 0.2509804, b: 0.9686275, a: 1}
-  - {r: 0.75294125, g: 0.15686275, b: 0.27058825, a: 1}
-  enemyBullets:
-  - {fileID: 4883759050254856589, guid: 249221f83a4b74e4ab34c32938144486, type: 3}
-  - {fileID: 3246662169968701974, guid: b31a037311962b5428492a164abcda57, type: 3}
-  - {fileID: 4277247500659302408, guid: 16adebff6ef716a4e8f03e3a52377d88, type: 3}
-  - {fileID: 3246662169968701974, guid: 7e9b9e79b172a5c418ae8cf20eca21b3, type: 3}
-  - {fileID: 3246662169968701974, guid: 33d2812fd6d89b347bfb54fa9a7197bd, type: 3}
 --- !u!1 &551446090
 GameObject:
   m_ObjectHideFlags: 0
@@ -1740,6 +1872,86 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &640246177
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 640246179}
+  - component: {fileID: 640246178}
+  m_Layer: 0
+  m_Name: Level Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &640246178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 640246177}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4e753d435dc7da468b9cfb3b1583e6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rightWall: {fileID: 343015707}
+  leftWall: {fileID: 1889447198}
+  topWall: {fileID: 1064879539}
+  topDeadzone: {fileID: 972716115911327458}
+  planet: {fileID: 1138512297}
+  satellities:
+  - {fileID: 1872423477}
+  - {fileID: 684130937}
+  - {fileID: 468308822}
+  - {fileID: 670402318}
+  planetBodyPalette:
+  - {r: 0.8705883, g: 0.6039216, b: 0.18823531, a: 1}
+  - {r: 0.2392157, g: 0.76470596, b: 0.37647063, a: 1}
+  - {r: 0.41960788, g: 0.2509804, b: 0.9686275, a: 1}
+  - {r: 0.75294125, g: 0.15686275, b: 0.27058825, a: 1}
+  satelliteBodyPalette:
+  - {r: 0.8705883, g: 0.6039216, b: 0.18823531, a: 1}
+  - {r: 0.2392157, g: 0.76470596, b: 0.37647063, a: 1}
+  - {r: 0.41960788, g: 0.2509804, b: 0.9686275, a: 1}
+  - {r: 0.75294125, g: 0.15686275, b: 0.27058825, a: 1}
+  planetFaces:
+  - {fileID: 21300000, guid: 60a909e21fc65c344a755fd3bfc355a6, type: 3}
+  satelliteFaces:
+  - {fileID: 21300000, guid: c4b073ea2dfd09d48880bc2b774f8ad5, type: 3}
+  planetBodies:
+  - {fileID: 21300000, guid: 4b10a397209ee52469dd2a117ad1c8d0, type: 3}
+  - {fileID: 21300000, guid: 01429641572f7e748a08bebd60475acb, type: 3}
+  - {fileID: 21300000, guid: 0a8813cef7ef3ee47b8f371e3b18a3a9, type: 3}
+  satelliteBodies:
+  - {fileID: 21300000, guid: f81bbfa182bd20a48ad7915947a4b3d7, type: 3}
+  - {fileID: 21300000, guid: 00ce1480cc51fce4aa95169f50f25426, type: 3}
+  bulletPrefabs:
+  - {fileID: 4883759050254856589, guid: 249221f83a4b74e4ab34c32938144486, type: 3}
+  - {fileID: 3246662169968701974, guid: b31a037311962b5428492a164abcda57, type: 3}
+  - {fileID: 3246662169968701974, guid: 7e9b9e79b172a5c418ae8cf20eca21b3, type: 3}
+  - {fileID: 3246662169968701974, guid: 33d2812fd6d89b347bfb54fa9a7197bd, type: 3}
+  - {fileID: 4277247500659302408, guid: 16adebff6ef716a4e8f03e3a52377d88, type: 3}
+--- !u!4 &640246179
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 640246177}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &644013731
 GameObject:
   m_ObjectHideFlags: 0
@@ -1884,6 +2096,49 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &652335234
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 652335235}
+  - component: {fileID: 652335236}
+  m_Layer: 14
+  m_Name: SatelliteWeapon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &652335235
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 652335234}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 670402317}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &652335236
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 652335234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d449a5157fb66d4ea4c09e10b033c40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &670402316
 GameObject:
   m_ObjectHideFlags: 0
@@ -1896,6 +2151,8 @@ GameObject:
   - component: {fileID: 670402321}
   - component: {fileID: 670402320}
   - component: {fileID: 670402319}
+  - component: {fileID: 670402318}
+  - component: {fileID: 670402322}
   m_Layer: 14
   m_Name: Satellite Bot Right
   m_TagString: Mob
@@ -1916,9 +2173,25 @@ Transform:
   m_Children:
   - {fileID: 1112179952}
   - {fileID: 807438741}
+  - {fileID: 652335235}
   m_Father: {fileID: 522608176}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &670402318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 670402316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c27f66acb8477d439fa3fbcb9ced5a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myBeautifulFace: {fileID: 1112179951}
+  myShield: {fileID: 188530715}
+  myWeapon: {fileID: 652335236}
 --- !u!50 &670402319
 Rigidbody2D:
   serializedVersion: 4
@@ -2007,6 +2280,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &670402322
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 670402316}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 77f123bdd6f85094b901c35150522630, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &684130935
 GameObject:
   m_ObjectHideFlags: 0
@@ -2019,6 +2311,8 @@ GameObject:
   - component: {fileID: 684130940}
   - component: {fileID: 684130939}
   - component: {fileID: 684130938}
+  - component: {fileID: 684130937}
+  - component: {fileID: 684130941}
   m_Layer: 14
   m_Name: Satellite Top Right
   m_TagString: Mob
@@ -2039,9 +2333,25 @@ Transform:
   m_Children:
   - {fileID: 1077312664}
   - {fileID: 1644881271}
+  - {fileID: 328278042}
   m_Father: {fileID: 522608176}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &684130937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 684130935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c27f66acb8477d439fa3fbcb9ced5a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myBeautifulFace: {fileID: 1077312663}
+  myShield: {fileID: 1644881270}
+  myWeapon: {fileID: 328278043}
 --- !u!50 &684130938
 Rigidbody2D:
   serializedVersion: 4
@@ -2130,6 +2440,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &684130941
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 684130935}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 77f123bdd6f85094b901c35150522630, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &705780025
 GameObject:
   m_ObjectHideFlags: 0
@@ -2408,7 +2737,7 @@ GameObject:
   - component: {fileID: 814977570}
   - component: {fileID: 814977569}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: CanvasOld
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2491,7 +2820,7 @@ RectTransform:
   - {fileID: 145074654}
   - {fileID: 1905721604}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2669,7 +2998,7 @@ Transform:
   - {fileID: 6176048900997682945}
   - {fileID: 3967093152586393629}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &945330307
 MonoBehaviour:
@@ -2758,6 +3087,49 @@ CapsuleCollider2D:
   m_Offset: {x: -0.004654664, y: 0.10240898}
   m_Size: {x: 1.5706384, y: 1.1796229}
   m_Direction: 1
+--- !u!1 &949900729
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 949900730}
+  - component: {fileID: 949900731}
+  m_Layer: 14
+  m_Name: SatelliteWeapon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &949900730
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 949900729}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 468308821}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &949900731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 949900729}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d449a5157fb66d4ea4c09e10b033c40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1064879539
 GameObject:
   m_ObjectHideFlags: 0
@@ -2883,7 +3255,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1064879539}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1, y: 0, z: 1}
+  m_LocalPosition: {x: 1, y: 8, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1254597981}
@@ -3216,7 +3588,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myBeautifulFace: {fileID: 636067262}
   myShield: {fileID: 44623691}
-  myWeapon: {fileID: 480728256}
+  myWeapon: {fileID: 480728258}
 --- !u!50 &1138512298
 Rigidbody2D:
   serializedVersion: 4
@@ -3304,7 +3676,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1254597980
 GameObject:
@@ -3315,9 +3687,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1254597981}
-  - component: {fileID: 1254597982}
   m_Layer: 0
-  m_Name: Level Composition
+  m_Name: Level
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3342,27 +3713,9 @@ Transform:
   - {fileID: 4233493738471702066}
   - {fileID: 644013732}
   - {fileID: 522608176}
-  - {fileID: 4233493739437068368}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1254597982
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1254597980}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4e753d435dc7da468b9cfb3b1583e6b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mobManager: {fileID: 522608177}
-  rightWall: {fileID: 343015707}
-  leftWall: {fileID: 1889447198}
-  topWall: {fileID: 1064879539}
-  topDeadzone: {fileID: 972716115911327458}
 --- !u!1 &1329367717
 GameObject:
   m_ObjectHideFlags: 0
@@ -4482,6 +4835,8 @@ GameObject:
   - component: {fileID: 1872423480}
   - component: {fileID: 1872423479}
   - component: {fileID: 1872423478}
+  - component: {fileID: 1872423477}
+  - component: {fileID: 1872423481}
   m_Layer: 14
   m_Name: Satellite Top Left
   m_TagString: Mob
@@ -4502,9 +4857,25 @@ Transform:
   m_Children:
   - {fileID: 1554827431}
   - {fileID: 188530716}
+  - {fileID: 178746948}
   m_Father: {fileID: 522608176}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1872423477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1872423475}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c27f66acb8477d439fa3fbcb9ced5a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myBeautifulFace: {fileID: 1554827430}
+  myShield: {fileID: 188530715}
+  myWeapon: {fileID: 178746949}
 --- !u!50 &1872423478
 Rigidbody2D:
   serializedVersion: 4
@@ -4593,6 +4964,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &1872423481
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1872423475}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 77f123bdd6f85094b901c35150522630, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1883431416
 GameObject:
   m_ObjectHideFlags: 0
@@ -4799,7 +5189,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1889447198}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -5, z: 1}
+  m_LocalPosition: {x: 5, y: -5, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1254597981}
@@ -5336,9 +5726,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d449a5157fb66d4ea4c09e10b033c40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 576211358216060772, guid: ad9c320fcb3863946a4cd1d755dd0052, type: 3}
-  bullet1: {fileID: 0}
-  bullet2: {fileID: 0}
 --- !u!4 &1573066096824376427
 Transform:
   m_ObjectHideFlags: 0
@@ -5585,8 +5972,8 @@ Transform:
   m_LocalPosition: {x: -6.98, y: 0.3, z: -1.9885335}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1254597981}
-  m_RootOrder: 8
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4233493739437068369
 MonoBehaviour:
@@ -5654,27 +6041,14 @@ GameObject:
   m_Component:
   - component: {fileID: 4233493739437068368}
   - component: {fileID: 4233493739437068369}
-  - component: {fileID: 4233493739437068371}
   - component: {fileID: 4233493739437068372}
   m_Layer: 26
-  m_Name: Asteroid & Power up Manager
+  m_Name: Asteroid Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &4233493739437068371
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4233493739437068370}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0772fdb61ff10e5488f9de049b5421ad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!212 &4233493739437068372
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5769,9 +6143,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d449a5157fb66d4ea4c09e10b033c40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 576211358216060772, guid: ad9c320fcb3863946a4cd1d755dd0052, type: 3}
-  bullet1: {fileID: 0}
-  bullet2: {fileID: 0}
 --- !u!212 &5109540537358046303
 SpriteRenderer:
   m_ObjectHideFlags: 0

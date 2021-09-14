@@ -11,18 +11,24 @@ public class Planet : MonoBehaviour
     bool alive;
 
     [SerializeField] GameObject myShield;
-    [SerializeField] GameObject myWeapon;
+    [SerializeField] ShootingModule myWeapon;
 
-    IEnumerator power;
+    IEnumerator myPower;
     Animator myAnimator;
 
-    public enum POWER
+    private void Start()
+    {
+        myAnimator = gameObject.GetComponent<Animator>();
+        myPower = null;
+    }
+
+    public enum PLANET_POWER
     {
         BLINK_SHIELD,
         DIVERGENT_GUN
     }
 
-    public void RandomizePlanet(int Hp, Sprite body, Sprite face, Color color , POWER myPower , float startingTimer , float powerOnTimer , float powerOffTimer)
+    public void SetPlanet(int Hp, Sprite body, Sprite face, Color color , PLANET_POWER myPower , float startingTime , float activeTime , float inactiveTime , GameObject bullet1 , GameObject bullet2)
     {
         healthPoints = Hp;
         actualHp = healthPoints;
@@ -33,8 +39,13 @@ public class Planet : MonoBehaviour
 
         switch (myPower)
         {
-            case POWER.BLINK_SHIELD:
-                this.power = BlinkShield(startingTimer, powerOnTimer , powerOffTimer);
+            case PLANET_POWER.BLINK_SHIELD:
+                this.myPower = BlinkShield(startingTime, activeTime , inactiveTime);
+                break;
+
+            case PLANET_POWER.DIVERGENT_GUN:
+                myWeapon.SetShootingModule(ShootingModule.ShootingType.FIXED_RATE_DIVERGENT, bullet1 , bullet2, startingTime, activeTime);
+                this.myPower = DivergentShoot(startingTime, activeTime);
                 break;
         }
     }
@@ -42,33 +53,10 @@ public class Planet : MonoBehaviour
     public void ActivatePlanet()
     {
         alive = true;
-        gameObject.SetActive(true);
-        myAnimator = gameObject.GetComponent<Animator>();
-        StartCoroutine(power);
-    }
-
-
-    IEnumerator KillPlanet()
-    {
-        myAnimator.SetTrigger("Die");
-        alive = false;
-        myAnimator.SetBool("Alive", false);
-        yield return new WaitForSeconds(3);
-        EventManager.ChangeGameState(GameManager.GameState.Win);
-    }
-
-    public void DecreaseLife(float damage)
-    {
-        actualHp -= damage;
-        EventManager.DealDamageToThePlanet(damage / healthPoints);
-        if (actualHp <= 0)
-        {
-            StartCoroutine(KillPlanet());
-            return;
+        if (myPower != null) {
+            StartCoroutine(myPower);
         }
-        myAnimator.SetTrigger("Damage");
     }
-
 
     #region SHIELD
 
@@ -99,15 +87,19 @@ public class Planet : MonoBehaviour
 
     #region WEAPON
 
-    public void Shoot()
+    IEnumerator DivergentShoot(float startingTime, float fireRate)
     {
-        myAnimator.SetTrigger("Shoot");
+        myWeapon.TurnOn();
+        yield return new WaitForSeconds(startingTime+0.2f);
+        while (alive)
+        {
+            yield return new WaitForSeconds(fireRate);
+            myAnimator.SetTrigger("Shoot");
+        }
     }
     
     #endregion
-
     
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (alive)
@@ -123,5 +115,25 @@ public class Planet : MonoBehaviour
         }
     }
 
-    
+    public void DecreaseLife(float damage)
+    {
+        actualHp -= damage;
+        EventManager.DealDamageToThePlanet(damage / healthPoints);
+        if (actualHp <= 0)
+        {
+            KillPlanet();
+            return;
+        }
+        myAnimator.SetTrigger("Damage");
+    }
+
+    public void KillPlanet()
+    {
+        StopCoroutine(myPower);
+        myAnimator.SetTrigger("Die");
+        alive = false;
+        myAnimator.SetBool("Alive", false);
+        EventManager.ChangeGameState(GameManager.GameState.Win);
+    }
+
 }

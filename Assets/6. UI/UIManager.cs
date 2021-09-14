@@ -70,7 +70,7 @@ public class UIManager : Singleton<UIManager>
 
     IEnumerator ActivateWinScreen()
     {
-        yield return new WaitForSecondsRealtime(3.8f);
+        yield return new WaitForSecondsRealtime(4f);
         congratScreen.SetActive(true);
 
     }

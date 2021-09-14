@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class ShootingModule : MonoBehaviour 
 {
+    
+    GameObject bullet1;
+    GameObject bullet2;
 
-    [SerializeField] GameObject bullet;
-    [SerializeField] GameObject bullet1;
-    [SerializeField] GameObject bullet2;
     float startingTime;
     float fireRate;
 
@@ -22,7 +22,7 @@ public class ShootingModule : MonoBehaviour
     }
 
 
-    public void SetShootingModule(ShootingType shootingStyle , GameObject projectileType , float startingTime, float fireRate)
+    public void SetShootingModule(ShootingType shootingStyle, GameObject bulletType1 , GameObject bulletType2, float startingTime, float fireRate)
     {
         switch (shootingStyle)
         {
@@ -41,32 +41,8 @@ public class ShootingModule : MonoBehaviour
 
         }
 
-        this.bullet = projectileType;
-        this.startingTime = startingTime;
-        this.fireRate = fireRate;
-    }
-
-    public void SetShootingModule(ShootingType shootingStyle, GameObject rightBullet , GameObject leftBullet, float startingTime, float fireRate)
-    {
-        switch (shootingStyle)
-        {
-            case ShootingType.FIXED_RATE_ONE:
-                shootingType = Single();
-                break;
-            case ShootingType.FIXED_RATE_DOUBLE:
-                shootingType = Double();
-                break;
-            case ShootingType.FIXED_RATE_TRIPLE:
-                shootingType = Triple();
-                break;
-            case ShootingType.FIXED_RATE_DIVERGENT:
-                shootingType = Divergent();
-                break;
-
-        }
-
-        this.bullet1 = rightBullet;
-        this.bullet2 = leftBullet;
+        this.bullet1 = bulletType1;
+        this.bullet2 = bulletType2;
         this.startingTime = startingTime;
         this.fireRate = fireRate;
     }
@@ -93,7 +69,7 @@ public class ShootingModule : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(fireRate);
-            Instantiate(bullet, this.transform.position, Quaternion.identity);
+            Instantiate(bullet1, this.transform.position, Quaternion.identity);
         }
     }
 
@@ -103,9 +79,9 @@ public class ShootingModule : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(fireRate);
-            Instantiate(bullet, this.transform.position, Quaternion.identity);
+            Instantiate(bullet1, this.transform.position, Quaternion.identity);
             yield return new WaitForSeconds(0.2f);
-            Instantiate(bullet, this.transform.position, Quaternion.identity);
+            Instantiate(bullet1, this.transform.position, Quaternion.identity);
         }
     }
 
@@ -115,11 +91,11 @@ public class ShootingModule : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(fireRate);
-            Instantiate(bullet, this.transform.position, Quaternion.identity);
+            Instantiate(bullet1, this.transform.position, Quaternion.identity);
             yield return new WaitForSeconds(0.4f);
-            Instantiate(bullet, this.transform.position, Quaternion.identity);
+            Instantiate(bullet1, this.transform.position, Quaternion.identity);
             yield return new WaitForSeconds(0.4f);
-            Instantiate(bullet, this.transform.position, Quaternion.identity);
+            Instantiate(bullet1, this.transform.position, Quaternion.identity);
         }
     }
 

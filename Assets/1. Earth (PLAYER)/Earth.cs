@@ -59,8 +59,8 @@ public class Earth : Singleton<Earth>
         alive = true;
         lowerShield.SetActive(false);
 
-        leftCannon.GetComponent<ShootingModule>().SetShootingModule(ShootingModule.ShootingType.FIXED_RATE_ONE, earthBullet, 0, 0.8f);
-        rightCannon.GetComponent<ShootingModule>().SetShootingModule(ShootingModule.ShootingType.FIXED_RATE_ONE, earthBullet, 0.4f, 0.8f);
+        leftCannon.GetComponent<ShootingModule>().SetShootingModule(ShootingModule.ShootingType.FIXED_RATE_ONE, earthBullet, earthBullet, 0, 0.8f);
+        rightCannon.GetComponent<ShootingModule>().SetShootingModule(ShootingModule.ShootingType.FIXED_RATE_ONE, earthBullet, earthBullet, 0.4f, 0.8f);
     }
 
     public void OnStateChanged(GameManager.GameState newState)

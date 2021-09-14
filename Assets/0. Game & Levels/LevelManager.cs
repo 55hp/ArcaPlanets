@@ -2,33 +2,27 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LevelManager : MonoBehaviour
+public class LevelManager : Singleton<LevelManager>
 {
-    [SerializeField] MobManager mobManager;
-
     [SerializeField] GameObject rightWall;
     [SerializeField] GameObject leftWall;
     [SerializeField] GameObject topWall;
 
     [SerializeField] GameObject topDeadzone;
     
+    [SerializeField] Planet planet;
+    [SerializeField] Satellite[] satellities;
 
+    [SerializeField] Color[] planetBodyPalette;
+    [SerializeField] Color[] satelliteBodyPalette;
 
-    public void SetWalls()
-    {
-        Debug.Log("" + Camera.main.orthographicSize);
-        Debug.Log("" + Camera.main.aspect);
+    [SerializeField] Sprite[] planetFaces;
+    [SerializeField] Sprite[] satelliteFaces;
 
+    [SerializeField] Sprite[] planetBodies;
+    [SerializeField] Sprite[] satelliteBodies;
 
-        topWall.transform.position = new Vector3(0 ,Camera.main.orthographicSize + 0.5f, 0);
-        rightWall.transform.position = new Vector3(Camera.main.orthographicSize * Camera.main.aspect + 0.5f , 0 , 0);
-        leftWall.transform.position = new Vector3(-Camera.main.orthographicSize * Camera.main.aspect - 0.5f , 0 , 0);
-    }
-
-    private void Awake()
-    {
-        SetWalls();
-    }
+    [SerializeField] GameObject[] bulletPrefabs;
 
     private void OnEnable()
     {
@@ -46,8 +40,9 @@ public class LevelManager : MonoBehaviour
         switch (newState)
         {
             case GameManager.GameState.Boot:
-                mobManager.SetNumberOfMobsForThisStage(Random.Range(0,0));
-                mobManager.InitMobs();
+                SetWalls();
+                SetMobs(4);
+
                 StartCoroutine(GetLevelReady());
                 break;
             case GameManager.GameState.Play:
@@ -55,10 +50,10 @@ public class LevelManager : MonoBehaviour
             case GameManager.GameState.Pause:
                 break;
             case GameManager.GameState.Gameover:
-                mobManager.ClearMobsFromStage();
+                ClearStage();
                 break;
             case GameManager.GameState.Win:
-                mobManager.ClearMobsFromStage();
+                ClearStage();
                 break;
         }
     }
@@ -67,5 +62,46 @@ public class LevelManager : MonoBehaviour
     {
         yield return new WaitForSeconds(2f);
         GameManager.Instance.GameReady();
+    }
+    
+    
+
+
+
+    public void SetMobs(int satelliteNumber)
+    {
+
+        planet.SetPlanet(5, Ut.ROA(planetBodies),Ut.ROA(planetFaces), Ut.ROA(planetBodyPalette), Planet.PLANET_POWER.DIVERGENT_GUN, 4, 0.5f, 0.1f , bulletPrefabs[2] , bulletPrefabs[3]);
+        planet.gameObject.SetActive(true);
+        planet.ActivatePlanet();
+
+        if (satelliteNumber > 4 || satelliteNumber < 0)
+        {
+            satelliteNumber = 1;
+        }
+
+        for(int i = 0; i < satelliteNumber; i++)
+        {
+            satellities[i].SetSatellite(10, Ut.ROA(satelliteBodies), Ut.ROA(satelliteFaces), Ut.ROA(satelliteBodyPalette), Satellite.SATELLITE_POWER.CANNON, 4, 2, 2, bulletPrefabs[0], bulletPrefabs[0]);
+            satellities[i].gameObject.SetActive(true);
+            satellities[i].ActivateSatellite();
+        }
+    }
+
+
+    public void ClearStage()
+    {
+        planet.gameObject.SetActive(false);
+        foreach (Satellite x in satellities)
+        {
+            x.gameObject.SetActive(false);
+        }
+    }
+
+    public void SetWalls()
+    {
+        topWall.transform.position = new Vector3(0, Camera.main.orthographicSize + 0.5f, 0);
+        rightWall.transform.position = new Vector3(Camera.main.orthographicSize * Camera.main.aspect + 0.5f, 0, 0);
+        leftWall.transform.position = new Vector3(-Camera.main.orthographicSize * Camera.main.aspect - 0.5f, 0, 0);
     }
 }
