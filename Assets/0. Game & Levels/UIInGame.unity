@@ -1273,9 +1273,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d449a5157fb66d4ea4c09e10b033c40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 3246662169968701974, guid: b31a037311962b5428492a164abcda57, type: 3}
-  bullet1: {fileID: 0}
-  bullet2: {fileID: 0}
 --- !u!114 &468308827
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1300,10 +1297,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1222acbc1205c2a468fda450203b1201, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shieldSprites:
-  - {fileID: 21300000, guid: 27bcff87dd8b255498e7f9c0bcb61ced, type: 3}
-  - {fileID: 21300000, guid: 257ebd5f734788e448d4161c92d14ca6, type: 3}
-  shield: {fileID: 347414551}
 --- !u!1 &486499309
 GameObject:
   m_ObjectHideFlags: 0
@@ -1904,12 +1897,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 594c3ac3c0f1e4c48b7da3002e280cb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialMoonSpeed: 250
-  moonPref: {fileID: 222861020182275805, guid: 0790f7783e89da34f930d60e63b34fed, type: 3}
-  standardMoonSkin: {fileID: 21300000, guid: 92203f27bb6f6ee44895e333475d82b5, type: 3}
-  redMoonSkin: {fileID: 21300000, guid: bb34516900feb72409afe05e84129c36, type: 3}
-  fullMoonSkin: {fileID: 21300000, guid: 23ad186ec92cc7f4da3e93b3b1dbcfa2, type: 3}
-  halfMoonSkin: {fileID: 21300000, guid: bce857d4776692442b76593ad77735a7, type: 3}
+  moonPrefab: {fileID: 0}
+  moonSprites: []
 --- !u!4 &651990161
 Transform:
   m_ObjectHideFlags: 0
@@ -2076,9 +2065,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d449a5157fb66d4ea4c09e10b033c40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 3246662169968701974, guid: b31a037311962b5428492a164abcda57, type: 3}
-  bullet1: {fileID: 0}
-  bullet2: {fileID: 0}
 --- !u!114 &670402323
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2103,10 +2089,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1222acbc1205c2a468fda450203b1201, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shieldSprites:
-  - {fileID: 21300000, guid: 27bcff87dd8b255498e7f9c0bcb61ced, type: 3}
-  - {fileID: 21300000, guid: 257ebd5f734788e448d4161c92d14ca6, type: 3}
-  shield: {fileID: 807438740}
 --- !u!1 &684130935
 GameObject:
   m_ObjectHideFlags: 0
@@ -2259,9 +2241,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d449a5157fb66d4ea4c09e10b033c40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 3246662169968701974, guid: b31a037311962b5428492a164abcda57, type: 3}
-  bullet1: {fileID: 0}
-  bullet2: {fileID: 0}
 --- !u!114 &684130942
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2286,10 +2265,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1222acbc1205c2a468fda450203b1201, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shieldSprites:
-  - {fileID: 21300000, guid: 27bcff87dd8b255498e7f9c0bcb61ced, type: 3}
-  - {fileID: 21300000, guid: 257ebd5f734788e448d4161c92d14ca6, type: 3}
-  shield: {fileID: 1644881270}
 --- !u!1 &705780025
 GameObject:
   m_ObjectHideFlags: 0
@@ -2607,8 +2582,8 @@ MonoBehaviour:
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1080, y: 1920}
-  m_ScreenMatchMode: 1
-  m_MatchWidthOrHeight: 1
+  m_ScreenMatchMode: 0
+  m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -2622,7 +2597,7 @@ Canvas:
   m_GameObject: {fileID: 814977568}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 1
+  m_RenderMode: 0
   m_Camera: {fileID: 519420031}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -3173,6 +3148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f2ce20602e4c4f41bfb4c982e6ff73b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activeState: 0
 --- !u!1 &1112179951
 GameObject:
   m_ObjectHideFlags: 0
@@ -3407,9 +3383,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d449a5157fb66d4ea4c09e10b033c40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 3246662169968701974, guid: b31a037311962b5428492a164abcda57, type: 3}
-  bullet1: {fileID: 0}
-  bullet2: {fileID: 0}
 --- !u!114 &1138512300
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3434,10 +3407,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1222acbc1205c2a468fda450203b1201, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shieldSprites:
-  - {fileID: 21300000, guid: 27bcff87dd8b255498e7f9c0bcb61ced, type: 3}
-  - {fileID: 21300000, guid: 257ebd5f734788e448d4161c92d14ca6, type: 3}
-  shield: {fileID: 44623691}
 --- !u!1 &1233416194
 GameObject:
   m_ObjectHideFlags: 0
@@ -3539,11 +3508,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4e753d435dc7da468b9cfb3b1583e6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mobManager: {fileID: 522608177}
   rightWall: {fileID: 343015707}
   leftWall: {fileID: 1889447198}
   topWall: {fileID: 1064879539}
   topDeadzone: {fileID: 972716115911327458}
+  planet: {fileID: 0}
+  satellities: []
+  planetBodyPalette: []
+  satelliteBodyPalette: []
+  planetFaces: []
+  satelliteFaces: []
+  planetBodies: []
+  satelliteBodies: []
+  bulletPrefabs: []
 --- !u!224 &1318365007 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 9069508645240399190, guid: d0e13eef8aebb4aae87d29d0d70b8597, type: 3}
@@ -4580,9 +4557,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d449a5157fb66d4ea4c09e10b033c40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 3246662169968701974, guid: b31a037311962b5428492a164abcda57, type: 3}
-  bullet1: {fileID: 0}
-  bullet2: {fileID: 0}
 --- !u!114 &1872423482
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4607,10 +4581,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1222acbc1205c2a468fda450203b1201, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shieldSprites:
-  - {fileID: 21300000, guid: 27bcff87dd8b255498e7f9c0bcb61ced, type: 3}
-  - {fileID: 21300000, guid: 257ebd5f734788e448d4161c92d14ca6, type: 3}
-  shield: {fileID: 188530715}
 --- !u!1 &1883431416
 GameObject:
   m_ObjectHideFlags: 0
@@ -5354,9 +5324,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d449a5157fb66d4ea4c09e10b033c40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 576211358216060772, guid: ad9c320fcb3863946a4cd1d755dd0052, type: 3}
-  bullet1: {fileID: 0}
-  bullet2: {fileID: 0}
 --- !u!4 &1573066096824376427
 Transform:
   m_ObjectHideFlags: 0
@@ -5771,9 +5738,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d449a5157fb66d4ea4c09e10b033c40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 576211358216060772, guid: ad9c320fcb3863946a4cd1d755dd0052, type: 3}
-  bullet1: {fileID: 0}
-  bullet2: {fileID: 0}
 --- !u!212 &5109540537358046303
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6666,7 +6630,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9069508645240399190, guid: d0e13eef8aebb4aae87d29d0d70b8597, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -151.20001
+      value: -151.19995
       objectReference: {fileID: 0}
     - target: {fileID: 9069508645240399190, guid: d0e13eef8aebb4aae87d29d0d70b8597, type: 3}
       propertyPath: m_AnchoredPosition.y

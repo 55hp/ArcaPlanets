@@ -71,7 +71,7 @@ public class LevelManager : Singleton<LevelManager>
     public void SetMobs(int satelliteNumber)
     {
 
-        planet.SetPlanet(5, Ut.ROA(planetBodies),Ut.ROA(planetFaces), Ut.ROA(planetBodyPalette), Planet.PLANET_POWER.DIVERGENT_GUN, 4, 0.5f, 0.1f , bulletPrefabs[2] , bulletPrefabs[3]);
+        planet.SetPlanet(30, Ut.ROA(planetBodies),Ut.ROA(planetFaces), Ut.ROA(planetBodyPalette), Planet.PLANET_POWER.BLINK_SHIELD, 4, 6f, 6f , bulletPrefabs[2] , bulletPrefabs[3]);
         planet.gameObject.SetActive(true);
         planet.ActivatePlanet();
 
@@ -82,7 +82,7 @@ public class LevelManager : Singleton<LevelManager>
 
         for(int i = 0; i < satelliteNumber; i++)
         {
-            satellities[i].SetSatellite(10, Ut.ROA(satelliteBodies), Ut.ROA(satelliteFaces), Ut.ROA(satelliteBodyPalette), Satellite.SATELLITE_POWER.CANNON, 4, 2, 2, bulletPrefabs[0], bulletPrefabs[0]);
+            satellities[i].SetSatellite(10, Ut.ROA(satelliteBodies), Ut.ROA(satelliteFaces), Ut.ROA(satelliteBodyPalette), Satellite.SATELLITE_POWER.CANNON, 4, 5, 5, bulletPrefabs[0], bulletPrefabs[0]);
             satellities[i].gameObject.SetActive(true);
             satellities[i].ActivateSatellite();
         }

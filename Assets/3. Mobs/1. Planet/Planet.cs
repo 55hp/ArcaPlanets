@@ -129,7 +129,10 @@ public class Planet : MonoBehaviour
 
     public void KillPlanet()
     {
-        StopCoroutine(myPower);
+        if (myPower != null)
+        {
+            StopCoroutine(myPower);
+        }
         myAnimator.SetTrigger("Die");
         alive = false;
         myAnimator.SetBool("Alive", false);

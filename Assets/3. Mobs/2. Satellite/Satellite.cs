@@ -132,7 +132,6 @@ public class Satellite : MonoBehaviour
     public void DecreaseLife(float damage)
     {
         actualHp -= damage;
-        EventManager.DealDamageToThePlanet(damage / healthPoints);
         if (actualHp <= 0)
         {
             StartCoroutine(KillSatellite());
@@ -145,6 +144,10 @@ public class Satellite : MonoBehaviour
 
     IEnumerator KillSatellite()
     {
+        if (myPower != null)
+        {
+            StopCoroutine(myPower);
+        }
         //TODO VERIFICARE SINCRONIZZAZIONE ANIMAZIONI
         myAnimator.SetTrigger("Die");
         alive = false;
