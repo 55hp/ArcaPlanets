@@ -26,7 +26,7 @@ public class Satellite : MonoBehaviour
         myAnimator = gameObject.GetComponent<Animator>();
         myPower = null;
         startingPos = this.transform.position;
-        randomId = Random.Range(0, 45*6) ;
+        randomId = Random.Range(0, GetInstanceID()) % 60;
     }
     
 
@@ -36,7 +36,7 @@ public class Satellite : MonoBehaviour
     }
 
     private void UpdatePosition() {
-        var a = ((randomId  * 360) + Time.time) * Mathf.Deg2Rad ;
+        var a = (randomId  * 60 + Time.time * 360) * Mathf.Deg2Rad ;
         var c = Mathf.Cos(a) * distance;
         this.transform.position = startingPos + new Vector3(c, 0, 0) ;
     }
