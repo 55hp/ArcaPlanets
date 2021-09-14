@@ -43,7 +43,7 @@ public class ShootingModule : MonoBehaviour
 
         this.bullet1 = bulletType1;
         this.bullet2 = bulletType2;
-        this.startingTime = startingTime;
+        this.startingTime = startingTime + Random.Range(0.2f, 3);   // Aggiunto un minimo di randomicità 
         this.fireRate = fireRate;
     }
 
