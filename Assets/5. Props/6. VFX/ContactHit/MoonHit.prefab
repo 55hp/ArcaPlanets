@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4277247500659302408
+--- !u!1 &4965921620429292365
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,38 +8,37 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4438060107976335349}
-  - component: {fileID: 7373358135395920650}
-  - component: {fileID: 779260162131633957}
-  - component: {fileID: 4721830272622039505}
-  m_Layer: 15
-  m_Name: EnemyHalfMoonBullet
-  m_TagString: MobProjectile
+  - component: {fileID: 7220387699457868322}
+  - component: {fileID: 7624343324375496964}
+  - component: {fileID: 6669686599399501182}
+  m_Layer: 26
+  m_Name: MoonHit
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4438060107976335349
+--- !u!4 &7220387699457868322
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4277247500659302408}
+  m_GameObject: {fileID: 4965921620429292365}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.991, y: -6.37, z: -2.3475966}
-  m_LocalScale: {x: 0.6, y: 0.6, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &7373358135395920650
+--- !u!212 &7624343324375496964
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4277247500659302408}
+  m_GameObject: {fileID: 4965921620429292365}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -70,73 +69,36 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -255783749
-  m_SortingLayer: 6
-  m_SortingOrder: 4
-  m_Sprite: {fileID: 21300000, guid: 3d4b16586842b524797b0012a1a15dfd, type: 3}
-  m_Color: {r: 0.8588236, g: 0.27450982, b: 1, a: 1}
+  m_SortingLayerID: 309056317
+  m_SortingLayer: 8
+  m_SortingOrder: 50
+  m_Sprite: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.28, y: 0.3}
+  m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &779260162131633957
+--- !u!114 &6669686599399501182
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4277247500659302408}
+  m_GameObject: {fileID: 4965921620429292365}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 24679bd91cb8e224c9fbede65d076539, type: 3}
+  m_Script: {fileID: 11500000, guid: 2c8531610c1ca734f8f09cdd5b982e7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dmg: 1
-  speed: 4
-  direction: 1
-  animSprites:
-  - {fileID: 21300000, guid: 5a0c1d2163deb54488ea57c65b27656f, type: 3}
-  - {fileID: 21300000, guid: 99e80a8dc100987438861190ad6bf02a, type: 3}
-  - {fileID: 21300000, guid: 3d4b16586842b524797b0012a1a15dfd, type: 3}
-  - {fileID: 21300000, guid: 99e80a8dc100987438861190ad6bf02a, type: 3}
-  explosion:
+  sprites:
   - {fileID: 21300000, guid: fc1373602c458f24e844b045f7705173, type: 3}
   - {fileID: 21300000, guid: 99dba29a23810e645823aa24816b244e, type: 3}
   - {fileID: 21300000, guid: 4e60098927b4d1e4e892197f7c0ca9f9, type: 3}
   - {fileID: 21300000, guid: 44bd6b850fb916944bd4e1cc0be23ec8, type: 3}
   - {fileID: 21300000, guid: 7cc8a15c3296ab344812c60e8435ab0f, type: 3}
-  explosionSize: 2
---- !u!68 &4721830272622039505
-EdgeCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4277247500659302408}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_EdgeRadius: 0
-  m_Points:
-  - {x: 0.9735891, y: 0.21787086}
-  - {x: -0.010813668, y: -0.49622253}
-  - {x: -0.9610498, y: 0.23604673}
-  - {x: -0.77298826, y: -0.47746456}
-  - {x: -0.50752944, y: -0.7710532}
-  - {x: -0.006808618, y: -0.932755}
-  - {x: 0.5180645, y: -0.79793566}
-  - {x: 0.8180721, y: -0.41958848}
-  - {x: 0.96000385, y: 0.2042532}
-  m_AdjacentStartPoint: {x: 0, y: 0}
-  m_AdjacentEndPoint: {x: 0, y: 0}
-  m_UseAdjacentStartPoint: 0
-  m_UseAdjacentEndPoint: 0
+  frequency: 0.05

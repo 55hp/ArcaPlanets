@@ -12,6 +12,7 @@ public class Projectile : MonoBehaviour
     [SerializeField] Sprite[] explosion;
     Vector3 dir;
 
+    [SerializeField] float explosionSize;
     public enum DIRECTION
     {
         UP,
@@ -22,6 +23,8 @@ public class Projectile : MonoBehaviour
 
     private void Start()
     {
+        if(explosionSize == 0) explosionSize = 1;
+
         StartCoroutine(AnimationController.LoopingCicle(this.gameObject, animSprites, 0.15f));
         switch (direction)
         {
@@ -104,9 +107,11 @@ public class Projectile : MonoBehaviour
 
     private void DestroyProjectile()
     {
+        //Neutralizzare il proiettile qui
         StopAllCoroutines();
         StartCoroutine(AnimationController.FixedCicle(this.gameObject, explosion, 0.1f));
         StartCoroutine(ExplosionTimer(explosion.Length * 0.1f));
+        StartCoroutine(Larger(0.2f,explosionSize));
     }
 
 
@@ -114,5 +119,11 @@ public class Projectile : MonoBehaviour
     {
         yield return new WaitForSeconds(time);
         Destroy(gameObject);
+    }
+
+    private IEnumerator Larger(float startingTime , float amount)
+    {
+        yield return new WaitForSeconds(startingTime);
+        transform.localScale *= amount;
     }
 }

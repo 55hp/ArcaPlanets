@@ -12,6 +12,8 @@ public class Moon : MonoBehaviour
 
     string name;
 
+    [SerializeField] GameObject moonHitPrefab;
+
     public void SetName(String name)
     {
         this.name = name;
@@ -59,7 +61,7 @@ public class Moon : MonoBehaviour
             StopCoroutine(Spin());
         }
     }
-    
+
     private void LateUpdate()
     {
         myRb.velocity = constantSpeed * (myRb.velocity.normalized);
@@ -83,4 +85,19 @@ public class Moon : MonoBehaviour
             Destroy(this);
         }
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        
+        if(collision.gameObject.tag == "Earth")
+        {
+            return;
+        }
+        else
+        {
+            Instantiate(moonHitPrefab, new Vector3(collision.GetContact(0).point.x, collision.GetContact(0).point.y, 0), Quaternion.identity);
+        }
+
+    }
+
 }

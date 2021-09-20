@@ -55,7 +55,7 @@ public class Earth : Singleton<Earth>
     {
         cockpit.GetComponent<SpriteRenderer>().sprite = cockpitSprites[0];
 
-        myHp = 3;
+        myHp = 300;
         alive = true;
         lowerShield.SetActive(false);
 

@@ -135,3 +135,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   constantSpeed: 0
+  moonHitPrefab: {fileID: 4965921620429292365, guid: 46e4dd3fe48b35a4ca866318754eab43, type: 3}
