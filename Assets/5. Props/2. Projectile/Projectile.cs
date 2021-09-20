@@ -8,6 +8,8 @@ public class Projectile : MonoBehaviour
     [SerializeField] int dmg;
     [SerializeField] float speed;
     [SerializeField] DIRECTION direction;
+    [SerializeField] Sprite[] animSprites;
+    [SerializeField] Sprite[] explosion;
     Vector3 dir;
 
     public enum DIRECTION
@@ -20,6 +22,7 @@ public class Projectile : MonoBehaviour
 
     private void Start()
     {
+        StartCoroutine(AnimationController.LoopingCicle(this.gameObject, animSprites, 0.15f));
         switch (direction)
         {
             case DIRECTION.UP:
@@ -70,17 +73,18 @@ public class Projectile : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Moon") || collision.gameObject.CompareTag("EarthProjectile") )
         {
-            Destroy(gameObject);
+            StopAllCoroutines();
+            DestroyProjectile();
         }
         else if (collision.gameObject.CompareTag("Earth"))
         {
             EventManager.LoseLife();
-            Destroy(gameObject);
+            DestroyProjectile();
         }
         else if (collision.gameObject.CompareTag("Mob"))
         {
             collision.gameObject.GetComponent<Planet>().DecreaseLife(dmg);
-            Destroy(gameObject);
+            DestroyProjectile();
         }
 
     }
@@ -89,12 +93,26 @@ public class Projectile : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("EarthProjectile") || collision.gameObject.CompareTag("MobShield"))
         {
-            Destroy(gameObject);
+            DestroyProjectile();
         }
     }
 
     public int GetDmg()
     {
         return dmg;
+    }
+
+    private void DestroyProjectile()
+    {
+        StopAllCoroutines();
+        StartCoroutine(AnimationController.FixedCicle(this.gameObject, explosion, 0.1f));
+        StartCoroutine(ExplosionTimer(explosion.Length * 0.1f));
+    }
+
+
+    private IEnumerator ExplosionTimer(float time)
+    {
+        yield return new WaitForSeconds(time);
+        Destroy(gameObject);
     }
 }

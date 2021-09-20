@@ -99,6 +99,15 @@ MonoBehaviour:
   dmg: 1
   speed: 1
   direction: 1
+  animSprites:
+  - {fileID: 21300000, guid: 3ace3aebaddf7954cb8d098da8af200f, type: 3}
+  - {fileID: 21300000, guid: b20bb1acd4c2e7a4cbb51a05e481bda6, type: 3}
+  explosion:
+  - {fileID: 21300000, guid: 145f3724d514d414a9039b2302946664, type: 3}
+  - {fileID: 21300000, guid: 5d0017eb6d3b18341b0692a63f05bedc, type: 3}
+  - {fileID: 21300000, guid: 9839cf99382282543910b9f8f2d79c2f, type: 3}
+  - {fileID: 21300000, guid: 2900cd6125ec4714b838ced12fb32434, type: 3}
+  - {fileID: 21300000, guid: 0c9811e71c6449049a384aae93f0c7bd, type: 3}
 --- !u!68 &1193510193561345578
 EdgeCollider2D:
   m_ObjectHideFlags: 0

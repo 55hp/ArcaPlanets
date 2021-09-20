@@ -97,8 +97,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dmg: 1
-  speed: 4.5
+  speed: 4
   direction: 1
+  animSprites:
+  - {fileID: 21300000, guid: 5a0c1d2163deb54488ea57c65b27656f, type: 3}
+  - {fileID: 21300000, guid: 99e80a8dc100987438861190ad6bf02a, type: 3}
+  - {fileID: 21300000, guid: 3d4b16586842b524797b0012a1a15dfd, type: 3}
+  - {fileID: 21300000, guid: 99e80a8dc100987438861190ad6bf02a, type: 3}
+  explosion:
+  - {fileID: 21300000, guid: 145f3724d514d414a9039b2302946664, type: 3}
+  - {fileID: 21300000, guid: 5d0017eb6d3b18341b0692a63f05bedc, type: 3}
+  - {fileID: 21300000, guid: 9839cf99382282543910b9f8f2d79c2f, type: 3}
+  - {fileID: 21300000, guid: 2900cd6125ec4714b838ced12fb32434, type: 3}
+  - {fileID: 21300000, guid: 0c9811e71c6449049a384aae93f0c7bd, type: 3}
 --- !u!68 &4721830272622039505
 EdgeCollider2D:
   m_ObjectHideFlags: 0

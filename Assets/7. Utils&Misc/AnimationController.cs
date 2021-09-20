@@ -8,8 +8,9 @@ public static class AnimationController
     {
         foreach(Sprite spr in spriteSheets)
         {
-            subject.GetComponent<SpriteRenderer>().sprite = spr;
+
             yield return new WaitForSeconds(frequency);
+            subject.GetComponent<SpriteRenderer>().sprite = spr;
         }
     }
 
@@ -18,8 +19,9 @@ public static class AnimationController
         yield return new WaitForSeconds(startingTimer);
         foreach (Sprite spr in spriteSheets)
         {
-            subject.GetComponent<SpriteRenderer>().sprite = spr;
+
             yield return new WaitForSeconds(frequency);
+            subject.GetComponent<SpriteRenderer>().sprite = spr;
         }
     }
 
