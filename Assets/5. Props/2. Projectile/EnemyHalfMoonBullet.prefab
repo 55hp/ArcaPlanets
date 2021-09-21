@@ -104,13 +104,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 99e80a8dc100987438861190ad6bf02a, type: 3}
   - {fileID: 21300000, guid: 3d4b16586842b524797b0012a1a15dfd, type: 3}
   - {fileID: 21300000, guid: 99e80a8dc100987438861190ad6bf02a, type: 3}
-  explosion:
-  - {fileID: 21300000, guid: fc1373602c458f24e844b045f7705173, type: 3}
-  - {fileID: 21300000, guid: 99dba29a23810e645823aa24816b244e, type: 3}
-  - {fileID: 21300000, guid: 4e60098927b4d1e4e892197f7c0ca9f9, type: 3}
-  - {fileID: 21300000, guid: 44bd6b850fb916944bd4e1cc0be23ec8, type: 3}
-  - {fileID: 21300000, guid: 7cc8a15c3296ab344812c60e8435ab0f, type: 3}
-  explosionSize: 2
+  explosion: {fileID: 4965921620429292365, guid: 7985daf6af0a7c14ca87daf82eee3794, type: 3}
+  explosionVerticalOffset: -0.25
 --- !u!68 &4721830272622039505
 EdgeCollider2D:
   m_ObjectHideFlags: 0

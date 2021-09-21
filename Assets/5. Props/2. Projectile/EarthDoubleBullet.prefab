@@ -128,9 +128,5 @@ MonoBehaviour:
   animSprites:
   - {fileID: 21300000, guid: 7af83946bfc0e494c9209ce2ed62d03c, type: 3}
   - {fileID: 21300000, guid: 994d0b1ccfc73844f961e4b3707f790f, type: 3}
-  explosion:
-  - {fileID: 21300000, guid: 145f3724d514d414a9039b2302946664, type: 3}
-  - {fileID: 21300000, guid: 5d0017eb6d3b18341b0692a63f05bedc, type: 3}
-  - {fileID: 21300000, guid: 9839cf99382282543910b9f8f2d79c2f, type: 3}
-  - {fileID: 21300000, guid: 2900cd6125ec4714b838ced12fb32434, type: 3}
-  - {fileID: 21300000, guid: 0c9811e71c6449049a384aae93f0c7bd, type: 3}
+  explosion: {fileID: 4965921620429292365, guid: c61bfdd2b5a62aa4b8b097808be063fe, type: 3}
+  explosionVerticalOffset: 0.2

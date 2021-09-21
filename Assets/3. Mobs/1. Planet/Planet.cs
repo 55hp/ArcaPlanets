@@ -77,9 +77,11 @@ public class Planet : MonoBehaviour
         while (alive)
         {
             yield return new WaitForSeconds(inactiveTime);
+            myAnimator.SetBool("Shielding", true);
             myAnimator.SetTrigger("ShieldIn");
             yield return new WaitForSeconds(activeTime);
             myAnimator.SetTrigger("ShieldOut");
+            myAnimator.SetBool("Shielding", false);
         }
     }
 

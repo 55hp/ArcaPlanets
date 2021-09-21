@@ -9,10 +9,12 @@ public class Projectile : MonoBehaviour
     [SerializeField] float speed;
     [SerializeField] DIRECTION direction;
     [SerializeField] Sprite[] animSprites;
-    [SerializeField] Sprite[] explosion;
     Vector3 dir;
 
-    [SerializeField] float explosionSize;
+    [SerializeField] GameObject explosion;
+    [SerializeField] float explosionVerticalOffset;
+
+
     public enum DIRECTION
     {
         UP,
@@ -23,9 +25,10 @@ public class Projectile : MonoBehaviour
 
     private void Start()
     {
-        if(explosionSize == 0) explosionSize = 1;
-
         StartCoroutine(AnimationController.LoopingCicle(this.gameObject, animSprites, 0.15f));
+
+        //Glowing color for the bullets
+        //StartCoroutine(AnimationController.Glow(0.01f, this.gameObject, this.GetComponent<SpriteRenderer>().color, glowingColor));
         switch (direction)
         {
             case DIRECTION.UP:
@@ -74,30 +77,24 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Moon") || collision.gameObject.CompareTag("EarthProjectile") )
-        {
-            StopAllCoroutines();
-            DestroyProjectile();
-        }
-        else if (collision.gameObject.CompareTag("Earth"))
+        if (collision.gameObject.CompareTag("Earth"))
         {
             EventManager.LoseLife();
-            DestroyProjectile();
         }
-        else if (collision.gameObject.CompareTag("Mob"))
+        else if (collision.gameObject.CompareTag("Planet"))
         {
             collision.gameObject.GetComponent<Planet>().DecreaseLife(dmg);
-            DestroyProjectile();
         }
-
+        else if (collision.gameObject.CompareTag("Satellite"))
+        {
+            collision.gameObject.GetComponent<Satellite>().DecreaseLife(dmg);
+        }
+        DestroyProjectile();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("EarthProjectile") || collision.gameObject.CompareTag("MobShield"))
-        {
             DestroyProjectile();
-        }
     }
 
     public int GetDmg()
@@ -107,23 +104,8 @@ public class Projectile : MonoBehaviour
 
     private void DestroyProjectile()
     {
-        //Neutralizzare il proiettile qui
-        StopAllCoroutines();
-        StartCoroutine(AnimationController.FixedCicle(this.gameObject, explosion, 0.1f));
-        StartCoroutine(ExplosionTimer(explosion.Length * 0.1f));
-        StartCoroutine(Larger(0.2f,explosionSize));
+        Instantiate(explosion, new Vector3( this.transform.position.x, this.transform.position.y + explosionVerticalOffset, this.transform.position.z), Quaternion.identity);
+        gameObject.SetActive(false);
     }
-
-
-    private IEnumerator ExplosionTimer(float time)
-    {
-        yield return new WaitForSeconds(time);
-        Destroy(gameObject);
-    }
-
-    private IEnumerator Larger(float startingTime , float amount)
-    {
-        yield return new WaitForSeconds(startingTime);
-        transform.localScale *= amount;
-    }
+    
 }

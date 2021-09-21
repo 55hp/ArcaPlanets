@@ -123,7 +123,7 @@ public class Satellite : MonoBehaviour
     IEnumerator Shoot(float startingTime, float fireRate)
     {
         myWeapon.TurnOn();
-        yield return new WaitForSeconds(startingTime + 0.2f);
+        yield return new WaitForSeconds(startingTime);
         while (alive)
         {
             yield return new WaitForSeconds(fireRate);

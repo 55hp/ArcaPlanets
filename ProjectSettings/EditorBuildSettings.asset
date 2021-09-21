@@ -5,7 +5,7 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/0. Game & Levels/HomePageHUD.unity
     guid: 1e3d82952af8c44cc9133b896e80d620
   - enabled: 1

@@ -28,7 +28,8 @@ public class Earth : Singleton<Earth>
 
 
     [SerializeField] Sprite[] earthSprites;
-
+    [SerializeField] Sprite[] lowerShieldSprites;
+    IEnumerator shieldLoop;
 
     bool alive;
     Vector3 mySize;
@@ -55,7 +56,7 @@ public class Earth : Singleton<Earth>
     {
         cockpit.GetComponent<SpriteRenderer>().sprite = cockpitSprites[0];
 
-        myHp = 300;
+        myHp = 3;
         alive = true;
         lowerShield.SetActive(false);
 
@@ -69,6 +70,7 @@ public class Earth : Singleton<Earth>
         {
             case GameManager.GameState.Boot:
                 InitEarth();
+                shieldLoop = AnimationController.LoopingCicle(lowerShield, lowerShieldSprites, 0.1f);
                 gameObject.GetComponent<EarthController>().ResetEarthPosition();
                 break;
             case GameManager.GameState.Ready:
@@ -194,7 +196,7 @@ public class Earth : Singleton<Earth>
         this.GetComponent<CircleCollider2D>().enabled = true;
 
         //Lower Shield effect reset
-        lowerShield.SetActive(false);
+        //lowerShield.SetActive(false);
 
         //Double bullets effect reset
         myWeapon.SetActive(false);
@@ -231,9 +233,12 @@ public class Earth : Singleton<Earth>
     public IEnumerator LowShield(float timer)
     {
         lowerShield.SetActive(true);
+        StartCoroutine(AnimationController.GoIn(lowerShield, 0.1f));
+        StartCoroutine(shieldLoop);
         yield return new WaitForSeconds(timer);
         lowerShield.SetActive(false);
-             
+        StopCoroutine(shieldLoop);
+
     }
 
     public IEnumerator DoubleBullets(float timer)

@@ -16,6 +16,8 @@ TagManager:
   - EarthShields
   - Wall
   - MobShield
+  - Planet
+  - Satellite
   layers:
   - Default
   - TransparentFX
