@@ -16,7 +16,6 @@ public class Earth : Singleton<Earth>
 
 
     [SerializeField] GameObject body;
-    [SerializeField] GameObject myWing;
     [SerializeField] GameObject propulsor;
 
     [SerializeField] GameObject lowerShield;
@@ -29,11 +28,13 @@ public class Earth : Singleton<Earth>
 
     [SerializeField] Sprite[] earthSprites;
     [SerializeField] Sprite[] lowerShieldSprites;
+
+    [SerializeField] GameObject transformationEffect;
     IEnumerator shieldLoop;
 
     bool alive;
     Vector3 mySize;
-
+    Animator myAnimator;
 
     private void OnEnable()
     {
@@ -50,6 +51,7 @@ public class Earth : Singleton<Earth>
     private void Start()
     {
         mySize = transform.localScale;
+        myAnimator = GetComponent<Animator>();
     }
 
     public void InitEarth()
@@ -93,6 +95,45 @@ public class Earth : Singleton<Earth>
                 break;
         }
     }
+
+
+    //SOLO PER TESTING
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            //Bigger
+            Instantiate(transformationEffect, this.transform);
+            myAnimator.SetTrigger("Bigger");
+
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            //Smaller
+            Instantiate(transformationEffect, this.transform);
+            myAnimator.SetTrigger("Smaller");
+
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            //Gun
+            Instantiate(transformationEffect, this.transform);
+            myAnimator.SetTrigger("Gun");
+
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            myAnimator.SetTrigger("Hit");
+
+        }
+
+    }
+
+
+
 
     /// <summary>
     /// This method will be called every time something occurs that deals dmg to our EarthShip by the event it is registered to.
@@ -187,10 +228,8 @@ public class Earth : Singleton<Earth>
     {
         //Bigger effects reset
         this.GetComponent<PolygonCollider2D>().enabled = false;
-        myWing.GetComponent<SpriteRenderer>().sprite = earthSprites[3];
 
         //Smaller effects reset
-        myWing.GetComponent<SpriteRenderer>().sprite = earthSprites[3];
         propulsor.GetComponent<SpriteRenderer>().sprite = earthSprites[7];
         this.GetComponent<CapsuleCollider2D>().enabled = false;
         this.GetComponent<CircleCollider2D>().enabled = true;
@@ -205,26 +244,21 @@ public class Earth : Singleton<Earth>
 
     public IEnumerator Bigger(float timer)
     {
-        myWing.GetComponent<SpriteRenderer>().sprite = earthSprites[4];
         this.GetComponent<PolygonCollider2D>().enabled = true;
 
         yield return new WaitForSeconds(timer);
 
         this.GetComponent<PolygonCollider2D>().enabled = false;
-        myWing.GetComponent<SpriteRenderer>().sprite = earthSprites[3];
     }
     
     public IEnumerator Smaller(float timer)
     {
-
-        myWing.GetComponent<SpriteRenderer>().sprite = null;
         propulsor.GetComponent<SpriteRenderer>().sprite = null;
         this.GetComponent<CapsuleCollider2D>().enabled = true;
         this.GetComponent<CircleCollider2D>().enabled = false;
 
         yield return new WaitForSeconds(timer);
-
-        myWing.GetComponent<SpriteRenderer>().sprite = earthSprites[3];
+        
         propulsor.GetComponent<SpriteRenderer>().sprite = earthSprites[7];
         this.GetComponent<CapsuleCollider2D>().enabled = false;
         this.GetComponent<CircleCollider2D>().enabled = true;

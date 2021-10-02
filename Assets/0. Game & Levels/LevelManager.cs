@@ -87,7 +87,7 @@ public class LevelManager : Singleton<LevelManager>
             satellities[i].gameObject.SetActive(true);
             satellities[i].ActivateSatellite();
         }
-        */
+        
         satellities[0].SetSatellite(10, Ut.ROA(satelliteBodies), Ut.ROA(satelliteFaces), Ut.ROA(satelliteBodyPalette), Satellite.SATELLITE_POWER.CANNON, 0, 5, 5, bulletPrefabs[0], bulletPrefabs[0]);
         satellities[0].gameObject.SetActive(true);
         satellities[0].ActivateSatellite();
@@ -103,7 +103,7 @@ public class LevelManager : Singleton<LevelManager>
         satellities[3].SetSatellite(10, Ut.ROA(satelliteBodies), Ut.ROA(satelliteFaces), Ut.ROA(satelliteBodyPalette), Satellite.SATELLITE_POWER.CANNON, 0, 5, 5, bulletPrefabs[0], bulletPrefabs[0]);
         satellities[3].gameObject.SetActive(true);
         satellities[3].ActivateSatellite();
-
+        */
     }
 
 

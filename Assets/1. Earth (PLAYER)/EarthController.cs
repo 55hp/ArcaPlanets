@@ -29,6 +29,7 @@ public class EarthController : MonoBehaviour
     {
         isPlaying = go;
     }
+
     private void Update()
     {
         if (Input.touches.Length > 0 && isPlaying)
@@ -40,7 +41,11 @@ public class EarthController : MonoBehaviour
                 {
                     Vector3 worldPosition = Camera.main.ScreenToWorldPoint(touch.position);
                     if(worldPosition.x> min && worldPosition.x < max)
-                    this.transform.position = new Vector3(worldPosition.x, transform.position.y, transform.position.z);
+                    {
+
+                        this.transform.position = new Vector3(worldPosition.x, transform.position.y, transform.position.z);
+                        Rotate20(worldPosition.x);
+                    }
                 }
             }
 
@@ -50,8 +55,27 @@ public class EarthController : MonoBehaviour
         {
             Vector3 worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             if (worldPosition.x > min && worldPosition.x < max)
+            {
                 this.transform.position = new Vector3(worldPosition.x, transform.position.y, transform.position.z);
+                Rotate20(worldPosition.x);
+            }
         }
     }
+
+
+    //Rotate the Earthship by 20 or -20 degrees on the Z axis when moving to the left or to the right
+    public void Rotate20(float dir)
+    {
+
+        if(dir > 0) //Moving to the right
+        {
+            
+        }
+        else if (dir < 0 ) //Moving to the left
+        {
+            
+        }
+    }
+
 
 }
