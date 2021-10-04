@@ -44,11 +44,15 @@ public class EarthController : MonoBehaviour
                     {
 
                         this.transform.position = new Vector3(worldPosition.x, transform.position.y, transform.position.z);
-                        Rotate20(worldPosition.x);
+                        
                     }
+                    rotation = worldPosition.x;
                 }
             }
-
+        }
+        else
+        {
+            rotation = 0;
         }
 
         if (Input.GetMouseButton(0) && isPlaying)
@@ -57,11 +61,24 @@ public class EarthController : MonoBehaviour
             if (worldPosition.x > min && worldPosition.x < max)
             {
                 this.transform.position = new Vector3(worldPosition.x, transform.position.y, transform.position.z);
-                Rotate20(worldPosition.x);
+                
             }
+            rotation = worldPosition.x;
         }
+        else
+        {
+            rotation = 0;
+        }
+
+        Rotate20(rotation);
+
     }
 
+    float rotation = 0;
+
+    Quaternion startingRotation = Quaternion.Euler(0, 0, 0);
+    Quaternion rightRotation = Quaternion.Euler(0, 0, 20);
+    Quaternion leftRotation = Quaternion.Euler(0, 0, -20);
 
     //Rotate the Earthship by 20 or -20 degrees on the Z axis when moving to the left or to the right
     public void Rotate20(float dir)
@@ -69,11 +86,15 @@ public class EarthController : MonoBehaviour
 
         if(dir > 0) //Moving to the right
         {
-            
+            this.transform.rotation = Quaternion.Slerp(this.transform.rotation, rightRotation, 0.1f);
         }
         else if (dir < 0 ) //Moving to the left
         {
-            
+            this.transform.rotation = Quaternion.Slerp(this.transform.rotation, leftRotation, 0.1f);
+        }
+        else if(dir == 0)
+        {
+            this.transform.rotation = Quaternion.Slerp(this.transform.rotation, startingRotation, 0.1f);
         }
     }
 
