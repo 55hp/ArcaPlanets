@@ -3314,6 +3314,7 @@ GameObject:
   - component: {fileID: 945330307}
   - component: {fileID: 945330312}
   - component: {fileID: 945330311}
+  - component: {fileID: 945330313}
   m_Layer: 8
   m_Name: Earth (Player)
   m_TagString: Earth
@@ -3549,6 +3550,24 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &945330313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 945330303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba9b30092c69dfd4ea8cd260088bab5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  propuslorSprite:
+  - {fileID: 21300000, guid: 0d0884a2849902b4c98113abae877ecd, type: 3}
+  - {fileID: 21300000, guid: fecac7b3449249f4db5c307fd63cf135, type: 3}
+  - {fileID: 21300000, guid: ce9ab0c7da36cfe4d807136930b447b8, type: 3}
+  - {fileID: 21300000, guid: c705c91f7ccfa724e91908bacc25ba96, type: 3}
+  propuslor: {fileID: 2624492326627342266}
 --- !u!1 &949900729
 GameObject:
   m_ObjectHideFlags: 0

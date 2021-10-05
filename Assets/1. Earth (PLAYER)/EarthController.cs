@@ -46,7 +46,7 @@ public class EarthController : MonoBehaviour
                         this.transform.position = new Vector3(worldPosition.x, transform.position.y, transform.position.z);
                         
                     }
-                    rotation = worldPosition.x;
+                    rotation = worldPosition.x - this.transform.position.x;
                 }
             }
         }
@@ -63,7 +63,7 @@ public class EarthController : MonoBehaviour
                 this.transform.position = new Vector3(worldPosition.x, transform.position.y, transform.position.z);
                 
             }
-            rotation = worldPosition.x;
+            rotation = worldPosition.x - this.transform.position.x;
         }
         else
         {

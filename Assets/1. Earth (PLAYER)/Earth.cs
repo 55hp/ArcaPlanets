@@ -14,10 +14,6 @@ public class Earth : Singleton<Earth>
     [SerializeField] GameObject cockpit;
     [SerializeField] Sprite[] cockpitSprites;
 
-
-    [SerializeField] GameObject body;
-    [SerializeField] GameObject propulsor;
-
     [SerializeField] GameObject lowerShield;
 
     [SerializeField] GameObject myWeapon;
@@ -230,7 +226,6 @@ public class Earth : Singleton<Earth>
         this.GetComponent<PolygonCollider2D>().enabled = false;
 
         //Smaller effects reset
-        propulsor.GetComponent<SpriteRenderer>().sprite = earthSprites[7];
         this.GetComponent<CapsuleCollider2D>().enabled = false;
         this.GetComponent<CircleCollider2D>().enabled = true;
 
@@ -253,13 +248,12 @@ public class Earth : Singleton<Earth>
     
     public IEnumerator Smaller(float timer)
     {
-        propulsor.GetComponent<SpriteRenderer>().sprite = null;
+
         this.GetComponent<CapsuleCollider2D>().enabled = true;
         this.GetComponent<CircleCollider2D>().enabled = false;
 
         yield return new WaitForSeconds(timer);
         
-        propulsor.GetComponent<SpriteRenderer>().sprite = earthSprites[7];
         this.GetComponent<CapsuleCollider2D>().enabled = false;
         this.GetComponent<CircleCollider2D>().enabled = true;
     }
