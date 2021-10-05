@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MoonManager : Singleton<MoonManager>
 {
+      
 
     [SerializeField] Moon moonPrefab;
 
@@ -103,39 +104,106 @@ public class MoonManager : Singleton<MoonManager>
 
     #region POWER UP EFFECTS METHODS
 
+    /// <summary>
+    /// Powerup di base
+    /// </summary>
+    public abstract class BaseMoonPowerUp : PowerUpDefinition
+    {
+        /// <summary>
+        /// Manager per la luna associata
+        /// </summary>
+        public readonly MoonManager MoonManager;
+
+        public BaseMoonPowerUp(MoonManager MoonManager)
+        {
+            this.MoonManager = MoonManager;
+        }
+    }
+
     //[201] RED MOON
     //Cambio sprite e aumenta il danno
-    public IEnumerator RedMoon(float time)
+    public class RedMoonPowerUp : BaseMoonPowerUp
     {
-        moon.SetDmg(2);
-        moon.ChangeMoonSprite(moonSprites[1]);
+        /*
+        //[201] RED MOON
+        //Cambio sprite e aumenta il danno
+        public IEnumerator RedMoon(float time)
+        {
+            moon.SetDmg(2);
+            moon.ChangeMoonSprite(moonSprites[1]);
 
-        yield return new WaitForSeconds(time);
-        moon.SetDmg(1);
-        moon.ChangeMoonSprite(moonSprites[0]);
+            yield return new WaitForSeconds(time);
 
+            moon.SetDmg(1);
+            moon.ChangeMoonSprite(moonSprites[0]); 
+        }
+        */
+
+        /// <summary>
+        /// Crea il power up
+        /// </summary>
+        /// <param name="MoonManager"></param>
+        /// <param name="Duration"></param>
+        public RedMoonPowerUp(MoonManager MoonManager) : base(MoonManager)
+        {
+        }
+
+        public override void Activate()
+        {
+            MoonManager.moon.SetDmg(2);
+            MoonManager.moon.ChangeMoonSprite(MoonManager.moonSprites[1]);
+        }
+
+        public override void Deactivate()
+        { 
+            MoonManager.moon.SetDmg(1);
+            MoonManager.moon.ChangeMoonSprite(MoonManager.moonSprites[0]);
+        }
     }
 
-    //[202] MOON Scythes
-    //Cambio sprite + Creazione di altre n lune con sprite specifici.
-    public void MoonScythes(int howManyShythes)
+
+    /// <summary>
+    /// [202] MOON Scythes
+    //  Cambio sprite + Creazione di altre n lune con sprite specifici.
+    /// </summary>
+    public class MoonScythes : BaseMoonPowerUp
     {
-        moon.MoonSpinning(true);
+        public MoonScythes(MoonManager MoonManager) : base(MoonManager)
+        {
+        }
+
+        public override void Activate()
+        {
+            MoonManager.moon.MoonSpinning(true);
+        }
+
+        public override void Deactivate()
+        {
+            MoonManager.moon.MoonSpinning(false);
+        }
     }
-
-
-    //[203] FULL MOON aumenta di dimensione
-    public IEnumerator FullMoon(float time)
+    /// <summary>
+    ///  [203] FULL MOON aumenta di dimensione
+    /// </summary>
+    public class FullMoon : BaseMoonPowerUp
     {
-        moon?.ChangeMoonSprite(moonSprites[2]);
-        moon.GetComponent<CircleCollider2D>().radius = 0.82f;
+        public FullMoon(MoonManager MoonManager) : base(MoonManager)
+        {
+        }
 
-        yield return new WaitForSeconds(time);
+        public override void Activate()
+        {
+            MoonManager.moon?.ChangeMoonSprite(MoonManager.moonSprites[2]);
+            MoonManager.moon.GetComponent<CircleCollider2D>().radius = 0.82f;
+        }
 
-        moon?.ChangeMoonSprite(moonSprites[0]);
-        moon.GetComponent<CircleCollider2D>().radius = 0.52f;
-
+        public override void Deactivate()
+        {
+            MoonManager.moon?.ChangeMoonSprite(MoonManager.moonSprites[0]);
+            MoonManager.moon.GetComponent<CircleCollider2D>().radius = 0.52f;
+        }
     }
+      
 
     public void CleanScreenFromMoons()
     {
@@ -379,4 +447,4 @@ public class MoonManager : Singleton<MoonManager>
     }
     #endregion
     */
-}
+    }

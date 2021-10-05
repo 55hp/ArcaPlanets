@@ -234,55 +234,135 @@ public class Earth : Singleton<Earth>
 
         //Double bullets effect reset
         myWeapon.SetActive(false);
-
     }
 
-    public IEnumerator Bigger(float timer)
+    /// <summary>
+    /// Effetto di base per la terra
+    /// </summary>
+    public abstract class BaseEarthPowerUp : PowerUpDefinition
     {
-        this.GetComponent<PolygonCollider2D>().enabled = true;
-
-        yield return new WaitForSeconds(timer);
-
-        this.GetComponent<PolygonCollider2D>().enabled = false;
-    }
-    
-    public IEnumerator Smaller(float timer)
-    {
-
-        this.GetComponent<CapsuleCollider2D>().enabled = true;
-        this.GetComponent<CircleCollider2D>().enabled = false;
-
-        yield return new WaitForSeconds(timer);
+        public readonly Earth Earth;
         
-        this.GetComponent<CapsuleCollider2D>().enabled = false;
-        this.GetComponent<CircleCollider2D>().enabled = true;
+        /// <summary>
+        /// Crea un power up di base 
+        /// </summary>
+        /// <param name="Earth"></param>
+        public BaseEarthPowerUp(Earth Earth)
+        {
+            this.Earth = Earth;
+        }
     }
 
-    public IEnumerator LowShield(float timer)
+    /// <summary>
+    /// Bigger
+    /// </summary>
+    public class BiggerPowerUp : BaseEarthPowerUp
     {
-        lowerShield.SetActive(true);
-        StartCoroutine(AnimationController.GoIn(lowerShield, 0.1f));
-        StartCoroutine(shieldLoop);
-        yield return new WaitForSeconds(timer);
-        lowerShield.SetActive(false);
-        StopCoroutine(shieldLoop);
+        public BiggerPowerUp(Earth Earth) : base(Earth)
+        {
+        }
 
+        public override void Activate()
+        { 
+            Instantiate(Earth.transformationEffect, Earth.transform);
+            Earth.myAnimator.SetTrigger("BiggerIn");
+        }
+
+        public override void Deactivate()
+        { 
+            Instantiate(Earth.transformationEffect, Earth.transform);
+            Earth.myAnimator.SetTrigger("BiggerOut");
+        }
     }
 
-    public IEnumerator DoubleBullets(float timer)
+    /// <summary>
+    /// Smaller
+    /// </summary>
+    public class SmallerPowerUp : BaseEarthPowerUp
     {
-        myWeapon.SetActive(true);
-        leftCannon.GetComponent<ShootingModule>().TurnOn();
-        rightCannon.GetComponent<ShootingModule>().TurnOn();
-        yield return new WaitForSeconds(timer);
-        leftCannon.GetComponent<ShootingModule>().TurnOff();
-        rightCannon.GetComponent<ShootingModule>().TurnOff();
-        myWeapon.SetActive(false);
+        public SmallerPowerUp(Earth Earth) : base(Earth)
+        {
+             
+        }
+
+        public override void Activate()
+        {
+            Earth.GetComponent<CapsuleCollider2D>().enabled = true;
+            Earth.GetComponent<CircleCollider2D>().enabled = false;
+            Instantiate(Earth.transformationEffect, Earth.transform);
+            Earth.myAnimator.SetTrigger("SmallerIn");
+            //Assegnare al delegate smaller Out
+        }
+
+        public override void Deactivate()
+        { 
+            Earth.GetComponent<CapsuleCollider2D>().enabled = false;
+            Earth.GetComponent<CircleCollider2D>().enabled = true;
+        }
+    }
+
+
+    /// <summary>
+    /// Smaller
+    /// </summary>
+    public class LowShieldPowerUp : BaseEarthPowerUp
+    {
+        public LowShieldPowerUp(Earth Earth) : base(Earth)
+        {
+        }
+
+        public override void Activate()
+        {
+            Earth.lowerShield.SetActive(true);
+            Earth.StartCoroutine(AnimationController.GoIn(Earth.lowerShield, 0.1f));
+            Earth.StartCoroutine(Earth.shieldLoop);
+        }
+
+        public override void Deactivate()
+        {
+            Earth.lowerShield.SetActive(false);
+            Earth.StopCoroutine(Earth.shieldLoop);
+        }
+    }
+     
+    /// <summary>
+    /// Smaller
+    /// </summary>
+    public class DoubleBulletsPowerUp : BaseEarthPowerUp
+    {
+        public DoubleBulletsPowerUp(Earth Earth) : base(Earth)
+        {
+        }
+
+        public override void Activate()
+        {
+            Earth.myWeapon.SetActive(true);
+            Earth.leftCannon.GetComponent<ShootingModule>().TurnOn();
+            Earth.rightCannon.GetComponent<ShootingModule>().TurnOn();
+            Instantiate(Earth.transformationEffect, Earth.transform);
+            Earth.myAnimator.SetTrigger("GunIn");
+        }
+
+        public override void Deactivate()
+        { 
+            Instantiate(Earth.transformationEffect, Earth.transform);
+            Earth.myAnimator.SetTrigger("GunOut");
+            Earth.leftCannon.GetComponent<ShootingModule>().TurnOff();
+            Earth.rightCannon.GetComponent<ShootingModule>().TurnOff();
+            Earth.myWeapon.SetActive(false);
+        }
+    } 
+ 
+    public void SmallerOut()
+    {
+        Instantiate(transformationEffect, this.transform);
+        myAnimator.SetTrigger("SmallerOut");
+        //Svuotare il delegate
     }
     #endregion
 
 
 
-    
+
 
 }
