@@ -32,6 +32,8 @@ public class EarthController : MonoBehaviour
 
     private void Update()
     {
+        lastPosition = this.transform.position;
+
         if (Input.touches.Length > 0 && isPlaying)
         {
             for(int i = 0; i < Input.touchCount; i++)
@@ -41,38 +43,24 @@ public class EarthController : MonoBehaviour
                 {
                     Vector3 worldPosition = Camera.main.ScreenToWorldPoint(touch.position);
                     if(worldPosition.x> min && worldPosition.x < max)
-                    {
-
                         this.transform.position = new Vector3(worldPosition.x, transform.position.y, transform.position.z);
-                        
-                    }
-                    rotation = worldPosition.x - this.transform.position.x;
                 }
             }
-        }
-        else
-        {
-            rotation = 0;
         }
 
         if (Input.GetMouseButton(0) && isPlaying)
         {
             Vector3 worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             if (worldPosition.x > min && worldPosition.x < max)
-            {
                 this.transform.position = new Vector3(worldPosition.x, transform.position.y, transform.position.z);
-                
-            }
-            rotation = worldPosition.x - this.transform.position.x;
-        }
-        else
-        {
-            rotation = 0;
         }
 
-        Rotate20(rotation);
-
+        
+        // Aggiorna la rotazione
+        rotation = Mathf.MoveTowardsAngle(rotation, lastPosition.x - this.transform.position.x, 0.1f * Time.deltaTime);
+        Rotate20(rotation); 
     }
+    private Vector3 lastPosition;
 
     float rotation = 0;
 
@@ -82,20 +70,13 @@ public class EarthController : MonoBehaviour
 
     //Rotate the Earthship by 20 or -20 degrees on the Z axis when moving to the left or to the right
     public void Rotate20(float dir)
-    {
-
+    { 
         if(dir > 0) //Moving to the right
-        {
             this.transform.rotation = Quaternion.Slerp(this.transform.rotation, rightRotation, 0.1f);
-        }
         else if (dir < 0 ) //Moving to the left
-        {
             this.transform.rotation = Quaternion.Slerp(this.transform.rotation, leftRotation, 0.1f);
-        }
         else if(dir == 0)
-        {
             this.transform.rotation = Quaternion.Slerp(this.transform.rotation, startingRotation, 0.1f);
-        }
     }
 
 
