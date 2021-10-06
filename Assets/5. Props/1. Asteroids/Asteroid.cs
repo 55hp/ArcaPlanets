@@ -6,16 +6,22 @@ public class Asteroid : MonoBehaviour
     float asteroidSpeed;
     int myLife;
     [SerializeField] GameObject mySpriteObj;
-    GameObject powerUp;
+    [SerializeField] Sprite[] mySkin;
 
-    public void SetAsteroid(Sprite mySkin , GameObject randomPowerUp , float speedAmount , Color color , int hp)
+    GameObject powerUp;
+    GameObject asteroidExplosion;
+
+
+    public void SetAsteroid(Sprite[] skins , GameObject randomPowerUp , float speedAmount , Color color , int hp , GameObject explosion)
     {
-        mySpriteObj.GetComponent<SpriteRenderer>().sprite = mySkin;
+        myLife = hp;
+        mySkin = skins;
+        mySpriteObj.GetComponent<SpriteRenderer>().sprite = mySkin[hp - 1];
         powerUp = randomPowerUp;
         asteroidSpeed = speedAmount;
         mySpriteObj.GetComponent<SpriteRenderer>().color = color;
-        myLife = hp;
         gameObject.GetComponent<CircleCollider2D>().radius = myLife * 0.22f;
+        asteroidExplosion = explosion;
     }
 
     
@@ -53,10 +59,17 @@ public class Asteroid : MonoBehaviour
     public void TakeDamage(int amount)
     {
         myLife -= amount;
+
+        if (myLife > 0)
+        {
+            mySpriteObj.GetComponent<SpriteRenderer>().sprite = mySkin[myLife-1];
+        }
+
         if (myLife <= 0)
         {
             if(powerUp != null)
             Instantiate(powerUp, gameObject.transform.position, Quaternion.identity);
+            Instantiate(asteroidExplosion, gameObject.transform.position, Quaternion.identity);
             //TODO Aspetta prima un paio di frame 
             Destroy(gameObject);
         }

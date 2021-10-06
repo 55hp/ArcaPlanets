@@ -8,6 +8,7 @@ public class EarthAnimator : MonoBehaviour
     [SerializeField] Sprite[] propuslorHitSprite;
 
     [SerializeField] GameObject propuslor;
+    [SerializeField] ParticleSystem smoke;
 
 
     IEnumerator propulsorIdle;
@@ -17,12 +18,23 @@ public class EarthAnimator : MonoBehaviour
     private void Start()
     {
         propulsorIdle = AnimationController.LoopingCicle(this.propuslor, propuslorIdleSprite, 0.1f);
+        propulsorHit = AnimationController.FixedCicle(this.propuslor, propuslorHitSprite, 0.1f);
+
         StartCoroutine(propulsorIdle);
     }
 
+    public void HitAnimation()
+    {
+        StartCoroutine(propulsorHit);
+        StartCoroutine(StopSmoke());
+    }
 
-
-
+    IEnumerator StopSmoke()
+    {
+        smoke.Stop();
+        yield return new WaitForSeconds(0.3f);
+        smoke.Play();
+    }
 
 
 

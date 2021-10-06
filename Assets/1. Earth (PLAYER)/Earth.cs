@@ -202,7 +202,11 @@ public class Earth : Singleton<Earth>
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "MobProjectile")
+        {
+
             StartCoroutine(AnimationController.BlinkAnimation(cockpit, cockpitSprites[0], cockpitSprites[2], 0.1f));
+            gameObject.GetComponent<EarthAnimator>().HitAnimation();
+        }
     }
 
     public void Invulnerability(bool on)
@@ -267,7 +271,7 @@ public class Earth : Singleton<Earth>
             Instantiate(Earth.transformationEffect, Earth.transform);
             Earth.myAnimator.SetTrigger("BiggerIn");
         }
-
+        
         public override void Deactivate()
         { 
             Instantiate(Earth.transformationEffect, Earth.transform);
@@ -284,7 +288,7 @@ public class Earth : Singleton<Earth>
         {
              
         }
-
+        
         public override void Activate()
         {
             Earth.GetComponent<CapsuleCollider2D>().enabled = true;
@@ -352,17 +356,6 @@ public class Earth : Singleton<Earth>
             Earth.myWeapon.SetActive(false);
         }
     } 
- 
-    public void SmallerOut()
-    {
-        Instantiate(transformationEffect, this.transform);
-        myAnimator.SetTrigger("SmallerOut");
-        //Svuotare il delegate
-    }
     #endregion
-
-
-
-
-
+    
 }

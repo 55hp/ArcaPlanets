@@ -9,6 +9,7 @@ public class MoonManager : Singleton<MoonManager>
     [SerializeField] Moon moonPrefab;
 
     [SerializeField] Sprite[] moonSprites;
+    [SerializeField] GameObject transformationEffect;
     
     Moon moon;
 
@@ -55,6 +56,13 @@ public class MoonManager : Singleton<MoonManager>
 
     private void Update()
     {
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Instantiate(transformationEffect, moon.transform);
+        }
+
+
         if (!playing && moon != null)
         {
             Vector3 earthPosition = Earth.Instance.gameObject.transform.position;

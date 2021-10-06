@@ -72,7 +72,7 @@ public class Moon : MonoBehaviour
         while (spinning)
         {
             yield return new WaitForSeconds(0.1f);
-            transform.Rotate(0f, 0f, 10f, Space.Self);
+            transform.Rotate(0f, 0f, 100f, Space.Self);
         }
 
     }

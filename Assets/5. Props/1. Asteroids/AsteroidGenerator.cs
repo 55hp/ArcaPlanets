@@ -6,10 +6,24 @@ public class AsteroidGenerator : Singleton<AsteroidGenerator>
 {
 
     [SerializeField] GameObject asteroidPrefab;
+    [SerializeField] GameObject asteroidAxplosionPrefab;
 
-    [SerializeField] Sprite[] smallAstSprites;
-    [SerializeField] Sprite[] midAstSprites;
-    [SerializeField] Sprite[] bigAstSprites;
+    [SerializeField] Sprite[] smallAstSprites1;
+    [SerializeField] Sprite[] smallAstSprites2;
+    [SerializeField] Sprite[] smallAstSprites3;
+
+    [SerializeField] Sprite[] midAstSprites1;
+    [SerializeField] Sprite[] midAstSprites2;
+    [SerializeField] Sprite[] midAstSprites3;
+
+    [SerializeField] Sprite[] bigAstSprites1;
+    [SerializeField] Sprite[] bigAstSprites2;
+    [SerializeField] Sprite[] bigAstSprites3;
+
+    Sprite[][] smalls = new Sprite[3][];
+    Sprite[][] mids= new Sprite[3][];
+    Sprite[][] bigs = new Sprite[3][];
+
     [SerializeField] Color[] asteroidColors;
 
     [SerializeField] GameObject[] powerUpPrefabs;
@@ -27,7 +41,23 @@ public class AsteroidGenerator : Singleton<AsteroidGenerator>
     {
         EventManager.OnStateHaveBeenChanged -= OnStateChanged;
     }
-    
+
+    private void Start()
+    {
+        
+        smalls[0] = smallAstSprites1;
+        smalls[1] = smallAstSprites2;
+        smalls[2] = smallAstSprites3;
+
+        mids[0] = midAstSprites1;
+        mids[1] = midAstSprites2;
+        mids[2] = midAstSprites2;
+
+        bigs[0] = bigAstSprites1;
+        bigs[1] = bigAstSprites2;
+        bigs[2] = bigAstSprites3;
+
+    }
 
     public void OnStateChanged(GameManager.GameState newState)
     {
@@ -81,17 +111,17 @@ public class AsteroidGenerator : Singleton<AsteroidGenerator>
         {
             //Small Asteroid - Speed : 1 --> 3
             case 0:
-                Asteroid.SetAsteroid(Ut.ROA(smallAstSprites), Ut.ROA(powerUpPrefabs), Random.Range(0.5f,2.8f) , Ut.ROA(asteroidColors) , 1);
+                Asteroid.SetAsteroid(Ut.ROA(smalls), Ut.ROA(powerUpPrefabs), Random.Range(0.5f,2.8f) , Ut.ROA(asteroidColors) , 1 , asteroidAxplosionPrefab);
                 break;
 
             //Medium Asteroid
             case 1:
-                Asteroid.SetAsteroid(Ut.ROA(midAstSprites), Ut.ROA(powerUpPrefabs), Random.Range(0.5f, 1.5f), Ut.ROA(asteroidColors) , 2);
+                Asteroid.SetAsteroid(Ut.ROA(mids), Ut.ROA(powerUpPrefabs), Random.Range(0.5f, 1.5f), Ut.ROA(asteroidColors) , 2 , asteroidAxplosionPrefab);
                 break;
 
             //Big Asteroid
             case 2:
-                Asteroid.SetAsteroid(Ut.ROA(bigAstSprites), Ut.ROA(powerUpPrefabs), Random.Range(0.4f, 1f), Ut.ROA(asteroidColors) , 3 );
+                Asteroid.SetAsteroid(Ut.ROA(bigs), Ut.ROA(powerUpPrefabs), Random.Range(0.4f, 1f), Ut.ROA(asteroidColors) , 3 , asteroidAxplosionPrefab);
                 break;
         }
     }

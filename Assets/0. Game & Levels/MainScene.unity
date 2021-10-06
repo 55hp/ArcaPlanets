@@ -2351,6 +2351,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 31fe13d82d2ae824fa53e54e85a5836e, type: 3}
   - {fileID: 21300000, guid: e504d801da63b5240a3d40adfa24641d, type: 3}
   - {fileID: 21300000, guid: 58b674fc1088e724695964cba359791d, type: 3}
+  transformationEffect: {fileID: 4965921620429292365, guid: 9cb43c955c502d041bb2f10ea03d4ca6, type: 3}
 --- !u!4 &651990161
 Transform:
   m_ObjectHideFlags: 0
@@ -3407,8 +3408,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: bf5d42d1a6a6ed348800091876f65928, type: 3}
   - {fileID: 21300000, guid: 71b3a0566a10a4b4099e8075a1c6cb88, type: 3}
   - {fileID: 21300000, guid: cf3f6c8a6e61f7b499653933ea9d0b86, type: 3}
-  body: {fileID: 4468828349612418942}
-  propulsor: {fileID: 2624492326627342266}
   lowerShield: {fileID: 126206982}
   myWeapon: {fileID: 6202535544554089279}
   leftCannon: {fileID: 301971980099642187}
@@ -3562,12 +3561,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba9b30092c69dfd4ea8cd260088bab5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  propuslorSprite:
+  propuslorIdleSprite:
   - {fileID: 21300000, guid: 0d0884a2849902b4c98113abae877ecd, type: 3}
   - {fileID: 21300000, guid: fecac7b3449249f4db5c307fd63cf135, type: 3}
   - {fileID: 21300000, guid: ce9ab0c7da36cfe4d807136930b447b8, type: 3}
   - {fileID: 21300000, guid: c705c91f7ccfa724e91908bacc25ba96, type: 3}
+  propuslorHitSprite:
+  - {fileID: 21300000, guid: bdb97fb715ae20847a528990ab7385ce, type: 3}
+  - {fileID: 21300000, guid: 5a9a44505daf4a946a03601000207283, type: 3}
+  - {fileID: 21300000, guid: ce9ab0c7da36cfe4d807136930b447b8, type: 3}
+  - {fileID: 21300000, guid: 0e14718ce01b81c4999008f8c7fc9e33, type: 3}
+  - {fileID: 21300000, guid: 5a9a44505daf4a946a03601000207283, type: 3}
   propuslor: {fileID: 2624492326627342266}
+  smoke: {fileID: 1455316132}
 --- !u!1 &949900729
 GameObject:
   m_ObjectHideFlags: 0
@@ -5298,7 +5304,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1455316129}
   m_LocalRotation: {x: 0.5, y: -0.5, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: 0, y: -1.12, z: 0}
+  m_LocalPosition: {x: 0, y: -0.52, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1573066096824376427}
@@ -5506,7 +5512,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 1.7
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -6084,7 +6090,7 @@ ParticleSystem:
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
-      value: 0.2
+      value: 0.15
       mode: 0
       spread: 0
       speed:
@@ -6471,11 +6477,11 @@ ParticleSystem:
         m_RotationOrder: 4
     separateAxes: 0
   RotationModule:
-    enabled: 0
+    enabled: 1
     x:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0
+      scalar: 1
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -6528,7 +6534,7 @@ ParticleSystem:
     y:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0
+      scalar: 1
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -6581,7 +6587,7 @@ ParticleSystem:
     curve:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.7853982
+      scalar: 6.283185
       minScalar: 0.7853982
       maxCurve:
         serializedVersion: 2
@@ -12783,17 +12789,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   asteroidPrefab: {fileID: 2647377992523706650, guid: 5327f7e855749c9438aff2cf6dd08538, type: 3}
-  smallAstSprites:
+  asteroidAxplosionPrefab: {fileID: 4965921620429292365, guid: 2c9e84cdc4ef5f94fbc939d15cf1cd70, type: 3}
+  smallAstSprites1:
   - {fileID: 21300000, guid: baf8f0c594483544bb7a3f2fb64c5e74, type: 3}
+  smallAstSprites2:
   - {fileID: 21300000, guid: a05c964cacd590f4e92f96fe05257a39, type: 3}
+  smallAstSprites3:
   - {fileID: 21300000, guid: 184396dd838b19c4fac082bfe9aac4d5, type: 3}
-  midAstSprites:
+  midAstSprites1:
+  - {fileID: 21300000, guid: d2b0ef45931e90f4aacd704b4866c1bf, type: 3}
   - {fileID: 21300000, guid: 30f896c3882e12548a1f274d93ae7f02, type: 3}
+  midAstSprites2:
+  - {fileID: 21300000, guid: 047e0de57478f2c42a3ccde36047a82d, type: 3}
   - {fileID: 21300000, guid: e98ffc8ce42404d489424bf988b7770d, type: 3}
+  midAstSprites3:
+  - {fileID: 21300000, guid: 4053aadc748a2b442b68fc072f62681b, type: 3}
   - {fileID: 21300000, guid: 6e9745e3e4330ae43901a16e9ac7b2a5, type: 3}
-  bigAstSprites:
+  bigAstSprites1:
+  - {fileID: 21300000, guid: cacb5a079a6e26247b6800cde21c0501, type: 3}
+  - {fileID: 21300000, guid: 253890b00614e2144a806f0d049d9480, type: 3}
   - {fileID: 21300000, guid: 45e34ff6d44157540872f0325ca88d62, type: 3}
+  bigAstSprites2:
+  - {fileID: 21300000, guid: 326f81eba7e70604d96bd09348fd43ff, type: 3}
+  - {fileID: 21300000, guid: 0e3179d4971c8a345bc6416362eb00e9, type: 3}
   - {fileID: 21300000, guid: 0e4da0e427d44c2458fac00cb36156a7, type: 3}
+  bigAstSprites3:
+  - {fileID: 21300000, guid: ffbac9dabc938814c9979d432a9bc46b, type: 3}
+  - {fileID: 21300000, guid: ba580b980e168c34d9b905405dbb2ea5, type: 3}
   - {fileID: 21300000, guid: cd2312874e4280b4bbd1b32bd8b03d4c, type: 3}
   asteroidColors:
   - {r: 0.6039216, g: 0.6, b: 0.6, a: 1}
@@ -12825,7 +12847,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  _timeSpawner: 1.1
+  _timeSpawner: 0.21
 --- !u!1 &4233493739437068370
 GameObject:
   m_ObjectHideFlags: 0
@@ -13080,7 +13102,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2262095384226074150}
-  - component: {fileID: 7716052985497305190}
   m_Layer: 8
   m_Name: GunModule
   m_TagString: Untagged
@@ -13134,57 +13155,6 @@ SpriteRenderer:
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1.28, y: 2.56}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
---- !u!212 &7716052985497305190
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6202535544554089279}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 904118465
-  m_SortingLayer: 3
-  m_SortingOrder: 9
-  m_Sprite: {fileID: 21300000, guid: 80f1c5c11557a3f489a6303a83f5f3d8, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 5.12, y: 5.12}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
