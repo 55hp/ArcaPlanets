@@ -14,12 +14,18 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] GameObject pauseScreen;
 
     [SerializeField] Text HP;
+    [SerializeField] GameObject fakeMoonPref;
+    [SerializeField] GameObject fakeMoonSpawnPoint;
+    GameObject fakeMoon;
 
     private void OnEnable()
     {
         EventManager.OnStateHaveBeenChanged += OnStateChanged;
         EventManager.OnPlanetTookDamage += OnPlanetTookDamage;
         EventManager.OnLifeLost += UpdateHpText;
+
+        fakeMoon = Instantiate(fakeMoonPref, fakeMoonSpawnPoint.transform);
+        fakeMoon.GetComponent<Rigidbody2D>().AddForce(new Vector2(2, 2) * 100);
     }
 
     private void OnDisable()
@@ -39,6 +45,7 @@ public class UIManager : Singleton<UIManager>
                 UpdateHpText();
                 break;
             case GameManager.GameState.Play:
+                Destroy(fakeMoon);
                 pauseScreen.SetActive(false);
                 break;
             case GameManager.GameState.Pause:

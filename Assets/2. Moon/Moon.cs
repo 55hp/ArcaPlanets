@@ -14,7 +14,7 @@ public class Moon : MonoBehaviour
 
     [SerializeField] GameObject moonHitPrefab;
 
-    public void SetName(String name)
+    public void SetName(string name)
     {
         this.name = name;
     }

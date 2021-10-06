@@ -18,6 +18,7 @@ TagManager:
   - MobShield
   - Planet
   - Satellite
+  - FakeWall
   layers:
   - Default
   - TransparentFX
@@ -47,8 +48,8 @@ TagManager:
   - 
   - NoCollisionLayer
   - 
-  - 
-  - 
+  - FakeWall
+  - FakeMoon
   - 
   - 
   m_SortingLayers:
