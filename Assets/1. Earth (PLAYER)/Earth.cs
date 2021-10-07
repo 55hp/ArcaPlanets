@@ -140,6 +140,7 @@ public class Earth : Singleton<Earth>
         if (gameObject.layer == 8)
         {
             myHp--;
+            UIManager.Instance.LoseLife();
             if (myHp <= 0)
             {
                 alive = false;

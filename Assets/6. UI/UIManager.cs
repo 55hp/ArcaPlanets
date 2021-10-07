@@ -6,23 +6,30 @@ using UnityEngine.UI;
 public class UIManager : Singleton<UIManager>
 {
 
-    [SerializeField] Slider lifeSlider;
+    [SerializeField] GameObject[] lives;
+    [SerializeField] Color lifeActive;
+    [SerializeField] Color lifeLost;
+
+
+    [SerializeField] GameObject menuCanvas;
+    [SerializeField] GameObject gameHUD;
+
+    [SerializeField] Slider planetHeartSlider;
 
     [SerializeField] GameObject gameOverScreen;
     [SerializeField] GameObject congratScreen;
-    [SerializeField] GameObject bootScreen;
     [SerializeField] GameObject pauseScreen;
-
-    [SerializeField] Text HP;
+    
     [SerializeField] GameObject fakeMoonPref;
     [SerializeField] GameObject fakeMoonSpawnPoint;
     GameObject fakeMoon;
+    
 
     private void OnEnable()
     {
         EventManager.OnStateHaveBeenChanged += OnStateChanged;
         EventManager.OnPlanetTookDamage += OnPlanetTookDamage;
-        EventManager.OnLifeLost += UpdateHpText;
+        //EventManager.OnLifeLost += UpdateHp;
 
         fakeMoon = Instantiate(fakeMoonPref, fakeMoonSpawnPoint.transform);
         fakeMoon.GetComponent<Rigidbody2D>().AddForce(new Vector2(2, 2) * 100);
@@ -32,7 +39,7 @@ public class UIManager : Singleton<UIManager>
     {
         EventManager.OnStateHaveBeenChanged -= OnStateChanged;
         EventManager.OnPlanetTookDamage -= OnPlanetTookDamage;
-        EventManager.OnLifeLost -= UpdateHpText;
+        //EventManager.OnLifeLost -= UpdateHp;
     }
 
 
@@ -42,10 +49,11 @@ public class UIManager : Singleton<UIManager>
         {
             case GameManager.GameState.Boot:
                 ResetSlider();
-                UpdateHpText();
+                SetHp(Earth.Instance.GetHP());
+                gameHUD.SetActive(true);
+                Destroy(fakeMoon);
                 break;
             case GameManager.GameState.Play:
-                Destroy(fakeMoon);
                 pauseScreen.SetActive(false);
                 break;
             case GameManager.GameState.Pause:
@@ -53,26 +61,54 @@ public class UIManager : Singleton<UIManager>
                 break;
             case GameManager.GameState.Gameover:
                 gameOverScreen.SetActive(true);
+                gameHUD.SetActive(false);
                 break;
             case GameManager.GameState.Win:
                 StartCoroutine(ActivateWinScreen());
+                gameHUD.SetActive(false);
                 break;
         }
     }
 
     public void OnPlanetTookDamage(float amountOfDamage)
     {
-        lifeSlider.value -= amountOfDamage;
+        planetHeartSlider.value -= amountOfDamage;
     }
 
-    public void UpdateHpText()
+
+    public void SetHp(int hp)
     {
-        HP.text = "HP: " + Earth.Instance.GetHP();
+        int i = 0;
+        foreach (GameObject life in lives)
+        {
+
+            if (i < hp)
+            {
+                life.SetActive(true);
+                life.GetComponent<Image>().color = lifeActive;
+            }
+            else
+            {
+                life.SetActive(false);
+            }
+            i++;
+        }
+    }
+
+    public void GainLife()
+    {
+        if(lives[Earth.Instance.GetHP()].activeInHierarchy)
+        lives[Earth.Instance.GetHP()].GetComponent<Image>().color = lifeActive;
+    }
+
+    public void LoseLife()
+    {
+        lives[Earth.Instance.GetHP()].GetComponent<Image>().color = lifeLost;
     }
 
     public void ResetSlider()
     {
-        lifeSlider.value = 1;
+        planetHeartSlider.value = 1;
     }
 
     IEnumerator ActivateWinScreen()

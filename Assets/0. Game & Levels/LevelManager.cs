@@ -71,7 +71,7 @@ public class LevelManager : Singleton<LevelManager>
     public void SetMobs(int satelliteNumber)
     {
 
-        planet.SetPlanet(30, Ut.ROA(planetBodies),Ut.ROA(planetFaces), Ut.ROA(planetBodyPalette), Planet.PLANET_POWER.BLINK_SHIELD, 0, 8f, 4f , bulletPrefabs[2] , bulletPrefabs[3]);
+        planet.SetPlanet(30, Ut.ROA(planetBodies),Ut.ROA(planetFaces), Ut.ROA(planetBodyPalette), Planet.PLANET_POWER.DIVERGENT_GUN, 0, 8f, 4f , bulletPrefabs[2] , bulletPrefabs[3]);
         planet.gameObject.SetActive(true);
         planet.ActivatePlanet();
 

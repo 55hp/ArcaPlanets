@@ -106,7 +106,7 @@ public class PowerUpManager : Singleton<PowerUpManager>
                 //+1hp green power up
             case 301:
                 Earth.Instance.AddHp(); Debug.Log("+1 HP ! ");
-                UIManager.Instance.UpdateHpText();
+                UIManager.Instance.GainLife();
                 break;
         }
     }
