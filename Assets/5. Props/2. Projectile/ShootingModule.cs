@@ -38,7 +38,6 @@ public class ShootingModule : MonoBehaviour
             case ShootingType.FIXED_RATE_DIVERGENT:
                 shootingType = Divergent();
                 break;
-
         }
 
         this.bullet1 = bulletType1;
@@ -107,7 +106,6 @@ public class ShootingModule : MonoBehaviour
             yield return new WaitForSeconds(fireRate);
             Instantiate(bullet1, this.transform.position, Quaternion.identity);
             Instantiate(bullet2, this.transform.position, Quaternion.identity);
-
         }
     }
 

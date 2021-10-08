@@ -11,12 +11,12 @@ public class Satellite : MonoBehaviour
     bool alive;
 
     [SerializeField] GameObject myShield;
-    [SerializeField] ShootingModule myWeapon;
     [SerializeField] float distance;
 
+    [SerializeField] GameObject myMouth;
+    ShootingScript myWeapon;
     IEnumerator myPower;
     Animator myAnimator;
-
     Vector3 startingPos;
 
     private float randomId;
@@ -24,7 +24,6 @@ public class Satellite : MonoBehaviour
     private void Start()
     {
         myAnimator = gameObject.GetComponent<Animator>();
-        myPower = null;
         startingPos = this.transform.position;
         randomId = Random.Range(0, GetInstanceID()) % 60;
     }
@@ -32,16 +31,23 @@ public class Satellite : MonoBehaviour
 
     private void Update()
     {
-        UpdatePosition();
+        UpAnDown();
     }
 
-    private void UpdatePosition() {
+    private void LeftAndRight() {
         var a = (randomId  * 60 + Time.time * 360) * Mathf.Deg2Rad ;
         var c = Mathf.Cos(a) * distance;
         this.transform.position = startingPos + new Vector3(c, 0, 0) ;
     }
 
-    
+    private void UpAnDown()
+    {
+        var a = (randomId * 60 + Time.time * 360) * Mathf.Deg2Rad;
+        var c = Mathf.Cos(a) * distance;
+        this.transform.position = startingPos + new Vector3(0, c, 0);
+    }
+
+
     public enum SATELLITE_POWER
     {
         CANNON,
@@ -50,7 +56,7 @@ public class Satellite : MonoBehaviour
         ASSAULT
     }
 
-    public void SetSatellite(int Hp, Sprite body, Sprite face, Color color, SATELLITE_POWER myPower, float startingTime, float activeTime, float inactiveTime, GameObject bullet1, GameObject bullet2)
+    public void SetSatellite(int Hp, Sprite body, Sprite face, Color color, SATELLITE_POWER myPower, float startingTime, float activeTime, float inactiveTime, GameObject bullet)
     {
         healthPoints = Hp;
         actualHp = healthPoints;
@@ -64,16 +70,22 @@ public class Satellite : MonoBehaviour
             //In weapon's powers the active time represent the fire rate.
             //Even if to set a shooting module you need to specify 2 bullet types, based on the shooting style the satellite could shot only 1 type of bullet.
             case SATELLITE_POWER.CANNON:
-                myWeapon.SetShootingModule(ShootingModule.ShootingType.FIXED_RATE_ONE, bullet1, bullet2, startingTime, activeTime);
-                this.myPower = Shoot(startingTime, activeTime);
+
+                myWeapon = this.GetComponent<ShootingScript>();
+                myWeapon.SetShootingStyle(bullet, myMouth.gameObject, ShootingScript.ShootingType.FIXED_RATE_TRIPLE);
+                this.myPower = Shooting(startingTime, activeTime);
                 break;
             case SATELLITE_POWER.GATLING:
-                myWeapon.SetShootingModule(ShootingModule.ShootingType.FIXED_RATE_TRIPLE, bullet1, bullet2, startingTime, activeTime);
-                this.myPower = Shoot(startingTime, activeTime);
+
+                myWeapon = this.GetComponent<ShootingScript>();
+                myWeapon.SetShootingStyle(bullet, myMouth.gameObject, ShootingScript.ShootingType.SINGLE_SHOOT);
+                this.myPower = Shooting(startingTime, activeTime);
                 break;
             case SATELLITE_POWER.HALF_MOON:
-                myWeapon.SetShootingModule(ShootingModule.ShootingType.FIXED_RATE_ONE, bullet1, bullet2, startingTime, activeTime);
-                this.myPower = Shoot(startingTime, activeTime);
+
+                myWeapon = this.GetComponent<ShootingScript>();
+                myWeapon.SetShootingStyle(bullet, myMouth.gameObject, ShootingScript.ShootingType.SINGLE_SHOOT);
+                this.myPower = Shooting(startingTime, activeTime);
                 break;
             case SATELLITE_POWER.ASSAULT:
                 break;
@@ -120,17 +132,16 @@ public class Satellite : MonoBehaviour
 
     #region WEAPON_REGION
 
-    IEnumerator Shoot(float startingTime, float fireRate)
+    IEnumerator Shooting(float startingTime, float fireRate)
     {
-        myWeapon.TurnOn();
-        yield return new WaitForSeconds(startingTime);
+        yield return new WaitForSeconds(startingTime + 0.2f);
         while (alive)
         {
             yield return new WaitForSeconds(fireRate);
             myAnimator.SetTrigger("Shoot");
         }
     }
-    
+
     #endregion
 
     private void OnCollisionEnter2D(Collision2D collision)

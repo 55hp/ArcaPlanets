@@ -15,8 +15,7 @@ public class Earth : Singleton<Earth>
     [SerializeField] Sprite[] cockpitSprites;
 
     [SerializeField] GameObject lowerShield;
-
-    [SerializeField] GameObject myWeapon;
+    
     [SerializeField] GameObject leftCannon;
     [SerializeField] GameObject rightCannon;
     [SerializeField] GameObject earthBullet;
@@ -48,6 +47,9 @@ public class Earth : Singleton<Earth>
     {
         mySize = transform.localScale;
         myAnimator = GetComponent<Animator>();
+        
+        leftCannon.GetComponent<ShootingScript>().SetShootingStyle(earthBullet, leftCannon, ShootingScript.ShootingType.FIXED_RATE_DOUBLE);
+        rightCannon.GetComponent<ShootingScript>().SetShootingStyle(earthBullet, rightCannon, ShootingScript.ShootingType.FIXED_RATE_DOUBLE);
     }
 
     public void InitEarth()
@@ -57,9 +59,6 @@ public class Earth : Singleton<Earth>
         myHp = 3;
         alive = true;
         lowerShield.SetActive(false);
-
-        leftCannon.GetComponent<ShootingModule>().SetShootingModule(ShootingModule.ShootingType.FIXED_RATE_ONE, earthBullet, earthBullet, 0, 0.8f);
-        rightCannon.GetComponent<ShootingModule>().SetShootingModule(ShootingModule.ShootingType.FIXED_RATE_ONE, earthBullet, earthBullet, 0.4f, 0.8f);
     }
 
     public void OnStateChanged(GameManager.GameState newState)
@@ -218,13 +217,34 @@ public class Earth : Singleton<Earth>
             gameObject.layer = 8;
     }
 
+    public void StartShooting()
+    {
+        StartCoroutine(Shoot());
+        
+    }
+
+    public void StopShooting()
+    {
+        StopCoroutine(Shoot());
+
+    }
+
+    IEnumerator Shoot()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(1);
+            leftCannon.GetComponent<ShootingScript>().Shoot();
+            rightCannon.GetComponent<ShootingScript>().Shoot();
+        }
+    }
 
 
     /// <summary>
     /// Power ups are coroutines that occurs for a determinated amount of time and applies different effects
     /// </summary>
     #region POWER UP EFFECTS REGION
-        
+
     public void EffectsReset()
     {
         //Bigger effects reset
@@ -234,11 +254,11 @@ public class Earth : Singleton<Earth>
         this.GetComponent<CapsuleCollider2D>().enabled = false;
         this.GetComponent<CircleCollider2D>().enabled = true;
 
+        //ShootingReset
+        StopShooting();
+
         //Lower Shield effect reset
         //lowerShield.SetActive(false);
-
-        //Double bullets effect reset
-        myWeapon.SetActive(false);
     }
 
     /// <summary>
@@ -265,6 +285,7 @@ public class Earth : Singleton<Earth>
     {
         public BiggerPowerUp(Earth Earth) : base(Earth)
         {
+
         }
 
         public override void Activate()
@@ -296,13 +317,14 @@ public class Earth : Singleton<Earth>
             Earth.GetComponent<CircleCollider2D>().enabled = false;
             Instantiate(Earth.transformationEffect, Earth.transform);
             Earth.myAnimator.SetTrigger("SmallerIn");
-            //Assegnare al delegate smaller Out
         }
 
         public override void Deactivate()
         { 
             Earth.GetComponent<CapsuleCollider2D>().enabled = false;
             Earth.GetComponent<CircleCollider2D>().enabled = true;
+            Instantiate(Earth.transformationEffect, Earth.transform);
+            Earth.myAnimator.SetTrigger("SmallerOut");
         }
     }
 
@@ -337,26 +359,22 @@ public class Earth : Singleton<Earth>
     {
         public DoubleBulletsPowerUp(Earth Earth) : base(Earth)
         {
-        }
 
+        }
         public override void Activate()
         {
-            Earth.myWeapon.SetActive(true);
-            Earth.leftCannon.GetComponent<ShootingModule>().TurnOn();
-            Earth.rightCannon.GetComponent<ShootingModule>().TurnOn();
             Instantiate(Earth.transformationEffect, Earth.transform);
             Earth.myAnimator.SetTrigger("GunIn");
+            Instance.StartShooting();
         }
 
         public override void Deactivate()
         { 
             Instantiate(Earth.transformationEffect, Earth.transform);
             Earth.myAnimator.SetTrigger("GunOut");
-            Earth.leftCannon.GetComponent<ShootingModule>().TurnOff();
-            Earth.rightCannon.GetComponent<ShootingModule>().TurnOff();
-            Earth.myWeapon.SetActive(false);
+            Instance.StopShooting();
         }
-    } 
+    }
     #endregion
-    
+
 }

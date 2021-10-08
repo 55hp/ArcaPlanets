@@ -675,9 +675,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 178746948}
-  - component: {fileID: 178746949}
   m_Layer: 14
-  m_Name: SatelliteWeapon
+  m_Name: Mouth
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -697,18 +696,6 @@ Transform:
   m_Father: {fileID: 1872423476}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &178746949
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 178746947}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d449a5157fb66d4ea4c09e10b033c40, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &188530715
 GameObject:
   m_ObjectHideFlags: 0
@@ -1216,9 +1203,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 328278042}
-  - component: {fileID: 328278043}
   m_Layer: 14
-  m_Name: SatelliteWeapon
+  m_Name: Mouth
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1238,18 +1224,6 @@ Transform:
   m_Father: {fileID: 684130936}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &328278043
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 328278041}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d449a5157fb66d4ea4c09e10b033c40, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &331659769
 GameObject:
   m_ObjectHideFlags: 0
@@ -1666,6 +1640,7 @@ GameObject:
   - component: {fileID: 468308823}
   - component: {fileID: 468308822}
   - component: {fileID: 468308826}
+  - component: {fileID: 468308827}
   m_Layer: 14
   m_Name: Satellite Bot Left
   m_TagString: Satellite
@@ -1704,8 +1679,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myBeautifulFace: {fileID: 12114278}
   myShield: {fileID: 347414551}
-  myWeapon: {fileID: 949900731}
   distance: 0.2
+  myMouth: {fileID: 949900729}
 --- !u!50 &468308823
 Rigidbody2D:
   serializedVersion: 4
@@ -1813,47 +1788,16 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!1 &480728256
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 480728257}
-  - component: {fileID: 480728258}
-  m_Layer: 14
-  m_Name: PlanetWeapon
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &480728257
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 480728256}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.2, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1138512296}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &480728258
+--- !u!114 &468308827
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 480728256}
+  m_GameObject: {fileID: 468308820}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d449a5157fb66d4ea4c09e10b033c40, type: 3}
+  m_Script: {fileID: 11500000, guid: 6d1f84f650a49ea468517e2531acc41b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &506192668
@@ -2521,9 +2465,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 652335235}
-  - component: {fileID: 652335236}
   m_Layer: 14
-  m_Name: SatelliteWeapon
+  m_Name: Mouth
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2543,18 +2486,6 @@ Transform:
   m_Father: {fileID: 670402317}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &652335236
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 652335234}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d449a5157fb66d4ea4c09e10b033c40, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &670402316
 GameObject:
   m_ObjectHideFlags: 0
@@ -2569,6 +2500,7 @@ GameObject:
   - component: {fileID: 670402319}
   - component: {fileID: 670402318}
   - component: {fileID: 670402322}
+  - component: {fileID: 670402323}
   m_Layer: 14
   m_Name: Satellite Bot Right
   m_TagString: Satellite
@@ -2607,8 +2539,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myBeautifulFace: {fileID: 1112179951}
   myShield: {fileID: 188530715}
-  myWeapon: {fileID: 652335236}
   distance: 0.2
+  myMouth: {fileID: 652335234}
 --- !u!50 &670402319
 Rigidbody2D:
   serializedVersion: 4
@@ -2716,6 +2648,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &670402323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 670402316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d1f84f650a49ea468517e2531acc41b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &684130935
 GameObject:
   m_ObjectHideFlags: 0
@@ -2730,6 +2674,7 @@ GameObject:
   - component: {fileID: 684130938}
   - component: {fileID: 684130937}
   - component: {fileID: 684130941}
+  - component: {fileID: 684130942}
   m_Layer: 14
   m_Name: Satellite Top Right
   m_TagString: Satellite
@@ -2745,7 +2690,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 684130935}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.7, y: 3.5, z: 2.6413624}
+  m_LocalPosition: {x: 2.4, y: 2.9, z: 2.6413624}
   m_LocalScale: {x: 0.4, y: 0.4, z: 1}
   m_Children:
   - {fileID: 1077312664}
@@ -2768,8 +2713,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myBeautifulFace: {fileID: 1077312663}
   myShield: {fileID: 1644881270}
-  myWeapon: {fileID: 328278043}
   distance: 0.2
+  myMouth: {fileID: 328278041}
 --- !u!50 &684130938
 Rigidbody2D:
   serializedVersion: 4
@@ -2877,6 +2822,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &684130942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 684130935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d1f84f650a49ea468517e2531acc41b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &807438740
 GameObject:
   m_ObjectHideFlags: 0
@@ -3409,7 +3366,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 71b3a0566a10a4b4099e8075a1c6cb88, type: 3}
   - {fileID: 21300000, guid: cf3f6c8a6e61f7b499653933ea9d0b86, type: 3}
   lowerShield: {fileID: 126206982}
-  myWeapon: {fileID: 6202535544554089279}
   leftCannon: {fileID: 301971980099642187}
   rightCannon: {fileID: 7925415663576742346}
   earthBullet: {fileID: 576211358216060772, guid: ad9c320fcb3863946a4cd1d755dd0052, type: 3}
@@ -3583,9 +3539,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 949900730}
-  - component: {fileID: 949900731}
   m_Layer: 14
-  m_Name: SatelliteWeapon
+  m_Name: Mouth
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3605,18 +3560,6 @@ Transform:
   m_Father: {fileID: 468308821}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &949900731
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 949900729}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d449a5157fb66d4ea4c09e10b033c40, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &951935432
 GameObject:
   m_ObjectHideFlags: 0
@@ -4447,6 +4390,7 @@ GameObject:
   - component: {fileID: 1138512298}
   - component: {fileID: 1138512297}
   - component: {fileID: 1138512299}
+  - component: {fileID: 1138512300}
   m_Layer: 14
   m_Name: Planet (Boss)
   m_TagString: Planet
@@ -4529,12 +4473,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1138512293}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.5, z: 2.641362}
+  m_LocalPosition: {x: 0, y: 2.9, z: 2.641362}
   m_LocalScale: {x: 0.4, y: 0.4, z: 1}
   m_Children:
   - {fileID: 636067263}
   - {fileID: 44623692}
-  - {fileID: 480728257}
+  - {fileID: 1712165650}
   m_Father: {fileID: 522608176}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4552,7 +4496,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myBeautifulFace: {fileID: 636067262}
   myShield: {fileID: 44623691}
-  myWeapon: {fileID: 480728258}
+  mouth: {fileID: 1712165649}
 --- !u!50 &1138512298
 Rigidbody2D:
   serializedVersion: 4
@@ -4593,6 +4537,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1138512300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1138512293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d1f84f650a49ea468517e2531acc41b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1233416194
 GameObject:
   m_ObjectHideFlags: 0
@@ -10895,6 +10851,36 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1690063767}
   m_CullTransparentMesh: 0
+--- !u!1 &1712165649
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1712165650}
+  m_Layer: 14
+  m_Name: Mouth
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1712165650
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1712165649}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -1.2, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1138512296}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1732774840
 GameObject:
   m_ObjectHideFlags: 0
@@ -11294,6 +11280,7 @@ GameObject:
   - component: {fileID: 1872423478}
   - component: {fileID: 1872423477}
   - component: {fileID: 1872423481}
+  - component: {fileID: 1872423482}
   m_Layer: 14
   m_Name: Satellite Top Left
   m_TagString: Satellite
@@ -11309,7 +11296,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1872423475}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.7, y: 3.5, z: 2.6413624}
+  m_LocalPosition: {x: -2.4, y: 2.9, z: 2.6413624}
   m_LocalScale: {x: 0.4, y: 0.4, z: 1}
   m_Children:
   - {fileID: 1554827431}
@@ -11332,8 +11319,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myBeautifulFace: {fileID: 1554827430}
   myShield: {fileID: 188530715}
-  myWeapon: {fileID: 178746949}
   distance: 0.2
+  myMouth: {fileID: 178746947}
 --- !u!50 &1872423478
 Rigidbody2D:
   serializedVersion: 4
@@ -11441,6 +11428,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1872423482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1872423475}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d1f84f650a49ea468517e2531acc41b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1883431416
 GameObject:
   m_ObjectHideFlags: 0
@@ -12080,7 +12079,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -359.2}
+  m_AnchoredPosition: {x: 0, y: -351}
   m_SizeDelta: {x: 512, y: 128}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2062051511
@@ -12377,7 +12376,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3935949063859912227}
-  - component: {fileID: 4518713575353241392}
+  - component: {fileID: 301971980099642188}
   m_Layer: 8
   m_Name: LeftGun
   m_TagString: Untagged
@@ -12385,6 +12384,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &301971980099642188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 301971980099642187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d1f84f650a49ea468517e2531acc41b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &684647867464446272
 Transform:
   m_ObjectHideFlags: 0
@@ -12491,18 +12502,6 @@ Transform:
   m_Father: {fileID: 1254597981}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1515245421997988021
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7925415663576742346}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d449a5157fb66d4ea4c09e10b033c40, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1573066096824376427
 Transform:
   m_ObjectHideFlags: 0
@@ -12843,18 +12842,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &4518713575353241392
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 301971980099642187}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d449a5157fb66d4ea4c09e10b033c40, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!212 &5109540537358046303
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -13153,7 +13140,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!212 &7094827245902733950
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -13214,7 +13201,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4340724255988959170}
-  - component: {fileID: 1515245421997988021}
+  - component: {fileID: 7925415663576742347}
   m_Layer: 8
   m_Name: RightGun
   m_TagString: Untagged
@@ -13222,6 +13209,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &7925415663576742347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7925415663576742346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d1f84f650a49ea468517e2531acc41b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!222 &8133399071940064609
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -13459,7 +13458,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &8133399072467773348
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13738,4 +13737,4 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0

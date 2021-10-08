@@ -63,47 +63,23 @@ public class LevelManager : Singleton<LevelManager>
         yield return new WaitForSeconds(2f);
         GameManager.Instance.GameReady();
     }
-    
-    
-
-
 
     public void SetMobs(int satelliteNumber)
     {
-
-        planet.SetPlanet(30, Ut.ROA(planetBodies),Ut.ROA(planetFaces), Ut.ROA(planetBodyPalette), Planet.PLANET_POWER.DIVERGENT_GUN, 0, 8f, 4f , bulletPrefabs[2] , bulletPrefabs[3]);
+        /*
+        planet.SetPlanet(30, Ut.ROA(planetBodies),Ut.ROA(planetFaces), Ut.ROA(planetBodyPalette), Planet.PLANET_POWER.SINGLE_SHOT, 10, 8f, 4f , bulletPrefabs[0]);
         planet.gameObject.SetActive(true);
         planet.ActivatePlanet();
-
-        if (satelliteNumber > 4 || satelliteNumber < 0)
-        {
-            satelliteNumber = 1;
-        }
-
-        /*
-        for(int i = 0; i < satelliteNumber; i++)
-        {
-            satellities[i].SetSatellite(10, Ut.ROA(satelliteBodies), Ut.ROA(satelliteFaces), Ut.ROA(satelliteBodyPalette), Satellite.SATELLITE_POWER.CANNON, 4, 5, 5, bulletPrefabs[0], bulletPrefabs[0]);
-            satellities[i].gameObject.SetActive(true);
-            satellities[i].ActivateSatellite();
-        }
+        */
         
-        satellities[0].SetSatellite(10, Ut.ROA(satelliteBodies), Ut.ROA(satelliteFaces), Ut.ROA(satelliteBodyPalette), Satellite.SATELLITE_POWER.CANNON, 0, 5, 5, bulletPrefabs[0], bulletPrefabs[0]);
+        satellities[0].SetSatellite(10, Ut.ROA(satelliteBodies), Ut.ROA(satelliteFaces), Ut.ROA(satelliteBodyPalette), Satellite.SATELLITE_POWER.CANNON, 10, 5, 5, bulletPrefabs[1]);
         satellities[0].gameObject.SetActive(true);
         satellities[0].ActivateSatellite();
 
-        satellities[1].SetSatellite(10, Ut.ROA(satelliteBodies), Ut.ROA(satelliteFaces), Ut.ROA(satelliteBodyPalette), Satellite.SATELLITE_POWER.GATLING, 0, 5, 5, bulletPrefabs[1], bulletPrefabs[1]);
+        satellities[1].SetSatellite(10, Ut.ROA(satelliteBodies), Ut.ROA(satelliteFaces), Ut.ROA(satelliteBodyPalette), Satellite.SATELLITE_POWER.CANNON, 10, 5, 5, bulletPrefabs[1]);
         satellities[1].gameObject.SetActive(true);
         satellities[1].ActivateSatellite();
-
-        satellities[2].SetSatellite(10, Ut.ROA(satelliteBodies), Ut.ROA(satelliteFaces), Ut.ROA(satelliteBodyPalette), Satellite.SATELLITE_POWER.HALF_MOON, 0, 5, 5, bulletPrefabs[4], bulletPrefabs[4]);
-        satellities[2].gameObject.SetActive(true);
-        satellities[2].ActivateSatellite();
-
-        satellities[3].SetSatellite(10, Ut.ROA(satelliteBodies), Ut.ROA(satelliteFaces), Ut.ROA(satelliteBodyPalette), Satellite.SATELLITE_POWER.CANNON, 0, 5, 5, bulletPrefabs[0], bulletPrefabs[0]);
-        satellities[3].gameObject.SetActive(true);
-        satellities[3].ActivateSatellite();
-        */
+       
     }
 
 

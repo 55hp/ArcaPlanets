@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 151
-  timerEffect: 10
+  timerEffect: 5
   speed: 2
 --- !u!61 &3768109340840138550
 BoxCollider2D:

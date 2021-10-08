@@ -11,10 +11,11 @@ public class Planet : MonoBehaviour
     bool alive;
 
     [SerializeField] GameObject myShield;
-    [SerializeField] ShootingModule myWeapon;
+    [SerializeField] GameObject mouth;
 
     IEnumerator myPower;
     Animator myAnimator;
+    ShootingScript myWeapon;
 
     private void Start()
     {
@@ -25,10 +26,11 @@ public class Planet : MonoBehaviour
     public enum PLANET_POWER
     {
         BLINK_SHIELD,
-        DIVERGENT_GUN
+        DIVERGENT_GUN,
+        SINGLE_SHOT
     }
 
-    public void SetPlanet(int Hp, Sprite body, Sprite face, Color color , PLANET_POWER myPower , float startingTime , float activeTime , float inactiveTime , GameObject bullet1 , GameObject bullet2)
+    public void SetPlanet(int Hp, Sprite body, Sprite face, Color color , PLANET_POWER myPower , float startingTime , float activeTime , float inactiveTime , GameObject bullet )
     {
         healthPoints = Hp;
         actualHp = healthPoints;
@@ -44,8 +46,15 @@ public class Planet : MonoBehaviour
                 break;
 
             case PLANET_POWER.DIVERGENT_GUN:
-                myWeapon.SetShootingModule(ShootingModule.ShootingType.FIXED_RATE_DIVERGENT, bullet1 , bullet2, startingTime, activeTime);
-                this.myPower = DivergentShoot(startingTime, activeTime);
+                myWeapon = this.GetComponent<ShootingScript>();
+                myWeapon.SetShootingStyle(bullet, mouth, ShootingScript.ShootingType.DIVERGENT_SHOOT);
+                this.myPower = Shooting(startingTime, activeTime);
+                break;
+
+            case PLANET_POWER.SINGLE_SHOT:
+                myWeapon = this.GetComponent<ShootingScript>();
+                myWeapon.SetShootingStyle(bullet, mouth, ShootingScript.ShootingType.SINGLE_SHOOT);
+                this.myPower = Shooting(startingTime, activeTime);
                 break;
         }
     }
@@ -89,9 +98,8 @@ public class Planet : MonoBehaviour
 
     #region WEAPON
 
-    IEnumerator DivergentShoot(float startingTime, float fireRate)
+    public IEnumerator Shooting(float startingTime, float fireRate)
     {
-        myWeapon.TurnOn();
         yield return new WaitForSeconds(startingTime+0.2f);
         while (alive)
         {
@@ -100,8 +108,9 @@ public class Planet : MonoBehaviour
         }
     }
     
+
     #endregion
-    
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (alive)
